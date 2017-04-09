@@ -11,7 +11,7 @@
 @interface UINavigationBar (WRAddition)
 
 /** 设置导航栏背景颜色*/
-- (void)wr_setBackgroundColor:(UIColor *)backgroundColor;
+- (void)wr_setBackgroundColor:(UIColor *)color;
 
 /** 设置导航栏所有BarButtonItem的透明度 */
 - (void)wr_setBarButtonItemsAlpha:(CGFloat)alpha;

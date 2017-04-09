@@ -7,6 +7,7 @@
 //
 
 #import "FirstViewController.h"
+#import "UINavigationBar+WRAddition.h"
 
 @interface FirstViewController ()
 
@@ -14,9 +15,10 @@
 
 @implementation FirstViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    
+    [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
 }
 
 #pragma mark - Table view data source
