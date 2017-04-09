@@ -49,8 +49,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="熊猫美妆" id="oXd-Cp-HC8">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="refresh" id="oDc-6U-Eem"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="xu4-H1-640"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="refresh" id="oDc-6U-Eem">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="xu4-H1-640">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qwh-ko-KtT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -85,8 +89,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="熊猫美妆" id="6iR-h2-Dvz">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="nUT-0D-hpQ"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="G8I-1T-VGa"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="nUT-0D-hpQ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="G8I-1T-VGa">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hTf-1z-zZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>

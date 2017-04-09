@@ -32,13 +32,17 @@ static char kBackgroundViewKey;
         self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) + 20)];
         // _UIBarBackground是导航栏的第一个自控制器
         [self.subviews.firstObject insertSubview:self.backgroundView atIndex:0];
+        // 隐藏导航栏底部默认黑线
+        [self setShadowImage:[UIImage new]];
     }
     self.backgroundView.backgroundColor = color;
 }
 
 - (void)wr_setBarButtonItemsAlpha:(CGFloat)alpha
 {
-    
+    for (UIView *view in self.subviews) {
+        view.alpha = alpha;
+    }
 }
 
 - (void)wr_setTranslationY:(CGFloat)translationY
@@ -49,7 +53,9 @@ static char kBackgroundViewKey;
 
 - (void)wr_clear
 {
-    
+    [self setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    [self.backgroundView removeFromSuperview];
+    self.backgroundView = nil;
 }
 
 @end
