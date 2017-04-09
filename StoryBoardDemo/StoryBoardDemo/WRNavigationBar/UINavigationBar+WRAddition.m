@@ -10,4 +10,24 @@
 
 @implementation UINavigationBar (WRAddition)
 
+- (void)wr_setBackgroundColor:(UIColor *)backgroundColor
+{
+    
+}
+
+- (void)wr_setBarButtonItemsAlpha:(CGFloat)alpha
+{
+    
+}
+
+- (void)wr_setTranslationY:(CGFloat)translationY
+{
+    
+}
+
+- (void)wr_clear
+{
+    
+}
+
 @end

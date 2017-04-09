@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--熊猫美妆-->
+        <!--demo1-->
         <scene sceneID="hN4-AE-vdm">
             <objects>
-                <tableViewController id="YVz-Rz-Ljn" sceneMemberID="viewController">
+                <tableViewController title="demo1" id="YVz-Rz-Ljn" customClass="FirstViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="MSQ-sW-bcm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,10 +57,10 @@
             </objects>
             <point key="canvasLocation" x="381.60000000000002" y="-505.09745127436287"/>
         </scene>
-        <!--second-->
+        <!--demo2-->
         <scene sceneID="gCq-Ei-8tH">
             <objects>
-                <tableViewController title="second" id="9nO-Iz-t5x" sceneMemberID="viewController">
+                <tableViewController title="demo2" id="9nO-Iz-t5x" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="6ZL-lo-R5M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,10 +110,10 @@
             </objects>
             <point key="canvasLocation" x="-572" y="238"/>
         </scene>
-        <!--王-->
+        <!--Item-->
         <scene sceneID="DvL-JR-Wz5">
             <objects>
-                <navigationController title="王" id="v5N-Ja-2Ks" sceneMemberID="viewController">
+                <navigationController id="v5N-Ja-2Ks" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="emL-P6-Rse"/>
                     <navigationItem key="navigationItem" id="NVx-d4-WF8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yUK-vG-xEm">
