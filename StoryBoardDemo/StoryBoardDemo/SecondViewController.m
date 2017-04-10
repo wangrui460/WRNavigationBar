@@ -31,7 +31,6 @@
 {
     [super viewWillAppear:animated];
     self.tableView.delegate = self;
-    [self.navigationController.navigationBar setBackIndicatorImage:[UIImage new]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -59,7 +58,6 @@
     }
     else {
         [self setNavigationBarTransformProgress:0];
-        self.navigationController.navigationBar.backIndicatorImage = [UIImage new];
     }
 }
 

@@ -42,8 +42,12 @@ static char kBackgroundViewKey;
 {
     for (UIView *view in self.subviews)
     {
-        if (![view.subviews.firstObject isEqual:self.backgroundView]) {
-            view.alpha = alpha;
+        if (![view.subviews.firstObject isEqual:self.backgroundView])
+        {
+            // 这里如果不做判断的话，会显示 backIndicatorImage
+            if (![view isKindOfClass:NSClassFromString(@"_UINavigationBarBackIndicatorView")]) {
+                view.alpha = alpha;
+            }
         }
     }
 }

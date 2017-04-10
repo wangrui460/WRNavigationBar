@@ -90,6 +90,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIViewController *vc = [UIViewController new];
+    vc.hidesBottomBarWhenPushed = YES;
     vc.title = [NSString stringWithFormat:@"WRNavigationBar %zd",indexPath.row];
     vc.view.backgroundColor = [UIColor orangeColor];
     [self.navigationController pushViewController:vc animated:YES];
