@@ -11,15 +11,19 @@
 #import "AppDelegate.h"
 
 // offsetY > 60 的时候导航栏开始偏移
-#define NAVBAR_TRANSLATION_POINT 60
+#define NAVBAR_TRANSLATION_POINT 0
+#define NavBarHeight 44
 
-@interface SecondViewController ()
+@interface SecondViewController () <UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation SecondViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     [self.navigationController.navigationBar wr_setBackgroundColor:MainNavBarColor];
 }
 
@@ -42,17 +46,28 @@
 {
     CGFloat offsetY = scrollView.contentOffset.y;
     // 除数表示 -> 导航栏从完全不透明到完全透明的过渡距离
-    CGFloat alpha = 1 - (offsetY - NAVBAR_TRANSLATION_POINT) / 64;
+    CGFloat progress = (offsetY - NAVBAR_TRANSLATION_POINT) / NavBarHeight;
     
-    if (offsetY > NAVBAR_TRANSLATION_POINT) {
-        CGFloat translationY = offsetY - NAVBAR_TRANSLATION_POINT;
-        translationY = (translationY > 44) ? 44 : translationY;
-        [self.navigationController.navigationBar wr_setTranslationY:-translationY];
-        [self.navigationController.navigationBar wr_setBarButtonItemsAlpha:alpha];
+    if (offsetY > NAVBAR_TRANSLATION_POINT)
+    {
+        if (offsetY - NAVBAR_TRANSLATION_POINT > 44) {
+            [self setNavigationBarTransformProgress:1.0];
+        }
+        else {
+            [self setNavigationBarTransformProgress:progress];
+        }
+    }
+    else {
+        [self setNavigationBarTransformProgress:0];
+        self.navigationController.navigationBar.backIndicatorImage = [UIImage new];
     }
 }
 
-
+- (void)setNavigationBarTransformProgress:(CGFloat)progress
+{
+    [self.navigationController.navigationBar wr_setTranslationY:(-NavBarHeight * progress)];
+    [self.navigationController.navigationBar wr_setBarButtonItemsAlpha:(1 - progress)];
+}
 
 
 
