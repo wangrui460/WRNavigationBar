@@ -10,6 +10,9 @@
 #import "UINavigationBar+WRAddition.h"
 #import "AppDelegate.h"
 
+// offsetY > 60 的时候导航栏颜色透明度开始改变
+#define NAVBARCOLOR_CHANGE_POINT 60
+
 @interface FirstViewController ()
 
 @end
@@ -39,16 +42,22 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat offsetY = scrollView.contentOffset.y;
-    CGFloat alpha = offsetY / 64;
-    if (offsetY > 0) {
+    // 除数表示 -> 导航栏从完全透明到完全不透明的过渡距离
+    CGFloat alpha = (offsetY - NAVBARCOLOR_CHANGE_POINT) / 64;
+    
+//    //限制下拉的距离
+//    if(offsetY < -150 && scrollView.isDragging) {
+//        [scrollView setContentOffset:CGPointMake(0, -150)];
+//    }
+    
+    if (offsetY > NAVBARCOLOR_CHANGE_POINT) {
         [self.navigationController.navigationBar wr_setBackgroundColor:[MainNavBarColor colorWithAlphaComponent:alpha]];
     }
-    else {
+    else
+    {
         [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
     }
 }
-
-
 
 
 
