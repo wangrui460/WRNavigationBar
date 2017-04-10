@@ -64,7 +64,7 @@
         <!--demo2-->
         <scene sceneID="gCq-Ei-8tH">
             <objects>
-                <tableViewController title="demo2" id="9nO-Iz-t5x" sceneMemberID="viewController">
+                <tableViewController title="demo2" id="9nO-Iz-t5x" customClass="SecondViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="6ZL-lo-R5M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
