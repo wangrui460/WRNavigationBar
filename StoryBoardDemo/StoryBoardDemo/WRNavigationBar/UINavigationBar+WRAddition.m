@@ -40,8 +40,11 @@ static char kBackgroundViewKey;
 
 - (void)wr_setBarButtonItemsAlpha:(CGFloat)alpha
 {
-    for (UIView *view in self.subviews) {
-        view.alpha = alpha;
+    for (UIView *view in self.subviews)
+    {
+        if (![view.subviews.firstObject isEqual:self.backgroundView]) {
+            view.alpha = alpha;
+        }
     }
 }
 
