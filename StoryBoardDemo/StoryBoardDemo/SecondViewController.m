@@ -10,8 +10,8 @@
 #import "UINavigationBar+WRAddition.h"
 #import "AppDelegate.h"
 
-// offsetY > 60 的时候导航栏开始偏移
-#define NAVBAR_TRANSLATION_POINT 0
+// offsetY > -64 的时候导航栏开始偏移
+#define NAVBAR_TRANSLATION_POINT -64
 #define NavBarHeight 44
 
 @interface SecondViewController () <UITableViewDelegate,UITableViewDataSource>
