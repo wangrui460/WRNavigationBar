@@ -12,6 +12,7 @@
 @implementation UINavigationBar (WRAddition)
 
 static char kBackgroundViewKey;
+static char kOriginalTranslucentKey;
 
 - (UIView*)backgroundView
 {
@@ -58,11 +59,32 @@ static char kBackgroundViewKey;
     self.transform = CGAffineTransformMakeTranslation(0, translationY);
 }
 
+- (void)wr_setTranslucentYES
+{
+    // 如果设置了全局 translucent = NO，则此时上面的方法可能就不起效果了，这个时候就需要调用这个方法
+    BOOL nihao = [UINavigationBar appearance].translucent;
+    [self setOriginalTranslucent:nihao];
+    self.translucent = YES;
+}
+
 - (void)wr_clear
 {
     [self setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     [self.backgroundView removeFromSuperview];
     self.backgroundView = nil;
+    self.translucent = [self originalTranslucent];
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+- (BOOL)originalTranslucent
+{
+    BOOL translucent = [objc_getAssociatedObject(self, &kOriginalTranslucentKey) boolValue];
+    return translucent;
+}
+
+- (void)setOriginalTranslucent:(BOOL)originalTranslucent
+{
+    objc_setAssociatedObject(self, &kOriginalTranslucentKey, @(originalTranslucent), OBJC_ASSOCIATION_ASSIGN);
 }
 
 @end
