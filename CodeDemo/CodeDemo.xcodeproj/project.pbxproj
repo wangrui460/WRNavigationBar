@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		1A2061D41E9CB496007BFB91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061D31E9CB496007BFB91 /* main.m */; };
 		1A2061D71E9CB496007BFB91 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061D61E9CB496007BFB91 /* AppDelegate.m */; };
-		1A2061DA1E9CB496007BFB91 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061D91E9CB496007BFB91 /* ViewController.m */; };
 		1A2061DD1E9CB496007BFB91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2061DB1E9CB496007BFB91 /* Main.storyboard */; };
 		1A2061DF1E9CB496007BFB91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2061DE1E9CB496007BFB91 /* Assets.xcassets */; };
 		1A2061E21E9CB496007BFB91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2061E01E9CB496007BFB91 /* LaunchScreen.storyboard */; };
 		1A2061ED1E9CB496007BFB91 /* CodeDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061EC1E9CB496007BFB91 /* CodeDemoTests.m */; };
+		1A2061FA1E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061F91E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m */; };
+		1A2061FD1E9CB552007BFB91 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061FC1E9CB552007BFB91 /* FirstViewController.m */; };
+		1A2062001E9CB566007BFB91 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061FF1E9CB566007BFB91 /* SecondViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,8 +33,6 @@
 		1A2061D31E9CB496007BFB91 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1A2061D51E9CB496007BFB91 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1A2061D61E9CB496007BFB91 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1A2061D81E9CB496007BFB91 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1A2061D91E9CB496007BFB91 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1A2061DC1E9CB496007BFB91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1A2061DE1E9CB496007BFB91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A2061E11E9CB496007BFB91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +40,12 @@
 		1A2061E81E9CB496007BFB91 /* CodeDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A2061EC1E9CB496007BFB91 /* CodeDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodeDemoTests.m; sourceTree = "<group>"; };
 		1A2061EE1E9CB496007BFB91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A2061F81E9CB4E4007BFB91 /* UINavigationBar+WRAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+WRAddition.h"; sourceTree = "<group>"; };
+		1A2061F91E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+WRAddition.m"; sourceTree = "<group>"; };
+		1A2061FB1E9CB552007BFB91 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		1A2061FC1E9CB552007BFB91 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		1A2061FE1E9CB566007BFB91 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		1A2061FF1E9CB566007BFB91 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +87,13 @@
 		1A2061D11E9CB496007BFB91 /* CodeDemo */ = {
 			isa = PBXGroup;
 			children = (
+				1A2061F71E9CB4E4007BFB91 /* WRNavigationBar */,
 				1A2061D51E9CB496007BFB91 /* AppDelegate.h */,
 				1A2061D61E9CB496007BFB91 /* AppDelegate.m */,
-				1A2061D81E9CB496007BFB91 /* ViewController.h */,
-				1A2061D91E9CB496007BFB91 /* ViewController.m */,
+				1A2061FB1E9CB552007BFB91 /* FirstViewController.h */,
+				1A2061FC1E9CB552007BFB91 /* FirstViewController.m */,
+				1A2061FE1E9CB566007BFB91 /* SecondViewController.h */,
+				1A2061FF1E9CB566007BFB91 /* SecondViewController.m */,
 				1A2061DB1E9CB496007BFB91 /* Main.storyboard */,
 				1A2061DE1E9CB496007BFB91 /* Assets.xcassets */,
 				1A2061E01E9CB496007BFB91 /* LaunchScreen.storyboard */,
@@ -109,6 +118,15 @@
 				1A2061EE1E9CB496007BFB91 /* Info.plist */,
 			);
 			path = CodeDemoTests;
+			sourceTree = "<group>";
+		};
+		1A2061F71E9CB4E4007BFB91 /* WRNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				1A2061F81E9CB4E4007BFB91 /* UINavigationBar+WRAddition.h */,
+				1A2061F91E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m */,
+			);
+			path = WRNavigationBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,9 +233,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A2061DA1E9CB496007BFB91 /* ViewController.m in Sources */,
+				1A2062001E9CB566007BFB91 /* SecondViewController.m in Sources */,
 				1A2061D71E9CB496007BFB91 /* AppDelegate.m in Sources */,
+				1A2061FA1E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m in Sources */,
 				1A2061D41E9CB496007BFB91 /* main.m in Sources */,
+				1A2061FD1E9CB552007BFB91 /* FirstViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
