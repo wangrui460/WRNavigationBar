@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "FirstViewController.h"
 #import "SecondViewController.h"
+#import "ThirdViewController.h"
+#import "FourthViewController.h"
 
 UIColor *MainNavBarColor = nil;
 
@@ -27,7 +29,9 @@ UIColor *MainNavBarColor = nil;
     UITabBarController *tabBarVC = [UITabBarController new];
     UINavigationController *firstNav = [[UINavigationController alloc] initWithRootViewController:[FirstViewController new]];
     UINavigationController *secondNav = [[UINavigationController alloc] initWithRootViewController:[SecondViewController new]];
-    tabBarVC.viewControllers = @[firstNav, secondNav];
+    UINavigationController *thirdNav = [[UINavigationController alloc] initWithRootViewController:[ThirdViewController new]];
+    UINavigationController *fourthNav = [[UINavigationController alloc] initWithRootViewController:[FourthViewController new]];
+    tabBarVC.viewControllers = @[firstNav, secondNav, thirdNav, fourthNav];
     
     self.window.rootViewController = tabBarVC;
     [self.window makeKeyAndVisible];
