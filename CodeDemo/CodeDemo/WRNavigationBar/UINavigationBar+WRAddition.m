@@ -9,10 +9,12 @@
 #import "UINavigationBar+WRAddition.h"
 #import <objc/runtime.h>
 
+// TODO: 返回的时候有白块
+// TODO: 跳转下一个页面的时候回跳一下
+
 @implementation UINavigationBar (WRAddition)
 
 static char kBackgroundViewKey;
-static char kOriginalTranslucentKey;
 
 - (UIView*)backgroundView
 {
@@ -62,29 +64,21 @@ static char kOriginalTranslucentKey;
 - (void)wr_setTranslucentYES
 {
     // 如果设置了全局 translucent = NO，则此时上面的方法可能就不起效果了，这个时候就需要调用这个方法
-    BOOL nihao = [UINavigationBar appearance].translucent;
-    [self setOriginalTranslucent:nihao];
     self.translucent = YES;
 }
 
 - (void)wr_clear
 {
     [self setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    [self.backgroundView removeFromSuperview];
-    self.backgroundView = nil;
-    self.translucent = [self originalTranslucent];
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////
-- (BOOL)originalTranslucent
-{
-    BOOL translucent = [objc_getAssociatedObject(self, &kOriginalTranslucentKey) boolValue];
-    return translucent;
-}
-
-- (void)setOriginalTranslucent:(BOOL)originalTranslucent
-{
-    objc_setAssociatedObject(self, &kOriginalTranslucentKey, @(originalTranslucent), OBJC_ASSOCIATION_ASSIGN);
+    __weak typeof(self) weakSelf = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+    {
+        __strong typeof(self) pThis = weakSelf;
+        [pThis.backgroundView removeFromSuperview];
+        pThis.backgroundView = nil;
+    });
+    [self wr_setTranslationY:0];
+    self.translucent = [UINavigationBar appearance].translucent;
 }
 
 @end

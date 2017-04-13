@@ -9,6 +9,7 @@
 #import "FirstViewController.h"
 #import "UINavigationBar+WRAddition.h"
 #import "AppDelegate.h"
+#import "TempViewController.h"
 
 #define NAVBAR_COLORCHANGE_POINT 120
 
@@ -35,9 +36,9 @@
 {
     [super viewWillAppear:animated];
     self.tableView.delegate = self;
-    [self.navigationController.navigationBar wr_setTranslucentYES];
-    [self scrollViewDidScroll:self.tableView];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    [self.navigationController.navigationBar wr_setTranslucentYES];
+    [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -85,12 +86,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UIViewController *vc = [UIViewController new];
-    vc.view.backgroundColor = [UIColor redColor];
+    TempViewController *tempVC = [TempViewController new];
     NSString *str = [NSString stringWithFormat:@"WRNavigationBar %zd",indexPath.row];
-    vc.title = str;
-    [self.navigationController pushViewController:vc animated:YES];
-    vc.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+    tempVC.title = str;
+    [self.navigationController pushViewController:tempVC animated:YES];
 }
 
 #pragma mark - getter / setter
