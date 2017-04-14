@@ -43,33 +43,18 @@ static char kBackgroundViewKey;
 
 - (void)wr_setBarButtonItemsAlpha:(CGFloat)alpha
 {
-//    for (UIView *view in self.subviews)
-//    {
-//        if (![view.subviews.firstObject isEqual:self.backgroundView])
-//        {
+    
+    for (UIView *view in self.subviews)
+    {
 //            // 这里如果不做判断的话，会显示 backIndicatorImage
 //            if (![view isKindOfClass:NSClassFromString(@"_UINavigationBarBackIndicatorView")]) {
 //                view.alpha = alpha;
 //            }
-//        }
-//    }
-    
-    [[self valueForKey:@"_leftViews"] enumerateObjectsUsingBlock:^(UIView *view, NSUInteger i, BOOL *stop) {
-        view.alpha = alpha;
-    }];
-    
-    [[self valueForKey:@"_rightViews"] enumerateObjectsUsingBlock:^(UIView *view, NSUInteger i, BOOL *stop) {
-        view.alpha = alpha;
-    }];
-    
-    UIView *titleView = [self valueForKey:@"_titleView"];
-    titleView.alpha = alpha;
-    [[self subviews] enumerateObjectsUsingBlock:^(UIView *obj, NSUInteger idx, BOOL *stop) {
-        if ([obj isKindOfClass:NSClassFromString(@"UINavigationItemView")]) {
-            obj.alpha = alpha;
-            *stop = YES;
+            
+        if (![view isKindOfClass:NSClassFromString(@"_UIBarBackground")]) {
+            view.alpha = alpha;
         }
-    }];
+    }
 }
 
 - (void)wr_setTranslationY:(CGFloat)translationY
