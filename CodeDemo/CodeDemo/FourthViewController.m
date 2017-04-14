@@ -17,8 +17,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor greenColor];
-    self.title = @"QQ空间";
+    self.view.backgroundColor = [UIColor blueColor];
+    self.title = @"类似qq应用空间";
 }
 
 @end

@@ -7,10 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "FirstViewController.h"
-#import "SecondViewController.h"
-#import "ThirdViewController.h"
-#import "FourthViewController.h"
+#import "DemoListController.h"
 
 UIColor *MainNavBarColor = nil;
 
@@ -26,14 +23,16 @@ UIColor *MainNavBarColor = nil;
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    UITabBarController *tabBarVC = [UITabBarController new];
-    UINavigationController *firstNav = [[UINavigationController alloc] initWithRootViewController:[FirstViewController new]];
-    UINavigationController *secondNav = [[UINavigationController alloc] initWithRootViewController:[SecondViewController new]];
-    UINavigationController *thirdNav = [[UINavigationController alloc] initWithRootViewController:[ThirdViewController new]];
-    UINavigationController *fourthNav = [[UINavigationController alloc] initWithRootViewController:[FourthViewController new]];
-    tabBarVC.viewControllers = @[firstNav, secondNav, thirdNav, fourthNav];
+//    UITabBarController *tabBarVC = [UITabBarController new];
+//    UINavigationController *firstNav = [[UINavigationController alloc] initWithRootViewController:[FirstViewController new]];
+//    UINavigationController *secondNav = [[UINavigationController alloc] initWithRootViewController:[SecondViewController new]];
+//    UINavigationController *thirdNav = [[UINavigationController alloc] initWithRootViewController:[ThirdViewController new]];
+//    UINavigationController *fourthNav = [[UINavigationController alloc] initWithRootViewController:[FourthViewController new]];
+//    tabBarVC.viewControllers = @[firstNav, secondNav, thirdNav, fourthNav];
     
-    self.window.rootViewController = tabBarVC;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[DemoListController new]];
+    
+    self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     
     [self setNavBarAppearence];
