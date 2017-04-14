@@ -26,6 +26,7 @@ UIColor *MainNavBarColor = nil;
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[DemoListController new]];
     UINavigationController *sixNav = [[UINavigationController alloc] initWithRootViewController:[SixthViewController new]];
+    sixNav.title = @"没有系统返回按钮的情况";
     UITabBarController *tabBarVC = [UITabBarController new];
     tabBarVC.viewControllers = @[nav,sixNav];
     

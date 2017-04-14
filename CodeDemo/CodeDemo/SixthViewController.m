@@ -25,7 +25,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor greenColor];
-    self.title = @"你妹的(没有系统返回按钮)";
+    self.title = @"看75行代码";
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.imgView;
 }
