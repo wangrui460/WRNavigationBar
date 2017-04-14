@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DemoListController.h"
+#import "SixthViewController.h"
 
 UIColor *MainNavBarColor = nil;
 
@@ -24,8 +25,11 @@ UIColor *MainNavBarColor = nil;
     self.window.backgroundColor = [UIColor whiteColor];
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[DemoListController new]];
+    UINavigationController *sixNav = [[UINavigationController alloc] initWithRootViewController:[SixthViewController new]];
+    UITabBarController *tabBarVC = [UITabBarController new];
+    tabBarVC.viewControllers = @[nav,sixNav];
     
-    self.window.rootViewController = nav;
+    self.window.rootViewController = tabBarVC;
     [self.window makeKeyAndVisible];
     
     [self setNavBarAppearence];

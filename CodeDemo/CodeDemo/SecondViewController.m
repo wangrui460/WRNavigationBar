@@ -75,7 +75,8 @@
 - (void)setNavigationBarTransformProgress:(CGFloat)progress
 {
     [self.navigationController.navigationBar wr_setTranslationY:(-NavBarHeight * progress)];
-    [self.navigationController.navigationBar wr_setBarButtonItemsAlpha:(1 - progress)];
+    // 有系统的返回按钮，所以 hasSystemBackIndicator = YES
+    [self.navigationController.navigationBar wr_setBarButtonItemsAlpha:(1 - progress) hasSystemBackIndicator:YES];
 }
 
 

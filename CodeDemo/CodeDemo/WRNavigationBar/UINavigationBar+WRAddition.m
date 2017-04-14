@@ -41,19 +41,23 @@ static char kBackgroundViewKey;
     self.backgroundView.backgroundColor = color;
 }
 
-- (void)wr_setBarButtonItemsAlpha:(CGFloat)alpha
+- (void)wr_setBarButtonItemsAlpha:(CGFloat)alpha hasSystemBackIndicator:(BOOL)hasSystemBackIndicator
 {
-    
     for (UIView *view in self.subviews)
     {
-//            // 这里如果不做判断的话，会显示 backIndicatorImage
-//            if (![view isKindOfClass:NSClassFromString(@"_UINavigationBarBackIndicatorView")]) {
-//                view.alpha = alpha;
-//            }
-        
-        // 
-        if (![view isKindOfClass:NSClassFromString(@"_UIBarBackground")]) {
-            view.alpha = alpha;
+        if (hasSystemBackIndicator == YES)
+        {
+            // _UIBarBackground对应的view是系统导航栏，不需要改变其透明度
+            if (![view isKindOfClass:NSClassFromString(@"_UIBarBackground")]) {
+                view.alpha = alpha;
+            }
+        }
+        else
+        {
+            // 这里如果不做判断的话，会显示 backIndicatorImage
+            if (![view isKindOfClass:NSClassFromString(@"_UINavigationBarBackIndicatorView")] && ![view isKindOfClass:NSClassFromString(@"_UIBarBackground")]) {
+                view.alpha = alpha;
+            }
         }
     }
 }

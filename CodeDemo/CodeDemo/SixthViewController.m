@@ -1,12 +1,12 @@
 //
-//  ThirdViewController.m
+//  SixthViewController.m
 //  CodeDemo
 //
-//  Created by wangrui on 2017/4/12.
+//  Created by wangrui on 2017/4/14.
 //  Copyright © 2017年 wangrui. All rights reserved.
 //
 
-#import "ThirdViewController.h"
+#import "SixthViewController.h"
 #import "UINavigationBar+WRAddition.h"
 #import "AppDelegate.h"
 
@@ -14,18 +14,18 @@
 #define NAVBAR_TRANSLATION_POINT 0
 #define NavBarHeight 44
 
-@interface ThirdViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface SixthViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIImageView *imgView;
 @end
 
-@implementation ThirdViewController
+@implementation SixthViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor greenColor];
-    self.title = @"你妹的";
+    self.title = @"你妹的(没有系统返回按钮)";
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.imgView;
 }
@@ -72,7 +72,9 @@
 - (void)setNavigationBarTransformProgress:(CGFloat)progress
 {
     [self.navigationController.navigationBar wr_setTranslationY:(-NavBarHeight * progress)];
-    [self.navigationController.navigationBar wr_setBarButtonItemsAlpha:(1 - progress) hasSystemBackIndicator:YES];
+    // 没有系统返回按钮，所以 hasSystemBackIndicator = NO
+    // 如果这里不设置为NO，你会发现，导航栏无缘无故多出来一个返回按钮
+    [self.navigationController.navigationBar wr_setBarButtonItemsAlpha:(1 - progress) hasSystemBackIndicator:NO];
 }
 
 

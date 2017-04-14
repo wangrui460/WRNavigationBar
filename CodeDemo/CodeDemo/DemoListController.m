@@ -40,25 +40,26 @@
     NSString *str = nil;
     switch (indexPath.row) {
         case 0:
-            str = @"demo1";
+            str = @"基本";
             break;
         case 1:
-            str = @"demo2";
+            str = @"超过临界点移动导航栏";
             break;
         case 2:
-            str = @"demo3";
+            str = @"超过临界点多少，移动导航栏多少(不会超过44)";
             break;
         case 3:
-            str = @"demo4";
+            str = @"类似qq应用空间效果";
             break;
         case 4:
-            str = @"demo5";
+            str = @"类似QQ空间效果";
             break;
             
         default:
             break;
     }
     cell.textLabel.text = str;
+    cell.textLabel.font = [UIFont systemFontOfSize:15];
     return cell;
 }
 
