@@ -58,24 +58,11 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat offsetY = scrollView.contentOffset.y;
-    // 向上滑动的距离
-    CGFloat scrollUpHeight = offsetY - NAVBAR_TRANSLATION_POINT;
-    // 除数表示 -> 导航栏从完全不透明到完全透明的过渡距离
-    CGFloat progress = scrollUpHeight / NavBarHeight;
     if (offsetY > NAVBAR_TRANSLATION_POINT)
     {
         [UIView animateWithDuration:0.3 animations:^{
             [self setNavigationBarTransformProgress:1];            
         }];
-        //
-//        if (scrollUpHeight > 44)
-//        {
-//            [self setNavigationBarTransformProgress:1];
-//        }
-//        else
-//        {
-//            [self setNavigationBarTransformProgress: progress];
-//        }
     }
     else
     {

@@ -23,13 +23,6 @@ UIColor *MainNavBarColor = nil;
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     
-//    UITabBarController *tabBarVC = [UITabBarController new];
-//    UINavigationController *firstNav = [[UINavigationController alloc] initWithRootViewController:[FirstViewController new]];
-//    UINavigationController *secondNav = [[UINavigationController alloc] initWithRootViewController:[SecondViewController new]];
-//    UINavigationController *thirdNav = [[UINavigationController alloc] initWithRootViewController:[ThirdViewController new]];
-//    UINavigationController *fourthNav = [[UINavigationController alloc] initWithRootViewController:[FourthViewController new]];
-//    tabBarVC.viewControllers = @[firstNav, secondNav, thirdNav, fourthNav];
-    
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[DemoListController new]];
     
     self.window.rootViewController = nav;
@@ -47,7 +40,6 @@ UIColor *MainNavBarColor = nil;
     [navBar setBarTintColor:MainNavBarColor];
     [navBar setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                      [UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:21], NSFontAttributeName, nil]];
-//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 
