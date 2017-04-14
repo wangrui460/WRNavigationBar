@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 
 // offsetY > -64 的时候导航栏开始偏移
-#define NAVBAR_TRANSLATION_POINT -64
+#define NAVBAR_TRANSLATION_POINT 0
 #define NavBarHeight 44
 
 @interface SecondViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -28,9 +28,6 @@
     self.title = @"丽人丽妆";
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.imgView;
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    [self.navigationController.navigationBar wr_setTranslucentYES];
-    [self.navigationController.navigationBar wr_setBackgroundColor:MainNavBarColor];
     
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:nil action:nil];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:nil action:nil];
@@ -41,17 +38,21 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    // 必须在view完全加载好再调用这个方法，否则就会出现白块的状况
+    [self scrollViewDidScroll:self.tableView];
     self.tableView.delegate = self;
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    [self.navigationController.navigationBar wr_setTranslucentYES];
-    [self.navigationController.navigationBar wr_setBackgroundColor:MainNavBarColor];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     self.tableView.delegate = nil;
-    [self.navigationController.navigationBar wr_clear];
+    [self setNavigationBarTransformProgress:0];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -63,18 +64,24 @@
     CGFloat progress = scrollUpHeight / NavBarHeight;
     if (offsetY > NAVBAR_TRANSLATION_POINT)
     {
-        if (scrollUpHeight > 44)
-        {
-            [self setNavigationBarTransformProgress:1];
-        }
-        else
-        {
-            [self setNavigationBarTransformProgress: progress];
-        }
+        [UIView animateWithDuration:0.3 animations:^{
+            [self setNavigationBarTransformProgress:1];            
+        }];
+        //
+//        if (scrollUpHeight > 44)
+//        {
+//            [self setNavigationBarTransformProgress:1];
+//        }
+//        else
+//        {
+//            [self setNavigationBarTransformProgress: progress];
+//        }
     }
     else
     {
-        [self setNavigationBarTransformProgress:0];
+        [UIView animateWithDuration:0.3 animations:^{
+            [self setNavigationBarTransformProgress:0];
+        }];
     }
 }
 
@@ -83,6 +90,9 @@
     [self.navigationController.navigationBar wr_setTranslationY:(-NavBarHeight * progress)];
     [self.navigationController.navigationBar wr_setBarButtonItemsAlpha:(1 - progress)];
 }
+
+
+
 
 #pragma mark - tableview delegate / dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -112,7 +122,6 @@
     NSString *str = [NSString stringWithFormat:@"WRNavigationBar %zd",indexPath.row];
     vc.title = str;
     [self.navigationController pushViewController:vc animated:YES];
-    vc.navigationController.navigationBar.barStyle = UIBarStyleDefault;
 }
 
 #pragma mark - getter / setter
@@ -122,6 +131,7 @@
         CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         _tableView = [[UITableView alloc] initWithFrame:frame
                                                   style:UITableViewStylePlain];
+        _tableView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
         _tableView.delegate = self;
         _tableView.dataSource = self;
     }

@@ -46,7 +46,6 @@ UIColor *MainNavBarColor = nil;
     UINavigationBar *navBar = [UINavigationBar appearance];
     [navBar setTintColor:[UIColor whiteColor]];
     [navBar setBarTintColor:MainNavBarColor];
-    navBar.translucent = NO;
     [navBar setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                      [UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:21], NSFontAttributeName, nil]];
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];

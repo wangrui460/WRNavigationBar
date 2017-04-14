@@ -43,16 +43,33 @@ static char kBackgroundViewKey;
 
 - (void)wr_setBarButtonItemsAlpha:(CGFloat)alpha
 {
-    for (UIView *view in self.subviews)
-    {
-        if (![view.subviews.firstObject isEqual:self.backgroundView])
-        {
-            // 这里如果不做判断的话，会显示 backIndicatorImage
-            if (![view isKindOfClass:NSClassFromString(@"_UINavigationBarBackIndicatorView")]) {
-                view.alpha = alpha;
-            }
+//    for (UIView *view in self.subviews)
+//    {
+//        if (![view.subviews.firstObject isEqual:self.backgroundView])
+//        {
+//            // 这里如果不做判断的话，会显示 backIndicatorImage
+//            if (![view isKindOfClass:NSClassFromString(@"_UINavigationBarBackIndicatorView")]) {
+//                view.alpha = alpha;
+//            }
+//        }
+//    }
+    
+    [[self valueForKey:@"_leftViews"] enumerateObjectsUsingBlock:^(UIView *view, NSUInteger i, BOOL *stop) {
+        view.alpha = alpha;
+    }];
+    
+    [[self valueForKey:@"_rightViews"] enumerateObjectsUsingBlock:^(UIView *view, NSUInteger i, BOOL *stop) {
+        view.alpha = alpha;
+    }];
+    
+    UIView *titleView = [self valueForKey:@"_titleView"];
+    titleView.alpha = alpha;
+    [[self subviews] enumerateObjectsUsingBlock:^(UIView *obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isKindOfClass:NSClassFromString(@"UINavigationItemView")]) {
+            obj.alpha = alpha;
+            *stop = YES;
         }
-    }
+    }];
 }
 
 - (void)wr_setTranslationY:(CGFloat)translationY
@@ -61,14 +78,9 @@ static char kBackgroundViewKey;
     self.transform = CGAffineTransformMakeTranslation(0, translationY);
 }
 
-- (void)wr_setTranslucentYES
-{
-    // 如果设置了全局 translucent = NO，则此时上面的方法可能就不起效果了，这个时候就需要调用这个方法
-    self.translucent = YES;
-}
-
 - (void)wr_clear
 {
+    // 设置导航栏不透明
     [self setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     __weak typeof(self) weakSelf = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
@@ -77,8 +89,6 @@ static char kBackgroundViewKey;
         [pThis.backgroundView removeFromSuperview];
         pThis.backgroundView = nil;
     });
-    [self wr_setTranslationY:0];
-    self.translucent = [UINavigationBar appearance].translucent;
 }
 
 @end

@@ -28,7 +28,6 @@
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.imgView;
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    [self.navigationController.navigationBar wr_setTranslucentYES];
     [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
 }
 
@@ -37,7 +36,6 @@
     [super viewWillAppear:animated];
     self.tableView.delegate = self;
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    [self.navigationController.navigationBar wr_setTranslucentYES];
     [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
 }
 
