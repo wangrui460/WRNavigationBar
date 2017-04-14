@@ -50,7 +50,8 @@ static char kBackgroundViewKey;
 //            if (![view isKindOfClass:NSClassFromString(@"_UINavigationBarBackIndicatorView")]) {
 //                view.alpha = alpha;
 //            }
-            
+        
+        // 
         if (![view isKindOfClass:NSClassFromString(@"_UIBarBackground")]) {
             view.alpha = alpha;
         }
