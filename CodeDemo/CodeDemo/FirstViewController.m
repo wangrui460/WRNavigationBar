@@ -43,6 +43,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    // 如果不取消代理的话，跳转到下一个页面后，还会调用 scrollViewDidScroll 方法
     self.tableView.delegate = nil;
     [self.navigationController.navigationBar wr_clear];
 }

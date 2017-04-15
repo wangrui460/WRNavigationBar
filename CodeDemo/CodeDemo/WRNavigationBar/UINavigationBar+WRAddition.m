@@ -82,3 +82,22 @@ static char kBackgroundViewKey;
 }
 
 @end
+
+///////////////////////////////////////////////////////////////////////////////////////////
+@implementation UINavigationController (ShouldPopOnBackButton)
+
+// 加上一个这样的分类和方法可以解决返回熊猫美妆界面时，导航栏过一段时间再透明的问题（如果觉得没必要可以去掉）
+- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item
+{
+    if ([self.viewControllers count] < [navigationBar.items count]) {
+        return YES;
+    }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self popViewControllerAnimated:YES];
+    });
+    return NO;
+}
+
+@end
+
