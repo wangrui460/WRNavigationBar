@@ -10,13 +10,13 @@
 #import "UINavigationBar+WRAddition.h"
 #import "AppDelegate.h"
 
-// 为什么是 -128 ？
-// 要保证在图片底部到导航栏底部的时候，导航栏已经由完全透明变成不透明，又因为这个透明度变化过程需要64px的距离(底数是64)，所以 NAVBAR_COLORCHANGE_POINT = 128，但是offsetY初始值就是-200，图片高度是200，所以此时 NAVBAR_COLORCHANGE_POINT = -200 + （200 - 128）
-#define NAVBAR_COLORCHANGE_POINT -128
+// TODO: 快速滑动的时候会留白
+#define NAVBAR_COLORCHANGE_POINT -80
 #define IMAGE_HEIGHT 200
-#define SCROLL_DOWN_LIMIT 100
+#define SCROLL_DOWN_LIMIT 80
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define LIMIT_OFFSET_Y (-IMAGE_HEIGHT - SCROLL_DOWN_LIMIT)
 
 @interface FourthViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -60,24 +60,39 @@
     CGFloat offsetY = scrollView.contentOffset.y;
     if (offsetY > NAVBAR_COLORCHANGE_POINT)
     {
-        CGFloat alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / 64;
-        [self.navigationController.navigationBar wr_setBackgroundColor:[MainNavBarColor colorWithAlphaComponent:alpha]];
+        [self changeNavBarAnimateWithIsClear:NO];
     }
     else
     {
-        [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
+        [self changeNavBarAnimateWithIsClear:YES];
     }
     
     //限制下拉的距离
-    if(offsetY < (-IMAGE_HEIGHT - SCROLL_DOWN_LIMIT) && scrollView.isDragging) {
-        [scrollView setContentOffset:CGPointMake(0, -IMAGE_HEIGHT - SCROLL_DOWN_LIMIT)];
-        return;
+    if(offsetY < LIMIT_OFFSET_Y && scrollView.isDragging) {
+        [scrollView setContentOffset:CGPointMake(0, LIMIT_OFFSET_Y)];
     }
     
-    CGRect frame = self.imgView.frame;
-    self.imgView.frame = CGRectMake(0, offsetY, frame.size.width, -offsetY);
+    // 改变图片框的大小 (1.上滑的时候不改变 2.超过限制距离不改变)
+    if (offsetY < -IMAGE_HEIGHT && offsetY > LIMIT_OFFSET_Y)
+    {
+        CGRect frame = self.imgView.frame;
+        self.imgView.frame = CGRectMake(0, offsetY-5, frame.size.width, -offsetY);
+    }
 }
 
+- (void)changeNavBarAnimateWithIsClear:(BOOL)isClear
+{
+    __weak typeof(self) weakSelf = self;
+    [UIView animateWithDuration:0.8 animations:^
+    {
+        __strong typeof(self) pThis = weakSelf;
+        if (isClear == YES) {
+            [pThis.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
+        } else {
+            [pThis.navigationController.navigationBar wr_setBackgroundColor:MainNavBarColor];
+        }
+    }];
+}
 
 #pragma mark - tableview delegate / dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -129,8 +144,18 @@
         _imgView.contentMode = UIViewContentModeScaleAspectFill;
         _imgView.clipsToBounds = YES;
         _imgView.image = [UIImage imageNamed:@"image3"];
+//        _imgView.image = [self imageWithImageSimple:[UIImage imageNamed:@"image3"] scaledToSize:CGSizeMake(kScreenWidth, IMAGE_HEIGHT+SCROLL_DOWN_LIMIT)];
     }
     return _imgView;
+}
+
+- (UIImage *)imageWithImageSimple:(UIImage *)image scaledToSize:(CGSize)newSize
+{
+    UIGraphicsBeginImageContext(CGSizeMake(newSize.width*2, newSize.height*2));
+    [image drawInRect:CGRectMake (0, 0, newSize.width*2, newSize.height*2)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 @end

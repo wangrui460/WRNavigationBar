@@ -10,6 +10,8 @@
 #import "UINavigationBar+WRAddition.h"
 #import "AppDelegate.h"
 
+// 为什么是 -128 ？
+// 要保证在图片底部到导航栏底部的时候，导航栏已经由完全透明变成不透明，又因为这个透明度变化过程需要64px的距离(底数是64)，所以 NAVBAR_COLORCHANGE_POINT = 128，但是offsetY初始值就是-200，图片高度是200，所以此时 NAVBAR_COLORCHANGE_POINT = -200 + （200 - 128）
 #define NAVBAR_COLORCHANGE_POINT 120
 
 @interface FirstViewController () <UITableViewDelegate, UITableViewDataSource>
