@@ -10,7 +10,11 @@
 #import "UINavigationBar+WRAddition.h"
 #import "AppDelegate.h"
 
+// 为什么是 -128 ？
+// 要保证在图片底部到导航栏底部的时候，导航栏已经由完全透明变成不透明，又因为这个透明度变化过程需要64px的距离(底数是64)，所以 NAVBAR_COLORCHANGE_POINT = 128，但是offsetY初始值就是-200，图片高度是200，所以此时 NAVBAR_COLORCHANGE_POINT = -200 + （200 - 128）
 #define NAVBAR_COLORCHANGE_POINT -128
+#define IMAGE_HEIGHT 200
+#define SCROLL_DOWN_LIMIT 100
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
@@ -65,8 +69,8 @@
     }
     
     //限制下拉的距离
-    if(offsetY < -280 && scrollView.isDragging) {
-        [scrollView setContentOffset:CGPointMake(0, -280)];
+    if(offsetY < (-IMAGE_HEIGHT - SCROLL_DOWN_LIMIT) && scrollView.isDragging) {
+        [scrollView setContentOffset:CGPointMake(0, -IMAGE_HEIGHT - SCROLL_DOWN_LIMIT)];
         return;
     }
     
@@ -121,7 +125,7 @@
 - (UIImageView *)imgView
 {
     if (_imgView == nil) {
-        _imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, -200, kScreenWidth, 200)];
+        _imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, -IMAGE_HEIGHT, kScreenWidth, IMAGE_HEIGHT)];
         _imgView.contentMode = UIViewContentModeScaleAspectFill;
         _imgView.clipsToBounds = YES;
         _imgView.image = [UIImage imageNamed:@"image3"];
