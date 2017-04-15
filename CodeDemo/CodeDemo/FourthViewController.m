@@ -10,13 +10,12 @@
 #import "UINavigationBar+WRAddition.h"
 #import "AppDelegate.h"
 
-// TODO: 快速滑动的时候会留白
 #define NAVBAR_COLORCHANGE_POINT -80
-#define IMAGE_HEIGHT 200
-#define SCROLL_DOWN_LIMIT 80
+#define IMAGE_HEIGHT 260
+#define SCROLL_DOWN_LIMIT 100
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
-#define LIMIT_OFFSET_Y (-IMAGE_HEIGHT - SCROLL_DOWN_LIMIT)
+#define LIMIT_OFFSET_Y -(IMAGE_HEIGHT + SCROLL_DOWN_LIMIT)
 
 @interface FourthViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -30,7 +29,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blueColor];
     self.title = @"qq应用";
-    self.tableView.contentInset = UIEdgeInsetsMake(self.imgView.bounds.size.height-64, 0, 0, 0);
+    
+    self.tableView.contentInset = UIEdgeInsetsMake(IMAGE_HEIGHT-64, 0, 0, 0);
     [self.tableView addSubview:self.imgView];
     [self.view addSubview:self.tableView];
     // 设置状态栏为白色
@@ -38,6 +38,7 @@
     // 设置导航栏颜色
     [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -58,6 +59,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat offsetY = scrollView.contentOffset.y;
+
     if (offsetY > NAVBAR_COLORCHANGE_POINT)
     {
         [self changeNavBarAnimateWithIsClear:NO];
@@ -68,15 +70,16 @@
     }
     
     //限制下拉的距离
-    if(offsetY < LIMIT_OFFSET_Y && scrollView.isDragging) {
+    if(offsetY < LIMIT_OFFSET_Y) {
         [scrollView setContentOffset:CGPointMake(0, LIMIT_OFFSET_Y)];
     }
     
-    // 改变图片框的大小 (1.上滑的时候不改变 2.超过限制距离不改变)
-    if (offsetY < -IMAGE_HEIGHT && offsetY > LIMIT_OFFSET_Y)
+    // 改变图片框的大小 (上滑的时候不改变)
+    // 这里不能使用offsetY，因为当（offsetY < LIMIT_OFFSET_Y）的时候，y = LIMIT_OFFSET_Y 不等于 offsetY
+    CGFloat newOffsetY = scrollView.contentOffset.y;
+    if (newOffsetY < -IMAGE_HEIGHT)
     {
-        CGRect frame = self.imgView.frame;
-        self.imgView.frame = CGRectMake(0, offsetY-5, frame.size.width, -offsetY);
+        self.imgView.frame = CGRectMake(0, newOffsetY, kScreenWidth, -newOffsetY);
     }
 }
 
@@ -140,11 +143,10 @@
 - (UIImageView *)imgView
 {
     if (_imgView == nil) {
-        _imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, -IMAGE_HEIGHT, kScreenWidth, IMAGE_HEIGHT)];
+        _imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -IMAGE_HEIGHT, kScreenWidth, IMAGE_HEIGHT)];
         _imgView.contentMode = UIViewContentModeScaleAspectFill;
         _imgView.clipsToBounds = YES;
-        _imgView.image = [UIImage imageNamed:@"image3"];
-//        _imgView.image = [self imageWithImageSimple:[UIImage imageNamed:@"image3"] scaledToSize:CGSizeMake(kScreenWidth, IMAGE_HEIGHT+SCROLL_DOWN_LIMIT)];
+        _imgView.image = [self imageWithImageSimple:[UIImage imageNamed:@"image3"] scaledToSize:CGSizeMake(kScreenWidth, IMAGE_HEIGHT+SCROLL_DOWN_LIMIT)];
     }
     return _imgView;
 }
