@@ -47,12 +47,16 @@
 </code></pre>
 
 **2. 举例说明**
-<pre><code>// 设置导航栏透明
+<pre><code>
+// 设置导航栏透明
 [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
+
 // 设置导航栏颜色为MainNavBarColor，透明度为alpha
 [self.navigationController.navigationBar wr_setBackgroundColor:[MainNavBarColor colorWithAlphaComponent:alpha]];
+
 // 设置导航栏上所有元素的透明度，如果用的是系统的返回按钮，hasSystemBackIndicator = YES，否则为NO
 [self.navigationController.navigationBar wr_setBarButtonItemsAlpha:(1 - progress) hasSystemBackIndicator:YES];
+
 // 清除导航栏所有相关设置
 [self.navigationController.navigationBar wr_clear];
 </code></pre>
