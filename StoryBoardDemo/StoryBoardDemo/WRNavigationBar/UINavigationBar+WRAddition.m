@@ -9,10 +9,12 @@
 #import "UINavigationBar+WRAddition.h"
 #import <objc/runtime.h>
 
+// TODO: 返回的时候有白块
+// TODO: 跳转下一个页面的时候回跳一下
+
 @implementation UINavigationBar (WRAddition)
 
 static char kBackgroundViewKey;
-static char kOriginalTranslucentKey;
 
 - (UIView*)backgroundView
 {
@@ -39,14 +41,21 @@ static char kOriginalTranslucentKey;
     self.backgroundView.backgroundColor = color;
 }
 
-- (void)wr_setBarButtonItemsAlpha:(CGFloat)alpha
+- (void)wr_setBarButtonItemsAlpha:(CGFloat)alpha hasSystemBackIndicator:(BOOL)hasSystemBackIndicator
 {
     for (UIView *view in self.subviews)
     {
-        if (![view.subviews.firstObject isEqual:self.backgroundView])
+        if (hasSystemBackIndicator == YES)
+        {
+            // _UIBarBackground对应的view是系统导航栏，不需要改变其透明度
+            if (![view isKindOfClass:NSClassFromString(@"_UIBarBackground")]) {
+                view.alpha = alpha;
+            }
+        }
+        else
         {
             // 这里如果不做判断的话，会显示 backIndicatorImage
-            if (![view isKindOfClass:NSClassFromString(@"_UINavigationBarBackIndicatorView")]) {
+            if (![view isKindOfClass:NSClassFromString(@"_UINavigationBarBackIndicatorView")] && ![view isKindOfClass:NSClassFromString(@"_UIBarBackground")]) {
                 view.alpha = alpha;
             }
         }
@@ -59,32 +68,36 @@ static char kOriginalTranslucentKey;
     self.transform = CGAffineTransformMakeTranslation(0, translationY);
 }
 
-- (void)wr_setTranslucentYES
-{
-    // 如果设置了全局 translucent = NO，则此时上面的方法可能就不起效果了，这个时候就需要调用这个方法
-    BOOL nihao = [UINavigationBar appearance].translucent;
-    [self setOriginalTranslucent:nihao];
-    self.translucent = YES;
-}
-
 - (void)wr_clear
 {
+    // 设置导航栏不透明
     [self setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    [self.backgroundView removeFromSuperview];
-    self.backgroundView = nil;
-    self.translucent = [self originalTranslucent];
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////
-- (BOOL)originalTranslucent
-{
-    BOOL translucent = [objc_getAssociatedObject(self, &kOriginalTranslucentKey) boolValue];
-    return translucent;
-}
-
-- (void)setOriginalTranslucent:(BOOL)originalTranslucent
-{
-    objc_setAssociatedObject(self, &kOriginalTranslucentKey, @(originalTranslucent), OBJC_ASSOCIATION_ASSIGN);
+    __weak typeof(self) weakSelf = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+    {
+        __strong typeof(self) pThis = weakSelf;
+        [pThis.backgroundView removeFromSuperview];
+        pThis.backgroundView = nil;
+    });
 }
 
 @end
+
+///////////////////////////////////////////////////////////////////////////////////////////
+@implementation UINavigationController (ShouldPopOnBackButton)
+
+// 加上一个这样的分类和方法可以解决返回熊猫美妆界面时，导航栏过一段时间再透明的问题（如果觉得没必要可以去掉）
+- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item
+{
+    if ([self.viewControllers count] < [navigationBar.items count]) {
+        return YES;
+    }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self popViewControllerAnimated:YES];
+    });
+    return NO;
+}
+
+@end
+
