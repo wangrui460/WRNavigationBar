@@ -10,9 +10,9 @@
 #import "UINavigationBar+WRAddition.h"
 #import "AppDelegate.h"
 
-// 为什么是 -128 ？
-// 要保证在图片底部到导航栏底部的时候，导航栏已经由完全透明变成不透明，又因为这个透明度变化过程需要64px的距离(底数是64)，所以 NAVBAR_COLORCHANGE_POINT = 128，但是offsetY初始值就是-200，图片高度是200，所以此时 NAVBAR_COLORCHANGE_POINT = -200 + （200 - 128）
-#define NAVBAR_COLORCHANGE_POINT 120
+#define NAVBAR_COLORCHANGE_POINT (IMAGE_HEIGHT - NAV_HEIGHT*2)
+#define IMAGE_HEIGHT 260
+#define NAV_HEIGHT 64
 
 @interface FirstViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -55,7 +55,7 @@
     CGFloat offsetY = scrollView.contentOffset.y;
     if (offsetY > NAVBAR_COLORCHANGE_POINT)
     {
-        CGFloat alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / NAVBAR_COLORCHANGE_POINT;
+        CGFloat alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / NAV_HEIGHT;
         [self.navigationController.navigationBar wr_setBackgroundColor:[MainNavBarColor colorWithAlphaComponent:alpha]];
     }
     else
@@ -113,6 +113,7 @@
 {
     if (_imgView == nil) {
         _imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"image1"]];
+        _imgView.frame = CGRectMake(0, 0, self.view.bounds.size.width, IMAGE_HEIGHT);
     }
     return _imgView;
 }
