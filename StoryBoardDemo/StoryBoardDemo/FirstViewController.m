@@ -45,11 +45,6 @@
     // 除数表示 -> 导航栏从完全透明到完全不透明的过渡距离
     CGFloat alpha = (offsetY - NAVBARCOLOR_CHANGE_POINT) / 64;
     
-//    //限制下拉的距离
-//    if(offsetY < -150 && scrollView.isDragging) {
-//        [scrollView setContentOffset:CGPointMake(0, -150)];
-//    }
-    
     if (offsetY > NAVBARCOLOR_CHANGE_POINT) {
         [self.navigationController.navigationBar wr_setBackgroundColor:[MainNavBarColor colorWithAlphaComponent:alpha]];
     }
