@@ -2,19 +2,19 @@
 
 
 ## 0️⃣. Demo 
-#### 基本
+#### 基本（可实现导航栏颜色渐变、透明）
 ![image](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/基本.gif)
 
-#### 超过零界点移动导航栏
+#### 超过零界点移动导航栏（超过零界点，以动画的方式移动导航栏位置只显示状态栏）
 ![image](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/超过零界点移动导航栏.gif)
 
-#### 超过零界点多少，移动导航栏多少
+#### 超过零界点多少，移动导航栏多少（超过零界点多少，移动导航栏多少，直到只显示状态栏为止，也可不显示状态栏）
 ![image](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/超过零界点多少，移动导航栏多少.gif)
 
-#### 类似QQ应用空间效果
+#### 类似QQ应用空间效果（超过零界点，就以动画的方法设置导航栏透明或不透明，并且限制下拉距离，且下拉不会看到图片框后面的背景）
 ![image](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/类似QQ应用空间效果.gif)
 
-#### 类似QQ空间效果
+#### 类似QQ空间效果（和上一个例子的区别在于超过零界点多少，导航栏和导航栏上的元素的透明度对应多少）
 ![image](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/类似QQ空间效果.gif)
 
 ## 1️⃣. Installation 安装
