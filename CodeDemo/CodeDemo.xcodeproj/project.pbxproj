@@ -14,6 +14,7 @@
 		1A0DF7AE1EA735A300191349 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A51EA735A300191349 /* SecondViewController.m */; };
 		1A0DF7AF1EA735A300191349 /* SixthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A71EA735A300191349 /* SixthViewController.m */; };
 		1A0DF7B01EA735A300191349 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A91EA735A300191349 /* ThirdViewController.m */; };
+		1A0DF7BC1EA7531800191349 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7BB1EA7531800191349 /* BaseNavigationController.m */; };
 		1A2061D41E9CB496007BFB91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061D31E9CB496007BFB91 /* main.m */; };
 		1A2061D71E9CB496007BFB91 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061D61E9CB496007BFB91 /* AppDelegate.m */; };
 		1A2061DD1E9CB496007BFB91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2061DB1E9CB496007BFB91 /* Main.storyboard */; };
@@ -48,6 +49,8 @@
 		1A0DF7A71EA735A300191349 /* SixthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SixthViewController.m; sourceTree = "<group>"; };
 		1A0DF7A81EA735A300191349 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
 		1A0DF7A91EA735A300191349 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
+		1A0DF7BA1EA7531800191349 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
+		1A0DF7BB1EA7531800191349 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		1A2061CF1E9CB496007BFB91 /* CodeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A2061D31E9CB496007BFB91 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1A2061D51E9CB496007BFB91 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -98,6 +101,8 @@
 				1A0DF7A71EA735A300191349 /* SixthViewController.m */,
 				1A0DF7A81EA735A300191349 /* ThirdViewController.h */,
 				1A0DF7A91EA735A300191349 /* ThirdViewController.m */,
+				1A0DF7BA1EA7531800191349 /* BaseNavigationController.h */,
+				1A0DF7BB1EA7531800191349 /* BaseNavigationController.m */,
 			);
 			path = Demos;
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A0DF7AA1EA735A300191349 /* DemoListController.m in Sources */,
+				1A0DF7BC1EA7531800191349 /* BaseNavigationController.m in Sources */,
 				1A0DF7AC1EA735A300191349 /* FirstViewController.m in Sources */,
 				1A2061D71E9CB496007BFB91 /* AppDelegate.m in Sources */,
 				1A2061FA1E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m in Sources */,

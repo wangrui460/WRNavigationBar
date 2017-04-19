@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "DemoListController.h"
 #import "SixthViewController.h"
+#import "BaseNavigationController.h"
 
 UIColor *MainNavBarColor = nil;
 
@@ -24,8 +25,8 @@ UIColor *MainNavBarColor = nil;
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[DemoListController new]];
-    UINavigationController *sixNav = [[UINavigationController alloc] initWithRootViewController:[SixthViewController new]];
+    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:[DemoListController new]];
+    BaseNavigationController *sixNav = [[BaseNavigationController alloc] initWithRootViewController:[SixthViewController new]];
     sixNav.title = @"没有系统返回按钮的情况";
     UITabBarController *tabBarVC = [UITabBarController new];
     tabBarVC.viewControllers = @[nav,sixNav];
