@@ -9,9 +9,6 @@
 #import "UINavigationBar+WRAddition.h"
 #import <objc/runtime.h>
 
-// TODO: 返回的时候有白块
-// TODO: 跳转下一个页面的时候回跳一下
-
 @implementation UINavigationBar (WRAddition)
 
 static char kBackgroundViewKey;
