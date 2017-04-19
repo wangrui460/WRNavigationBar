@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A0DF7AA1EA735A300191349 /* DemoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF79D1EA735A300191349 /* DemoListController.m */; };
+		1A0DF7AB1EA735A300191349 /* FifthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF79F1EA735A300191349 /* FifthViewController.m */; };
+		1A0DF7AC1EA735A300191349 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A11EA735A300191349 /* FirstViewController.m */; };
+		1A0DF7AD1EA735A300191349 /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A31EA735A300191349 /* FourthViewController.m */; };
+		1A0DF7AE1EA735A300191349 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A51EA735A300191349 /* SecondViewController.m */; };
+		1A0DF7AF1EA735A300191349 /* SixthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A71EA735A300191349 /* SixthViewController.m */; };
+		1A0DF7B01EA735A300191349 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A91EA735A300191349 /* ThirdViewController.m */; };
 		1A2061D41E9CB496007BFB91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061D31E9CB496007BFB91 /* main.m */; };
 		1A2061D71E9CB496007BFB91 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061D61E9CB496007BFB91 /* AppDelegate.m */; };
 		1A2061DD1E9CB496007BFB91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2061DB1E9CB496007BFB91 /* Main.storyboard */; };
@@ -14,13 +21,6 @@
 		1A2061E21E9CB496007BFB91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2061E01E9CB496007BFB91 /* LaunchScreen.storyboard */; };
 		1A2061ED1E9CB496007BFB91 /* CodeDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061EC1E9CB496007BFB91 /* CodeDemoTests.m */; };
 		1A2061FA1E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061F91E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m */; };
-		1A2061FD1E9CB552007BFB91 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061FC1E9CB552007BFB91 /* FirstViewController.m */; };
-		1A2062001E9CB566007BFB91 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061FF1E9CB566007BFB91 /* SecondViewController.m */; };
-		1A852FA31EA0A4D700316972 /* DemoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A852FA21EA0A4D700316972 /* DemoListController.m */; };
-		1A852FA61EA0A61A00316972 /* FifthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A852FA51EA0A61A00316972 /* FifthViewController.m */; };
-		1A852FA91EA0BDD600316972 /* SixthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A852FA81EA0BDD600316972 /* SixthViewController.m */; };
-		1ABEC4631E9E72CE00DBE4B9 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABEC4621E9E72CE00DBE4B9 /* ThirdViewController.m */; };
-		1ABEC4661E9E73D400DBE4B9 /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABEC4651E9E73D400DBE4B9 /* FourthViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +34,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A0DF79C1EA735A300191349 /* DemoListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoListController.h; sourceTree = "<group>"; };
+		1A0DF79D1EA735A300191349 /* DemoListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoListController.m; sourceTree = "<group>"; };
+		1A0DF79E1EA735A300191349 /* FifthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FifthViewController.h; sourceTree = "<group>"; };
+		1A0DF79F1EA735A300191349 /* FifthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FifthViewController.m; sourceTree = "<group>"; };
+		1A0DF7A01EA735A300191349 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		1A0DF7A11EA735A300191349 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		1A0DF7A21EA735A300191349 /* FourthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourthViewController.h; sourceTree = "<group>"; };
+		1A0DF7A31EA735A300191349 /* FourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourthViewController.m; sourceTree = "<group>"; };
+		1A0DF7A41EA735A300191349 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		1A0DF7A51EA735A300191349 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		1A0DF7A61EA735A300191349 /* SixthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SixthViewController.h; sourceTree = "<group>"; };
+		1A0DF7A71EA735A300191349 /* SixthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SixthViewController.m; sourceTree = "<group>"; };
+		1A0DF7A81EA735A300191349 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		1A0DF7A91EA735A300191349 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		1A2061CF1E9CB496007BFB91 /* CodeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A2061D31E9CB496007BFB91 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1A2061D51E9CB496007BFB91 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -47,20 +61,6 @@
 		1A2061EE1E9CB496007BFB91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A2061F81E9CB4E4007BFB91 /* UINavigationBar+WRAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+WRAddition.h"; sourceTree = "<group>"; };
 		1A2061F91E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+WRAddition.m"; sourceTree = "<group>"; };
-		1A2061FB1E9CB552007BFB91 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FirstViewController.h; path = ../FirstViewController.h; sourceTree = "<group>"; };
-		1A2061FC1E9CB552007BFB91 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirstViewController.m; path = ../FirstViewController.m; sourceTree = "<group>"; };
-		1A2061FE1E9CB566007BFB91 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecondViewController.h; path = ../SecondViewController.h; sourceTree = "<group>"; };
-		1A2061FF1E9CB566007BFB91 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecondViewController.m; path = ../SecondViewController.m; sourceTree = "<group>"; };
-		1A852FA11EA0A4D700316972 /* DemoListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoListController.h; path = ../DemoListController.h; sourceTree = "<group>"; };
-		1A852FA21EA0A4D700316972 /* DemoListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoListController.m; path = ../DemoListController.m; sourceTree = "<group>"; };
-		1A852FA41EA0A61A00316972 /* FifthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FifthViewController.h; path = ../FifthViewController.h; sourceTree = "<group>"; };
-		1A852FA51EA0A61A00316972 /* FifthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FifthViewController.m; path = ../FifthViewController.m; sourceTree = "<group>"; };
-		1A852FA71EA0BDD600316972 /* SixthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SixthViewController.h; path = ../SixthViewController.h; sourceTree = "<group>"; };
-		1A852FA81EA0BDD600316972 /* SixthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SixthViewController.m; path = ../SixthViewController.m; sourceTree = "<group>"; };
-		1ABEC4611E9E72CE00DBE4B9 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThirdViewController.h; path = ../ThirdViewController.h; sourceTree = "<group>"; };
-		1ABEC4621E9E72CE00DBE4B9 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThirdViewController.m; path = ../ThirdViewController.m; sourceTree = "<group>"; };
-		1ABEC4641E9E73D400DBE4B9 /* FourthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FourthViewController.h; path = ../FourthViewController.h; sourceTree = "<group>"; };
-		1ABEC4651E9E73D400DBE4B9 /* FourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FourthViewController.m; path = ../FourthViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +81,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A0DF79B1EA7358200191349 /* Demos */ = {
+			isa = PBXGroup;
+			children = (
+				1A0DF79C1EA735A300191349 /* DemoListController.h */,
+				1A0DF79D1EA735A300191349 /* DemoListController.m */,
+				1A0DF79E1EA735A300191349 /* FifthViewController.h */,
+				1A0DF79F1EA735A300191349 /* FifthViewController.m */,
+				1A0DF7A01EA735A300191349 /* FirstViewController.h */,
+				1A0DF7A11EA735A300191349 /* FirstViewController.m */,
+				1A0DF7A21EA735A300191349 /* FourthViewController.h */,
+				1A0DF7A31EA735A300191349 /* FourthViewController.m */,
+				1A0DF7A41EA735A300191349 /* SecondViewController.h */,
+				1A0DF7A51EA735A300191349 /* SecondViewController.m */,
+				1A0DF7A61EA735A300191349 /* SixthViewController.h */,
+				1A0DF7A71EA735A300191349 /* SixthViewController.m */,
+				1A0DF7A81EA735A300191349 /* ThirdViewController.h */,
+				1A0DF7A91EA735A300191349 /* ThirdViewController.m */,
+			);
+			path = Demos;
+			sourceTree = "<group>";
+		};
 		1A2061C61E9CB496007BFB91 = {
 			isa = PBXGroup;
 			children = (
@@ -105,7 +126,7 @@
 				1A2061D51E9CB496007BFB91 /* AppDelegate.h */,
 				1A2061D61E9CB496007BFB91 /* AppDelegate.m */,
 				1A2061F71E9CB4E4007BFB91 /* WRNavigationBar */,
-				1A852FAA1EA0C5ED00316972 /* Demos */,
+				1A0DF79B1EA7358200191349 /* Demos */,
 				1A2061DB1E9CB496007BFB91 /* Main.storyboard */,
 				1A2061DE1E9CB496007BFB91 /* Assets.xcassets */,
 				1A2061E01E9CB496007BFB91 /* LaunchScreen.storyboard */,
@@ -139,27 +160,6 @@
 				1A2061F91E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m */,
 			);
 			path = WRNavigationBar;
-			sourceTree = "<group>";
-		};
-		1A852FAA1EA0C5ED00316972 /* Demos */ = {
-			isa = PBXGroup;
-			children = (
-				1A852FA11EA0A4D700316972 /* DemoListController.h */,
-				1A852FA21EA0A4D700316972 /* DemoListController.m */,
-				1A2061FB1E9CB552007BFB91 /* FirstViewController.h */,
-				1A2061FC1E9CB552007BFB91 /* FirstViewController.m */,
-				1A2061FE1E9CB566007BFB91 /* SecondViewController.h */,
-				1A2061FF1E9CB566007BFB91 /* SecondViewController.m */,
-				1ABEC4611E9E72CE00DBE4B9 /* ThirdViewController.h */,
-				1ABEC4621E9E72CE00DBE4B9 /* ThirdViewController.m */,
-				1ABEC4641E9E73D400DBE4B9 /* FourthViewController.h */,
-				1ABEC4651E9E73D400DBE4B9 /* FourthViewController.m */,
-				1A852FA41EA0A61A00316972 /* FifthViewController.h */,
-				1A852FA51EA0A61A00316972 /* FifthViewController.m */,
-				1A852FA71EA0BDD600316972 /* SixthViewController.h */,
-				1A852FA81EA0BDD600316972 /* SixthViewController.m */,
-			);
-			path = Demos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,16 +266,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A852FA61EA0A61A00316972 /* FifthViewController.m in Sources */,
-				1A2062001E9CB566007BFB91 /* SecondViewController.m in Sources */,
+				1A0DF7AA1EA735A300191349 /* DemoListController.m in Sources */,
+				1A0DF7AC1EA735A300191349 /* FirstViewController.m in Sources */,
 				1A2061D71E9CB496007BFB91 /* AppDelegate.m in Sources */,
-				1ABEC4631E9E72CE00DBE4B9 /* ThirdViewController.m in Sources */,
 				1A2061FA1E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m in Sources */,
-				1A852FA31EA0A4D700316972 /* DemoListController.m in Sources */,
+				1A0DF7AE1EA735A300191349 /* SecondViewController.m in Sources */,
+				1A0DF7AF1EA735A300191349 /* SixthViewController.m in Sources */,
+				1A0DF7B01EA735A300191349 /* ThirdViewController.m in Sources */,
+				1A0DF7AB1EA735A300191349 /* FifthViewController.m in Sources */,
+				1A0DF7AD1EA735A300191349 /* FourthViewController.m in Sources */,
 				1A2061D41E9CB496007BFB91 /* main.m in Sources */,
-				1ABEC4661E9E73D400DBE4B9 /* FourthViewController.m in Sources */,
-				1A2061FD1E9CB552007BFB91 /* FirstViewController.m in Sources */,
-				1A852FA91EA0BDD600316972 /* SixthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
