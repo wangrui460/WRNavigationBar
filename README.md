@@ -19,13 +19,6 @@
 
 ## 1️⃣. Installation 安装
 
-> **CocoaPods**
-> pod 'WRNavigationBar'
-
-
----
-
-
 > **手动拖入**
 > 将 WRNavigationBar 文件夹拽入项目中，导入头文件：#import "UINavigationBar+WRAddition.h"
 

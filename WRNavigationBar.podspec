@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/wangrui460/WRNavigationBar"
   s.license      = "MIT"
   s.author             = { "wangrui460" => "wangruidev@gmail.com" }
-  s.source       = { :git => "https://github.com/wangrui460/WRNavigationBar.git", :tag => "v1.0.0" }
+  s.source       = { :git => "https://github.com/wangrui460/WRNavigationBar.git", :tag => "d2e973337955c12f3e263170ff086a999b5563d4" }
   s.source_files  = "WRNavigationBar"
   s.framework  = "UIKit"
 
