@@ -53,6 +53,7 @@
     [super viewWillDisappear:animated];
     self.tableView.delegate = nil;
     [self setNavigationBarTransformProgress:0];
+    [self.navigationController.navigationBar wr_clear];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
