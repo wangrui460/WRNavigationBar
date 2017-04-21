@@ -1,5 +1,5 @@
 # WRNavigationBar  
-##[Swift 版本](https://github.com/wangrui460/WRNavigationBar_swift)
+[Swift 版本](https://github.com/wangrui460/WRNavigationBar_swift)
 
 ------------------------------------------------------------
 
