@@ -1,5 +1,7 @@
 # WRNavigationBar  
+##[Swift 版本](https://github.com/wangrui460/WRNavigationBar_swift)
 
+------------------------------------------------------------
 
 ## 0️⃣. Demo 
 #### 基本（可实现导航栏颜色渐变、透明）
