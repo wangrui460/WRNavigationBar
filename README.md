@@ -67,3 +67,10 @@ More infomation please view code.
 更多信息详见代码，也可查看我的简书: [我的简书](http://www.jianshu.com/p/540a7e6f7b40)
 
 最近更新: 
+
+
+## 4️⃣. 期待
+
+如果在使用过程中遇到BUG，或发现功能不够用，希望你能Issues我
+如果觉得好用请Star!
+谢谢!
