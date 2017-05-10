@@ -75,3 +75,5 @@ More infomation please view code.
 如果在使用过程中遇到BUG，或发现功能不够用，希望你能Issues我
 如果觉得好用请Star!
 谢谢!
+
+你觉得对你有所帮助的话，请献上宝贵的Star！！！ 不胜感激！！！
