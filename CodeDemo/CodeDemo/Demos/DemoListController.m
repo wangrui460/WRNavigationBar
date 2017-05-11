@@ -22,7 +22,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor greenColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"DemoList";
     [self.view addSubview:self.tableView];
 }
@@ -111,7 +112,7 @@
 - (UITableView *)tableView
 {
     if (_tableView == nil) {
-        CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        CGRect frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-64-49);
         _tableView = [[UITableView alloc] initWithFrame:frame
                                                   style:UITableViewStylePlain];
         _tableView.delegate = self;
