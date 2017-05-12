@@ -42,6 +42,15 @@
     [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
 }
 
+// 使用 viewWillAppear 和使用 viewDidAppear 效果是不一样的（在从另一个控制器回到这个控制器的时候）
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//    self.tableView.delegate = self;
+//    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+//    [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
+//}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
