@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 FOUNDATION_EXTERN UIColor *MainNavBarColor;
+FOUNDATION_EXTERN UIColor *MainViewColor;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -109,7 +109,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UIViewController *vc = [UIViewController new];
-    vc.view.backgroundColor = [UIColor redColor];
+    vc.view.backgroundColor = MainViewColor;
     NSString *str = [NSString stringWithFormat:@"WRNavigationBar %zd",indexPath.row];
     vc.title = str;
     [self.navigationController pushViewController:vc animated:YES];

@@ -25,6 +25,7 @@ static char kBackgroundViewKey;
 
 - (void)wr_setBackgroundColor:(UIColor *)color
 {
+    NSLog(@"-- wr_setBackgroundColor外 -");
     if (self.backgroundView == nil)
     {
         // 设置导航栏本身全透明
@@ -34,6 +35,7 @@ static char kBackgroundViewKey;
         [self.subviews.firstObject insertSubview:self.backgroundView atIndex:0];
         // 隐藏导航栏底部默认黑线
         [self setShadowImage:[UIImage new]];
+        NSLog(@"-- wr_setBackgroundColor -");
     }
     self.backgroundView.backgroundColor = color;
 }
@@ -69,13 +71,16 @@ static char kBackgroundViewKey;
 {
     // 设置导航栏不透明
     [self setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    __weak typeof(self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
-    {
-        __strong typeof(self) pThis = weakSelf;
-        [pThis.backgroundView removeFromSuperview];
-        pThis.backgroundView = nil;
-    });
+    [self.backgroundView removeFromSuperview];
+    self.backgroundView = nil;
+    
+//    __weak typeof(self) weakSelf = self;
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+//    {
+//        __strong typeof(self) pThis = weakSelf;
+//        [pThis.backgroundView removeFromSuperview];
+//        pThis.backgroundView = nil;
+//    });
 }
 
 @end
