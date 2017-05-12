@@ -9,9 +9,6 @@
 #import "UINavigationBar+WRAddition.h"
 #import <objc/runtime.h>
 
-// TODO: 返回的时候有白块
-// TODO: 跳转下一个页面的时候回跳一下
-
 @implementation UINavigationBar (WRAddition)
 
 static char kBackgroundViewKey;
@@ -28,15 +25,17 @@ static char kBackgroundViewKey;
 
 - (void)wr_setBackgroundColor:(UIColor *)color
 {
+    NSLog(@"-- wr_setBackgroundColor外 -");
     if (self.backgroundView == nil)
     {
         // 设置导航栏本身全透明
         [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
         self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) + 20)];
-        // _UIBarBackground是导航栏的第一个自控制器
+        // _UIBarBackground是导航栏的第一个子控件
         [self.subviews.firstObject insertSubview:self.backgroundView atIndex:0];
         // 隐藏导航栏底部默认黑线
         [self setShadowImage:[UIImage new]];
+        NSLog(@"-- wr_setBackgroundColor -");
     }
     self.backgroundView.backgroundColor = color;
 }
@@ -72,13 +71,16 @@ static char kBackgroundViewKey;
 {
     // 设置导航栏不透明
     [self setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    __weak typeof(self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
-    {
-        __strong typeof(self) pThis = weakSelf;
-        [pThis.backgroundView removeFromSuperview];
-        pThis.backgroundView = nil;
-    });
+    [self.backgroundView removeFromSuperview];
+    self.backgroundView = nil;
+    
+//    __weak typeof(self) weakSelf = self;
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+//    {
+//        __strong typeof(self) pThis = weakSelf;
+//        [pThis.backgroundView removeFromSuperview];
+//        pThis.backgroundView = nil;
+//    });
 }
 
 @end
