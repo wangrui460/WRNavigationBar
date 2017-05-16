@@ -20,6 +20,10 @@
 #### 类似QQ空间效果.gif👇（和上一个例子的区别在于超过零界点多少，导航栏和导航栏上的元素的透明度对应多少）
 ![image](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/类似QQ空间效果.gif)
 
+#### 自定义导航栏效果.gif👇
+![image](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/自定义导航栏效果.gif)
+
+
 ## 1️⃣. Installation 安装
 
 > **手动拖入**
@@ -70,15 +74,16 @@ More infomation please view code.
 ## 4️⃣. Update 最近更新 
 
 - **2017.05.12**
-
 解决问题：侧滑一点松开透明的导航栏会变不透明
 
+- **2017.05.16**
+新增Demo：完成自定义导航栏实现透明渐变等效果
 
 ## 5️⃣. 待完成功能
 
-- 添加自定义导航栏Demo
+
 
 ## 6️⃣. 期待
 
-如果在使用过程中遇到BUG，或发现功能不够用，希望你能Issues我
+如果在使用过程中遇到BUG，或发现功能不够用，希望你能Issues我，或者加我的qq：1204607318
 ### 你觉得对你有所帮助的话，请献上宝贵的Star！！！ 不胜感激！！！
