@@ -10,6 +10,7 @@
 #import "DemoListController.h"
 #import "SixthViewController.h"
 #import "BaseNavigationController.h"
+#import "CustomNavBarController.h"
 
 UIColor *MainNavBarColor = nil;
 UIColor *MainViewColor = nil;
@@ -26,11 +27,13 @@ UIColor *MainViewColor = nil;
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:[DemoListController new]];
-    BaseNavigationController *sixNav = [[BaseNavigationController alloc] initWithRootViewController:[SixthViewController new]];
-    sixNav.title = @"没有系统返回按钮的情况";
+    BaseNavigationController *firstNav = [[BaseNavigationController alloc] initWithRootViewController:[DemoListController new]];
+    BaseNavigationController *secondNav = [[BaseNavigationController alloc] initWithRootViewController:[SixthViewController new]];
+    BaseNavigationController *thirdNav = [[BaseNavigationController alloc] initWithRootViewController:[CustomNavBarController new]];
+    secondNav.title = @"没有系统返回按钮的情况";
+    thirdNav.title = @"自定义导航栏";
     UITabBarController *tabBarVC = [UITabBarController new];
-    tabBarVC.viewControllers = @[nav,sixNav];
+    tabBarVC.viewControllers = @[firstNav, secondNav, thirdNav];
     
     self.window.rootViewController = tabBarVC;
     [self.window makeKeyAndVisible];
