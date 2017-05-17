@@ -81,7 +81,7 @@ More infomation please view code.
 
 ## 5️⃣. 待完成功能
 
-
+- 导航栏上添加searchView，上滑颜色渐变并隐藏
 
 ## 6️⃣. 期待
 
