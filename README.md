@@ -1,6 +1,6 @@
-![](http://upload-images.jianshu.io/upload_images/1795300-8abcc114037bc8c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) 
+![image](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/WRNavigationBar.png)
 
-[Swift 版本](https://github.com/wangrui460/WRNavigationBar_swift)
+[Swift 版本：https://github.com/wangrui460/WRNavigationBar_swift](https://github.com/wangrui460/WRNavigationBar_swift)
 
 ------------------------------------------------------------
 
