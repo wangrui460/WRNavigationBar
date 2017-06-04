@@ -37,22 +37,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1A0DF79C1EA735A300191349 /* DemoListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoListController.h; sourceTree = "<group>"; };
-		1A0DF79D1EA735A300191349 /* DemoListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoListController.m; sourceTree = "<group>"; };
-		1A0DF79E1EA735A300191349 /* FifthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FifthViewController.h; sourceTree = "<group>"; };
-		1A0DF79F1EA735A300191349 /* FifthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FifthViewController.m; sourceTree = "<group>"; };
-		1A0DF7A01EA735A300191349 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		1A0DF7A11EA735A300191349 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		1A0DF7A21EA735A300191349 /* FourthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourthViewController.h; sourceTree = "<group>"; };
-		1A0DF7A31EA735A300191349 /* FourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourthViewController.m; sourceTree = "<group>"; };
-		1A0DF7A41EA735A300191349 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		1A0DF7A51EA735A300191349 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		1A0DF7A61EA735A300191349 /* SixthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SixthViewController.h; sourceTree = "<group>"; };
-		1A0DF7A71EA735A300191349 /* SixthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SixthViewController.m; sourceTree = "<group>"; };
-		1A0DF7A81EA735A300191349 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
-		1A0DF7A91EA735A300191349 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
-		1A0DF7BA1EA7531800191349 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
-		1A0DF7BB1EA7531800191349 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
+		1A0DF79C1EA735A300191349 /* DemoListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoListController.h; path = ../Demos/DemoListController.h; sourceTree = "<group>"; };
+		1A0DF79D1EA735A300191349 /* DemoListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoListController.m; path = ../Demos/DemoListController.m; sourceTree = "<group>"; };
+		1A0DF79E1EA735A300191349 /* FifthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FifthViewController.h; path = ../Demos/FifthViewController.h; sourceTree = "<group>"; };
+		1A0DF79F1EA735A300191349 /* FifthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FifthViewController.m; path = ../Demos/FifthViewController.m; sourceTree = "<group>"; };
+		1A0DF7A01EA735A300191349 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FirstViewController.h; path = ../Demos/FirstViewController.h; sourceTree = "<group>"; };
+		1A0DF7A11EA735A300191349 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirstViewController.m; path = ../Demos/FirstViewController.m; sourceTree = "<group>"; };
+		1A0DF7A21EA735A300191349 /* FourthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FourthViewController.h; path = ../Demos/FourthViewController.h; sourceTree = "<group>"; };
+		1A0DF7A31EA735A300191349 /* FourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FourthViewController.m; path = ../Demos/FourthViewController.m; sourceTree = "<group>"; };
+		1A0DF7A41EA735A300191349 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecondViewController.h; path = ../Demos/SecondViewController.h; sourceTree = "<group>"; };
+		1A0DF7A51EA735A300191349 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecondViewController.m; path = ../Demos/SecondViewController.m; sourceTree = "<group>"; };
+		1A0DF7A61EA735A300191349 /* SixthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SixthViewController.h; path = ../Demos/SixthViewController.h; sourceTree = "<group>"; };
+		1A0DF7A71EA735A300191349 /* SixthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SixthViewController.m; path = ../Demos/SixthViewController.m; sourceTree = "<group>"; };
+		1A0DF7A81EA735A300191349 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThirdViewController.h; path = ../Demos/ThirdViewController.h; sourceTree = "<group>"; };
+		1A0DF7A91EA735A300191349 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThirdViewController.m; path = ../Demos/ThirdViewController.m; sourceTree = "<group>"; };
+		1A0DF7BA1EA7531800191349 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseNavigationController.h; path = Demos/BaseNavigationController.h; sourceTree = "<group>"; };
+		1A0DF7BB1EA7531800191349 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseNavigationController.m; path = Demos/BaseNavigationController.m; sourceTree = "<group>"; };
 		1A2061CF1E9CB496007BFB91 /* CodeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A2061D31E9CB496007BFB91 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1A2061D51E9CB496007BFB91 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -66,10 +66,10 @@
 		1A2061EE1E9CB496007BFB91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A2061F81E9CB4E4007BFB91 /* UINavigationBar+WRAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+WRAddition.h"; sourceTree = "<group>"; };
 		1A2061F91E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+WRAddition.m"; sourceTree = "<group>"; };
-		1A869EE01ECAF20E006D96F8 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
-		1A869EE11ECAF20E006D96F8 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		1A869EE31ECAF4FA006D96F8 /* CustomNavBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavBarController.h; sourceTree = "<group>"; };
-		1A869EE41ECAF4FA006D96F8 /* CustomNavBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavBarController.m; sourceTree = "<group>"; };
+		1A869EE01ECAF20E006D96F8 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = ../Demos/BaseViewController.h; sourceTree = "<group>"; };
+		1A869EE11ECAF20E006D96F8 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = ../Demos/BaseViewController.m; sourceTree = "<group>"; };
+		1A869EE31ECAF4FA006D96F8 /* CustomNavBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomNavBarController.h; path = ../Demos/CustomNavBarController.h; sourceTree = "<group>"; };
+		1A869EE41ECAF4FA006D96F8 /* CustomNavBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomNavBarController.m; path = ../Demos/CustomNavBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,33 +90,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A0DF79B1EA7358200191349 /* Demos */ = {
-			isa = PBXGroup;
-			children = (
-				1A0DF79C1EA735A300191349 /* DemoListController.h */,
-				1A0DF79D1EA735A300191349 /* DemoListController.m */,
-				1A0DF7A01EA735A300191349 /* FirstViewController.h */,
-				1A0DF7A11EA735A300191349 /* FirstViewController.m */,
-				1A0DF7A41EA735A300191349 /* SecondViewController.h */,
-				1A0DF7A51EA735A300191349 /* SecondViewController.m */,
-				1A0DF7A81EA735A300191349 /* ThirdViewController.h */,
-				1A0DF7A91EA735A300191349 /* ThirdViewController.m */,
-				1A0DF7A21EA735A300191349 /* FourthViewController.h */,
-				1A0DF7A31EA735A300191349 /* FourthViewController.m */,
-				1A0DF79E1EA735A300191349 /* FifthViewController.h */,
-				1A0DF79F1EA735A300191349 /* FifthViewController.m */,
-				1A0DF7A61EA735A300191349 /* SixthViewController.h */,
-				1A0DF7A71EA735A300191349 /* SixthViewController.m */,
-				1A0DF7BA1EA7531800191349 /* BaseNavigationController.h */,
-				1A0DF7BB1EA7531800191349 /* BaseNavigationController.m */,
-				1A869EE01ECAF20E006D96F8 /* BaseViewController.h */,
-				1A869EE11ECAF20E006D96F8 /* BaseViewController.m */,
-				1A869EE31ECAF4FA006D96F8 /* CustomNavBarController.h */,
-				1A869EE41ECAF4FA006D96F8 /* CustomNavBarController.m */,
-			);
-			path = Demos;
-			sourceTree = "<group>";
-		};
 		1A2061C61E9CB496007BFB91 = {
 			isa = PBXGroup;
 			children = (
@@ -140,8 +113,12 @@
 			children = (
 				1A2061D51E9CB496007BFB91 /* AppDelegate.h */,
 				1A2061D61E9CB496007BFB91 /* AppDelegate.m */,
+				1A0DF7BA1EA7531800191349 /* BaseNavigationController.h */,
+				1A0DF7BB1EA7531800191349 /* BaseNavigationController.m */,
 				1A2061F71E9CB4E4007BFB91 /* WRNavigationBar */,
-				1A0DF79B1EA7358200191349 /* Demos */,
+				1A3807831EE453E000F349D7 /* 普通 */,
+				1A3807851EE453E000F349D7 /* 自定义导航栏 */,
+				1A3807841EE453E000F349D7 /* 移动导航栏 */,
 				1A2061DB1E9CB496007BFB91 /* Main.storyboard */,
 				1A2061DE1E9CB496007BFB91 /* Assets.xcassets */,
 				1A2061E01E9CB496007BFB91 /* LaunchScreen.storyboard */,
@@ -175,6 +152,45 @@
 				1A2061F91E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m */,
 			);
 			path = WRNavigationBar;
+			sourceTree = "<group>";
+		};
+		1A3807831EE453E000F349D7 /* 普通 */ = {
+			isa = PBXGroup;
+			children = (
+				1A0DF79C1EA735A300191349 /* DemoListController.h */,
+				1A0DF79D1EA735A300191349 /* DemoListController.m */,
+				1A0DF7A01EA735A300191349 /* FirstViewController.h */,
+				1A0DF7A11EA735A300191349 /* FirstViewController.m */,
+				1A0DF7A21EA735A300191349 /* FourthViewController.h */,
+				1A0DF7A31EA735A300191349 /* FourthViewController.m */,
+				1A0DF79E1EA735A300191349 /* FifthViewController.h */,
+				1A0DF79F1EA735A300191349 /* FifthViewController.m */,
+			);
+			path = "普通";
+			sourceTree = "<group>";
+		};
+		1A3807841EE453E000F349D7 /* 移动导航栏 */ = {
+			isa = PBXGroup;
+			children = (
+				1A0DF7A41EA735A300191349 /* SecondViewController.h */,
+				1A0DF7A51EA735A300191349 /* SecondViewController.m */,
+				1A0DF7A81EA735A300191349 /* ThirdViewController.h */,
+				1A0DF7A91EA735A300191349 /* ThirdViewController.m */,
+			);
+			path = "移动导航栏";
+			sourceTree = "<group>";
+		};
+		1A3807851EE453E000F349D7 /* 自定义导航栏 */ = {
+			isa = PBXGroup;
+			children = (
+				1A0DF7A61EA735A300191349 /* SixthViewController.h */,
+				1A0DF7A71EA735A300191349 /* SixthViewController.m */,
+				1A869EE01ECAF20E006D96F8 /* BaseViewController.h */,
+				1A869EE11ECAF20E006D96F8 /* BaseViewController.m */,
+				1A869EE31ECAF4FA006D96F8 /* CustomNavBarController.h */,
+				1A869EE41ECAF4FA006D96F8 /* CustomNavBarController.m */,
+			);
+			path = "自定义导航栏";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
