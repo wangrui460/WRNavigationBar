@@ -6,8 +6,8 @@
 //  Copyright © 2017年 wangrui. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface CustomListController : UIViewController
+@interface CustomListController : BaseViewController
 
 @end

@@ -20,8 +20,9 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"自定义导航栏";
     [self.view addSubview:self.tableView];
+    [self.view insertSubview:self.navBar aboveSubview:self.tableView];
+    self.navItem.title = @"自定义导航栏";
 }
 
 #pragma mark - tableview delegate / dataSource
