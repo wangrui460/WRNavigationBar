@@ -1,30 +1,28 @@
 //
-//  DemoListController.m
+//  MoveListController.m
 //  CodeDemo
 //
 //  Created by wangrui on 2017/4/14.
 //  Copyright © 2017年 wangrui. All rights reserved.
 //
 
-#import "DemoListController.h"
-#import "FirstViewController.h"
+#import "MoveListController.h"
 #import "SecondViewController.h"
 #import "ThirdViewController.h"
-#import "FourthViewController.h"
-#import "FifthViewController.h"
+#import "SixthViewController.h"
 
-@interface DemoListController () <UITableViewDelegate, UITableViewDataSource>
+@interface MoveListController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @end
 
-@implementation DemoListController
+@implementation MoveListController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"DemoList";
+    self.title = @"移动导航栏";
     [self.view addSubview:self.tableView];
 }
 
@@ -41,21 +39,15 @@
     NSString *str = nil;
     switch (indexPath.row) {
         case 0:
-            str = @"基本";
-            break;
-        case 1:
             str = @"超过临界点移动导航栏";
             break;
-        case 2:
+        case 1:
             str = @"超过临界点多少，移动导航栏多少(不会超过44)";
             break;
-        case 3:
-            str = @"类似qq应用空间效果";
+        case 2:
+            str = @"没有系统返回按钮的情况";
             break;
-        case 4:
-            str = @"类似QQ空间效果";
-            break;
-            
+        
         default:
             break;
     }
@@ -75,32 +67,20 @@
     switch (indexPath.row) {
         case 0:
         {
-            FirstViewController *firstVC = [FirstViewController new];
-            [self.navigationController pushViewController:firstVC animated:YES];
-        }
-            break;
-        case 1:
-        {
             SecondViewController *secondVC = [SecondViewController new];
             [self.navigationController pushViewController:secondVC animated:YES];
         }
             break;
-        case 2:
+        case 1:
         {
             ThirdViewController *thirdVC = [ThirdViewController new];
             [self.navigationController pushViewController:thirdVC animated:YES];
         }
             break;
-        case 3:
+        case 2:
         {
-            FourthViewController *fourthVC = [FourthViewController new];
-            [self.navigationController pushViewController:fourthVC animated:YES];
-        }
-            break;
-        case 4:
-        {
-            FifthViewController *fifthVC = [FifthViewController new];
-            [self.navigationController pushViewController:fifthVC animated:YES];
+            SixthViewController *sixVC = [SixthViewController new];
+            [self.navigationController pushViewController:sixVC animated:YES];
         }
             break;
         default:

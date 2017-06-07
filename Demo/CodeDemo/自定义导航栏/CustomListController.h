@@ -1,5 +1,5 @@
 //
-//  DemoListController.h
+//  CustomListController.h
 //  CodeDemo
 //
 //  Created by wangrui on 2017/4/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DemoListController : UIViewController
+@interface CustomListController : UIViewController
 
 @end

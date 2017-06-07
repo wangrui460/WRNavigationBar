@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import "DemoListController.h"
+#import "NormalListController.h"
+#import "MoveListController.h"
+#import "CustomListController.h"
 #import "SixthViewController.h"
 #import "BaseNavigationController.h"
 #import "CustomNavBarController.h"
@@ -27,19 +29,30 @@ UIColor *MainViewColor = nil;
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    BaseNavigationController *firstNav = [[BaseNavigationController alloc] initWithRootViewController:[DemoListController new]];
-    BaseNavigationController *secondNav = [[BaseNavigationController alloc] initWithRootViewController:[SixthViewController new]];
-    BaseNavigationController *thirdNav = [[BaseNavigationController alloc] initWithRootViewController:[CustomNavBarController new]];
-    secondNav.title = @"没有系统返回按钮的情况";
-    thirdNav.title = @"自定义导航栏";
+    BaseNavigationController *firstNav = [[BaseNavigationController alloc] initWithRootViewController:[NormalListController new]];
+    BaseNavigationController *secondNav = [[BaseNavigationController alloc] initWithRootViewController:[CustomListController new]];
+    BaseNavigationController *thirdNav = [[BaseNavigationController alloc] initWithRootViewController:[MoveListController new]];
     UITabBarController *tabBarVC = [UITabBarController new];
     tabBarVC.viewControllers = @[firstNav, secondNav, thirdNav];
+    [self setTabBarItems:tabBarVC];
     
     self.window.rootViewController = tabBarVC;
     [self.window makeKeyAndVisible];
     
     [self setNavBarAppearence];
     return YES;
+}
+
+- (void)setTabBarItems:(UITabBarController*)tabBarVC
+{
+    NSArray *titles = @[@"常用", @"自定义导航栏", @"移动导航栏"];
+    NSArray *normalImages = @[@"mine", @"mine", @"mine"];
+    NSArray *highlightImages = @[@"mineHighlight", @"mineHighlight", @"mineHighlight"];
+    [tabBarVC.tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.title = titles[idx];
+        obj.image = [[UIImage imageNamed:normalImages[idx]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        obj.selectedImage = [[UIImage imageNamed:highlightImages[idx]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    }];
 }
 
 - (void)setNavBarAppearence
