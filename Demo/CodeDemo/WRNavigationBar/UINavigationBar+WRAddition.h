@@ -23,3 +23,11 @@
 - (void)wr_clear;
 
 @end
+
+
+@interface UIViewController (WRAddition)
+- (UIColor *)navBarBarTintColor;
+- (void)setNavBarBarTintColor:(UIColor *)color;
+- (CGFloat)navBarBackgroundAlpha;
+- (void)setNavBarBackgroundAlpha:(CGFloat)alpha;
+@end
