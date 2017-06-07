@@ -33,10 +33,16 @@ static int kNavBarBottom = 64;
         self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), kNavBarBottom)];
         // _UIBarBackground是导航栏的第一个子控件
         [self.subviews.firstObject insertSubview:self.backgroundView atIndex:0];
-        // 隐藏导航栏底部默认黑线
-        [self setShadowImage:[UIImage new]];
+//        // 隐藏导航栏底部默认黑线
+//        [self setShadowImage:[UIImage new]];
     }
     self.backgroundView.backgroundColor = color;
+}
+
+- (void)wr_setBackgroundAlpha:(CGFloat)alpha
+{
+    UIView *barBackgroundView = self.subviews.firstObject;
+    barBackgroundView.alpha = alpha;
 }
 
 - (void)wr_setBarButtonItemsAlpha:(CGFloat)alpha hasSystemBackIndicator:(BOOL)hasSystemBackIndicator
@@ -46,15 +52,42 @@ static int kNavBarBottom = 64;
         if (hasSystemBackIndicator == YES)
         {
             // _UIBarBackground对应的view是系统导航栏，不需要改变其透明度
-            if (![view isKindOfClass:NSClassFromString(@"_UIBarBackground")]) {
-                view.alpha = alpha;
+            Class _UIBarBackgroundClass = NSClassFromString(@"_UIBarBackground");
+            if (_UIBarBackgroundClass != nil)
+            {
+                if ([view isKindOfClass:_UIBarBackgroundClass] == NO) {
+                    view.alpha = alpha;
+                }
+            }
+            
+            Class _UINavigationBarBackground = NSClassFromString(@"_UINavigationBarBackground");
+            if (_UINavigationBarBackground != nil)
+            {
+                if ([view isKindOfClass:_UINavigationBarBackground] == NO) {
+                    view.alpha = alpha;
+                }
             }
         }
         else
         {
             // 这里如果不做判断的话，会显示 backIndicatorImage
-            if (![view isKindOfClass:NSClassFromString(@"_UINavigationBarBackIndicatorView")] && ![view isKindOfClass:NSClassFromString(@"_UIBarBackground")]) {
-                view.alpha = alpha;
+            if ([view isKindOfClass:NSClassFromString(@"_UINavigationBarBackIndicatorView")] == NO)
+            {
+                Class _UIBarBackgroundClass = NSClassFromString(@"_UIBarBackground");
+                if (_UIBarBackgroundClass != nil)
+                {
+                    if ([view isKindOfClass:_UIBarBackgroundClass] == NO) {
+                        view.alpha = alpha;
+                    }
+                }
+                
+                Class _UINavigationBarBackground = NSClassFromString(@"_UINavigationBarBackground");
+                if (_UINavigationBarBackground != nil)
+                {
+                    if ([view isKindOfClass:_UINavigationBarBackground] == NO) {
+                        view.alpha = alpha;
+                    }
+                }
             }
         }
     }
