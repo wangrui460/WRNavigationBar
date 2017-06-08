@@ -187,13 +187,39 @@ static int kNavBarBottom = 64;
 //==========================================================================
 @implementation UIViewController (WRAddition)
 
+static char kWRPushToCurrentVCFinishedKey;
+static char kWRPushToNextVCFinishedKey;
 static char kWRNavBarBarTintColorKey;
 static char kWRNavBarBackgroundAlphaKey;
+static char kWRNavBarTintColorKey;
+static char kWRNavBarTitleColorKey;
+static char kWRStatusBarStyleKey;
+static char kWRCustomNavBarKey;
+
+- (BOOL)pushToCurrentVCFinished
+{
+    id isFinished = objc_getAssociatedObject(self, &kWRPushToCurrentVCFinishedKey);
+    return (isFinished != nil) ? [isFinished boolValue] : NO;
+}
+- (void)setPushToCurrentVCFinished:(BOOL)isFinished
+{
+    objc_setAssociatedObject(self, &kWRPushToCurrentVCFinishedKey, @(isFinished), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)pushToNextVCFinished
+{
+    id isFinished = objc_getAssociatedObject(self, &kWRPushToNextVCFinishedKey);
+    return (isFinished != nil) ? [isFinished boolValue] : NO;
+}
+- (void)setPushToNextVCFinished:(BOOL)isFinished
+{
+    objc_setAssociatedObject(self, &kWRPushToNextVCFinishedKey, @(isFinished), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 
 - (UIColor *)navBarBarTintColor
 {
     UIColor *barTintColor = (UIColor *)objc_getAssociatedObject(self, &kWRNavBarBarTintColorKey);
-    return (barTintColor != nil) ? barTintColor : [UIColor whiteColor];
+    return (barTintColor != nil) ? barTintColor : [UIColor defaultNavBarBarTintColor];
 }
 - (void)setNavBarBarTintColor:(UIColor *)color
 {
@@ -209,6 +235,46 @@ static char kWRNavBarBackgroundAlphaKey;
 - (void)setNavBarBackgroundAlpha:(CGFloat)alpha
 {
     objc_setAssociatedObject(self, &kWRNavBarBackgroundAlphaKey, @(alpha), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIColor *)navBarTintColor
+{
+    UIColor *tintColor = (UIColor *)objc_getAssociatedObject(self, &kWRNavBarTintColorKey);
+    return (tintColor != nil) ? tintColor : [UIColor defaultNavBarTintColor];
+}
+- (void)setNavBarTintColor:(UIColor *)color
+{
+    objc_setAssociatedObject(self, &kWRNavBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIColor *)navBarTitleColor
+{
+    UIColor *titleColor = (UIColor *)objc_getAssociatedObject(self, &kWRNavBarTitleColorKey);
+    return (titleColor != nil) ? titleColor : [UIColor defaultNavBarTitleColor];
+}
+- (void)setNavBarTitleColor:(UIColor *)color
+{
+    objc_setAssociatedObject(self, &kWRNavBarTitleColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIStatusBarStyle)statusBarStyle
+{
+    id style = objc_getAssociatedObject(self, &kWRStatusBarStyleKey);
+    return (style != nil) ? (UIStatusBarStyle)style : [UIColor defaultStatusBarStyle];
+}
+- (void)setStatusBarStyle:(UIStatusBarStyle)style
+{
+    objc_setAssociatedObject(self, &kWRStatusBarStyleKey, @(style), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIView *)customNavBar
+{
+    UIView *navBar = objc_getAssociatedObject(self, &kWRCustomNavBarKey);
+    return (navBar != nil) ? navBar : [UIView new];
+}
+- (void)setCustomNavBar:(UINavigationBar *)navBar
+{
+    objc_setAssociatedObject(self, &kWRCustomNavBarKey, navBar, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

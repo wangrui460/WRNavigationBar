@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+// =====================================================
+#pragma mark - UINavigationBar
+// =====================================================
 @interface UINavigationBar (WRAddition)
 
 /** 设置导航栏背景颜色*/
@@ -24,16 +27,43 @@
 
 @end
 
-
+// =====================================================
+#pragma mark - UIViewController
+// =====================================================
 @interface UIViewController (WRAddition)
+
+- (BOOL)pushToCurrentVCFinished;
+- (void)setPushToCurrentVCFinished:(BOOL)isFinished;
+
+- (BOOL)pushToNextVCFinished;
+- (void)setPushToNextVCFinished:(BOOL)isFinished;
+
 - (UIColor *)navBarBarTintColor;
 - (void)setNavBarBarTintColor:(UIColor *)color;
+
 - (CGFloat)navBarBackgroundAlpha;
 - (void)setNavBarBackgroundAlpha:(CGFloat)alpha;
+
+- (UIColor *)navBarTintColor;
+- (void)setNavBarTintColor:(UIColor *)color;
+
+- (UIColor *)navBarTitleColor;
+- (void)setNavBarTitleColor:(UIColor *)color;
+
+- (UIStatusBarStyle)statusBarStyle;
+- (void)setStatusBarStyle:(UIStatusBarStyle)style;
+
+- (UIView *)customNavBar;
+- (void)setCustomNavBar:(UINavigationBar *)navBar;
+
 @end
 
 
+// ====================================================
+#pragma mark - UIColor
+// ====================================================
 @interface UIColor (WRAddition)
+
 + (UIColor *)defaultNavBarBarTintColor;
 + (void)setDefaultNavBarBarTintColor:(UIColor *)color;
 
@@ -50,4 +80,8 @@
 
 + (UIColor *)middleColor:(UIColor *)fromColor toColor:(UIColor *)toColor percent:(CGFloat)percent;
 + (CGFloat)middleAlpha:(CGFloat)fromAlpha toAlpha:(CGFloat)toAlpha percent:(CGFloat)percent;
+
 @end
+
+
+
