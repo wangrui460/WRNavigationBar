@@ -31,3 +31,23 @@
 - (CGFloat)navBarBackgroundAlpha;
 - (void)setNavBarBackgroundAlpha:(CGFloat)alpha;
 @end
+
+
+@interface UIColor (WRAddition)
++ (UIColor *)defaultNavBarBarTintColor;
++ (void)setDefaultNavBarBarTintColor:(UIColor *)color;
+
++ (UIColor *)defaultNavBarTintColor;
++ (void)setDefaultNavBarTintColor:(UIColor *)color;
+
++ (UIColor *)defaultNavBarTitleColor;
++ (void)setDefaultNavBarTitleColor:(UIColor *)color;
+
++ (UIStatusBarStyle)defaultStatusBarStyle;
++ (void)setDefaultStatusBarStyle:(UIStatusBarStyle)style;
+
++ (CGFloat)defaultBackgroundAlpha;
+
++ (UIColor *)middleColor:(UIColor *)fromColor toColor:(UIColor *)toColor percent:(CGFloat)percent;
++ (CGFloat)middleAlpha:(CGFloat)fromAlpha toAlpha:(CGFloat)toAlpha percent:(CGFloat)percent;
+@end

@@ -215,6 +215,88 @@ static char kWRNavBarBackgroundAlphaKey;
 
 
 
+//==========================================================================
+#pragma mark - UIColor
+//==========================================================================
+@implementation UIColor (WRAddition)
+
+static char kWRDefaultNavBarBarTintColorKey;
+static char kWRDefaultNavBarTintColorKey;
+static char kWRDefaultNavBarTitleColorKey;
+static char kWRDefaultStatusBarStyleKey;
+
++ (UIColor *)defaultNavBarBarTintColor
+{
+    UIColor *color = (UIColor *)objc_getAssociatedObject(self, &kWRDefaultNavBarBarTintColorKey);
+    return (color != nil) ? color : [UIColor whiteColor];
+}
++ (void)setDefaultNavBarBarTintColor:(UIColor *)color
+{
+    objc_setAssociatedObject(self, &kWRDefaultNavBarBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
++ (UIColor *)defaultNavBarTintColor
+{
+    UIColor *color = (UIColor *)objc_getAssociatedObject(self, &kWRDefaultNavBarTintColorKey);
+    return (color != nil) ? color : [UIColor colorWithRed:0 green:0.478431 blue:1 alpha:1.0];
+}
++ (void)setDefaultNavBarTintColor:(UIColor *)color
+{
+    objc_setAssociatedObject(self, &kWRDefaultNavBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
++ (UIColor *)defaultNavBarTitleColor
+{
+    UIColor *color = (UIColor *)objc_getAssociatedObject(self, &kWRDefaultNavBarTitleColorKey);
+    return (color != nil) ? color : [UIColor blackColor];
+}
++ (void)setDefaultNavBarTitleColor:(UIColor *)color
+{
+    objc_setAssociatedObject(self, &kWRDefaultNavBarTitleColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
++ (UIStatusBarStyle)defaultStatusBarStyle
+{
+    id style = objc_getAssociatedObject(self, &kWRDefaultStatusBarStyleKey);
+    return (style != nil) ? (UIStatusBarStyle)style : UIStatusBarStyleDefault;
+}
++ (void)setDefaultStatusBarStyle:(UIStatusBarStyle)style
+{
+    objc_setAssociatedObject(self, &kWRDefaultStatusBarStyleKey, @(style), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
++ (CGFloat)defaultBackgroundAlpha
+{
+    return 1.0;
+}
+
++ (UIColor *)middleColor:(UIColor *)fromColor toColor:(UIColor *)toColor percent:(CGFloat)percent
+{
+    CGFloat fromRed = 0;
+    CGFloat fromGreen = 0;
+    CGFloat fromBlue = 0;
+    CGFloat fromAlpha = 0;
+    [fromColor getRed:&fromRed green:&fromGreen blue:&fromBlue alpha:&fromAlpha];
+    
+    CGFloat toRed = 0;
+    CGFloat toGreen = 0;
+    CGFloat toBlue = 0;
+    CGFloat toAlpha = 0;
+    [toColor getRed:&toRed green:&toGreen blue:&toBlue alpha:&toAlpha];
+    
+    CGFloat newRed = fromRed + (toRed - fromRed) * percent;
+    CGFloat newGreen = fromGreen + (toGreen - fromGreen) * percent;
+    CGFloat newBlue = fromBlue + (toBlue - fromBlue) * percent;
+    CGFloat newAlpha = fromAlpha + (toAlpha - fromAlpha) * percent;
+    return [UIColor colorWithRed:newRed green:newGreen blue:newBlue alpha:newAlpha];
+}
++ (CGFloat)middleAlpha:(CGFloat)fromAlpha toAlpha:(CGFloat)toAlpha percent:(CGFloat)percent
+{
+    return fromAlpha + (toAlpha - fromAlpha) * percent;
+}
+
+@end
+
 
 
 
