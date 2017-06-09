@@ -277,6 +277,50 @@ static char kWRCustomNavBarKey;
     objc_setAssociatedObject(self, &kWRCustomNavBarKey, navBar, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
++ (void)load
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
+    {
+        SEL needSwizzleSelectors[3] = {
+            @selector(viewWillAppear:),
+            @selector(viewWillDisappear:),
+            @selector(viewDidAppear:)
+        };
+        
+        for (int i = 0; i < 3; i++) {
+            SEL selector = needSwizzleSelectors[i];
+            NSString *newSelectorStr = [NSString stringWithFormat:@"wr_%@", NSStringFromSelector(selector)];
+            Method originMethod = class_getInstanceMethod(self, selector);
+            Method swizzledMethod = class_getInstanceMethod(self, NSSelectorFromString(newSelectorStr));
+            method_exchangeImplementations(originMethod, swizzledMethod);
+        }
+    });
+}
+
+- (void)wr_viewWillAppear:(BOOL)animated
+{
+    [self setPushToNextVCFinished:NO];
+//    self.navigationController setNeedsNavigationBarUpdate....
+//    self.navigationController setNeedsNavigationBarUpdate....
+    [self wr_viewWillAppear:animated];
+}
+
+- (void)wr_viewWillDisappear:(BOOL)animated
+{
+    [self setPushToNextVCFinished:YES];
+    [self wr_viewWillDisappear:animated];
+}
+
+- (void)wr_viewDidAppear:(BOOL)animated
+{
+//    self.navigationController setNeedsNavigationBarUpdate....
+//    self.navigationController setNeedsNavigationBarUpdate....
+//    self.navigationController setNeedsNavigationBarUpdate....
+//    self.navigationController setNeedsNavigationBarUpdate....
+    [self wr_viewDidAppear:animated];
+}
+
 @end
 
 
