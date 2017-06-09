@@ -205,33 +205,70 @@ static int wrPushDisplayCount = 0;
     });
 }
 
-//- (NSArray<UIViewController *> *)wr_popToViewController:(UIViewController *)viewController animated:(BOOL)animated
-//{
-//    
-//}
-//
-//- (NSArray<UIViewController *> *)wr_popToRootViewControllerAnimated:(BOOL)animated
-//{
-//    
-//}
-//
-//- (void)popNeedDisplay
-//{
-//    
-//}
-//
-//- (void)wr_pushViewController:(UIViewController *)viewController animated:(BOOL)animated
-//{
-//    
-//}
-//
-//- (void)pushNeedDisplay
-//{
-//    
-//}
+- (NSArray<UIViewController *> *)wr_popToViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    __block CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(popNeedDisplay)];
+    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    [CATransaction setCompletionBlock:^{
+        [displayLink invalidate];
+        displayLink = nil;
+        wrPopDisplayCount = 0;
+    }];
+    [CATransaction setAnimationDuration:wrPopDuration];
+    [CATransaction begin];
+    NSArray<UIViewController *> *vcs = [self wr_popToViewController:viewController animated:animated];
+    [CATransaction commit];
+    return vcs;
+}
 
+- (NSArray<UIViewController *> *)wr_popToRootViewControllerAnimated:(BOOL)animated
+{
+    __block CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(popNeedDisplay)];
+    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    [CATransaction setCompletionBlock:^{
+        [displayLink invalidate];
+        displayLink = nil;
+        wrPopDisplayCount = 0;
+    }];
+    [CATransaction setAnimationDuration:wrPopDuration];
+    [CATransaction begin];
+    NSArray<UIViewController *> *vcs = [self wr_popToRootViewControllerAnimated:animated];
+    [CATransaction commit];
+    return vcs;
+}
 
+- (void)popNeedDisplay
+{
+    wrPopDisplayCount += 1;
+    CGFloat popProgress = [self wrPopProgress];
+    UIViewController *fromVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextFromViewControllerKey];
+    UIViewController *toVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextToViewKey];
+    [self updateNavigationBarWithFromVC:fromVC toVC:toVC progress:popProgress];
+}
 
+- (void)wr_pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    __block CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(pushNeedDisplay)];
+    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    [CATransaction setCompletionBlock:^{
+        [displayLink invalidate];
+        displayLink = nil;
+        wrPushDisplayCount = 0;
+    }];
+    [CATransaction setAnimationDuration:wrPushDuration];
+    [CATransaction begin];
+    [self wr_pushViewController:viewController animated:animated];
+    [CATransaction commit];
+}
+
+- (void)pushNeedDisplay
+{
+    wrPushDisplayCount += 1;
+    CGFloat pushProgress = [self wrPushProgress];
+    UIViewController *fromVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextFromViewControllerKey];
+    UIViewController *toVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextToViewKey];
+    [self updateNavigationBarWithFromVC:fromVC toVC:toVC progress:pushProgress];
+}
 
 - (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item
 {
@@ -270,8 +307,8 @@ static int wrPushDisplayCount = 0;
     void (^animations) (UITransitionContextViewControllerKey) = ^(UITransitionContextViewControllerKey key){
         UIColor *curColor = [[context viewControllerForKey:key] navBarBarTintColor];
         CGFloat curAlpha = [[context viewControllerForKey:key] navBarBackgroundAlpha];
-//        self.setNeedsNavigationBarUpdate(barTintColor: curColor)
-//        self.setNeedsNavigationBarUpdate(barBackgroundAlpha: curAlpha)
+        [self setNeedsNavigationBarUpdateForBarTintColor:curColor];
+        [self setNeedsNavigationBarUpdateForBarBackgroundAlpha:curAlpha];
     };
     
     // after that, cancel the gesture of return
@@ -294,7 +331,11 @@ static int wrPushDisplayCount = 0;
 
 - (void)wr_updateInteractiveTransition:(CGFloat)percentComplete
 {
+    UIViewController *fromVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextFromViewControllerKey];
+    UIViewController *toVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextToViewKey];
+    [self updateNavigationBarWithFromVC:fromVC toVC:toVC progress:percentComplete];
     
+    [self wr_updateInteractiveTransition:percentComplete];
 }
 
 @end
