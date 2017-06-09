@@ -27,6 +27,22 @@
 
 @end
 
+
+//==========================================================================
+#pragma mark - UINavigationController
+//==========================================================================
+@interface UINavigationController (WRAddition)<UINavigationBarDelegate>
+
+- (void)setNeedsNavigationBarUpdateForBarTintColor:(UIColor *)barTintColor;
+- (void)setNeedsNavigationBarUpdateForBarBackgroundAlpha:(CGFloat)barBackgroundAlpha;
+- (void)setNeedsNavigationBarUpdateForTintColor:(UIColor *)tintColor;
+- (void)setNeedsNavigationBarUpdateForTitleColor:(UIColor *)titleColor;
+
+- (void)updateNavigationBarWithFromVC:(UIViewController *)fromVC toVC:(UIViewController *)toVC progress:(CGFloat)progress;
+
+@end
+
+
 // =====================================================
 #pragma mark - UIViewController
 // =====================================================

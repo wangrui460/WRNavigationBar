@@ -114,10 +114,124 @@ static int kNavBarBottom = 64;
 //==========================================================================
 #pragma mark - UINavigationController
 //==========================================================================
-@interface UINavigationController (WRAddition)<UINavigationBarDelegate>
-@end
-
 @implementation UINavigationController (WRAddition)
+
+static CGFloat wrPopDuration = 0.13;
+static int wrPopDisplayCount = 0;
+- (CGFloat)wrPopProgress
+{
+    CGFloat all = 60 * wrPopDuration;
+    int current = MIN(all, wrPopDisplayCount);
+    return current / all;
+}
+
+static CGFloat wrPushDuration = 0.13;
+static int wrPushDisplayCount = 0;
+- (CGFloat)wrPushProgress
+{
+    CGFloat all = 60 * wrPopDuration;
+    int current = MIN(all, wrPopDisplayCount);
+    return current / all;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return [self.topViewController statusBarStyle];
+}
+
+- (void)setNeedsNavigationBarUpdateForBarTintColor:(UIColor *)barTintColor
+{
+    [self.navigationBar wr_setBackgroundColor:barTintColor];
+}
+- (void)setNeedsNavigationBarUpdateForBarBackgroundAlpha:(CGFloat)barBackgroundAlpha
+{
+    [self.navigationBar wr_setBackgroundAlpha:barBackgroundAlpha];
+}
+- (void)setNeedsNavigationBarUpdateForTintColor:(UIColor *)tintColor
+{
+    self.navigationBar.tintColor = tintColor;
+}
+- (void)setNeedsNavigationBarUpdateForTitleColor:(UIColor *)titleColor
+{
+    self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:titleColor};
+}
+
+- (void)updateNavigationBarWithFromVC:(UIViewController *)fromVC toVC:(UIViewController *)toVC progress:(CGFloat)progress
+{
+    // change navBarBarTintColor
+    UIColor *fromBarTintColor = [fromVC navBarBarTintColor];
+    UIColor *toBarTintColor = [toVC navBarBarTintColor];
+    UIColor *newBarTintColor = [UIColor middleColor:fromBarTintColor toColor:toBarTintColor percent:progress];
+    [self setNeedsNavigationBarUpdateForBarTintColor:newBarTintColor];
+    
+    // change navBarTintColor
+    UIColor *fromTintColor = [fromVC navBarTintColor];
+    UIColor *toTintColor = [toVC navBarTintColor];
+    UIColor *newTintColor = [UIColor middleColor:fromTintColor toColor:toTintColor percent:progress];
+    [self setNeedsNavigationBarUpdateForTintColor:newTintColor];
+    
+    // change navBarTitleColor
+    UIColor *fromTitleColor = [fromVC navBarTitleColor];
+    UIColor *toTitleColor = [toVC navBarTitleColor];
+    UIColor *newTitleColor = [UIColor middleColor:fromTitleColor toColor:toTitleColor percent:progress];
+    [self setNeedsNavigationBarUpdateForTitleColor:newTitleColor];
+    
+    // change navBar _UIBarBackground alpha
+    CGFloat fromBarBackgroundAlpha = [fromVC navBarBackgroundAlpha];
+    CGFloat toBarBackgroundAlpha = [toVC navBarBackgroundAlpha];
+    CGFloat newBarBackgroundAlpha = [UIColor middleAlpha:fromBarBackgroundAlpha toAlpha:toBarBackgroundAlpha percent:progress];
+    [self setNeedsNavigationBarUpdateForBarBackgroundAlpha:newBarBackgroundAlpha];
+}
+
++ (void)load
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
+    {
+        SEL needSwizzleSelectors[4] = {
+            @selector(updateInteractiveTransition:),
+            @selector(popToViewController:animated:),
+            @selector(popToRootViewControllerAnimated:),
+            @selector(pushViewController:animated:)
+        };
+      
+        for (int i = 0; i < 4;  i++) {
+            SEL selector = needSwizzleSelectors[i];
+            NSString *newSelectorStr = [NSString stringWithFormat:@"wr_%@", NSStringFromSelector(selector)];
+            Method originMethod = class_getInstanceMethod(self, selector);
+            Method swizzledMethod = class_getInstanceMethod(self, NSSelectorFromString(newSelectorStr));
+            method_exchangeImplementations(originMethod, swizzledMethod);
+        }
+    });
+}
+
+//- (NSArray<UIViewController *> *)wr_popToViewController:(UIViewController *)viewController animated:(BOOL)animated
+//{
+//    
+//}
+//
+//- (NSArray<UIViewController *> *)wr_popToRootViewControllerAnimated:(BOOL)animated
+//{
+//    
+//}
+//
+//- (void)popNeedDisplay
+//{
+//    
+//}
+//
+//- (void)wr_pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+//{
+//    
+//}
+//
+//- (void)pushNeedDisplay
+//{
+//    
+//}
+
+
+
 
 - (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item
 {
@@ -176,6 +290,11 @@ static int kNavBarBottom = 64;
             animations(UITransitionContextToViewControllerKey);
         }];
     }
+}
+
+- (void)wr_updateInteractiveTransition:(CGFloat)percentComplete
+{
+    
 }
 
 @end
@@ -288,7 +407,7 @@ static char kWRCustomNavBarKey;
             @selector(viewDidAppear:)
         };
         
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3;  i++) {
             SEL selector = needSwizzleSelectors[i];
             NSString *newSelectorStr = [NSString stringWithFormat:@"wr_%@", NSStringFromSelector(selector)];
             Method originMethod = class_getInstanceMethod(self, selector);
