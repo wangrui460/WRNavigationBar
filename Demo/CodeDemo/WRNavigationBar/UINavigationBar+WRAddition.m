@@ -394,6 +394,17 @@ static char kWRCustomNavBarKey;
 - (void)setNavBarBarTintColor:(UIColor *)color
 {
     objc_setAssociatedObject(self, &kWRNavBarBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if ([[self customNavBar] isKindOfClass:[UINavigationBar class]])
+    {
+        UINavigationBar *navBar = (UINavigationBar *)[self customNavBar];
+        [navBar wr_setBackgroundColor:color];
+    }
+    else
+    {
+        if ([self pushToCurrentVCFinished] == YES && [self pushToNextVCFinished] == NO) {
+            [self.navigationController setNeedsNavigationBarUpdateForBarTintColor:color];
+        }
+    }
 }
 
 // navigationBar _UIBarBackground alpha
@@ -406,6 +417,17 @@ static char kWRCustomNavBarKey;
 - (void)setNavBarBackgroundAlpha:(CGFloat)alpha
 {
     objc_setAssociatedObject(self, &kWRNavBarBackgroundAlphaKey, @(alpha), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if ([[self customNavBar] isKindOfClass:[UINavigationBar class]])
+    {
+        UINavigationBar *navBar = (UINavigationBar *)[self customNavBar];
+        [navBar wr_setBackgroundAlpha:alpha];
+    }
+    else
+    {
+        if ([self pushToCurrentVCFinished] == YES && [self pushToNextVCFinished] == NO) {
+            [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundAlpha:alpha];
+        }
+    }
 }
 
 // navigationBar tintColor
@@ -417,6 +439,17 @@ static char kWRCustomNavBarKey;
 - (void)setNavBarTintColor:(UIColor *)color
 {
     objc_setAssociatedObject(self, &kWRNavBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if ([[self customNavBar] isKindOfClass:[UINavigationBar class]])
+    {
+        UINavigationBar *navBar = (UINavigationBar *)[self customNavBar];
+        navBar.tintColor = color;
+    }
+    else
+    {
+        if ([self pushToNextVCFinished] == NO) {
+            [self.navigationController setNeedsNavigationBarUpdateForTintColor:color];
+        }
+    }
 }
 
 // navigationBar titleColor
@@ -428,6 +461,17 @@ static char kWRCustomNavBarKey;
 - (void)setNavBarTitleColor:(UIColor *)color
 {
     objc_setAssociatedObject(self, &kWRNavBarTitleColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if ([[self customNavBar] isKindOfClass:[UINavigationBar class]])
+    {
+        UINavigationBar *navBar = (UINavigationBar *)[self customNavBar];
+        navBar.titleTextAttributes = @{NSForegroundColorAttributeName:color};
+    }
+    else
+    {
+        if ([self pushToNextVCFinished] == NO) {
+            [self.navigationController setNeedsNavigationBarUpdateForTitleColor:color];
+        }
+    }
 }
 
 // statusBarStyle
@@ -439,6 +483,7 @@ static char kWRCustomNavBarKey;
 - (void)setStatusBarStyle:(UIStatusBarStyle)style
 {
     objc_setAssociatedObject(self, &kWRStatusBarStyleKey, @(style), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 // custom navigationBar
