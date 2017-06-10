@@ -8,9 +8,28 @@
 
 #import <UIKit/UIKit.h>
 
-// =====================================================
+
+#pragma mark - UIColor
+@interface UIColor (WRAddition)
+
+/** set default barTintColor of UINavigationBar */
++ (void)wr_setDefaultNavBarBarTintColor:(UIColor *)color;
+
+/** set default tintColor of UINavigationBar */
++ (void)wr_setDefaultNavBarTintColor:(UIColor *)color;
+
+/** set default titleColor of UINavigationBar */
++ (void)wr_setDefaultNavBarTitleColor:(UIColor *)color;
+
+/** set default statusBarStyle of UIStatusBar */
++ (void)wr_setDefaultStatusBarStyle:(UIStatusBarStyle)style;
+
+@end
+
+
+
+
 #pragma mark - UINavigationBar
-// =====================================================
 @interface UINavigationBar (WRAddition)
 
 /** 设置导航栏背景颜色*/
@@ -28,76 +47,32 @@
 @end
 
 
-//==========================================================================
-#pragma mark - UINavigationController
-//==========================================================================
-@interface UINavigationController (WRAddition)<UINavigationBarDelegate>
-
-- (void)setNeedsNavigationBarUpdateForBarTintColor:(UIColor *)barTintColor;
-- (void)setNeedsNavigationBarUpdateForBarBackgroundAlpha:(CGFloat)barBackgroundAlpha;
-- (void)setNeedsNavigationBarUpdateForTintColor:(UIColor *)tintColor;
-- (void)setNeedsNavigationBarUpdateForTitleColor:(UIColor *)titleColor;
-
-- (void)updateNavigationBarWithFromVC:(UIViewController *)fromVC toVC:(UIViewController *)toVC progress:(CGFloat)progress;
-
-@end
 
 
-// =====================================================
 #pragma mark - UIViewController
-// =====================================================
 @interface UIViewController (WRAddition)
 
-- (BOOL)pushToCurrentVCFinished;
-- (void)setPushToCurrentVCFinished:(BOOL)isFinished;
+- (UIColor *)wr_navBarBarTintColor;
+- (void)wr_setNavBarBarTintColor:(UIColor *)color;
 
-- (BOOL)pushToNextVCFinished;
-- (void)setPushToNextVCFinished:(BOOL)isFinished;
+- (CGFloat)wr_navBarBackgroundAlpha;
+- (void)wr_setNavBarBackgroundAlpha:(CGFloat)alpha;
 
-- (UIColor *)navBarBarTintColor;
-- (void)setNavBarBarTintColor:(UIColor *)color;
+- (UIColor *)wr_navBarTintColor;
+- (void)wr_setNavBarTintColor:(UIColor *)color;
 
-- (CGFloat)navBarBackgroundAlpha;
-- (void)setNavBarBackgroundAlpha:(CGFloat)alpha;
+- (UIColor *)wr_navBarTitleColor;
+- (void)wr_setNavBarTitleColor:(UIColor *)color;
 
-- (UIColor *)navBarTintColor;
-- (void)setNavBarTintColor:(UIColor *)color;
+- (UIStatusBarStyle)wr_statusBarStyle;
+- (void)wr_setStatusBarStyle:(UIStatusBarStyle)style;
 
-- (UIColor *)navBarTitleColor;
-- (void)setNavBarTitleColor:(UIColor *)color;
-
-- (UIStatusBarStyle)statusBarStyle;
-- (void)setStatusBarStyle:(UIStatusBarStyle)style;
-
-- (UIView *)customNavBar;
-- (void)setCustomNavBar:(UINavigationBar *)navBar;
+- (void)wr_setCustomNavBar:(UINavigationBar *)navBar;
 
 @end
 
 
-// ====================================================
-#pragma mark - UIColor
-// ====================================================
-@interface UIColor (WRAddition)
 
-+ (UIColor *)defaultNavBarBarTintColor;
-+ (void)setDefaultNavBarBarTintColor:(UIColor *)color;
-
-+ (UIColor *)defaultNavBarTintColor;
-+ (void)setDefaultNavBarTintColor:(UIColor *)color;
-
-+ (UIColor *)defaultNavBarTitleColor;
-+ (void)setDefaultNavBarTitleColor:(UIColor *)color;
-
-+ (UIStatusBarStyle)defaultStatusBarStyle;
-+ (void)setDefaultStatusBarStyle:(UIStatusBarStyle)style;
-
-+ (CGFloat)defaultBackgroundAlpha;
-
-+ (UIColor *)middleColor:(UIColor *)fromColor toColor:(UIColor *)toColor percent:(CGFloat)percent;
-+ (CGFloat)middleAlpha:(CGFloat)fromAlpha toAlpha:(CGFloat)toAlpha percent:(CGFloat)percent;
-
-@end
 
 
 

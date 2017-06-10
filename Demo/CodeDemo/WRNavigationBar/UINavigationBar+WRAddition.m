@@ -10,6 +10,99 @@
 #import "UINavigationBar+WRAddition.h"
 #import <objc/runtime.h>
 
+
+//===============================================================================================
+#pragma mark - default navigationBar barTintColor、tintColor and statusBarStyle YOU CAN CHANGE!!!
+//===============================================================================================
+@interface UIColor (WRAddition)
++ (UIColor *)defaultNavBarBarTintColor;
++ (UIColor *)defaultNavBarTintColor;
++ (UIColor *)defaultNavBarTitleColor;
++ (UIStatusBarStyle)defaultStatusBarStyle;
++ (CGFloat)defaultNavBarBackgroundAlpha;
++ (UIColor *)middleColor:(UIColor *)fromColor toColor:(UIColor *)toColor percent:(CGFloat)percent;
++ (CGFloat)middleAlpha:(CGFloat)fromAlpha toAlpha:(CGFloat)toAlpha percent:(CGFloat)percent;
+@end
+@implementation UIColor (WRAddition)
+
+static char kWRDefaultNavBarBarTintColorKey;
+static char kWRDefaultNavBarTintColorKey;
+static char kWRDefaultNavBarTitleColorKey;
+static char kWRDefaultStatusBarStyleKey;
+
++ (UIColor *)defaultNavBarBarTintColor
+{
+    UIColor *color = (UIColor *)objc_getAssociatedObject(self, &kWRDefaultNavBarBarTintColorKey);
+    return (color != nil) ? color : [UIColor whiteColor];
+}
++ (void)wr_setDefaultNavBarBarTintColor:(UIColor *)color
+{
+    objc_setAssociatedObject(self, &kWRDefaultNavBarBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
++ (UIColor *)defaultNavBarTintColor
+{
+    UIColor *color = (UIColor *)objc_getAssociatedObject(self, &kWRDefaultNavBarTintColorKey);
+    return (color != nil) ? color : [UIColor colorWithRed:0 green:0.478431 blue:1 alpha:1.0];
+}
++ (void)wr_setDefaultNavBarTintColor:(UIColor *)color
+{
+    objc_setAssociatedObject(self, &kWRDefaultNavBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
++ (UIColor *)defaultNavBarTitleColor
+{
+    UIColor *color = (UIColor *)objc_getAssociatedObject(self, &kWRDefaultNavBarTitleColorKey);
+    return (color != nil) ? color : [UIColor blackColor];
+}
++ (void)wr_setDefaultNavBarTitleColor:(UIColor *)color
+{
+    objc_setAssociatedObject(self, &kWRDefaultNavBarTitleColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
++ (UIStatusBarStyle)defaultStatusBarStyle
+{
+    id style = objc_getAssociatedObject(self, &kWRDefaultStatusBarStyleKey);
+    return (style != nil) ? (UIStatusBarStyle)style : UIStatusBarStyleDefault;
+}
++ (void)wr_setDefaultStatusBarStyle:(UIStatusBarStyle)style
+{
+    objc_setAssociatedObject(self, &kWRDefaultStatusBarStyleKey, @(style), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
++ (CGFloat)defaultNavBarBackgroundAlpha
+{
+    return 1.0;
+}
+
++ (UIColor *)middleColor:(UIColor *)fromColor toColor:(UIColor *)toColor percent:(CGFloat)percent
+{
+    CGFloat fromRed = 0;
+    CGFloat fromGreen = 0;
+    CGFloat fromBlue = 0;
+    CGFloat fromAlpha = 0;
+    [fromColor getRed:&fromRed green:&fromGreen blue:&fromBlue alpha:&fromAlpha];
+    
+    CGFloat toRed = 0;
+    CGFloat toGreen = 0;
+    CGFloat toBlue = 0;
+    CGFloat toAlpha = 0;
+    [toColor getRed:&toRed green:&toGreen blue:&toBlue alpha:&toAlpha];
+    
+    CGFloat newRed = fromRed + (toRed - fromRed) * percent;
+    CGFloat newGreen = fromGreen + (toGreen - fromGreen) * percent;
+    CGFloat newBlue = fromBlue + (toBlue - fromBlue) * percent;
+    CGFloat newAlpha = fromAlpha + (toAlpha - fromAlpha) * percent;
+    return [UIColor colorWithRed:newRed green:newGreen blue:newBlue alpha:newAlpha];
+}
++ (CGFloat)middleAlpha:(CGFloat)fromAlpha toAlpha:(CGFloat)toAlpha percent:(CGFloat)percent
+{
+    return fromAlpha + (toAlpha - fromAlpha) * percent;
+}
+
+@end
+
+
 //==========================================================================
 #pragma mark - UINavigationBar
 //==========================================================================
@@ -139,7 +232,7 @@ static int wrPushDisplayCount = 0;
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-    return [self.topViewController statusBarStyle];
+    return [self.topViewController wr_statusBarStyle];
 }
 
 - (void)setNeedsNavigationBarUpdateForBarTintColor:(UIColor *)barTintColor
@@ -162,26 +255,26 @@ static int wrPushDisplayCount = 0;
 - (void)updateNavigationBarWithFromVC:(UIViewController *)fromVC toVC:(UIViewController *)toVC progress:(CGFloat)progress
 {
     // change navBarBarTintColor
-    UIColor *fromBarTintColor = [fromVC navBarBarTintColor];
-    UIColor *toBarTintColor = [toVC navBarBarTintColor];
+    UIColor *fromBarTintColor = [fromVC wr_navBarBarTintColor];
+    UIColor *toBarTintColor = [toVC wr_navBarBarTintColor];
     UIColor *newBarTintColor = [UIColor middleColor:fromBarTintColor toColor:toBarTintColor percent:progress];
     [self setNeedsNavigationBarUpdateForBarTintColor:newBarTintColor];
     
     // change navBarTintColor
-    UIColor *fromTintColor = [fromVC navBarTintColor];
-    UIColor *toTintColor = [toVC navBarTintColor];
+    UIColor *fromTintColor = [fromVC wr_navBarTintColor];
+    UIColor *toTintColor = [toVC wr_navBarTintColor];
     UIColor *newTintColor = [UIColor middleColor:fromTintColor toColor:toTintColor percent:progress];
     [self setNeedsNavigationBarUpdateForTintColor:newTintColor];
     
     // change navBarTitleColor
-    UIColor *fromTitleColor = [fromVC navBarTitleColor];
-    UIColor *toTitleColor = [toVC navBarTitleColor];
+    UIColor *fromTitleColor = [fromVC wr_navBarTitleColor];
+    UIColor *toTitleColor = [toVC wr_navBarTitleColor];
     UIColor *newTitleColor = [UIColor middleColor:fromTitleColor toColor:toTitleColor percent:progress];
     [self setNeedsNavigationBarUpdateForTitleColor:newTitleColor];
     
     // change navBar _UIBarBackground alpha
-    CGFloat fromBarBackgroundAlpha = [fromVC navBarBackgroundAlpha];
-    CGFloat toBarBackgroundAlpha = [toVC navBarBackgroundAlpha];
+    CGFloat fromBarBackgroundAlpha = [fromVC wr_navBarBackgroundAlpha];
+    CGFloat toBarBackgroundAlpha = [toVC wr_navBarBackgroundAlpha];
     CGFloat newBarBackgroundAlpha = [UIColor middleAlpha:fromBarBackgroundAlpha toAlpha:toBarBackgroundAlpha percent:progress];
     [self setNeedsNavigationBarUpdateForBarBackgroundAlpha:newBarBackgroundAlpha];
 }
@@ -313,8 +406,8 @@ static int wrPushDisplayCount = 0;
 - (void)dealInteractionChanges:(id<UIViewControllerTransitionCoordinatorContext>)context
 {
     void (^animations) (UITransitionContextViewControllerKey) = ^(UITransitionContextViewControllerKey key){
-        UIColor *curColor = [[context viewControllerForKey:key] navBarBarTintColor];
-        CGFloat curAlpha = [[context viewControllerForKey:key] navBarBackgroundAlpha];
+        UIColor *curColor = [[context viewControllerForKey:key] wr_navBarBarTintColor];
+        CGFloat curAlpha = [[context viewControllerForKey:key] wr_navBarBackgroundAlpha];
         [self setNeedsNavigationBarUpdateForBarTintColor:curColor];
         [self setNeedsNavigationBarUpdateForBarBackgroundAlpha:curAlpha];
     };
@@ -386,17 +479,17 @@ static char kWRCustomNavBarKey;
 }
 
 // navigationBar barTintColor
-- (UIColor *)navBarBarTintColor
+- (UIColor *)wr_navBarBarTintColor
 {
     UIColor *barTintColor = (UIColor *)objc_getAssociatedObject(self, &kWRNavBarBarTintColorKey);
     return (barTintColor != nil) ? barTintColor : [UIColor defaultNavBarBarTintColor];
 }
-- (void)setNavBarBarTintColor:(UIColor *)color
+- (void)wr_setNavBarBarTintColor:(UIColor *)color
 {
     objc_setAssociatedObject(self, &kWRNavBarBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    if ([[self customNavBar] isKindOfClass:[UINavigationBar class]])
+    if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]])
     {
-        UINavigationBar *navBar = (UINavigationBar *)[self customNavBar];
+        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
         [navBar wr_setBackgroundColor:color];
     }
     else
@@ -408,18 +501,18 @@ static char kWRCustomNavBarKey;
 }
 
 // navigationBar _UIBarBackground alpha
-- (CGFloat)navBarBackgroundAlpha
+- (CGFloat)wr_navBarBackgroundAlpha
 {
     id barBackgroundAlpha = objc_getAssociatedObject(self, &kWRNavBarBackgroundAlphaKey);
-    return (barBackgroundAlpha != nil) ? [barBackgroundAlpha floatValue] : 1.0;
+    return (barBackgroundAlpha != nil) ? [barBackgroundAlpha floatValue] : [UIColor defaultNavBarBackgroundAlpha];
     
 }
-- (void)setNavBarBackgroundAlpha:(CGFloat)alpha
+- (void)wr_setNavBarBackgroundAlpha:(CGFloat)alpha
 {
     objc_setAssociatedObject(self, &kWRNavBarBackgroundAlphaKey, @(alpha), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    if ([[self customNavBar] isKindOfClass:[UINavigationBar class]])
+    if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]])
     {
-        UINavigationBar *navBar = (UINavigationBar *)[self customNavBar];
+        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
         [navBar wr_setBackgroundAlpha:alpha];
     }
     else
@@ -431,17 +524,17 @@ static char kWRCustomNavBarKey;
 }
 
 // navigationBar tintColor
-- (UIColor *)navBarTintColor
+- (UIColor *)wr_navBarTintColor
 {
     UIColor *tintColor = (UIColor *)objc_getAssociatedObject(self, &kWRNavBarTintColorKey);
     return (tintColor != nil) ? tintColor : [UIColor defaultNavBarTintColor];
 }
-- (void)setNavBarTintColor:(UIColor *)color
+- (void)wr_setNavBarTintColor:(UIColor *)color
 {
     objc_setAssociatedObject(self, &kWRNavBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    if ([[self customNavBar] isKindOfClass:[UINavigationBar class]])
+    if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]])
     {
-        UINavigationBar *navBar = (UINavigationBar *)[self customNavBar];
+        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
         navBar.tintColor = color;
     }
     else
@@ -453,17 +546,17 @@ static char kWRCustomNavBarKey;
 }
 
 // navigationBar titleColor
-- (UIColor *)navBarTitleColor
+- (UIColor *)wr_navBarTitleColor
 {
     UIColor *titleColor = (UIColor *)objc_getAssociatedObject(self, &kWRNavBarTitleColorKey);
     return (titleColor != nil) ? titleColor : [UIColor defaultNavBarTitleColor];
 }
-- (void)setNavBarTitleColor:(UIColor *)color
+- (void)wr_setNavBarTitleColor:(UIColor *)color
 {
     objc_setAssociatedObject(self, &kWRNavBarTitleColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    if ([[self customNavBar] isKindOfClass:[UINavigationBar class]])
+    if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]])
     {
-        UINavigationBar *navBar = (UINavigationBar *)[self customNavBar];
+        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
         navBar.titleTextAttributes = @{NSForegroundColorAttributeName:color};
     }
     else
@@ -475,24 +568,24 @@ static char kWRCustomNavBarKey;
 }
 
 // statusBarStyle
-- (UIStatusBarStyle)statusBarStyle
+- (UIStatusBarStyle)wr_statusBarStyle
 {
     id style = objc_getAssociatedObject(self, &kWRStatusBarStyleKey);
     return (style != nil) ? (UIStatusBarStyle)style : [UIColor defaultStatusBarStyle];
 }
-- (void)setStatusBarStyle:(UIStatusBarStyle)style
+- (void)wr_setStatusBarStyle:(UIStatusBarStyle)style
 {
     objc_setAssociatedObject(self, &kWRStatusBarStyleKey, @(style), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [self setNeedsStatusBarAppearanceUpdate];
 }
 
 // custom navigationBar
-- (UIView *)customNavBar
+- (UIView *)wr_customNavBar
 {
     UIView *navBar = objc_getAssociatedObject(self, &kWRCustomNavBarKey);
     return (navBar != nil) ? navBar : [UIView new];
 }
-- (void)setCustomNavBar:(UINavigationBar *)navBar
+- (void)wr_setCustomNavBar:(UINavigationBar *)navBar
 {
     objc_setAssociatedObject(self, &kWRCustomNavBarKey, navBar, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
@@ -521,8 +614,8 @@ static char kWRCustomNavBarKey;
 - (void)wr_viewWillAppear:(BOOL)animated
 {
     [self setPushToNextVCFinished:NO];
-    [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self navBarTintColor]];
-    [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self navBarTitleColor]];
+    [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self wr_navBarTintColor]];
+    [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self wr_navBarTitleColor]];
     [self wr_viewWillAppear:animated];
 }
 
@@ -534,96 +627,16 @@ static char kWRCustomNavBarKey;
 
 - (void)wr_viewDidAppear:(BOOL)animated
 {
-    [self.navigationController setNeedsNavigationBarUpdateForBarTintColor:[self navBarBarTintColor]];
-    [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundAlpha:[self navBarBackgroundAlpha]];
-    [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self navBarTintColor]];
-    [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self navBarTitleColor]];
+    [self.navigationController setNeedsNavigationBarUpdateForBarTintColor:[self wr_navBarBarTintColor]];
+    [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundAlpha:[self wr_navBarBackgroundAlpha]];
+    [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self wr_navBarTintColor]];
+    [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self wr_navBarTitleColor]];
     [self wr_viewDidAppear:animated];
 }
 
 @end
 
-//===============================================================================================
-#pragma mark - default navigationBar barTintColor、tintColor and statusBarStyle YOU CAN CHANGE!!!
-//===============================================================================================
-@implementation UIColor (WRAddition)
 
-static char kWRDefaultNavBarBarTintColorKey;
-static char kWRDefaultNavBarTintColorKey;
-static char kWRDefaultNavBarTitleColorKey;
-static char kWRDefaultStatusBarStyleKey;
-
-+ (UIColor *)defaultNavBarBarTintColor
-{
-    UIColor *color = (UIColor *)objc_getAssociatedObject(self, &kWRDefaultNavBarBarTintColorKey);
-    return (color != nil) ? color : [UIColor whiteColor];
-}
-+ (void)setDefaultNavBarBarTintColor:(UIColor *)color
-{
-    objc_setAssociatedObject(self, &kWRDefaultNavBarBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-+ (UIColor *)defaultNavBarTintColor
-{
-    UIColor *color = (UIColor *)objc_getAssociatedObject(self, &kWRDefaultNavBarTintColorKey);
-    return (color != nil) ? color : [UIColor colorWithRed:0 green:0.478431 blue:1 alpha:1.0];
-}
-+ (void)setDefaultNavBarTintColor:(UIColor *)color
-{
-    objc_setAssociatedObject(self, &kWRDefaultNavBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-+ (UIColor *)defaultNavBarTitleColor
-{
-    UIColor *color = (UIColor *)objc_getAssociatedObject(self, &kWRDefaultNavBarTitleColorKey);
-    return (color != nil) ? color : [UIColor blackColor];
-}
-+ (void)setDefaultNavBarTitleColor:(UIColor *)color
-{
-    objc_setAssociatedObject(self, &kWRDefaultNavBarTitleColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-+ (UIStatusBarStyle)defaultStatusBarStyle
-{
-    id style = objc_getAssociatedObject(self, &kWRDefaultStatusBarStyleKey);
-    return (style != nil) ? (UIStatusBarStyle)style : UIStatusBarStyleDefault;
-}
-+ (void)setDefaultStatusBarStyle:(UIStatusBarStyle)style
-{
-    objc_setAssociatedObject(self, &kWRDefaultStatusBarStyleKey, @(style), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-+ (CGFloat)defaultBackgroundAlpha
-{
-    return 1.0;
-}
-
-+ (UIColor *)middleColor:(UIColor *)fromColor toColor:(UIColor *)toColor percent:(CGFloat)percent
-{
-    CGFloat fromRed = 0;
-    CGFloat fromGreen = 0;
-    CGFloat fromBlue = 0;
-    CGFloat fromAlpha = 0;
-    [fromColor getRed:&fromRed green:&fromGreen blue:&fromBlue alpha:&fromAlpha];
-    
-    CGFloat toRed = 0;
-    CGFloat toGreen = 0;
-    CGFloat toBlue = 0;
-    CGFloat toAlpha = 0;
-    [toColor getRed:&toRed green:&toGreen blue:&toBlue alpha:&toAlpha];
-    
-    CGFloat newRed = fromRed + (toRed - fromRed) * percent;
-    CGFloat newGreen = fromGreen + (toGreen - fromGreen) * percent;
-    CGFloat newBlue = fromBlue + (toBlue - fromBlue) * percent;
-    CGFloat newAlpha = fromAlpha + (toAlpha - fromAlpha) * percent;
-    return [UIColor colorWithRed:newRed green:newGreen blue:newBlue alpha:newAlpha];
-}
-+ (CGFloat)middleAlpha:(CGFloat)fromAlpha toAlpha:(CGFloat)toAlpha percent:(CGFloat)percent
-{
-    return fromAlpha + (toAlpha - fromAlpha) * percent;
-}
-
-@end
 
 
 
