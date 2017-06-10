@@ -476,8 +476,8 @@ static char kWRCustomNavBarKey;
 - (void)wr_viewWillAppear:(BOOL)animated
 {
     [self setPushToNextVCFinished:NO];
-//    self.navigationController setNeedsNavigationBarUpdate....
-//    self.navigationController setNeedsNavigationBarUpdate....
+    [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self navBarTintColor]];
+    [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self navBarTitleColor]];
     [self wr_viewWillAppear:animated];
 }
 
@@ -489,20 +489,18 @@ static char kWRCustomNavBarKey;
 
 - (void)wr_viewDidAppear:(BOOL)animated
 {
-//    self.navigationController setNeedsNavigationBarUpdate....
-//    self.navigationController setNeedsNavigationBarUpdate....
-//    self.navigationController setNeedsNavigationBarUpdate....
-//    self.navigationController setNeedsNavigationBarUpdate....
+    [self.navigationController setNeedsNavigationBarUpdateForBarTintColor:[self navBarBarTintColor]];
+    [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundAlpha:[self navBarBackgroundAlpha]];
+    [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self navBarTintColor]];
+    [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self navBarTitleColor]];
     [self wr_viewDidAppear:animated];
 }
 
 @end
 
-
-
-//==========================================================================
-#pragma mark - UIColor
-//==========================================================================
+//===============================================================================================
+#pragma mark - default navigationBar barTintColor、tintColor and statusBarStyle YOU CAN CHANGE!!!
+//===============================================================================================
 @implementation UIColor (WRAddition)
 
 static char kWRDefaultNavBarBarTintColorKey;
