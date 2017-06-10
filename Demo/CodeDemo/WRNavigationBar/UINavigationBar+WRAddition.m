@@ -16,7 +16,7 @@
 @implementation UINavigationBar (WRAddition)
 
 static char kWRBackgroundViewKey;
-static int kNavBarBottom = 64;
+static int kWRNavBarBottom = 64;
 
 - (UIView*)backgroundView
 {
@@ -28,19 +28,21 @@ static int kNavBarBottom = 64;
     objc_setAssociatedObject(self, &kWRBackgroundViewKey, backgroundView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+// set navigationBar barTintColor
 - (void)wr_setBackgroundColor:(UIColor *)color
 {
     if (self.backgroundView == nil)
     {
-        // 设置导航栏本身全透明
+        // add a image(nil color) to _UIBarBackground make it clear
         [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-        self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), kNavBarBottom)];
-        // _UIBarBackground是导航栏的第一个子控件
+        self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), kWRNavBarBottom)];
+        // _UIBarBackground is first subView for navigationBar
         [self.subviews.firstObject insertSubview:self.backgroundView atIndex:0];
     }
     self.backgroundView.backgroundColor = color;
 }
 
+// set _UIBarBackground alpha (_UIBarBackground subviews alpha <= _UIBarBackground alpha)
 - (void)wr_setBackgroundAlpha:(CGFloat)alpha
 {
     UIView *barBackgroundView = self.subviews.firstObject;
@@ -53,7 +55,7 @@ static int kNavBarBottom = 64;
     {
         if (hasSystemBackIndicator == YES)
         {
-            // _UIBarBackground对应的view是系统导航栏，不需要改变其透明度
+            // _UIBarBackground/_UINavigationBarBackground对应的view是系统导航栏，不需要改变其透明度
             Class _UIBarBackgroundClass = NSClassFromString(@"_UIBarBackground");
             if (_UIBarBackgroundClass != nil)
             {
@@ -95,6 +97,7 @@ static int kNavBarBottom = 64;
     }
 }
 
+// 设置导航栏在垂直方向上平移多少距离
 - (void)wr_setTranslationY:(CGFloat)translationY
 {
     // CGAffineTransformMakeTranslation  平移
@@ -183,6 +186,7 @@ static int wrPushDisplayCount = 0;
     [self setNeedsNavigationBarUpdateForBarBackgroundAlpha:newBarBackgroundAlpha];
 }
 
+#pragma mark - call swizzling methods active 主动调用交换方法
 + (void)load
 {
     static dispatch_once_t onceToken;
@@ -237,6 +241,7 @@ static int wrPushDisplayCount = 0;
     return vcs;
 }
 
+// change navigationBar barTintColor smooth before pop to current VC finished
 - (void)popNeedDisplay
 {
     wrPopDisplayCount += 1;
@@ -261,6 +266,7 @@ static int wrPushDisplayCount = 0;
     [CATransaction commit];
 }
 
+// change navigationBar barTintColor smooth before push to current VC finished or before pop to current VC finished
 - (void)pushNeedDisplay
 {
     wrPushDisplayCount += 1;
@@ -270,6 +276,7 @@ static int wrPushDisplayCount = 0;
     [self updateNavigationBarWithFromVC:fromVC toVC:toVC progress:pushProgress];
 }
 
+#pragma mark - deal the gesture of return
 - (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item
 {
     __weak typeof (self) weakSelf = self;
@@ -302,6 +309,7 @@ static int wrPushDisplayCount = 0;
     return YES;
 }
 
+// deal the gesture of return break off
 - (void)dealInteractionChanges:(id<UIViewControllerTransitionCoordinatorContext>)context
 {
     void (^animations) (UITransitionContextViewControllerKey) = ^(UITransitionContextViewControllerKey key){
@@ -341,7 +349,6 @@ static int wrPushDisplayCount = 0;
 @end
 
 
-
 //==========================================================================
 #pragma mark - UIViewController
 //==========================================================================
@@ -356,6 +363,7 @@ static char kWRNavBarTitleColorKey;
 static char kWRStatusBarStyleKey;
 static char kWRCustomNavBarKey;
 
+// navigationBar barTintColor can not change by currentVC before fromVC push to currentVC finished
 - (BOOL)pushToCurrentVCFinished
 {
     id isFinished = objc_getAssociatedObject(self, &kWRPushToCurrentVCFinishedKey);
@@ -366,6 +374,7 @@ static char kWRCustomNavBarKey;
     objc_setAssociatedObject(self, &kWRPushToCurrentVCFinishedKey, @(isFinished), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+// navigationBar barTintColor can not change by currentVC when currentVC push to nextVC finished
 - (BOOL)pushToNextVCFinished
 {
     id isFinished = objc_getAssociatedObject(self, &kWRPushToNextVCFinishedKey);
@@ -376,6 +385,7 @@ static char kWRCustomNavBarKey;
     objc_setAssociatedObject(self, &kWRPushToNextVCFinishedKey, @(isFinished), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+// navigationBar barTintColor
 - (UIColor *)navBarBarTintColor
 {
     UIColor *barTintColor = (UIColor *)objc_getAssociatedObject(self, &kWRNavBarBarTintColorKey);
@@ -386,6 +396,7 @@ static char kWRCustomNavBarKey;
     objc_setAssociatedObject(self, &kWRNavBarBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+// navigationBar _UIBarBackground alpha
 - (CGFloat)navBarBackgroundAlpha
 {
     id barBackgroundAlpha = objc_getAssociatedObject(self, &kWRNavBarBackgroundAlphaKey);
@@ -397,6 +408,7 @@ static char kWRCustomNavBarKey;
     objc_setAssociatedObject(self, &kWRNavBarBackgroundAlphaKey, @(alpha), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+// navigationBar tintColor
 - (UIColor *)navBarTintColor
 {
     UIColor *tintColor = (UIColor *)objc_getAssociatedObject(self, &kWRNavBarTintColorKey);
@@ -407,6 +419,7 @@ static char kWRCustomNavBarKey;
     objc_setAssociatedObject(self, &kWRNavBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+// navigationBar titleColor
 - (UIColor *)navBarTitleColor
 {
     UIColor *titleColor = (UIColor *)objc_getAssociatedObject(self, &kWRNavBarTitleColorKey);
@@ -417,6 +430,7 @@ static char kWRCustomNavBarKey;
     objc_setAssociatedObject(self, &kWRNavBarTitleColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+// statusBarStyle
 - (UIStatusBarStyle)statusBarStyle
 {
     id style = objc_getAssociatedObject(self, &kWRStatusBarStyleKey);
@@ -427,6 +441,7 @@ static char kWRCustomNavBarKey;
     objc_setAssociatedObject(self, &kWRStatusBarStyleKey, @(style), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+// custom navigationBar
 - (UIView *)customNavBar
 {
     UIView *navBar = objc_getAssociatedObject(self, &kWRCustomNavBarKey);
