@@ -63,7 +63,7 @@ static char kWRDefaultStatusBarStyleKey;
 + (UIStatusBarStyle)defaultStatusBarStyle
 {
     id style = objc_getAssociatedObject(self, &kWRDefaultStatusBarStyleKey);
-    return (style != nil) ? (UIStatusBarStyle)style : UIStatusBarStyleDefault;
+    return (style != nil) ? [style integerValue] : UIStatusBarStyleDefault;
 }
 + (void)wr_setDefaultStatusBarStyle:(UIStatusBarStyle)style
 {
@@ -571,7 +571,7 @@ static char kWRCustomNavBarKey;
 - (UIStatusBarStyle)wr_statusBarStyle
 {
     id style = objc_getAssociatedObject(self, &kWRStatusBarStyleKey);
-    return (style != nil) ? (UIStatusBarStyle)style : [UIColor defaultStatusBarStyle];
+    return (style != nil) ? [style integerValue] : [UIColor defaultStatusBarStyle];
 }
 - (void)wr_setStatusBarStyle:(UIStatusBarStyle)style
 {

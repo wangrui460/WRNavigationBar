@@ -13,6 +13,7 @@
 #import "SixthViewController.h"
 #import "BaseNavigationController.h"
 #import "CustomNavBarController.h"
+#import "UINavigationBar+WRAddition.h"
 
 UIColor *MainNavBarColor = nil;
 UIColor *MainViewColor = nil;
@@ -59,11 +60,20 @@ UIColor *MainViewColor = nil;
 {
     MainNavBarColor = [UIColor colorWithRed:0/255.0 green:175/255.0 blue:240/255.0 alpha:1];
     MainViewColor   = [UIColor colorWithRed:126/255.0 green:126/255.0 blue:126/255.0 alpha:1];
-    UINavigationBar *navBar = [UINavigationBar appearance];
-    [navBar setTintColor:[UIColor whiteColor]];
-    [navBar setBarTintColor:MainNavBarColor];
-    [navBar setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
-                                     [UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:21], NSFontAttributeName, nil]];
+//    UINavigationBar *navBar = [UINavigationBar appearance];
+//    [navBar setTintColor:[UIColor whiteColor]];
+//    [navBar setBarTintColor:MainNavBarColor];
+//    [navBar setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+//                                     [UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:21], NSFontAttributeName, nil]];
+    
+    // 设置导航栏默认的背景颜色
+    [UIColor wr_setDefaultNavBarBarTintColor:MainNavBarColor];
+    // 设置导航栏所有按钮的默认颜色
+    [UIColor wr_setDefaultNavBarTintColor:[UIColor whiteColor]];
+    // 设置导航栏标题默认颜色
+    [UIColor wr_setDefaultNavBarTitleColor:[UIColor whiteColor]];
+    // 统一设置状态栏样式
+    [UIColor wr_setDefaultStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 

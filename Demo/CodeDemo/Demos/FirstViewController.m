@@ -28,8 +28,7 @@
     self.title = @"熊猫美妆";
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.imgView;
-    // 设置状态栏为白色
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    [self wr_setStatusBarStyle:UIStatusBarStyleDefault];
     // 设置导航栏颜色
     [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
 }
