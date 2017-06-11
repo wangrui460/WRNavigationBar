@@ -30,7 +30,7 @@
 
 
 #pragma mark - UINavigationBar
-@interface UINavigationBar (WRAddition)
+@interface UINavigationBar (WRAddition) <UINavigationBarDelegate>
 
 /** 设置导航栏背景颜色*/
 - (void)wr_setBackgroundColor:(UIColor *)color;

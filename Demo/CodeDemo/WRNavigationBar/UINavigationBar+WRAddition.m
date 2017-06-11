@@ -225,12 +225,12 @@ static int wrPopDisplayCount = 0;
     return current / all;
 }
 
-static CGFloat wrPushDuration = 0.13;
+static CGFloat wrPushDuration = 0.10;
 static int wrPushDisplayCount = 0;
 - (CGFloat)wrPushProgress
 {
-    CGFloat all = 60 * wrPopDuration;
-    int current = MIN(all, wrPopDisplayCount);
+    CGFloat all = 60 * wrPushDuration;
+    int current = MIN(all, wrPushDisplayCount);
     return current / all;
 }
 
@@ -290,7 +290,7 @@ static int wrPushDisplayCount = 0;
     dispatch_once(&onceToken, ^
     {
         SEL needSwizzleSelectors[4] = {
-            @selector(updateInteractiveTransition:),
+            NSSelectorFromString(@"_updateInteractiveTransition:"),
             @selector(popToViewController:animated:),
             @selector(popToRootViewControllerAnimated:),
             @selector(pushViewController:animated:)
@@ -298,7 +298,7 @@ static int wrPushDisplayCount = 0;
       
         for (int i = 0; i < 4;  i++) {
             SEL selector = needSwizzleSelectors[i];
-            NSString *newSelectorStr = [NSString stringWithFormat:@"wr_%@", NSStringFromSelector(selector)];
+            NSString *newSelectorStr = [[NSString stringWithFormat:@"wr_%@", NSStringFromSelector(selector)] stringByReplacingOccurrencesOfString:@"__" withString:@"_"];
             Method originMethod = class_getInstanceMethod(self, selector);
             Method swizzledMethod = class_getInstanceMethod(self, NSSelectorFromString(newSelectorStr));
             method_exchangeImplementations(originMethod, swizzledMethod);
@@ -344,7 +344,7 @@ static int wrPushDisplayCount = 0;
     wrPopDisplayCount += 1;
     CGFloat popProgress = [self wrPopProgress];
     UIViewController *fromVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextFromViewControllerKey];
-    UIViewController *toVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextToViewKey];
+    UIViewController *toVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextToViewControllerKey];
     [self updateNavigationBarWithFromVC:fromVC toVC:toVC progress:popProgress];
 }
 
@@ -369,8 +369,9 @@ static int wrPushDisplayCount = 0;
 {
     wrPushDisplayCount += 1;
     CGFloat pushProgress = [self wrPushProgress];
+    NSLog(@"pushProgress : %f", pushProgress);
     UIViewController *fromVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextFromViewControllerKey];
-    UIViewController *toVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextToViewKey];
+    UIViewController *toVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextToViewControllerKey];
     [self updateNavigationBarWithFromVC:fromVC toVC:toVC progress:pushProgress];
 }
 
@@ -438,7 +439,7 @@ static int wrPushDisplayCount = 0;
 - (void)wr_updateInteractiveTransition:(CGFloat)percentComplete
 {
     UIViewController *fromVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextFromViewControllerKey];
-    UIViewController *toVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextToViewKey];
+    UIViewController *toVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextToViewControllerKey];
     [self updateNavigationBarWithFromVC:fromVC toVC:toVC progress:percentComplete];
     
     [self wr_updateInteractiveTransition:percentComplete];
@@ -522,9 +523,7 @@ static char kWRCustomNavBarKey;
     }
     else
     {
-        NSLog(@" -------- ");
         if ([self pushToCurrentVCFinished] == YES && [self pushToNextVCFinished] == NO) {
-            NSLog(@" ====== %f", alpha);
             [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundAlpha:alpha];
         }
     }
