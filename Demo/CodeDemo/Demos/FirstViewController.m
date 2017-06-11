@@ -16,6 +16,7 @@
 
 @interface FirstViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIView *topView;
 @property (nonatomic, strong) UIImageView *imgView;
 @end
 
@@ -27,7 +28,9 @@
     self.view.backgroundColor = [UIColor greenColor];
     self.title = @"个人中心";
     [self.view addSubview:self.tableView];
-    self.tableView.tableHeaderView = self.imgView;
+    [self.topView addSubview:self.imgView];
+    self.imgView.center = self.topView.center;
+    self.tableView.tableHeaderView = self.topView;
     
     // 设置导航栏颜色
     [self wr_setNavBarBarTintColor:[UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1.0]];
@@ -104,11 +107,22 @@
     return _tableView;
 }
 
+- (UIView *)topView
+{
+    if (_topView == nil) {
+        _topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, IMAGE_HEIGHT)];
+        _topView.backgroundColor = [UIColor orangeColor];
+    }
+    return _topView;
+}
+
 - (UIImageView *)imgView
 {
     if (_imgView == nil) {
-        _imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"image1"]];
-        _imgView.frame = CGRectMake(0, 0, self.view.bounds.size.width, IMAGE_HEIGHT);
+        _imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"image4"]];
+        _imgView.bounds = CGRectMake(0, 0, 100, 100);
+        _imgView.layer.cornerRadius = 50;
+        _imgView.layer.masksToBounds = YES;
     }
     return _imgView;
 }
