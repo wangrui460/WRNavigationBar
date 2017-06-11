@@ -216,7 +216,7 @@ static int kWRNavBarBottom = 64;
 //==========================================================================
 @implementation UINavigationController (WRAddition)
 
-static CGFloat wrPopDuration = 0.13;
+static CGFloat wrPopDuration = 0.12;
 static int wrPopDisplayCount = 0;
 - (CGFloat)wrPopProgress
 {
@@ -341,11 +341,14 @@ static int wrPushDisplayCount = 0;
 // change navigationBar barTintColor smooth before pop to current VC finished
 - (void)popNeedDisplay
 {
-    wrPopDisplayCount += 1;
-    CGFloat popProgress = [self wrPopProgress];
-    UIViewController *fromVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextFromViewControllerKey];
-    UIViewController *toVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextToViewControllerKey];
-    [self updateNavigationBarWithFromVC:fromVC toVC:toVC progress:popProgress];
+    if (self.topViewController != nil && self.topViewController.transitionCoordinator != nil)
+    {
+        wrPopDisplayCount += 1;
+        CGFloat popProgress = [self wrPopProgress];
+        UIViewController *fromVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextFromViewControllerKey];
+        UIViewController *toVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextToViewControllerKey];
+        [self updateNavigationBarWithFromVC:fromVC toVC:toVC progress:popProgress];
+    }
 }
 
 - (void)wr_pushViewController:(UIViewController *)viewController animated:(BOOL)animated
@@ -367,12 +370,14 @@ static int wrPushDisplayCount = 0;
 // change navigationBar barTintColor smooth before push to current VC finished or before pop to current VC finished
 - (void)pushNeedDisplay
 {
-    wrPushDisplayCount += 1;
-    CGFloat pushProgress = [self wrPushProgress];
-    NSLog(@"pushProgress : %f", pushProgress);
-    UIViewController *fromVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextFromViewControllerKey];
-    UIViewController *toVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextToViewControllerKey];
-    [self updateNavigationBarWithFromVC:fromVC toVC:toVC progress:pushProgress];
+    if (self.topViewController != nil && self.topViewController.transitionCoordinator != nil)
+    {
+        wrPushDisplayCount += 1;
+        CGFloat pushProgress = [self wrPushProgress];
+        UIViewController *fromVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextFromViewControllerKey];
+        UIViewController *toVC = [self.topViewController.transitionCoordinator viewControllerForKey:UITransitionContextToViewControllerKey];
+        [self updateNavigationBarWithFromVC:fromVC toVC:toVC progress:pushProgress];
+    }
 }
 
 #pragma mark - deal the gesture of return

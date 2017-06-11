@@ -38,9 +38,9 @@ UIColor *MainViewColor = nil;
     [self setTabBarItems:tabBarVC];
     
     self.window.rootViewController = tabBarVC;
-    [self.window makeKeyAndVisible];
-    
     [self setNavBarAppearence];
+    
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
@@ -60,11 +60,6 @@ UIColor *MainViewColor = nil;
 {
     MainNavBarColor = [UIColor colorWithRed:0/255.0 green:175/255.0 blue:240/255.0 alpha:1];
     MainViewColor   = [UIColor colorWithRed:126/255.0 green:126/255.0 blue:126/255.0 alpha:1];
-//    UINavigationBar *navBar = [UINavigationBar appearance];
-//    [navBar setTintColor:[UIColor whiteColor]];
-//    [navBar setBarTintColor:MainNavBarColor];
-//    [navBar setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
-//                                     [UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:21], NSFontAttributeName, nil]];
     
     // 设置导航栏默认的背景颜色
     [UIColor wr_setDefaultNavBarBarTintColor:MainNavBarColor];
