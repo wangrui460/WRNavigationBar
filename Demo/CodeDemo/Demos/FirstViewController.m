@@ -25,37 +25,18 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor greenColor];
-    self.title = @"熊猫美妆";
+    self.title = @"个人中心";
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.imgView;
-    [self wr_setStatusBarStyle:UIStatusBarStyleDefault];
+    
     // 设置导航栏颜色
-    [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.tableView.delegate = self;
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
-}
-
-// 使用 viewWillAppear 和使用 viewDidAppear 效果是不一样的（在从另一个控制器回到这个控制器的时候）
-//- (void)viewDidAppear:(BOOL)animated
-//{
-//    [super viewDidAppear:animated];
-//    self.tableView.delegate = self;
-//    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-//    [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
-//}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    // 如果不取消代理的话，跳转到下一个页面后，还会调用 scrollViewDidScroll 方法
-    self.tableView.delegate = nil;
-    [self.navigationController.navigationBar wr_clear];
+    [self wr_setNavBarBarTintColor:[UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1.0]];
+    
+    // 设置初始导航栏透明度
+    [self wr_setNavBarBackgroundAlpha:0];
+    
+    // 设置导航栏按钮和标题颜色
+    [self wr_setNavBarTintColor:[UIColor whiteColor]];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -64,11 +45,17 @@
     if (offsetY > NAVBAR_COLORCHANGE_POINT)
     {
         CGFloat alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / NAV_HEIGHT;
-        [self.navigationController.navigationBar wr_setBackgroundColor:[MainNavBarColor colorWithAlphaComponent:alpha]];
+        [self wr_setNavBarBackgroundAlpha:alpha];
+        [self wr_setNavBarTintColor:[[UIColor blackColor] colorWithAlphaComponent:alpha]];
+        [self wr_setNavBarTitleColor:[[UIColor blackColor] colorWithAlphaComponent:alpha]];
+        [self wr_setStatusBarStyle:UIStatusBarStyleDefault];
     }
     else
     {
-        [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
+        [self wr_setNavBarBackgroundAlpha:0];
+        [self wr_setNavBarTintColor:[UIColor whiteColor]];
+        [self wr_setNavBarTitleColor:[UIColor whiteColor]];
+        [self wr_setStatusBarStyle:UIStatusBarStyleLightContent];
     }
 }
 

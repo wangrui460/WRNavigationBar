@@ -207,6 +207,10 @@ static int kWRNavBarBottom = 64;
 
 @end
 
+@interface UIViewController (WRAddition)
+- (void)setPushToCurrentVCFinished:(BOOL)isFinished;
+@end
+
 //==========================================================================
 #pragma mark - UINavigationController
 //==========================================================================
@@ -352,6 +356,7 @@ static int wrPushDisplayCount = 0;
         [displayLink invalidate];
         displayLink = nil;
         wrPushDisplayCount = 0;
+        [viewController setPushToCurrentVCFinished:YES];
     }];
     [CATransaction setAnimationDuration:wrPushDuration];
     [CATransaction begin];
@@ -517,7 +522,9 @@ static char kWRCustomNavBarKey;
     }
     else
     {
+        NSLog(@" -------- ");
         if ([self pushToCurrentVCFinished] == YES && [self pushToNextVCFinished] == NO) {
+            NSLog(@" ====== %f", alpha);
             [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundAlpha:alpha];
         }
     }
