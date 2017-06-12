@@ -33,27 +33,7 @@
     self.tableView.contentInset = UIEdgeInsetsMake(IMAGE_HEIGHT-64, 0, 0, 0);
     [self.tableView addSubview:self.imgView];
     [self.view addSubview:self.tableView];
-    // 设置状态栏为白色
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    // 设置导航栏颜色
-    [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
-}
-
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.tableView.delegate = self;
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    // 如果不取消代理的话，跳转到下一个页面后，还会调用 scrollViewDidScroll 方法
-    self.tableView.delegate = nil;
-    [self.navigationController.navigationBar wr_clear];
+    [self wr_setNavBarBackgroundAlpha:0];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -86,13 +66,13 @@
 - (void)changeNavBarAnimateWithIsClear:(BOOL)isClear
 {
     __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:0.8 animations:^
+    [UIView animateWithDuration:0.6 animations:^
     {
         __strong typeof(self) pThis = weakSelf;
         if (isClear == YES) {
-            [pThis.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
+            [pThis wr_setNavBarBackgroundAlpha:0];
         } else {
-            [pThis.navigationController.navigationBar wr_setBackgroundColor:MainNavBarColor];
+            [pThis wr_setNavBarBackgroundAlpha:1.0];
         }
     }];
 }
