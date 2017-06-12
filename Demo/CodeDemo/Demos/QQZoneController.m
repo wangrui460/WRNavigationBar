@@ -30,31 +30,11 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blueColor];
     self.title = @"qq空间";
-    
     self.tableView.contentInset = UIEdgeInsetsMake(IMAGE_HEIGHT-64, 0, 0, 0);
     [self.tableView addSubview:self.imgView];
     [self.view addSubview:self.tableView];
-    // 设置状态栏为白色
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    // 设置导航栏颜色
-    [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
-}
-
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.tableView.delegate = self;
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    // 如果不取消代理的话，跳转到下一个页面后，还会调用 scrollViewDidScroll 方法
-    self.tableView.delegate = nil;
-    [self.navigationController.navigationBar wr_clear];
+    
+    [self wr_setNavBarBackgroundAlpha:0];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -64,11 +44,11 @@
     if (offsetY > NAVBAR_COLORCHANGE_POINT)
     {
         CGFloat alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / NAV_HEIGHT;
-        [self.navigationController.navigationBar wr_setBackgroundColor:[MainNavBarColor colorWithAlphaComponent:alpha]];
+        [self wr_setNavBarBackgroundAlpha:alpha];
     }
     else
     {
-        [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
+        [self wr_setNavBarBackgroundAlpha:0];
     }
     
     //限制下拉的距离
@@ -84,6 +64,9 @@
         self.imgView.frame = CGRectMake(0, newOffsetY, kScreenWidth, -newOffsetY);
     }
 }
+
+
+
 
 #pragma mark - tableview delegate / dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
