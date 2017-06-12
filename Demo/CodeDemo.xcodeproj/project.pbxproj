@@ -25,6 +25,7 @@
 		1A869EE21ECAF20E006D96F8 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A869EE11ECAF20E006D96F8 /* BaseViewController.m */; };
 		1A869EE51ECAF4FA006D96F8 /* CustomNavBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A869EE41ECAF4FA006D96F8 /* CustomNavBarController.m */; };
 		1AAA1D4B1EEE380400681CB9 /* ZhiHuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA1D4A1EEE380400681CB9 /* ZhiHuController.m */; };
+		1AAA1D4E1EEE480400681CB9 /* QQMineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA1D4D1EEE480400681CB9 /* QQMineController.m */; };
 		1AAE08E91EE7F3350085C3A2 /* MoveListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE08E81EE7F3350085C3A2 /* MoveListController.m */; };
 		1AAE08EC1EE7F38E0085C3A2 /* CustomListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE08EB1EE7F38E0085C3A2 /* CustomListController.m */; };
 		29F1DC19441470C345522432 /* Pods_CodeDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5025CF19A1273775CA7A2A /* Pods_CodeDemo.framework */; };
@@ -76,6 +77,8 @@
 		1A869EE41ECAF4FA006D96F8 /* CustomNavBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomNavBarController.m; path = ../Demos/CustomNavBarController.m; sourceTree = "<group>"; };
 		1AAA1D491EEE380400681CB9 /* ZhiHuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhiHuController.h; sourceTree = "<group>"; };
 		1AAA1D4A1EEE380400681CB9 /* ZhiHuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhiHuController.m; sourceTree = "<group>"; };
+		1AAA1D4C1EEE480400681CB9 /* QQMineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQMineController.h; sourceTree = "<group>"; };
+		1AAA1D4D1EEE480400681CB9 /* QQMineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQMineController.m; sourceTree = "<group>"; };
 		1AAE08E71EE7F3350085C3A2 /* MoveListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveListController.h; sourceTree = "<group>"; };
 		1AAE08E81EE7F3350085C3A2 /* MoveListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveListController.m; sourceTree = "<group>"; };
 		1AAE08EA1EE7F38E0085C3A2 /* CustomListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomListController.h; sourceTree = "<group>"; };
@@ -183,6 +186,8 @@
 				1A0DF79F1EA735A300191349 /* QQZoneController.m */,
 				1AAA1D491EEE380400681CB9 /* ZhiHuController.h */,
 				1AAA1D4A1EEE380400681CB9 /* ZhiHuController.m */,
+				1AAA1D4C1EEE480400681CB9 /* QQMineController.h */,
+				1AAA1D4D1EEE480400681CB9 /* QQMineController.m */,
 			);
 			path = "普通";
 			sourceTree = "<group>";
@@ -388,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A0DF7AA1EA735A300191349 /* NormalListController.m in Sources */,
+				1AAA1D4E1EEE480400681CB9 /* QQMineController.m in Sources */,
 				1A869EE21ECAF20E006D96F8 /* BaseViewController.m in Sources */,
 				1A0DF7BC1EA7531800191349 /* BaseNavigationController.m in Sources */,
 				1A0DF7AC1EA735A300191349 /* MineInfoController.m in Sources */,
