@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "AppDelegate.h"
+#import "UINavigationBar+WRAddition.h"
 
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 
@@ -26,6 +27,9 @@
 
 - (void)setupNavBar
 {
+    // 自定义导航栏必须设置这个属性!!!!!!!
+    [self wr_setCustomNavBar:self.navBar];
+    
     [self.view addSubview:self.navBar];
     self.navBar.items = @[self.navItem];
     self.navBar.barTintColor = MainNavBarColor;
