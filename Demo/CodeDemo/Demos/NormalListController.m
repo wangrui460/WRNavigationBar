@@ -43,7 +43,7 @@
     NSString *str = nil;
     switch (indexPath.row) {
         case 0:
-            str = @"个人中心";
+            str = @"新浪微博个人中心";
             break;
         case 1:
             str = @"类似qq应用空间效果";
