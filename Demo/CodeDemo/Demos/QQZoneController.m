@@ -1,34 +1,35 @@
 //
-//  FourthViewController.m
+//  QQZoneController.m
 //  CodeDemo
 //
-//  Created by wangrui on 2017/4/12.
+//  Created by wangrui on 2017/4/14.
 //  Copyright © 2017年 wangrui. All rights reserved.
 //
 
-#import "FourthViewController.h"
+#import "QQZoneController.h"
 #import "UINavigationBar+WRAddition.h"
 #import "AppDelegate.h"
 
-#define NAVBAR_COLORCHANGE_POINT -80
+#define NAVBAR_COLORCHANGE_POINT (-IMAGE_HEIGHT + NAV_HEIGHT*2)
+#define NAV_HEIGHT 64
 #define IMAGE_HEIGHT 260
 #define SCROLL_DOWN_LIMIT 100
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 #define LIMIT_OFFSET_Y -(IMAGE_HEIGHT + SCROLL_DOWN_LIMIT)
 
-@interface FourthViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface QQZoneController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIImageView *imgView;
 @end
 
-@implementation FourthViewController
+@implementation QQZoneController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blueColor];
-    self.title = @"qq应用";
+    self.title = @"qq空间";
     
     self.tableView.contentInset = UIEdgeInsetsMake(IMAGE_HEIGHT-64, 0, 0, 0);
     [self.tableView addSubview:self.imgView];
@@ -59,14 +60,15 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat offsetY = scrollView.contentOffset.y;
-
+    
     if (offsetY > NAVBAR_COLORCHANGE_POINT)
     {
-        [self changeNavBarAnimateWithIsClear:NO];
+        CGFloat alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / NAV_HEIGHT;
+        [self.navigationController.navigationBar wr_setBackgroundColor:[MainNavBarColor colorWithAlphaComponent:alpha]];
     }
     else
     {
-        [self changeNavBarAnimateWithIsClear:YES];
+        [self.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
     }
     
     //限制下拉的距离
@@ -81,20 +83,6 @@
     {
         self.imgView.frame = CGRectMake(0, newOffsetY, kScreenWidth, -newOffsetY);
     }
-}
-
-- (void)changeNavBarAnimateWithIsClear:(BOOL)isClear
-{
-    __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:0.8 animations:^
-    {
-        __strong typeof(self) pThis = weakSelf;
-        if (isClear == YES) {
-            [pThis.navigationController.navigationBar wr_setBackgroundColor:[UIColor clearColor]];
-        } else {
-            [pThis.navigationController.navigationBar wr_setBackgroundColor:MainNavBarColor];
-        }
-    }];
 }
 
 #pragma mark - tableview delegate / dataSource

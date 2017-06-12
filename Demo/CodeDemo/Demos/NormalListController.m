@@ -7,11 +7,9 @@
 //
 
 #import "NormalListController.h"
-#import "FirstViewController.h"
-#import "SecondViewController.h"
-#import "ThirdViewController.h"
-#import "FourthViewController.h"
-#import "FifthViewController.h"
+#import "MineInfoController.h"
+#import "QQAppController.h"
+#import "QQZoneController.h"
 
 @interface NormalListController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -41,7 +39,7 @@
     NSString *str = nil;
     switch (indexPath.row) {
         case 0:
-            str = @"主页";
+            str = @"个人中心";
             break;
         case 1:
             str = @"类似qq应用空间效果";
@@ -78,20 +76,20 @@
     switch (indexPath.row) {
         case 0:
         {
-            FirstViewController *firstVC = [FirstViewController new];
-            [self.navigationController pushViewController:firstVC animated:YES];
+            MineInfoController *mineInfoVC = [MineInfoController new];
+            [self.navigationController pushViewController:mineInfoVC animated:YES];
         }
             break;
         case 1:
         {
-            FourthViewController *fourthVC = [FourthViewController new];
-            [self.navigationController pushViewController:fourthVC animated:YES];
+            QQAppController *qqAppVC = [QQAppController new];
+            [self.navigationController pushViewController:qqAppVC animated:YES];
         }
             break;
         case 2:
         {
-            FifthViewController *fifthVC = [FifthViewController new];
-            [self.navigationController pushViewController:fifthVC animated:YES];
+            QQZoneController *qqZoneVC = [QQZoneController new];
+            [self.navigationController pushViewController:qqZoneVC animated:YES];
         }
             break;
         default:

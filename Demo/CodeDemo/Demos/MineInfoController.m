@@ -6,7 +6,7 @@
 //  Copyright © 2017年 wangrui. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "MineInfoController.h"
 #import "UINavigationBar+WRAddition.h"
 #import "AppDelegate.h"
 
@@ -14,13 +14,13 @@
 #define IMAGE_HEIGHT 260
 #define NAV_HEIGHT 64
 
-@interface FirstViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface MineInfoController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIView *topView;
 @property (nonatomic, strong) UIImageView *imgView;
 @end
 
-@implementation FirstViewController
+@implementation MineInfoController
 
 - (void)viewDidLoad
 {

@@ -1,5 +1,5 @@
 //
-//  FourthViewController.h
+//  QQAppController.h
 //  CodeDemo
 //
 //  Created by wangrui on 2017/4/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FourthViewController : UIViewController
+@interface QQAppController : UIViewController
 
 @end
