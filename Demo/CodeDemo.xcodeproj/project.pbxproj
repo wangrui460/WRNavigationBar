@@ -24,8 +24,10 @@
 		1A2061FA1E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061F91E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m */; };
 		1A869EE21ECAF20E006D96F8 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A869EE11ECAF20E006D96F8 /* BaseViewController.m */; };
 		1A869EE51ECAF4FA006D96F8 /* CustomNavBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A869EE41ECAF4FA006D96F8 /* CustomNavBarController.m */; };
+		1AAA1D4B1EEE380400681CB9 /* ZhiHuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA1D4A1EEE380400681CB9 /* ZhiHuController.m */; };
 		1AAE08E91EE7F3350085C3A2 /* MoveListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE08E81EE7F3350085C3A2 /* MoveListController.m */; };
 		1AAE08EC1EE7F38E0085C3A2 /* CustomListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE08EB1EE7F38E0085C3A2 /* CustomListController.m */; };
+		29F1DC19441470C345522432 /* Pods_CodeDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5025CF19A1273775CA7A2A /* Pods_CodeDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,10 +74,15 @@
 		1A869EE11ECAF20E006D96F8 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = ../Demos/BaseViewController.m; sourceTree = "<group>"; };
 		1A869EE31ECAF4FA006D96F8 /* CustomNavBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomNavBarController.h; path = ../Demos/CustomNavBarController.h; sourceTree = "<group>"; };
 		1A869EE41ECAF4FA006D96F8 /* CustomNavBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomNavBarController.m; path = ../Demos/CustomNavBarController.m; sourceTree = "<group>"; };
+		1AAA1D491EEE380400681CB9 /* ZhiHuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhiHuController.h; sourceTree = "<group>"; };
+		1AAA1D4A1EEE380400681CB9 /* ZhiHuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhiHuController.m; sourceTree = "<group>"; };
 		1AAE08E71EE7F3350085C3A2 /* MoveListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveListController.h; sourceTree = "<group>"; };
 		1AAE08E81EE7F3350085C3A2 /* MoveListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveListController.m; sourceTree = "<group>"; };
 		1AAE08EA1EE7F38E0085C3A2 /* CustomListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomListController.h; sourceTree = "<group>"; };
 		1AAE08EB1EE7F38E0085C3A2 /* CustomListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomListController.m; sourceTree = "<group>"; };
+		37581D1AF27611119D8AA286 /* Pods-CodeDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CodeDemo/Pods-CodeDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		BA5025CF19A1273775CA7A2A /* Pods_CodeDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD02850717C2C54F9C2585E9 /* Pods-CodeDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CodeDemo/Pods-CodeDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29F1DC19441470C345522432 /* Pods_CodeDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +110,8 @@
 				1A2061D11E9CB496007BFB91 /* CodeDemo */,
 				1A2061EB1E9CB496007BFB91 /* CodeDemoTests */,
 				1A2061D01E9CB496007BFB91 /* Products */,
+				927F9EB9E385179D289EBE2B /* Pods */,
+				62EC5690FBC98871C2DC2957 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,6 +181,8 @@
 				1A0DF7A31EA735A300191349 /* QQAppController.m */,
 				1A0DF79E1EA735A300191349 /* QQZoneController.h */,
 				1A0DF79F1EA735A300191349 /* QQZoneController.m */,
+				1AAA1D491EEE380400681CB9 /* ZhiHuController.h */,
+				1AAA1D4A1EEE380400681CB9 /* ZhiHuController.m */,
 			);
 			path = "普通";
 			sourceTree = "<group>";
@@ -203,6 +215,23 @@
 			path = "自定义导航栏";
 			sourceTree = "<group>";
 		};
+		62EC5690FBC98871C2DC2957 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BA5025CF19A1273775CA7A2A /* Pods_CodeDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		927F9EB9E385179D289EBE2B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				37581D1AF27611119D8AA286 /* Pods-CodeDemo.debug.xcconfig */,
+				CD02850717C2C54F9C2585E9 /* Pods-CodeDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -210,9 +239,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1A2061F11E9CB496007BFB91 /* Build configuration list for PBXNativeTarget "CodeDemo" */;
 			buildPhases = (
+				C1144A7FC86B85BEC474CD53 /* [CP] Check Pods Manifest.lock */,
 				1A2061CB1E9CB496007BFB91 /* Sources */,
 				1A2061CC1E9CB496007BFB91 /* Frameworks */,
 				1A2061CD1E9CB496007BFB91 /* Resources */,
+				0277B9715B8BF91905DF502F /* [CP] Embed Pods Frameworks */,
+				51852EF6DFAA4E59EDA5B7F2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -302,6 +334,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0277B9715B8BF91905DF502F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CodeDemo/Pods-CodeDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		51852EF6DFAA4E59EDA5B7F2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CodeDemo/Pods-CodeDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1144A7FC86B85BEC474CD53 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1A2061CB1E9CB496007BFB91 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -312,6 +392,7 @@
 				1A0DF7BC1EA7531800191349 /* BaseNavigationController.m in Sources */,
 				1A0DF7AC1EA735A300191349 /* MineInfoController.m in Sources */,
 				1A2061D71E9CB496007BFB91 /* AppDelegate.m in Sources */,
+				1AAA1D4B1EEE380400681CB9 /* ZhiHuController.m in Sources */,
 				1A2061FA1E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m in Sources */,
 				1AAE08E91EE7F3350085C3A2 /* MoveListController.m in Sources */,
 				1A869EE51ECAF4FA006D96F8 /* CustomNavBarController.m in Sources */,
@@ -455,8 +536,10 @@
 		};
 		1A2061F21E9CB496007BFB91 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37581D1AF27611119D8AA286 /* Pods-CodeDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 652U6LDTX4;
 				INFOPLIST_FILE = CodeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -468,8 +551,10 @@
 		};
 		1A2061F31E9CB496007BFB91 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD02850717C2C54F9C2585E9 /* Pods-CodeDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 652U6LDTX4;
 				INFOPLIST_FILE = CodeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

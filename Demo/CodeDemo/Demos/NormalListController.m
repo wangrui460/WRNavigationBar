@@ -10,6 +10,7 @@
 #import "MineInfoController.h"
 #import "QQAppController.h"
 #import "QQZoneController.h"
+#import "ZhiHuController.h"
 
 @interface NormalListController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -90,6 +91,12 @@
         {
             QQZoneController *qqZoneVC = [QQZoneController new];
             [self.navigationController pushViewController:qqZoneVC animated:YES];
+        }
+            break;
+        case 3:
+        {
+            ZhiHuController *zhiHuVC = [ZhiHuController new];
+            [self.navigationController pushViewController:zhiHuVC animated:YES];
         }
             break;
         default:
