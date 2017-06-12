@@ -197,14 +197,6 @@ static int kWRNavBarBottom = 64;
     self.transform = CGAffineTransformMakeTranslation(0, translationY);
 }
 
-- (void)wr_clear
-{
-    // 设置导航栏不透明
-    [self setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    [self.backgroundView removeFromSuperview];
-    self.backgroundView = nil;
-}
-
 @end
 
 @interface UIViewController (WRAddition)
