@@ -13,7 +13,7 @@
 #import "SixthViewController.h"
 #import "BaseNavigationController.h"
 #import "CustomNavBarController.h"
-#import "UINavigationBar+WRAddition.h"
+#import "WRNavigationBar.h"
 
 UIColor *MainNavBarColor = nil;
 UIColor *MainViewColor = nil;

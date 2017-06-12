@@ -7,7 +7,7 @@
 //
 
 #import "AntForestController.h"
-#import "UINavigationBar+WRAddition.h"
+#import "WRNavigationBar.h"
 #import "AppDelegate.h"
 
 #define NAVBAR_COLORCHANGE_POINT -480

@@ -7,7 +7,7 @@
 //
 //  Github地址：https://github.com/wangrui460/WRNavigationBar
 
-#import "UINavigationBar+WRAddition.h"
+#import "WRNavigationBar.h"
 #import <objc/runtime.h>
 
 

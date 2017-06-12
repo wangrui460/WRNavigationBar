@@ -21,7 +21,7 @@
 		1A2061DF1E9CB496007BFB91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2061DE1E9CB496007BFB91 /* Assets.xcassets */; };
 		1A2061E21E9CB496007BFB91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2061E01E9CB496007BFB91 /* LaunchScreen.storyboard */; };
 		1A2061ED1E9CB496007BFB91 /* CodeDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061EC1E9CB496007BFB91 /* CodeDemoTests.m */; };
-		1A2061FA1E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061F91E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m */; };
+		1A2061FA1E9CB4E4007BFB91 /* WRNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061F91E9CB4E4007BFB91 /* WRNavigationBar.m */; };
 		1A869EE21ECAF20E006D96F8 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A869EE11ECAF20E006D96F8 /* BaseViewController.m */; };
 		1A869EE51ECAF4FA006D96F8 /* CustomNavBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A869EE41ECAF4FA006D96F8 /* CustomNavBarController.m */; };
 		1AAA1D4B1EEE380400681CB9 /* ZhiHuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA1D4A1EEE380400681CB9 /* ZhiHuController.m */; };
@@ -70,8 +70,8 @@
 		1A2061E81E9CB496007BFB91 /* CodeDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A2061EC1E9CB496007BFB91 /* CodeDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodeDemoTests.m; sourceTree = "<group>"; };
 		1A2061EE1E9CB496007BFB91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1A2061F81E9CB4E4007BFB91 /* UINavigationBar+WRAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+WRAddition.h"; sourceTree = "<group>"; };
-		1A2061F91E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+WRAddition.m"; sourceTree = "<group>"; };
+		1A2061F81E9CB4E4007BFB91 /* WRNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRNavigationBar.h; sourceTree = "<group>"; };
+		1A2061F91E9CB4E4007BFB91 /* WRNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRNavigationBar.m; sourceTree = "<group>"; };
 		1A869EE01ECAF20E006D96F8 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = ../Demos/BaseViewController.h; sourceTree = "<group>"; };
 		1A869EE11ECAF20E006D96F8 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = ../Demos/BaseViewController.m; sourceTree = "<group>"; };
 		1A869EE31ECAF4FA006D96F8 /* CustomNavBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomNavBarController.h; path = ../Demos/CustomNavBarController.h; sourceTree = "<group>"; };
@@ -170,8 +170,8 @@
 		1A2061F71E9CB4E4007BFB91 /* WRNavigationBar */ = {
 			isa = PBXGroup;
 			children = (
-				1A2061F81E9CB4E4007BFB91 /* UINavigationBar+WRAddition.h */,
-				1A2061F91E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m */,
+				1A2061F81E9CB4E4007BFB91 /* WRNavigationBar.h */,
+				1A2061F91E9CB4E4007BFB91 /* WRNavigationBar.m */,
 			);
 			path = WRNavigationBar;
 			sourceTree = "<group>";
@@ -404,7 +404,7 @@
 				1A0DF7AC1EA735A300191349 /* MineInfoController.m in Sources */,
 				1A2061D71E9CB496007BFB91 /* AppDelegate.m in Sources */,
 				1AAA1D4B1EEE380400681CB9 /* ZhiHuController.m in Sources */,
-				1A2061FA1E9CB4E4007BFB91 /* UINavigationBar+WRAddition.m in Sources */,
+				1A2061FA1E9CB4E4007BFB91 /* WRNavigationBar.m in Sources */,
 				1AAE08E91EE7F3350085C3A2 /* MoveListController.m in Sources */,
 				1A869EE51ECAF4FA006D96F8 /* CustomNavBarController.m in Sources */,
 				1A0DF7AE1EA735A300191349 /* SecondViewController.m in Sources */,

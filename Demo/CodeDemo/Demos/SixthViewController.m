@@ -7,7 +7,7 @@
 //
 
 #import "SixthViewController.h"
-#import "UINavigationBar+WRAddition.h"
+#import "WRNavigationBar.h"
 #import "AppDelegate.h"
 
 // offsetY > -64 的时候导航栏开始偏移

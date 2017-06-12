@@ -7,7 +7,7 @@
 //
 
 #import "QQMineController.h"
-#import "UINavigationBar+WRAddition.h"
+#import "WRNavigationBar.h"
 #import "AppDelegate.h"
 
 #define NAVBAR_COLORCHANGE_POINT (IMAGE_HEIGHT - NAV_HEIGHT*2)

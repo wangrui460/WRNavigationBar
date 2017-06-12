@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 #import "AppDelegate.h"
-#import "UINavigationBar+WRAddition.h"
+#import "WRNavigationBar.h"
 
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 

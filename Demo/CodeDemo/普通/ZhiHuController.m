@@ -7,7 +7,7 @@
 //
 
 #import "ZhiHuController.h"
-#import "UINavigationBar+WRAddition.h"
+#import "WRNavigationBar.h"
 #import "AppDelegate.h"
 #import <SDCycleScrollView/SDCycleScrollView.h>
 
