@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A0DF7AA1EA735A300191349 /* NormalListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF79D1EA735A300191349 /* NormalListController.m */; };
 		1A0DF7AB1EA735A300191349 /* QQZoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF79F1EA735A300191349 /* QQZoneController.m */; };
-		1A0DF7AC1EA735A300191349 /* MineInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A11EA735A300191349 /* MineInfoController.m */; };
+		1A0DF7AC1EA735A300191349 /* WeiBoMineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A11EA735A300191349 /* WeiBoMineController.m */; };
 		1A0DF7AD1EA735A300191349 /* QQAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A31EA735A300191349 /* QQAppController.m */; };
 		1A0DF7AE1EA735A300191349 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A51EA735A300191349 /* SecondViewController.m */; };
 		1A0DF7AF1EA735A300191349 /* SixthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A71EA735A300191349 /* SixthViewController.m */; };
@@ -47,8 +47,8 @@
 		1A0DF79D1EA735A300191349 /* NormalListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NormalListController.m; path = ../Demos/NormalListController.m; sourceTree = "<group>"; };
 		1A0DF79E1EA735A300191349 /* QQZoneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QQZoneController.h; path = ../Demos/QQZoneController.h; sourceTree = "<group>"; };
 		1A0DF79F1EA735A300191349 /* QQZoneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QQZoneController.m; path = ../Demos/QQZoneController.m; sourceTree = "<group>"; };
-		1A0DF7A01EA735A300191349 /* MineInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MineInfoController.h; path = ../Demos/MineInfoController.h; sourceTree = "<group>"; };
-		1A0DF7A11EA735A300191349 /* MineInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MineInfoController.m; path = ../Demos/MineInfoController.m; sourceTree = "<group>"; };
+		1A0DF7A01EA735A300191349 /* WeiBoMineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeiBoMineController.h; path = ../Demos/WeiBoMineController.h; sourceTree = "<group>"; };
+		1A0DF7A11EA735A300191349 /* WeiBoMineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeiBoMineController.m; path = ../Demos/WeiBoMineController.m; sourceTree = "<group>"; };
 		1A0DF7A21EA735A300191349 /* QQAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QQAppController.h; path = ../Demos/QQAppController.h; sourceTree = "<group>"; };
 		1A0DF7A31EA735A300191349 /* QQAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QQAppController.m; path = ../Demos/QQAppController.m; sourceTree = "<group>"; };
 		1A0DF7A41EA735A300191349 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecondViewController.h; path = ../Demos/SecondViewController.h; sourceTree = "<group>"; };
@@ -181,8 +181,8 @@
 			children = (
 				1A0DF79C1EA735A300191349 /* NormalListController.h */,
 				1A0DF79D1EA735A300191349 /* NormalListController.m */,
-				1A0DF7A01EA735A300191349 /* MineInfoController.h */,
-				1A0DF7A11EA735A300191349 /* MineInfoController.m */,
+				1A0DF7A01EA735A300191349 /* WeiBoMineController.h */,
+				1A0DF7A11EA735A300191349 /* WeiBoMineController.m */,
 				1A0DF7A21EA735A300191349 /* QQAppController.h */,
 				1A0DF7A31EA735A300191349 /* QQAppController.m */,
 				1A0DF79E1EA735A300191349 /* QQZoneController.h */,
@@ -401,7 +401,7 @@
 				1AAA1D4E1EEE480400681CB9 /* QQMineController.m in Sources */,
 				1A869EE21ECAF20E006D96F8 /* BaseViewController.m in Sources */,
 				1A0DF7BC1EA7531800191349 /* BaseNavigationController.m in Sources */,
-				1A0DF7AC1EA735A300191349 /* MineInfoController.m in Sources */,
+				1A0DF7AC1EA735A300191349 /* WeiBoMineController.m in Sources */,
 				1A2061D71E9CB496007BFB91 /* AppDelegate.m in Sources */,
 				1AAA1D4B1EEE380400681CB9 /* ZhiHuController.m in Sources */,
 				1A2061FA1E9CB4E4007BFB91 /* WRNavigationBar.m in Sources */,

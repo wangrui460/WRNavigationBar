@@ -1,5 +1,5 @@
 //
-//  FirstViewController.m
+//  WeiBoMineController.m
 //  CodeDemo
 //
 //  Created by wangrui on 2017/4/11.
@@ -7,7 +7,7 @@
 //
 //  Github地址：https://github.com/wangrui460/WRNavigationBar
 
-#import "MineInfoController.h"
+#import "WeiBoMineController.h"
 #import "WRNavigationBar.h"
 #import "AppDelegate.h"
 
@@ -15,7 +15,7 @@
 #define IMAGE_HEIGHT 220
 #define NAV_HEIGHT 64
 
-@interface MineInfoController () <UITableViewDelegate, UITableViewDataSource>
+@interface WeiBoMineController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIImageView *topView;
 @property (nonatomic, strong) UIImageView *iconView;
@@ -24,7 +24,7 @@
 @property (nonatomic, strong) UILabel *detailsLabel;
 @end
 
-@implementation MineInfoController
+@implementation WeiBoMineController
 
 - (void)viewDidLoad
 {

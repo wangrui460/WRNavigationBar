@@ -8,7 +8,7 @@
 //  Github地址：https://github.com/wangrui460/WRNavigationBar
 
 #import "NormalListController.h"
-#import "MineInfoController.h"
+#import "WeiBoMineController.h"
 #import "QQAppController.h"
 #import "QQZoneController.h"
 #import "ZhiHuController.h"
@@ -80,8 +80,8 @@
     switch (indexPath.row) {
         case 0:
         {
-            MineInfoController *mineInfoVC = [MineInfoController new];
-            [self.navigationController pushViewController:mineInfoVC animated:YES];
+            WeiBoMineController *weiBoMineVC = [WeiBoMineController new];
+            [self.navigationController pushViewController:weiBoMineVC animated:YES];
         }
             break;
         case 1:

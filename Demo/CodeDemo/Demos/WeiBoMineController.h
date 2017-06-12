@@ -1,5 +1,5 @@
 //
-//  MineInfoController.h
+//  WeiBoMineController.h
 //  CodeDemo
 //
 //  Created by wangrui on 2017/4/11.
@@ -9,6 +9,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MineInfoController : UIViewController
+@interface WeiBoMineController : UIViewController
 
 @end
