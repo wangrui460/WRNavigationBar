@@ -12,6 +12,7 @@
 #import "QQZoneController.h"
 #import "ZhiHuController.h"
 #import "QQMineController.h"
+#import "AntForestController.h"
 
 @interface NormalListController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -31,7 +32,7 @@
 #pragma mark - tableview delegate / dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -106,6 +107,11 @@
             [self.navigationController pushViewController:qqMineVC animated:YES];
         }
             break;
+            case 5:
+        {
+            AntForestController *antForestVC = [AntForestController new];
+            [self.navigationController pushViewController:antForestVC animated:YES];
+        }
         default:
             break;
     }
