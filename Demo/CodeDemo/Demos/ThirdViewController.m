@@ -25,7 +25,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor greenColor];
-    self.title = @"你妹的";
+    self.title = @"WR";
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.imgView;
 }
@@ -43,7 +43,6 @@
     [super viewWillDisappear:animated];
     self.tableView.delegate = nil;
     [self setNavigationBarTransformProgress:0];
-    [self.navigationController.navigationBar wr_clear];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -102,6 +101,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    // 做成这种样式，最好不要有点击事件
 }
 
 #pragma mark - getter / setter

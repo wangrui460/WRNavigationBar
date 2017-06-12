@@ -25,25 +25,14 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor greenColor];
-    self.title = @"丽人丽妆";
+    self.title = @"浮动效果";
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.imgView;
-    
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:nil action:nil];
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:nil action:nil];
-    self.navigationController.navigationItem.leftBarButtonItem = leftItem;
-    self.navigationController.navigationItem.rightBarButtonItem = rightItem;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    // 必须在view完全加载好再调用这个方法，否则就会出现白块的状况
     self.tableView.delegate = self;
 }
 
@@ -52,7 +41,6 @@
     [super viewWillDisappear:animated];
     self.tableView.delegate = nil;
     [self setNavigationBarTransformProgress:0];
-    [self.navigationController.navigationBar wr_clear];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
