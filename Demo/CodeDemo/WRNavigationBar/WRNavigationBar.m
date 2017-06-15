@@ -301,7 +301,7 @@ static int wrPushDisplayCount = 0;
 - (NSArray<UIViewController *> *)wr_popToViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     __block CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(popNeedDisplay)];
-    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
     [CATransaction setCompletionBlock:^{
         [displayLink invalidate];
         displayLink = nil;
@@ -317,7 +317,7 @@ static int wrPushDisplayCount = 0;
 - (NSArray<UIViewController *> *)wr_popToRootViewControllerAnimated:(BOOL)animated
 {
     __block CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(popNeedDisplay)];
-    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
     [CATransaction setCompletionBlock:^{
         [displayLink invalidate];
         displayLink = nil;
