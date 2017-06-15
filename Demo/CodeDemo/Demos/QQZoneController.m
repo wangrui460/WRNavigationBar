@@ -118,7 +118,7 @@
         _imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -IMAGE_HEIGHT, kScreenWidth, IMAGE_HEIGHT)];
         _imgView.contentMode = UIViewContentModeScaleAspectFill;
         _imgView.clipsToBounds = YES;
-        _imgView.image = [self imageWithImageSimple:[UIImage imageNamed:@"image3"] scaledToSize:CGSizeMake(kScreenWidth, IMAGE_HEIGHT+SCROLL_DOWN_LIMIT)];
+        _imgView.image = [self imageWithImageSimple:[UIImage imageNamed:@"image6"] scaledToSize:CGSizeMake(kScreenWidth, IMAGE_HEIGHT+SCROLL_DOWN_LIMIT)];
     }
     return _imgView;
 }
