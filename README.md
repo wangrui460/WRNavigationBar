@@ -32,7 +32,7 @@
 > **手动拖入**
 > 将 WRNavigationBar 文件夹拽入项目中，导入头文件：#import "WRNavigationBar.h"
 
-## How To Use
+## Use
 
 <pre><code>
 // 一行代码搞定导航栏颜色
@@ -48,7 +48,7 @@
 </code></pre>
 
 
-## See detail
+## More
 我的简书: [韦德460](http://www.jianshu.com/p/7e92451ab0b2)
 
 
