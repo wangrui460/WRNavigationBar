@@ -1,12 +1,16 @@
 ![image](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/WRNavigationBar.png)
 
-[Swift 版本：https://github.com/wangrui460/WRNavigationBar_swift](https://github.com/wangrui460/WRNavigationBar_swift)
+[For Swift：https://github.com/wangrui460/WRNavigationBar_swift](https://github.com/wangrui460/WRNavigationBar_swift)
 
-实现过程请查看简书[http://www.jianshu.com/p/7e92451ab0b2]
 
 ------------------------------------------------------------
 
-## 0️⃣. Demo 
+## Requirements
+- iOS 8+
+- Xcode 8+
+
+
+## Demo 
 
 ![新浪微博个人中心](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/新浪微博个人中心.gif)
 
@@ -23,12 +27,12 @@
 ![移动导航栏](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/移动导航栏.gif)
 
 
-## 1️⃣. Installation 安装
+## Installation 
 
 > **手动拖入**
 > 将 WRNavigationBar 文件夹拽入项目中，导入头文件：#import "WRNavigationBar.h"
 
-## 2️⃣. How To Use 使用
+## How To Use
 
 <pre><code>
 // 一行代码搞定导航栏颜色
@@ -44,16 +48,11 @@
 </code></pre>
 
 
-## 3️⃣. More 更多 
+## See detail
+我的简书: [韦德460](http://www.jianshu.com/p/7e92451ab0b2)
 
-If you find a bug, please create a issue.  
-Welcome to pull requests.  
-More infomation please view code.  
-如果你发现了bug，请提一个issue。  
-欢迎给我提pull requests。  
-更多信息详见代码，也可查看我的简书: [我的简书](http://www.jianshu.com/p/540a7e6f7b40)
 
-## 4️⃣. Update 最近更新 
+## Update
 
 - **2017.05.12**
 解决问题：侧滑一点松开透明的导航栏会变不透明
@@ -67,10 +66,16 @@ More infomation please view code.
 - **2017.06.15**
 解决问题：解决scrollView正在滑动的时候，点击返回按钮，导航栏颜色变化突兀的问题
 
-## 5️⃣. 待完成功能
+
+## Features
 
 
-## 6️⃣. 期待
+# Contact me
+- Weibo: [@wangrui460](http://weibo.com/u/5145779726?is_all=1)
+- Email:  wangruidev@gmail.com
+- QQ：1204607318
 
-如果在使用过程中遇到BUG，或发现功能不够用，希望你能Issues我，或者加我的qq：1204607318
-### 你觉得对你有所帮助的话，请献上宝贵的Star！！！ 不胜感激！！！
+# License
+
+WRNavigationBar is available under the MIT license. See the LICENSE file for more info.
+
