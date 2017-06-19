@@ -34,8 +34,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    // 必须在view完全加载好再调用这个方法，否则就会出现白块的状况
-    [self scrollViewDidScroll:self.tableView];
     self.tableView.delegate = self;
 }
 
