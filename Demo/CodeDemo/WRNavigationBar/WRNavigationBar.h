@@ -39,6 +39,9 @@
 /** 设置导航栏在垂直方向上平移多少距离 */
 - (void)wr_setTranslationY:(CGFloat)translationY;
 
+/** 获取当前导航栏在垂直方向上偏移了多少 */
+- (CGFloat)wr_getTranslationY;
+
 @end
 
 

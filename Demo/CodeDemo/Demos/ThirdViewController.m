@@ -11,13 +11,13 @@
 #import "WRNavigationBar.h"
 #import "AppDelegate.h"
 
-// offsetY > -64 的时候导航栏开始偏移
-#define NAVBAR_TRANSLATION_POINT 0
 #define NavBarHeight 44
 
 @interface ThirdViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIImageView *imgView;
+@property (nonatomic, assign) CGFloat navbar_translation_point;
+@property (nonatomic, assign) CGFloat lastOffsetY;
 @end
 
 @implementation ThirdViewController
@@ -41,38 +41,86 @@
 {
     [super viewWillDisappear:animated];
     self.tableView.delegate = nil;
-    [self setNavigationBarTransformProgress:0];
+    [self.navigationController.navigationBar wr_setTranslationY:0];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self stopScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (decelerate == NO) {
+        [self stopScroll:scrollView];
+    }
+}
+
+- (void)stopScroll:(UIScrollView*)scrollView
+{
+    CGFloat offsetY = scrollView.contentOffset.y;
+    CGFloat scrollUpHeight = offsetY - self.navbar_translation_point;
+    __weak typeof(self) weakSelf = self;
+    if (scrollUpHeight >= 22)
+    {
+        [UIView animateWithDuration:0.3 animations:^{
+            __strong typeof(self) pThis = weakSelf;
+            [pThis setNavigationBarTransform:44];
+        }];
+    }
+    else
+    {
+        [UIView animateWithDuration:0.3 animations:^{
+            __strong typeof(self) pThis = weakSelf;
+            [pThis setNavigationBarTransform:0];
+        }];
+    }
+    self.navbar_translation_point = offsetY;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat offsetY = scrollView.contentOffset.y;
-    // 向上滑动的距离
-    CGFloat scrollUpHeight = offsetY - NAVBAR_TRANSLATION_POINT;
-    // 除数表示 -> 导航栏从完全不透明到完全透明的过渡距离
-    CGFloat progress = scrollUpHeight / NavBarHeight;
-    if (offsetY > NAVBAR_TRANSLATION_POINT)
+    CGFloat isScrollup = (offsetY - self.lastOffsetY) > 0 ? YES : NO;
+    CGFloat scrollUpHeight = (offsetY - self.navbar_translation_point) > 44 ? 44 : (offsetY - self.navbar_translation_point);
+    CGFloat curTransformY = [self.navigationController.navigationBar wr_getTranslationY];
+    
+    if (isScrollup == YES)
     {
-        if (scrollUpHeight > 44)
-        {
-            [self setNavigationBarTransformProgress:1];
+        if (curTransformY == -44) {
+            return;
         }
         else
         {
-            [self setNavigationBarTransformProgress: progress];
+            if (offsetY > 0) {
+                [self setNavigationBarTransform:scrollUpHeight];
+            }
         }
     }
     else
     {
-        [self setNavigationBarTransformProgress:0];
+        __weak typeof(self) weakSelf = self;
+        [UIView animateWithDuration:0.3 animations:^{
+            __strong typeof(self) pThis = weakSelf;
+            [pThis setNavigationBarTransform:0];
+        }];
     }
+    
+    self.lastOffsetY = offsetY;
 }
 
-- (void)setNavigationBarTransformProgress:(CGFloat)progress
+- (void)setNavigationBarTransform:(CGFloat)scrollUpHeight
 {
-    [self.navigationController.navigationBar wr_setTranslationY:(-NavBarHeight * progress)];
-    [self.navigationController.navigationBar wr_setBarButtonItemsAlpha:(1 - progress) hasSystemBackIndicator:YES];
+    [self.navigationController.navigationBar wr_setTranslationY:-scrollUpHeight];
+    CGFloat curTransformY = [self.navigationController.navigationBar wr_getTranslationY];
+    [self.navigationController.navigationBar wr_setBarButtonItemsAlpha:(1 - (-curTransformY / 44.0)) hasSystemBackIndicator:true];
 }
+
+//- (void)setNavigationBarTransformProgress:(CGFloat)progress
+//{
+//    [self.navigationController.navigationBar wr_setTranslationY:(-NavBarHeight * progress)];
+//    [self.navigationController.navigationBar wr_setBarButtonItemsAlpha:(1 - progress) hasSystemBackIndicator:YES];
+//}
 
 
 
