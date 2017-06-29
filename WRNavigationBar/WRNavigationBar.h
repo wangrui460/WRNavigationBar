@@ -25,6 +25,9 @@
 /** set default statusBarStyle of UIStatusBar */
 + (void)wr_setDefaultStatusBarStyle:(UIStatusBarStyle)style;
 
+/** set default shadowImage isHidden of UINavigationBar */
++ (void)wr_setDefaultNavBarShadowImageHidden:(BOOL)hidden;
+
 @end
 
 
@@ -69,6 +72,10 @@
 /** record current ViewController statusBarStyle */
 - (void)wr_setStatusBarStyle:(UIStatusBarStyle)style;
 - (UIStatusBarStyle)wr_statusBarStyle;
+
+/** record current ViewController navigationBar shadowImage hidden */
+- (void)wr_setNavBarShadowImageHidden:(BOOL)hidden;
+- (BOOL)wr_navBarShadowImageHidden;
 
 /** record current ViewController custom navigationBar */
 - (void)wr_setCustomNavBar:(UINavigationBar *)navBar;
