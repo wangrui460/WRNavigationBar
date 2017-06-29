@@ -28,6 +28,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"常用";
     [self.view addSubview:self.tableView];
+    
+    // 改变标题文字大小
+    // self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:22]};
 }
 
 #pragma mark - tableview delegate / dataSource

@@ -203,6 +203,58 @@ static int kWRNavBarBottom = 64;
     return self.transform.ty;
 }
 
+#pragma mark - call swizzling methods active 主动调用交换方法
++ (void)load
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
+    {
+        SEL needSwizzleSelectors[4] = {
+            @selector(setTitleTextAttributes:)
+        };
+      
+        for (int i = 0; i < 4;  i++) {
+            SEL selector = needSwizzleSelectors[i];
+            NSString *newSelectorStr = [NSString stringWithFormat:@"wr_%@", NSStringFromSelector(selector)];
+            Method originMethod = class_getInstanceMethod(self, selector);
+            Method swizzledMethod = class_getInstanceMethod(self, NSSelectorFromString(newSelectorStr));
+            method_exchangeImplementations(originMethod, swizzledMethod);
+        }
+    });
+}
+
+- (void)wr_setTitleTextAttributes:(NSDictionary<NSString *,id> *)titleTextAttributes
+{
+    NSMutableDictionary<NSString *,id> *newTitleTextAttributes = [titleTextAttributes mutableCopy];
+    if (newTitleTextAttributes == nil) {
+        return;
+    }
+    
+    NSDictionary<NSString *,id> *originTitleTextAttributes = self.titleTextAttributes;
+    if (originTitleTextAttributes == nil) {
+        [self wr_setTitleTextAttributes:newTitleTextAttributes];
+        return;
+    }
+    
+    __block UIColor *titleColor;
+    [originTitleTextAttributes enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        if ([key isEqual:NSForegroundColorAttributeName]) {
+            titleColor = (UIColor *)obj;
+            *stop = YES;
+        }
+    }];
+    
+    if (titleColor == nil) {
+        [self wr_setTitleTextAttributes:newTitleTextAttributes];
+        return;
+    }
+    
+    if (newTitleTextAttributes[NSForegroundColorAttributeName] == nil) {
+        newTitleTextAttributes[NSForegroundColorAttributeName] = titleColor;
+    }
+    [self wr_setTitleTextAttributes:newTitleTextAttributes];
+}
+
 @end
 
 @interface UIViewController (Addition)
@@ -251,7 +303,15 @@ static int wrPushDisplayCount = 0;
 }
 - (void)setNeedsNavigationBarUpdateForTitleColor:(UIColor *)titleColor
 {
-    self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:titleColor};
+    NSDictionary *titleTextAttributes = [self.navigationBar titleTextAttributes];
+    if (titleTextAttributes == nil) {
+        self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:titleColor};
+        return;
+    }
+    
+    NSMutableDictionary *newTitleTextAttributes = [titleTextAttributes mutableCopy];
+    newTitleTextAttributes[NSForegroundColorAttributeName] = titleColor;
+    self.navigationBar.titleTextAttributes = newTitleTextAttributes;
 }
 
 - (void)updateNavigationBarWithFromVC:(UIViewController *)fromVC toVC:(UIViewController *)toVC progress:(CGFloat)progress
