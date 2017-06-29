@@ -19,6 +19,7 @@
 + (UIColor *)defaultNavBarTintColor;
 + (UIColor *)defaultNavBarTitleColor;
 + (UIStatusBarStyle)defaultStatusBarStyle;
++ (BOOL)defaultNavBarShadowImageHidden;
 + (CGFloat)defaultNavBarBackgroundAlpha;
 + (UIColor *)middleColor:(UIColor *)fromColor toColor:(UIColor *)toColor percent:(CGFloat)percent;
 + (CGFloat)middleAlpha:(CGFloat)fromAlpha toAlpha:(CGFloat)toAlpha percent:(CGFloat)percent;
@@ -29,6 +30,7 @@ static char kWRDefaultNavBarBarTintColorKey;
 static char kWRDefaultNavBarTintColorKey;
 static char kWRDefaultNavBarTitleColorKey;
 static char kWRDefaultStatusBarStyleKey;
+static char kWRDefaultNavBarShadowImageHiddenKey;
 
 + (UIColor *)defaultNavBarBarTintColor
 {
@@ -68,6 +70,16 @@ static char kWRDefaultStatusBarStyleKey;
 + (void)wr_setDefaultStatusBarStyle:(UIStatusBarStyle)style
 {
     objc_setAssociatedObject(self, &kWRDefaultStatusBarStyleKey, @(style), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
++ (BOOL)defaultNavBarShadowImageHidden
+{
+    id hidden = objc_getAssociatedObject(self, &kWRDefaultNavBarShadowImageHiddenKey);
+    return (hidden != nil) ? [hidden boolValue] : NO;
+}
++ (void)wr_setDefaultNavBarShadowImageHidden:(BOOL)hidden
+{
+    objc_setAssociatedObject(self, &kWRDefaultNavBarShadowImageHiddenKey, @(hidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 + (CGFloat)defaultNavBarBackgroundAlpha
@@ -301,6 +313,10 @@ static int wrPushDisplayCount = 0;
 {
     self.navigationBar.tintColor = tintColor;
 }
+- (void)setNeedsNavigationBarUpdateForShadowImageHidden:(BOOL)hidden
+{
+    self.navigationBar.shadowImage = (hidden == YES) ? [UIImage new] : nil;
+}
 - (void)setNeedsNavigationBarUpdateForTitleColor:(UIColor *)titleColor
 {
     NSDictionary *titleTextAttributes = [self.navigationBar titleTextAttributes];
@@ -523,6 +539,7 @@ static char kWRNavBarBackgroundAlphaKey;
 static char kWRNavBarTintColorKey;
 static char kWRNavBarTitleColorKey;
 static char kWRStatusBarStyleKey;
+static char kWRNavBarShadowImageHiddenKey;
 static char kWRCustomNavBarKey;
 
 // navigationBar barTintColor can not change by currentVC before fromVC push to currentVC finished
@@ -648,6 +665,19 @@ static char kWRCustomNavBarKey;
     [self setNeedsStatusBarAppearanceUpdate];
 }
 
+// shadowImage
+- (void)wr_setNavBarShadowImageHidden:(BOOL)hidden
+{
+    objc_setAssociatedObject(self, &kWRNavBarShadowImageHiddenKey, @(hidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self.navigationController setNeedsNavigationBarUpdateForShadowImageHidden:hidden];
+    
+}
+- (BOOL)wr_navBarShadowImageHidden
+{
+    id hidden = objc_getAssociatedObject(self, &kWRNavBarShadowImageHiddenKey);
+    return (hidden != nil) ? [hidden boolValue] : [UIColor defaultNavBarShadowImageHidden];
+}
+
 // custom navigationBar
 - (UIView *)wr_customNavBar
 {
@@ -700,6 +730,7 @@ static char kWRCustomNavBarKey;
     [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundAlpha:[self wr_navBarBackgroundAlpha]];
     [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self wr_navBarTintColor]];
     [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self wr_navBarTitleColor]];
+    [self.navigationController setNeedsNavigationBarUpdateForShadowImageHidden:[self wr_navBarShadowImageHidden]];
     [self wr_viewDidAppear:animated];
 }
 
