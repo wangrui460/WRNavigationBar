@@ -14,7 +14,7 @@
 //===============================================================================================
 #pragma mark - default navigationBar barTintColor、tintColor and statusBarStyle YOU CAN CHANGE!!!
 //===============================================================================================
-@interface UIColor (WRAddition)
+@interface UIColor (Addition)
 + (UIColor *)defaultNavBarBarTintColor;
 + (UIColor *)defaultNavBarTintColor;
 + (UIColor *)defaultNavBarTitleColor;
@@ -205,7 +205,7 @@ static int kWRNavBarBottom = 64;
 
 @end
 
-@interface UIViewController (WRAddition)
+@interface UIViewController (Addition)
 - (void)setPushToCurrentVCFinished:(BOOL)isFinished;
 @end
 
