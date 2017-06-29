@@ -13,7 +13,6 @@
 		1A0DF7AD1EA735A300191349 /* QQAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A31EA735A300191349 /* QQAppController.m */; };
 		1A0DF7AE1EA735A300191349 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A51EA735A300191349 /* SecondViewController.m */; };
 		1A0DF7AF1EA735A300191349 /* SixthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A71EA735A300191349 /* SixthViewController.m */; };
-		1A0DF7B01EA735A300191349 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A91EA735A300191349 /* ThirdViewController.m */; };
 		1A0DF7BC1EA7531800191349 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7BB1EA7531800191349 /* BaseNavigationController.m */; };
 		1A2061D41E9CB496007BFB91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061D31E9CB496007BFB91 /* main.m */; };
 		1A2061D71E9CB496007BFB91 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061D61E9CB496007BFB91 /* AppDelegate.m */; };
@@ -55,8 +54,6 @@
 		1A0DF7A51EA735A300191349 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecondViewController.m; path = ../Demos/SecondViewController.m; sourceTree = "<group>"; };
 		1A0DF7A61EA735A300191349 /* SixthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SixthViewController.h; path = ../Demos/SixthViewController.h; sourceTree = "<group>"; };
 		1A0DF7A71EA735A300191349 /* SixthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SixthViewController.m; path = ../Demos/SixthViewController.m; sourceTree = "<group>"; };
-		1A0DF7A81EA735A300191349 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThirdViewController.h; path = ../Demos/ThirdViewController.h; sourceTree = "<group>"; };
-		1A0DF7A91EA735A300191349 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThirdViewController.m; path = ../Demos/ThirdViewController.m; sourceTree = "<group>"; };
 		1A0DF7BA1EA7531800191349 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseNavigationController.h; path = Demos/BaseNavigationController.h; sourceTree = "<group>"; };
 		1A0DF7BB1EA7531800191349 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseNavigationController.m; path = Demos/BaseNavigationController.m; sourceTree = "<group>"; };
 		1A2061CF1E9CB496007BFB91 /* CodeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,8 +201,6 @@
 				1AAE08E81EE7F3350085C3A2 /* MoveListController.m */,
 				1A0DF7A41EA735A300191349 /* SecondViewController.h */,
 				1A0DF7A51EA735A300191349 /* SecondViewController.m */,
-				1A0DF7A81EA735A300191349 /* ThirdViewController.h */,
-				1A0DF7A91EA735A300191349 /* ThirdViewController.m */,
 				1A0DF7A61EA735A300191349 /* SixthViewController.h */,
 				1A0DF7A71EA735A300191349 /* SixthViewController.m */,
 			);
@@ -409,7 +404,6 @@
 				1A869EE51ECAF4FA006D96F8 /* CustomNavBarController.m in Sources */,
 				1A0DF7AE1EA735A300191349 /* SecondViewController.m in Sources */,
 				1A0DF7AF1EA735A300191349 /* SixthViewController.m in Sources */,
-				1A0DF7B01EA735A300191349 /* ThirdViewController.m in Sources */,
 				1AAE08EC1EE7F38E0085C3A2 /* CustomListController.m in Sources */,
 				1AAA1D511EEE65D000681CB9 /* AntForestController.m in Sources */,
 				1A0DF7AB1EA735A300191349 /* QQZoneController.m in Sources */,

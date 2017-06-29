@@ -9,7 +9,6 @@
 
 #import "MoveListController.h"
 #import "SecondViewController.h"
-#import "ThirdViewController.h"
 #import "SixthViewController.h"
 
 @interface MoveListController () <UITableViewDelegate, UITableViewDataSource>
@@ -43,9 +42,6 @@
             str = @"超过临界点移动导航栏";
             break;
         case 1:
-            str = @"超过临界点多少，移动导航栏多少(不会超过44)";
-            break;
-        case 2:
             str = @"没有系统返回按钮的情况";
             break;
         
@@ -73,12 +69,6 @@
         }
             break;
         case 1:
-        {
-            ThirdViewController *thirdVC = [ThirdViewController new];
-            [self.navigationController pushViewController:thirdVC animated:YES];
-        }
-            break;
-        case 2:
         {
             SixthViewController *sixVC = [SixthViewController new];
             [self.navigationController pushViewController:sixVC animated:YES];
