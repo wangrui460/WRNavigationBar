@@ -53,6 +53,10 @@
 #pragma mark - UIViewController
 @interface UIViewController (WRAddition)
 
+/** record current ViewController navigationBar backgroundImage **/
+- (void)wr_setNavBarBackgroundImage:(UIImage *)image;
+- (UIImage *)wr_navBarBackgroundImage;
+
 /** record current ViewController navigationBar barTintColor */
 - (void)wr_setNavBarBarTintColor:(UIColor *)color;
 - (UIColor *)wr_navBarBarTintColor;

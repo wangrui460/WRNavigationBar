@@ -11,6 +11,9 @@
 
 
 ## Demo 
+![导航栏显示渐变色](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/导航栏显示渐变色.gif)
+
+![导航栏显示图片](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/导航栏显示图片.gif)
 
 ![新浪微博个人中心](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/新浪微博个人中心.gif)
 
@@ -35,6 +38,8 @@
 ## Use
 
 <pre><code>
+// 一行代码搞定导航栏显示图片
+[self wr_setNavBarBackgroundImage:[UIImage imageNamed:@"millcolorGrad"]];
 // 一行代码搞定导航栏颜色
 [self wr_setNavBarBarTintColor:[UIColor whiteColor]];
 // 一行代码搞定导航栏透明度
@@ -68,6 +73,9 @@
 
 
 ## Update
+- **2017.07.02**
+添加新功能：导航栏可显示图片
+
 - **2017.06.29**
 添加新功能：可单独设置每个控制器对应导航栏底部分割线是否隐藏
 
@@ -94,7 +102,7 @@
 
 
 # Contact me
-- Weibo: [@wangrui460](http://weibo.com/u/5145779726?is_all=1)
+- Weibo: [@wangrui460](http://weibo.com/wangrui460)
 - Email:  wangruidev@gmail.com
 - QQ：1204607318
 
