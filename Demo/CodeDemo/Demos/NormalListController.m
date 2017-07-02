@@ -14,6 +14,8 @@
 #import "ZhiHuController.h"
 #import "QQMineController.h"
 #import "AntForestController.h"
+#import "ImageNavController.h"
+#import "MillcolorGradController.h"
 
 @interface NormalListController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -36,7 +38,7 @@
 #pragma mark - tableview delegate / dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -62,6 +64,12 @@
             break;
         case 5:
             str = @"蚂蚁森林";
+            break;
+        case 6:
+            str = @"导航栏显示图片";
+            break;
+        case 7:
+            str = @"实现导航栏渐变色的另一种方式";
             break;
         
         default:
@@ -111,11 +119,24 @@
             [self.navigationController pushViewController:qqMineVC animated:YES];
         }
             break;
-            case 5:
+        case 5:
         {
             AntForestController *antForestVC = [AntForestController new];
             [self.navigationController pushViewController:antForestVC animated:YES];
         }
+            break;
+        case 6:
+        {
+            ImageNavController *imageNavVC = [ImageNavController new];
+            [self.navigationController pushViewController:imageNavVC animated:YES];
+        }
+            break;
+        case 7:
+        {
+            MillcolorGradController *millcolorGradVC = [MillcolorGradController new];
+            [self.navigationController pushViewController:millcolorGradVC animated:YES];
+        }
+            break;
         default:
             break;
     }
