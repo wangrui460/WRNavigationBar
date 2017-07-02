@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.social_media_url   = "http://weibo.com/wangrui460"
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/wangrui460/WRNavigationBar.git", :tag => s.version }
-  s.source_files  = "WRNavigationBar/WRNavigationBar/*.{h,m}"
+  s.source_files  = "WRNavigationBar/*.{h,m}"
   s.requires_arc         = true
 
 end
