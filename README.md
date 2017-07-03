@@ -17,11 +17,13 @@
 ------------------------------------------------------------
 
 ## Requirements
+---
 - iOS 8+
 - Xcode 8+
 
 
 ## Demo 
+---
 ![导航栏显示渐变色](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/导航栏显示渐变色.gif)
 
 ![导航栏显示图片](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/导航栏显示图片.gif)
@@ -42,12 +44,16 @@
 
 
 ## Installation 
+---
+> **CocoaPods**
+> pod 'WRNavigationBar'
+
 
 > **手动拖入**
 > 将 WRNavigationBar 文件夹拽入项目中，导入头文件：#import "WRNavigationBar.h"
 
 ## Use
-
+---
 <pre><code>
 // 一行代码搞定导航栏显示图片
 [self wr_setNavBarBackgroundImage:[UIImage imageNamed:@"millcolorGrad"]];
@@ -80,10 +86,12 @@
 
 
 ## More
+---
 我的简书: [韦德460](http://www.jianshu.com/p/7e92451ab0b2)
 
 
 ## Update
+---
 - **2017.07.02**
 添加新功能：导航栏可显示图片
 
@@ -110,14 +118,15 @@
 
 
 ## Features
-
+---
 
 # Contact me
+---
 - Weibo: [@wangrui460](http://weibo.com/wangrui460)
 - Email:  wangruidev@gmail.com
 - QQ：1204607318
 
 # License
-
+---
 WRNavigationBar is available under the MIT license. See the LICENSE file for more info.
 
