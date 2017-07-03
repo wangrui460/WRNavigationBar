@@ -1,5 +1,16 @@
 ![image](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/WRNavigationBar.png)
 
+<p align="center">
+<a href=""><img src="https://img.shields.io/badge/platform-iOS%208.0%2B-ff69b5152950834.svg"></a>
+<a href="https://github.com/wangrui460/WRNavigationBar"><img src="https://img.shields.io/cocoapods/v/WRNavigationBar.svg?style=flat"></a>
+<a href="https://github.com/wangrui460/WRNavigationBar_swift"><img src="https://img.shields.io/badge/Swift-compatible-orange.svg"></a>
+<a href="https://github.com/wangrui460/WRNavigationBar/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat"></a>
+</p>
+<p align="center">
+<a href="https://twitter.com/wangrui460"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social&maxAge=2592000"></a>
+<a href="http://weibo.com/wangrui460"><img src="http://i67.tinypic.com/wbulbr.jpg"></a>
+</p>
+
 [For Swift：https://github.com/wangrui460/WRNavigationBar_swift](https://github.com/wangrui460/WRNavigationBar_swift)
 
 
