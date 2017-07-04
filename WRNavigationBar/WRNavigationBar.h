@@ -16,6 +16,9 @@
 /** set default barTintColor of UINavigationBar */
 + (void)wr_setDefaultNavBarBarTintColor:(UIColor *)color;
 
+/** set default barBackgroundImage of UINavigationBar */
++ (void)wr_setDefaultNavBarBackgroundImage:(UIImage *)image;
+
 /** set default tintColor of UINavigationBar */
 + (void)wr_setDefaultNavBarTintColor:(UIColor *)color;
 
