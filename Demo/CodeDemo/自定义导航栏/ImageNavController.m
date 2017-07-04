@@ -26,9 +26,10 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor greenColor];
-    self.title = @"玛丽莲·梦露";
+    self.navItem.title = @"玛丽莲·梦露";
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.topView;
+    [self.view insertSubview:self.navBar aboveSubview:self.tableView];
     
     // 设置导航栏显示图片
     [self wr_setNavBarBackgroundImage:[UIImage imageNamed:@"imageNav"]];
@@ -78,10 +79,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UIViewController *vc = [UIViewController new];
-    vc.view.backgroundColor = MainViewColor;
-    NSString *str = [NSString stringWithFormat:@"WRNavigationBar %zd",indexPath.row];
-    vc.title = str;
+    BaseViewController *vc = [BaseViewController new];
+    vc.view.backgroundColor = [UIColor redColor];
+    NSString *str = [NSString stringWithFormat:@"右划返回查看效果 %zd",indexPath.row];
+    vc.navItem.title = str;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -92,7 +93,7 @@
         CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         _tableView = [[UITableView alloc] initWithFrame:frame
                                                   style:UITableViewStylePlain];
-        _tableView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
+        _tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         _tableView.delegate = self;
         _tableView.dataSource = self;
     }

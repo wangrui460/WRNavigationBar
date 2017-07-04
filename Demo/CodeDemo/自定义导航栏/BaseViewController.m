@@ -33,9 +33,26 @@
     
     [self.view addSubview:self.navBar];
     self.navBar.items = @[self.navItem];
-    self.navBar.barTintColor = MainNavBarColor;
-    self.navBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
-    self.navBar.tintColor = [UIColor whiteColor];
+    
+    // 设置自定义导航栏背景图片
+    [self wr_setNavBarBackgroundImage:[UIImage imageNamed:@"millcolorGrad"]];
+    
+    // 设置自定义导航栏默认背景颜色
+    // [self wr_setNavBarBarTintColor:MainNavBarColor];
+    
+    // 设置自定义导航栏标题颜色
+    [self wr_setNavBarTitleColor:[UIColor whiteColor]];
+    
+    // 设置自定义导航栏左右按钮字体颜色
+    [self wr_setNavBarTintColor:[UIColor whiteColor]];
+    
+    if (self.navigationController.childViewControllers.count != 1) {
+        self.navItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"<<" style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    }
+}
+
+- (void)back {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (UINavigationBar *)navBar

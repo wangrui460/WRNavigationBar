@@ -7,8 +7,8 @@
 //
 //  Github地址：https://github.com/wangrui460/WRNavigationBar
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface ImageNavController : UIViewController
+@interface ImageNavController : BaseViewController
 
 @end

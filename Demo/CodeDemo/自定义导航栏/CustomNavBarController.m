@@ -33,7 +33,6 @@
     self.tableView.tableHeaderView = self.topView;
     [self.view insertSubview:self.navBar aboveSubview:self.tableView];
 
-    self.navItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"<<" style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     self.navItem.title = @"个人中心";
     
     /// 注意查看 BaseViewController.m文件
@@ -99,12 +98,7 @@
     vc.view.backgroundColor = [UIColor redColor];
     NSString *str = [NSString stringWithFormat:@"右划返回查看效果 %zd",indexPath.row];
     vc.navItem.title = str;
-    vc.navItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     [self.navigationController pushViewController:vc animated:YES];
-}
-
-- (void)back {
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - getter / setter
@@ -113,7 +107,7 @@
     if (_tableView == nil) {
         CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.bounds.size.height);
         _tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
-        _tableView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
+        _tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         _tableView.delegate = self;
         _tableView.dataSource = self;
     }

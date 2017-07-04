@@ -27,6 +27,7 @@
 @implementation UIColor (WRAddition)
 
 static char kWRDefaultNavBarBarTintColorKey;
+static char kWRDefaultNavBarBackgroundImageKey;
 static char kWRDefaultNavBarTintColorKey;
 static char kWRDefaultNavBarTitleColorKey;
 static char kWRDefaultStatusBarStyleKey;
@@ -40,6 +41,16 @@ static char kWRDefaultNavBarShadowImageHiddenKey;
 + (void)wr_setDefaultNavBarBarTintColor:(UIColor *)color
 {
     objc_setAssociatedObject(self, &kWRDefaultNavBarBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
++ (UIImage *)defaultNavBarBackgroundImage
+{
+    UIImage *image = (UIImage *)objc_getAssociatedObject(self, &kWRDefaultNavBarBackgroundImageKey);
+    return image;
+}
++ (void)wr_setDefaultNavBarBackgroundImage:(UIImage *)image
+{
+    objc_setAssociatedObject(self, &kWRDefaultNavBarBackgroundImageKey, image, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 + (UIColor *)defaultNavBarTintColor
@@ -599,11 +610,20 @@ static char kWRCustomNavBarKey;
 // navigationBar backgroundImage
 - (UIImage *)wr_navBarBackgroundImage
 {
-    return (UIImage *)objc_getAssociatedObject(self, &kWRNavBarBackgroundImageKey);
+    UIImage *image = (UIImage *)objc_getAssociatedObject(self, &kWRNavBarBackgroundImageKey);
+    image = (image == nil) ? [UIColor defaultNavBarBackgroundImage] : image;
+    return image;
 }
 - (void)wr_setNavBarBackgroundImage:(UIImage *)image
 {
-    objc_setAssociatedObject(self, &kWRNavBarBackgroundImageKey, image, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]])
+    {
+        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
+        [navBar wr_setBackgroundImage:image];
+    }
+    else {
+        objc_setAssociatedObject(self, &kWRNavBarBackgroundImageKey, image, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
 }
 
 // navigationBar barTintColor
