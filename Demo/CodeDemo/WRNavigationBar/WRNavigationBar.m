@@ -259,11 +259,11 @@ static int kWRNavBarBottom = 64;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
     {
-        SEL needSwizzleSelectors[4] = {
+        SEL needSwizzleSelectors[1] = {
             @selector(setTitleTextAttributes:)
         };
       
-        for (int i = 0; i < 4;  i++) {
+        for (int i = 0; i < 1;  i++) {
             SEL selector = needSwizzleSelectors[i];
             NSString *newSelectorStr = [NSString stringWithFormat:@"wr_%@", NSStringFromSelector(selector)];
             Method originMethod = class_getInstanceMethod(self, selector);
