@@ -779,8 +779,8 @@ static char kWRCustomNavBarKey;
         [self setPushToNextVCFinished:NO];
         [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self wr_navBarTintColor]];
         [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self wr_navBarTitleColor]];
-        [self wr_viewWillAppear:animated];
     }
+    [self wr_viewWillAppear:animated];
 }
 
 - (void)wr_viewWillDisappear:(BOOL)animated
@@ -788,8 +788,8 @@ static char kWRCustomNavBarKey;
     if ([self canUpdateNavigationBar] == YES)
     {
         [self setPushToNextVCFinished:YES];
-        [self wr_viewWillDisappear:animated];
     }
+    [self wr_viewWillDisappear:animated];
 }
 
 - (void)wr_viewDidAppear:(BOOL)animated
@@ -806,8 +806,8 @@ static char kWRCustomNavBarKey;
         [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self wr_navBarTintColor]];
         [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self wr_navBarTitleColor]];
         [self.navigationController setNeedsNavigationBarUpdateForShadowImageHidden:[self wr_navBarShadowImageHidden]];
-        [self wr_viewDidAppear:animated];
     }
+    [self wr_viewDidAppear:animated];
 }
 
 - (BOOL)canUpdateNavigationBar
