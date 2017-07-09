@@ -774,31 +774,58 @@ static char kWRCustomNavBarKey;
 
 - (void)wr_viewWillAppear:(BOOL)animated
 {
-    [self setPushToNextVCFinished:NO];
-    [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self wr_navBarTintColor]];
-    [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self wr_navBarTitleColor]];
-    [self wr_viewWillAppear:animated];
+    if ([self canUpdateNavigationBar] == YES)
+    {
+        [self setPushToNextVCFinished:NO];
+        [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self wr_navBarTintColor]];
+        [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self wr_navBarTitleColor]];
+        [self wr_viewWillAppear:animated];
+    }
 }
 
 - (void)wr_viewWillDisappear:(BOOL)animated
 {
-    [self setPushToNextVCFinished:YES];
-    [self wr_viewWillDisappear:animated];
+    if ([self canUpdateNavigationBar] == YES)
+    {
+        [self setPushToNextVCFinished:YES];
+        [self wr_viewWillDisappear:animated];
+    }
 }
 
 - (void)wr_viewDidAppear:(BOOL)animated
 {
-    UIImage *barBgImage = [self wr_navBarBackgroundImage];
-    if (barBgImage != nil) {
-        [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundImage:barBgImage];
-    } else {
-        [self.navigationController setNeedsNavigationBarUpdateForBarTintColor:[self wr_navBarBarTintColor]];
+    if ([self canUpdateNavigationBar] == YES)
+    {
+        UIImage *barBgImage = [self wr_navBarBackgroundImage];
+        if (barBgImage != nil) {
+            [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundImage:barBgImage];
+        } else {
+            [self.navigationController setNeedsNavigationBarUpdateForBarTintColor:[self wr_navBarBarTintColor]];
+        }
+        [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundAlpha:[self wr_navBarBackgroundAlpha]];
+        [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self wr_navBarTintColor]];
+        [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self wr_navBarTitleColor]];
+        [self.navigationController setNeedsNavigationBarUpdateForShadowImageHidden:[self wr_navBarShadowImageHidden]];
+        [self wr_viewDidAppear:animated];
     }
-    [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundAlpha:[self wr_navBarBackgroundAlpha]];
-    [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self wr_navBarTintColor]];
-    [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self wr_navBarTitleColor]];
-    [self.navigationController setNeedsNavigationBarUpdateForShadowImageHidden:[self wr_navBarShadowImageHidden]];
-    [self wr_viewDidAppear:animated];
+}
+
+- (BOOL)canUpdateNavigationBar
+{
+    CGFloat screenX = 0;
+    CGFloat screenY = 0;
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    
+    CGFloat selfX = self.view.frame.origin.x;
+    CGFloat selfY = self.view.frame.origin.y;
+    CGFloat selfWidth = self.view.frame.size.width;
+    CGFloat selfHeight = self.view.frame.size.height;
+    if (self.navigationController && screenX == selfX && screenY == selfY && screenWidth == selfWidth && screenHeight == selfHeight) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 @end
