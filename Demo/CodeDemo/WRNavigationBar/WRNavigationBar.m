@@ -812,16 +812,7 @@ static char kWRCustomNavBarKey;
 
 - (BOOL)canUpdateNavigationBar
 {
-    CGFloat screenX = 0;
-    CGFloat screenY = 0;
-    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
-    
-    CGFloat selfX = self.view.frame.origin.x;
-    CGFloat selfY = self.view.frame.origin.y;
-    CGFloat selfWidth = self.view.frame.size.width;
-    CGFloat selfHeight = self.view.frame.size.height;
-    if (self.navigationController && screenX == selfX && screenY == selfY && screenWidth == selfWidth && screenHeight == selfHeight) {
+    if (self.navigationController && CGRectEqualToRect(self.view.frame, [UIScreen mainScreen].bounds)) {
         return YES;
     } else {
         return NO;
