@@ -7,13 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A0DF7AA1EA735A300191349 /* NormalListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF79D1EA735A300191349 /* NormalListController.m */; };
-		1A0DF7AB1EA735A300191349 /* QQZoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF79F1EA735A300191349 /* QQZoneController.m */; };
-		1A0DF7AC1EA735A300191349 /* WeiBoMineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A11EA735A300191349 /* WeiBoMineController.m */; };
-		1A0DF7AD1EA735A300191349 /* QQAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A31EA735A300191349 /* QQAppController.m */; };
-		1A0DF7AE1EA735A300191349 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A51EA735A300191349 /* SecondViewController.m */; };
-		1A0DF7AF1EA735A300191349 /* SixthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7A71EA735A300191349 /* SixthViewController.m */; };
-		1A0DF7BC1EA7531800191349 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0DF7BB1EA7531800191349 /* BaseNavigationController.m */; };
 		1A2061D41E9CB496007BFB91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061D31E9CB496007BFB91 /* main.m */; };
 		1A2061D71E9CB496007BFB91 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061D61E9CB496007BFB91 /* AppDelegate.m */; };
 		1A2061DD1E9CB496007BFB91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2061DB1E9CB496007BFB91 /* Main.storyboard */; };
@@ -21,15 +14,22 @@
 		1A2061E21E9CB496007BFB91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2061E01E9CB496007BFB91 /* LaunchScreen.storyboard */; };
 		1A2061ED1E9CB496007BFB91 /* CodeDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061EC1E9CB496007BFB91 /* CodeDemoTests.m */; };
 		1A2061FA1E9CB4E4007BFB91 /* WRNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061F91E9CB4E4007BFB91 /* WRNavigationBar.m */; };
-		1A869EE21ECAF20E006D96F8 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A869EE11ECAF20E006D96F8 /* BaseViewController.m */; };
-		1A869EE51ECAF4FA006D96F8 /* CustomNavBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A869EE41ECAF4FA006D96F8 /* CustomNavBarController.m */; };
+		1A7A6BBA1F1B3D5700A602D6 /* NormalListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A6BB91F1B3D5700A602D6 /* NormalListController.m */; };
+		1A7A6BBD1F1B3D8400A602D6 /* WeiBoMineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A6BBC1F1B3D8400A602D6 /* WeiBoMineController.m */; };
+		1A7A6BC01F1B3DA400A602D6 /* QQAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A6BBF1F1B3DA400A602D6 /* QQAppController.m */; };
+		1A7A6BC31F1B3DBE00A602D6 /* QQZoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A6BC21F1B3DBE00A602D6 /* QQZoneController.m */; };
+		1A7A6BC61F1B3E2200A602D6 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A6BC51F1B3E2200A602D6 /* BaseNavigationController.m */; };
+		1A7A6BC91F1B3E5200A602D6 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A6BC81F1B3E5200A602D6 /* BaseViewController.m */; };
+		1A7A6BCC1F1B3E7200A602D6 /* CustomNavBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A6BCB1F1B3E7200A602D6 /* CustomNavBarController.m */; };
+		1A7A6BCF1F1B3E9800A602D6 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A6BCE1F1B3E9800A602D6 /* SecondViewController.m */; };
+		1A7A6BD21F1B3EB100A602D6 /* SixthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A6BD11F1B3EB100A602D6 /* SixthViewController.m */; };
+		1A7A6BD71F1B402900A602D6 /* ImageNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A6BD41F1B402900A602D6 /* ImageNavController.m */; };
+		1A7A6BD81F1B402900A602D6 /* MillcolorGradController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A6BD61F1B402900A602D6 /* MillcolorGradController.m */; };
 		1AAA1D4B1EEE380400681CB9 /* ZhiHuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA1D4A1EEE380400681CB9 /* ZhiHuController.m */; };
 		1AAA1D4E1EEE480400681CB9 /* QQMineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA1D4D1EEE480400681CB9 /* QQMineController.m */; };
 		1AAA1D511EEE65D000681CB9 /* AntForestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA1D501EEE65D000681CB9 /* AntForestController.m */; };
 		1AAE08E91EE7F3350085C3A2 /* MoveListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE08E81EE7F3350085C3A2 /* MoveListController.m */; };
 		1AAE08EC1EE7F38E0085C3A2 /* CustomListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE08EB1EE7F38E0085C3A2 /* CustomListController.m */; };
-		1ABDE22F1F088A0B00251CD4 /* ImageNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABDE22E1F088A0B00251CD4 /* ImageNavController.m */; };
-		1ABDE2321F088A2A00251CD4 /* MillcolorGradController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABDE2311F088A2A00251CD4 /* MillcolorGradController.m */; };
 		29F1DC19441470C345522432 /* Pods_CodeDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5025CF19A1273775CA7A2A /* Pods_CodeDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,20 +44,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1A0DF79C1EA735A300191349 /* NormalListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NormalListController.h; path = ../Demos/NormalListController.h; sourceTree = "<group>"; };
-		1A0DF79D1EA735A300191349 /* NormalListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NormalListController.m; path = ../Demos/NormalListController.m; sourceTree = "<group>"; };
-		1A0DF79E1EA735A300191349 /* QQZoneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QQZoneController.h; path = ../Demos/QQZoneController.h; sourceTree = "<group>"; };
-		1A0DF79F1EA735A300191349 /* QQZoneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QQZoneController.m; path = ../Demos/QQZoneController.m; sourceTree = "<group>"; };
-		1A0DF7A01EA735A300191349 /* WeiBoMineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeiBoMineController.h; path = ../Demos/WeiBoMineController.h; sourceTree = "<group>"; };
-		1A0DF7A11EA735A300191349 /* WeiBoMineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeiBoMineController.m; path = ../Demos/WeiBoMineController.m; sourceTree = "<group>"; };
-		1A0DF7A21EA735A300191349 /* QQAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QQAppController.h; path = ../Demos/QQAppController.h; sourceTree = "<group>"; };
-		1A0DF7A31EA735A300191349 /* QQAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QQAppController.m; path = ../Demos/QQAppController.m; sourceTree = "<group>"; };
-		1A0DF7A41EA735A300191349 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecondViewController.h; path = ../Demos/SecondViewController.h; sourceTree = "<group>"; };
-		1A0DF7A51EA735A300191349 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecondViewController.m; path = ../Demos/SecondViewController.m; sourceTree = "<group>"; };
-		1A0DF7A61EA735A300191349 /* SixthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SixthViewController.h; path = ../Demos/SixthViewController.h; sourceTree = "<group>"; };
-		1A0DF7A71EA735A300191349 /* SixthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SixthViewController.m; path = ../Demos/SixthViewController.m; sourceTree = "<group>"; };
-		1A0DF7BA1EA7531800191349 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseNavigationController.h; path = Demos/BaseNavigationController.h; sourceTree = "<group>"; };
-		1A0DF7BB1EA7531800191349 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseNavigationController.m; path = Demos/BaseNavigationController.m; sourceTree = "<group>"; };
 		1A2061CF1E9CB496007BFB91 /* CodeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A2061D31E9CB496007BFB91 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1A2061D51E9CB496007BFB91 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -71,10 +57,28 @@
 		1A2061EE1E9CB496007BFB91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A2061F81E9CB4E4007BFB91 /* WRNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRNavigationBar.h; sourceTree = "<group>"; };
 		1A2061F91E9CB4E4007BFB91 /* WRNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRNavigationBar.m; sourceTree = "<group>"; };
-		1A869EE01ECAF20E006D96F8 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = ../Demos/BaseViewController.h; sourceTree = "<group>"; };
-		1A869EE11ECAF20E006D96F8 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = ../Demos/BaseViewController.m; sourceTree = "<group>"; };
-		1A869EE31ECAF4FA006D96F8 /* CustomNavBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomNavBarController.h; path = ../Demos/CustomNavBarController.h; sourceTree = "<group>"; };
-		1A869EE41ECAF4FA006D96F8 /* CustomNavBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomNavBarController.m; path = ../Demos/CustomNavBarController.m; sourceTree = "<group>"; };
+		1A7A6BB81F1B3D5700A602D6 /* NormalListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalListController.h; sourceTree = "<group>"; };
+		1A7A6BB91F1B3D5700A602D6 /* NormalListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalListController.m; sourceTree = "<group>"; };
+		1A7A6BBB1F1B3D8400A602D6 /* WeiBoMineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiBoMineController.h; sourceTree = "<group>"; };
+		1A7A6BBC1F1B3D8400A602D6 /* WeiBoMineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiBoMineController.m; sourceTree = "<group>"; };
+		1A7A6BBE1F1B3DA400A602D6 /* QQAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQAppController.h; sourceTree = "<group>"; };
+		1A7A6BBF1F1B3DA400A602D6 /* QQAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQAppController.m; sourceTree = "<group>"; };
+		1A7A6BC11F1B3DBE00A602D6 /* QQZoneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQZoneController.h; sourceTree = "<group>"; };
+		1A7A6BC21F1B3DBE00A602D6 /* QQZoneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQZoneController.m; sourceTree = "<group>"; };
+		1A7A6BC41F1B3E2200A602D6 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
+		1A7A6BC51F1B3E2200A602D6 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
+		1A7A6BC71F1B3E5200A602D6 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		1A7A6BC81F1B3E5200A602D6 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		1A7A6BCA1F1B3E7200A602D6 /* CustomNavBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavBarController.h; sourceTree = "<group>"; };
+		1A7A6BCB1F1B3E7200A602D6 /* CustomNavBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavBarController.m; sourceTree = "<group>"; };
+		1A7A6BCD1F1B3E9800A602D6 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		1A7A6BCE1F1B3E9800A602D6 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		1A7A6BD01F1B3EB100A602D6 /* SixthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SixthViewController.h; sourceTree = "<group>"; };
+		1A7A6BD11F1B3EB100A602D6 /* SixthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SixthViewController.m; sourceTree = "<group>"; };
+		1A7A6BD31F1B402900A602D6 /* ImageNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageNavController.h; sourceTree = "<group>"; };
+		1A7A6BD41F1B402900A602D6 /* ImageNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageNavController.m; sourceTree = "<group>"; };
+		1A7A6BD51F1B402900A602D6 /* MillcolorGradController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MillcolorGradController.h; sourceTree = "<group>"; };
+		1A7A6BD61F1B402900A602D6 /* MillcolorGradController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MillcolorGradController.m; sourceTree = "<group>"; };
 		1AAA1D491EEE380400681CB9 /* ZhiHuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhiHuController.h; sourceTree = "<group>"; };
 		1AAA1D4A1EEE380400681CB9 /* ZhiHuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhiHuController.m; sourceTree = "<group>"; };
 		1AAA1D4C1EEE480400681CB9 /* QQMineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQMineController.h; sourceTree = "<group>"; };
@@ -85,10 +89,6 @@
 		1AAE08E81EE7F3350085C3A2 /* MoveListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveListController.m; sourceTree = "<group>"; };
 		1AAE08EA1EE7F38E0085C3A2 /* CustomListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomListController.h; sourceTree = "<group>"; };
 		1AAE08EB1EE7F38E0085C3A2 /* CustomListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomListController.m; sourceTree = "<group>"; };
-		1ABDE22D1F088A0B00251CD4 /* ImageNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageNavController.h; sourceTree = "<group>"; };
-		1ABDE22E1F088A0B00251CD4 /* ImageNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageNavController.m; sourceTree = "<group>"; };
-		1ABDE2301F088A2A00251CD4 /* MillcolorGradController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MillcolorGradController.h; sourceTree = "<group>"; };
-		1ABDE2311F088A2A00251CD4 /* MillcolorGradController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MillcolorGradController.m; sourceTree = "<group>"; };
 		37581D1AF27611119D8AA286 /* Pods-CodeDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CodeDemo/Pods-CodeDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		BA5025CF19A1273775CA7A2A /* Pods_CodeDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD02850717C2C54F9C2585E9 /* Pods-CodeDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CodeDemo/Pods-CodeDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -138,8 +138,8 @@
 			children = (
 				1A2061D51E9CB496007BFB91 /* AppDelegate.h */,
 				1A2061D61E9CB496007BFB91 /* AppDelegate.m */,
-				1A0DF7BA1EA7531800191349 /* BaseNavigationController.h */,
-				1A0DF7BB1EA7531800191349 /* BaseNavigationController.m */,
+				1A7A6BC41F1B3E2200A602D6 /* BaseNavigationController.h */,
+				1A7A6BC51F1B3E2200A602D6 /* BaseNavigationController.m */,
 				1A2061F71E9CB4E4007BFB91 /* WRNavigationBar */,
 				1A3807831EE453E000F349D7 /* 普通 */,
 				1A3807851EE453E000F349D7 /* 自定义导航栏 */,
@@ -182,24 +182,20 @@
 		1A3807831EE453E000F349D7 /* 普通 */ = {
 			isa = PBXGroup;
 			children = (
-				1A0DF79C1EA735A300191349 /* NormalListController.h */,
-				1A0DF79D1EA735A300191349 /* NormalListController.m */,
-				1A0DF7A01EA735A300191349 /* WeiBoMineController.h */,
-				1A0DF7A11EA735A300191349 /* WeiBoMineController.m */,
-				1A0DF7A21EA735A300191349 /* QQAppController.h */,
-				1A0DF7A31EA735A300191349 /* QQAppController.m */,
-				1A0DF79E1EA735A300191349 /* QQZoneController.h */,
-				1A0DF79F1EA735A300191349 /* QQZoneController.m */,
+				1A7A6BB81F1B3D5700A602D6 /* NormalListController.h */,
+				1A7A6BB91F1B3D5700A602D6 /* NormalListController.m */,
+				1A7A6BBB1F1B3D8400A602D6 /* WeiBoMineController.h */,
+				1A7A6BBC1F1B3D8400A602D6 /* WeiBoMineController.m */,
+				1A7A6BBE1F1B3DA400A602D6 /* QQAppController.h */,
+				1A7A6BBF1F1B3DA400A602D6 /* QQAppController.m */,
+				1A7A6BC11F1B3DBE00A602D6 /* QQZoneController.h */,
+				1A7A6BC21F1B3DBE00A602D6 /* QQZoneController.m */,
 				1AAA1D491EEE380400681CB9 /* ZhiHuController.h */,
 				1AAA1D4A1EEE380400681CB9 /* ZhiHuController.m */,
 				1AAA1D4C1EEE480400681CB9 /* QQMineController.h */,
 				1AAA1D4D1EEE480400681CB9 /* QQMineController.m */,
 				1AAA1D4F1EEE65D000681CB9 /* AntForestController.h */,
 				1AAA1D501EEE65D000681CB9 /* AntForestController.m */,
-				1ABDE22D1F088A0B00251CD4 /* ImageNavController.h */,
-				1ABDE22E1F088A0B00251CD4 /* ImageNavController.m */,
-				1ABDE2301F088A2A00251CD4 /* MillcolorGradController.h */,
-				1ABDE2311F088A2A00251CD4 /* MillcolorGradController.m */,
 			);
 			path = "普通";
 			sourceTree = "<group>";
@@ -209,10 +205,10 @@
 			children = (
 				1AAE08E71EE7F3350085C3A2 /* MoveListController.h */,
 				1AAE08E81EE7F3350085C3A2 /* MoveListController.m */,
-				1A0DF7A41EA735A300191349 /* SecondViewController.h */,
-				1A0DF7A51EA735A300191349 /* SecondViewController.m */,
-				1A0DF7A61EA735A300191349 /* SixthViewController.h */,
-				1A0DF7A71EA735A300191349 /* SixthViewController.m */,
+				1A7A6BCD1F1B3E9800A602D6 /* SecondViewController.h */,
+				1A7A6BCE1F1B3E9800A602D6 /* SecondViewController.m */,
+				1A7A6BD01F1B3EB100A602D6 /* SixthViewController.h */,
+				1A7A6BD11F1B3EB100A602D6 /* SixthViewController.m */,
 			);
 			path = "移动导航栏";
 			sourceTree = "<group>";
@@ -222,10 +218,14 @@
 			children = (
 				1AAE08EA1EE7F38E0085C3A2 /* CustomListController.h */,
 				1AAE08EB1EE7F38E0085C3A2 /* CustomListController.m */,
-				1A869EE01ECAF20E006D96F8 /* BaseViewController.h */,
-				1A869EE11ECAF20E006D96F8 /* BaseViewController.m */,
-				1A869EE31ECAF4FA006D96F8 /* CustomNavBarController.h */,
-				1A869EE41ECAF4FA006D96F8 /* CustomNavBarController.m */,
+				1A7A6BC71F1B3E5200A602D6 /* BaseViewController.h */,
+				1A7A6BC81F1B3E5200A602D6 /* BaseViewController.m */,
+				1A7A6BCA1F1B3E7200A602D6 /* CustomNavBarController.h */,
+				1A7A6BCB1F1B3E7200A602D6 /* CustomNavBarController.m */,
+				1A7A6BD31F1B402900A602D6 /* ImageNavController.h */,
+				1A7A6BD41F1B402900A602D6 /* ImageNavController.m */,
+				1A7A6BD51F1B402900A602D6 /* MillcolorGradController.h */,
+				1A7A6BD61F1B402900A602D6 /* MillcolorGradController.m */,
 			);
 			path = "自定义导航栏";
 			sourceTree = "<group>";
@@ -402,24 +402,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A0DF7AA1EA735A300191349 /* NormalListController.m in Sources */,
+				1A7A6BC91F1B3E5200A602D6 /* BaseViewController.m in Sources */,
 				1AAA1D4E1EEE480400681CB9 /* QQMineController.m in Sources */,
-				1A869EE21ECAF20E006D96F8 /* BaseViewController.m in Sources */,
-				1A0DF7BC1EA7531800191349 /* BaseNavigationController.m in Sources */,
-				1A0DF7AC1EA735A300191349 /* WeiBoMineController.m in Sources */,
 				1A2061D71E9CB496007BFB91 /* AppDelegate.m in Sources */,
+				1A7A6BD71F1B402900A602D6 /* ImageNavController.m in Sources */,
 				1AAA1D4B1EEE380400681CB9 /* ZhiHuController.m in Sources */,
 				1A2061FA1E9CB4E4007BFB91 /* WRNavigationBar.m in Sources */,
 				1AAE08E91EE7F3350085C3A2 /* MoveListController.m in Sources */,
-				1A869EE51ECAF4FA006D96F8 /* CustomNavBarController.m in Sources */,
-				1A0DF7AE1EA735A300191349 /* SecondViewController.m in Sources */,
-				1A0DF7AF1EA735A300191349 /* SixthViewController.m in Sources */,
+				1A7A6BC61F1B3E2200A602D6 /* BaseNavigationController.m in Sources */,
+				1A7A6BC01F1B3DA400A602D6 /* QQAppController.m in Sources */,
+				1A7A6BCC1F1B3E7200A602D6 /* CustomNavBarController.m in Sources */,
+				1A7A6BBD1F1B3D8400A602D6 /* WeiBoMineController.m in Sources */,
 				1AAE08EC1EE7F38E0085C3A2 /* CustomListController.m in Sources */,
-				1ABDE2321F088A2A00251CD4 /* MillcolorGradController.m in Sources */,
-				1ABDE22F1F088A0B00251CD4 /* ImageNavController.m in Sources */,
+				1A7A6BD81F1B402900A602D6 /* MillcolorGradController.m in Sources */,
 				1AAA1D511EEE65D000681CB9 /* AntForestController.m in Sources */,
-				1A0DF7AB1EA735A300191349 /* QQZoneController.m in Sources */,
-				1A0DF7AD1EA735A300191349 /* QQAppController.m in Sources */,
+				1A7A6BCF1F1B3E9800A602D6 /* SecondViewController.m in Sources */,
+				1A7A6BC31F1B3DBE00A602D6 /* QQZoneController.m in Sources */,
+				1A7A6BBA1F1B3D5700A602D6 /* NormalListController.m in Sources */,
+				1A7A6BD21F1B3EB100A602D6 /* SixthViewController.m in Sources */,
 				1A2061D41E9CB496007BFB91 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
