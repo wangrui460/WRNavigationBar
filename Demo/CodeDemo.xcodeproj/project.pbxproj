@@ -23,13 +23,13 @@
 		1A7A6BCC1F1B3E7200A602D6 /* CustomNavBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A6BCB1F1B3E7200A602D6 /* CustomNavBarController.m */; };
 		1A7A6BCF1F1B3E9800A602D6 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A6BCE1F1B3E9800A602D6 /* SecondViewController.m */; };
 		1A7A6BD21F1B3EB100A602D6 /* SixthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A6BD11F1B3EB100A602D6 /* SixthViewController.m */; };
+		1A7A6BD71F1B402900A602D6 /* ImageNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A6BD41F1B402900A602D6 /* ImageNavController.m */; };
+		1A7A6BD81F1B402900A602D6 /* MillcolorGradController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A6BD61F1B402900A602D6 /* MillcolorGradController.m */; };
 		1AAA1D4B1EEE380400681CB9 /* ZhiHuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA1D4A1EEE380400681CB9 /* ZhiHuController.m */; };
 		1AAA1D4E1EEE480400681CB9 /* QQMineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA1D4D1EEE480400681CB9 /* QQMineController.m */; };
 		1AAA1D511EEE65D000681CB9 /* AntForestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA1D501EEE65D000681CB9 /* AntForestController.m */; };
 		1AAE08E91EE7F3350085C3A2 /* MoveListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE08E81EE7F3350085C3A2 /* MoveListController.m */; };
 		1AAE08EC1EE7F38E0085C3A2 /* CustomListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE08EB1EE7F38E0085C3A2 /* CustomListController.m */; };
-		1ABDE22F1F088A0B00251CD4 /* ImageNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABDE22E1F088A0B00251CD4 /* ImageNavController.m */; };
-		1ABDE2321F088A2A00251CD4 /* MillcolorGradController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABDE2311F088A2A00251CD4 /* MillcolorGradController.m */; };
 		29F1DC19441470C345522432 /* Pods_CodeDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5025CF19A1273775CA7A2A /* Pods_CodeDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +75,10 @@
 		1A7A6BCE1F1B3E9800A602D6 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		1A7A6BD01F1B3EB100A602D6 /* SixthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SixthViewController.h; sourceTree = "<group>"; };
 		1A7A6BD11F1B3EB100A602D6 /* SixthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SixthViewController.m; sourceTree = "<group>"; };
+		1A7A6BD31F1B402900A602D6 /* ImageNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageNavController.h; sourceTree = "<group>"; };
+		1A7A6BD41F1B402900A602D6 /* ImageNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageNavController.m; sourceTree = "<group>"; };
+		1A7A6BD51F1B402900A602D6 /* MillcolorGradController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MillcolorGradController.h; sourceTree = "<group>"; };
+		1A7A6BD61F1B402900A602D6 /* MillcolorGradController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MillcolorGradController.m; sourceTree = "<group>"; };
 		1AAA1D491EEE380400681CB9 /* ZhiHuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhiHuController.h; sourceTree = "<group>"; };
 		1AAA1D4A1EEE380400681CB9 /* ZhiHuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhiHuController.m; sourceTree = "<group>"; };
 		1AAA1D4C1EEE480400681CB9 /* QQMineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQMineController.h; sourceTree = "<group>"; };
@@ -85,10 +89,6 @@
 		1AAE08E81EE7F3350085C3A2 /* MoveListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveListController.m; sourceTree = "<group>"; };
 		1AAE08EA1EE7F38E0085C3A2 /* CustomListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomListController.h; sourceTree = "<group>"; };
 		1AAE08EB1EE7F38E0085C3A2 /* CustomListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomListController.m; sourceTree = "<group>"; };
-		1ABDE22D1F088A0B00251CD4 /* ImageNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageNavController.h; sourceTree = "<group>"; };
-		1ABDE22E1F088A0B00251CD4 /* ImageNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageNavController.m; sourceTree = "<group>"; };
-		1ABDE2301F088A2A00251CD4 /* MillcolorGradController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MillcolorGradController.h; sourceTree = "<group>"; };
-		1ABDE2311F088A2A00251CD4 /* MillcolorGradController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MillcolorGradController.m; sourceTree = "<group>"; };
 		37581D1AF27611119D8AA286 /* Pods-CodeDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CodeDemo/Pods-CodeDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		BA5025CF19A1273775CA7A2A /* Pods_CodeDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD02850717C2C54F9C2585E9 /* Pods-CodeDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CodeDemo/Pods-CodeDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -196,10 +196,6 @@
 				1AAA1D4D1EEE480400681CB9 /* QQMineController.m */,
 				1AAA1D4F1EEE65D000681CB9 /* AntForestController.h */,
 				1AAA1D501EEE65D000681CB9 /* AntForestController.m */,
-				1ABDE22D1F088A0B00251CD4 /* ImageNavController.h */,
-				1ABDE22E1F088A0B00251CD4 /* ImageNavController.m */,
-				1ABDE2301F088A2A00251CD4 /* MillcolorGradController.h */,
-				1ABDE2311F088A2A00251CD4 /* MillcolorGradController.m */,
 			);
 			path = "普通";
 			sourceTree = "<group>";
@@ -226,6 +222,10 @@
 				1A7A6BC81F1B3E5200A602D6 /* BaseViewController.m */,
 				1A7A6BCA1F1B3E7200A602D6 /* CustomNavBarController.h */,
 				1A7A6BCB1F1B3E7200A602D6 /* CustomNavBarController.m */,
+				1A7A6BD31F1B402900A602D6 /* ImageNavController.h */,
+				1A7A6BD41F1B402900A602D6 /* ImageNavController.m */,
+				1A7A6BD51F1B402900A602D6 /* MillcolorGradController.h */,
+				1A7A6BD61F1B402900A602D6 /* MillcolorGradController.m */,
 			);
 			path = "自定义导航栏";
 			sourceTree = "<group>";
@@ -405,6 +405,7 @@
 				1A7A6BC91F1B3E5200A602D6 /* BaseViewController.m in Sources */,
 				1AAA1D4E1EEE480400681CB9 /* QQMineController.m in Sources */,
 				1A2061D71E9CB496007BFB91 /* AppDelegate.m in Sources */,
+				1A7A6BD71F1B402900A602D6 /* ImageNavController.m in Sources */,
 				1AAA1D4B1EEE380400681CB9 /* ZhiHuController.m in Sources */,
 				1A2061FA1E9CB4E4007BFB91 /* WRNavigationBar.m in Sources */,
 				1AAE08E91EE7F3350085C3A2 /* MoveListController.m in Sources */,
@@ -413,8 +414,7 @@
 				1A7A6BCC1F1B3E7200A602D6 /* CustomNavBarController.m in Sources */,
 				1A7A6BBD1F1B3D8400A602D6 /* WeiBoMineController.m in Sources */,
 				1AAE08EC1EE7F38E0085C3A2 /* CustomListController.m in Sources */,
-				1ABDE2321F088A2A00251CD4 /* MillcolorGradController.m in Sources */,
-				1ABDE22F1F088A0B00251CD4 /* ImageNavController.m in Sources */,
+				1A7A6BD81F1B402900A602D6 /* MillcolorGradController.m in Sources */,
 				1AAA1D511EEE65D000681CB9 /* AntForestController.m in Sources */,
 				1A7A6BCF1F1B3E9800A602D6 /* SecondViewController.m in Sources */,
 				1A7A6BC31F1B3DBE00A602D6 /* QQZoneController.m in Sources */,

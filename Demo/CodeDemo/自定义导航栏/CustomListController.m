@@ -9,6 +9,8 @@
 
 #import "CustomListController.h"
 #import "CustomNavBarController.h"
+#import "ImageNavController.h"
+#import "MillcolorGradController.h"
 
 @interface CustomListController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -41,6 +43,12 @@
         case 0:
             str = @"主页";
             break;
+        case 1:
+            str = @"导航栏显示图片";
+            break;
+        case 2:
+            str = @"实现导航栏渐变色的另一种方式";
+            break;
             
         default:
             break;
@@ -63,6 +71,18 @@
         {
             CustomNavBarController *customNavBarVC = [CustomNavBarController new];
             [self.navigationController pushViewController:customNavBarVC animated:YES];
+        }
+            break;
+        case 1:
+        {
+            ImageNavController *imageNavVC = [ImageNavController new];
+            [self.navigationController pushViewController:imageNavVC animated:YES];
+        }
+            break;
+        case 2:
+        {
+            MillcolorGradController *millcolorGradVC = [MillcolorGradController new];
+            [self.navigationController pushViewController:millcolorGradVC animated:YES];
         }
             break;
         default:

@@ -38,7 +38,7 @@
 #pragma mark - tableview delegate / dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -64,12 +64,6 @@
             break;
         case 5:
             str = @"蚂蚁森林";
-            break;
-        case 6:
-            str = @"导航栏显示图片";
-            break;
-        case 7:
-            str = @"实现导航栏渐变色的另一种方式";
             break;
         
         default:
@@ -125,18 +119,7 @@
             [self.navigationController pushViewController:antForestVC animated:YES];
         }
             break;
-        case 6:
-        {
-            ImageNavController *imageNavVC = [ImageNavController new];
-            [self.navigationController pushViewController:imageNavVC animated:YES];
-        }
-            break;
-        case 7:
-        {
-            MillcolorGradController *millcolorGradVC = [MillcolorGradController new];
-            [self.navigationController pushViewController:millcolorGradVC animated:YES];
-        }
-            break;
+            
         default:
             break;
     }
