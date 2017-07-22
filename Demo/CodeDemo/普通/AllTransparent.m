@@ -106,7 +106,7 @@
 - (UIImageView *)topView
 {
     if (_topView == nil) {
-        _topView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"makeup"]];
+        _topView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wbBG"]];
         _topView.frame = CGRectMake(0, 0, self.view.frame.size.width, IMAGE_HEIGHT);
     }
     return _topView;
