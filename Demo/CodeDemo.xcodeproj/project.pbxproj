@@ -28,6 +28,7 @@
 		1AAA1D4B1EEE380400681CB9 /* ZhiHuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA1D4A1EEE380400681CB9 /* ZhiHuController.m */; };
 		1AAA1D4E1EEE480400681CB9 /* QQMineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA1D4D1EEE480400681CB9 /* QQMineController.m */; };
 		1AAA1D511EEE65D000681CB9 /* AntForestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA1D501EEE65D000681CB9 /* AntForestController.m */; };
+		1AADC3921F22F73A00BB73D9 /* AllTransparent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AADC3911F22F73A00BB73D9 /* AllTransparent.m */; };
 		1AAE08E91EE7F3350085C3A2 /* MoveListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE08E81EE7F3350085C3A2 /* MoveListController.m */; };
 		1AAE08EC1EE7F38E0085C3A2 /* CustomListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE08EB1EE7F38E0085C3A2 /* CustomListController.m */; };
 		29F1DC19441470C345522432 /* Pods_CodeDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5025CF19A1273775CA7A2A /* Pods_CodeDemo.framework */; };
@@ -85,6 +86,8 @@
 		1AAA1D4D1EEE480400681CB9 /* QQMineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQMineController.m; sourceTree = "<group>"; };
 		1AAA1D4F1EEE65D000681CB9 /* AntForestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AntForestController.h; sourceTree = "<group>"; };
 		1AAA1D501EEE65D000681CB9 /* AntForestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AntForestController.m; sourceTree = "<group>"; };
+		1AADC3901F22F73A00BB73D9 /* AllTransparent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllTransparent.h; sourceTree = "<group>"; };
+		1AADC3911F22F73A00BB73D9 /* AllTransparent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllTransparent.m; sourceTree = "<group>"; };
 		1AAE08E71EE7F3350085C3A2 /* MoveListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveListController.h; sourceTree = "<group>"; };
 		1AAE08E81EE7F3350085C3A2 /* MoveListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveListController.m; sourceTree = "<group>"; };
 		1AAE08EA1EE7F38E0085C3A2 /* CustomListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomListController.h; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 				1AAA1D4D1EEE480400681CB9 /* QQMineController.m */,
 				1AAA1D4F1EEE65D000681CB9 /* AntForestController.h */,
 				1AAA1D501EEE65D000681CB9 /* AntForestController.m */,
+				1AADC3901F22F73A00BB73D9 /* AllTransparent.h */,
+				1AADC3911F22F73A00BB73D9 /* AllTransparent.m */,
 			);
 			path = "普通";
 			sourceTree = "<group>";
@@ -420,6 +425,7 @@
 				1AAA1D511EEE65D000681CB9 /* AntForestController.m in Sources */,
 				1A7A6BE71F1B4A9B00A602D6 /* SixthViewController.m in Sources */,
 				1A7A6BF01F1B4AC600A602D6 /* NormalListController.m in Sources */,
+				1AADC3921F22F73A00BB73D9 /* AllTransparent.m in Sources */,
 				1A2061D41E9CB496007BFB91 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

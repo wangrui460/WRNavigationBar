@@ -14,6 +14,7 @@
 #import "ZhiHuController.h"
 #import "QQMineController.h"
 #import "AntForestController.h"
+#import "AllTransparent.h"
 
 @interface NormalListController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -36,7 +37,7 @@
 #pragma mark - tableview delegate / dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -62,6 +63,9 @@
             break;
         case 5:
             str = @"蚂蚁森林";
+            break;
+        case 6:
+            str = @"连续多个界面隐藏导航栏";
             break;
         
         default:
@@ -114,6 +118,12 @@
         case 5:
         {
             AntForestController *antForestVC = [AntForestController new];
+            [self.navigationController pushViewController:antForestVC animated:YES];
+        }
+            break;
+        case 6:
+        {
+            AllTransparent *antForestVC = [AllTransparent new];
             [self.navigationController pushViewController:antForestVC animated:YES];
         }
             break;
