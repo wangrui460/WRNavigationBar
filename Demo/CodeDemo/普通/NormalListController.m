@@ -15,6 +15,7 @@
 #import "QQMineController.h"
 #import "AntForestController.h"
 #import "AllTransparent.h"
+#import "LaGouController.h"
 
 @interface NormalListController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -37,7 +38,7 @@
 #pragma mark - tableview delegate / dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -66,6 +67,9 @@
             break;
         case 6:
             str = @"连续多个界面隐藏导航栏";
+            break;
+        case 7:
+            str = @"拉钩App首页";
             break;
         
         default:
@@ -125,6 +129,12 @@
         {
             AllTransparent *antForestVC = [AllTransparent new];
             [self.navigationController pushViewController:antForestVC animated:YES];
+        }
+            break;
+        case 7:
+        {
+            LaGouController *laGouVC = [LaGouController new];
+            [self.navigationController pushViewController:laGouVC animated:YES];
         }
             break;
         default:

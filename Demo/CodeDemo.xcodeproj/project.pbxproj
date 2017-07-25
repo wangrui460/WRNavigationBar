@@ -14,6 +14,8 @@
 		1A2061E21E9CB496007BFB91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2061E01E9CB496007BFB91 /* LaunchScreen.storyboard */; };
 		1A2061ED1E9CB496007BFB91 /* CodeDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061EC1E9CB496007BFB91 /* CodeDemoTests.m */; };
 		1A2061FA1E9CB4E4007BFB91 /* WRNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2061F91E9CB4E4007BFB91 /* WRNavigationBar.m */; };
+		1A5845E61F270D4500A24234 /* LaGouController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5845E51F270D4500A24234 /* LaGouController.m */; };
+		1A5845FF1F27835100A24234 /* WRImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5845FE1F27835100A24234 /* WRImageHelper.m */; };
 		1A7A6BDD1F1B4A5800A602D6 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A6BDA1F1B4A5800A602D6 /* BaseViewController.m */; };
 		1A7A6BE11F1B4A8600A602D6 /* CustomNavBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A6BE01F1B4A8600A602D6 /* CustomNavBarController.m */; };
 		1A7A6BE61F1B4A9B00A602D6 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A6BE31F1B4A9B00A602D6 /* SecondViewController.m */; };
@@ -58,6 +60,10 @@
 		1A2061EE1E9CB496007BFB91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A2061F81E9CB4E4007BFB91 /* WRNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRNavigationBar.h; sourceTree = "<group>"; };
 		1A2061F91E9CB4E4007BFB91 /* WRNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRNavigationBar.m; sourceTree = "<group>"; };
+		1A5845E41F270D4500A24234 /* LaGouController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaGouController.h; sourceTree = "<group>"; };
+		1A5845E51F270D4500A24234 /* LaGouController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaGouController.m; sourceTree = "<group>"; };
+		1A5845FD1F27835100A24234 /* WRImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRImageHelper.h; sourceTree = "<group>"; };
+		1A5845FE1F27835100A24234 /* WRImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRImageHelper.m; sourceTree = "<group>"; };
 		1A7A6BD91F1B4A5800A602D6 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		1A7A6BDA1F1B4A5800A602D6 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		1A7A6BDF1F1B4A8600A602D6 /* CustomNavBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavBarController.h; sourceTree = "<group>"; };
@@ -143,6 +149,7 @@
 				1A2061D61E9CB496007BFB91 /* AppDelegate.m */,
 				1A7A6BF41F1B4AD900A602D6 /* BaseNavigationController.h */,
 				1A7A6BF51F1B4AD900A602D6 /* BaseNavigationController.m */,
+				1A5845FC1F2782B300A24234 /* WRImageHelper */,
 				1A2061F71E9CB4E4007BFB91 /* WRNavigationBar */,
 				1A3807831EE453E000F349D7 /* 普通 */,
 				1A3807851EE453E000F349D7 /* 自定义导航栏 */,
@@ -201,6 +208,8 @@
 				1AAA1D501EEE65D000681CB9 /* AntForestController.m */,
 				1AADC3901F22F73A00BB73D9 /* AllTransparent.h */,
 				1AADC3911F22F73A00BB73D9 /* AllTransparent.m */,
+				1A5845E41F270D4500A24234 /* LaGouController.h */,
+				1A5845E51F270D4500A24234 /* LaGouController.m */,
 			);
 			path = "普通";
 			sourceTree = "<group>";
@@ -233,6 +242,15 @@
 				1A854E471F0BECB10077CAF4 /* MillcolorGradController.m */,
 			);
 			path = "自定义导航栏";
+			sourceTree = "<group>";
+		};
+		1A5845FC1F2782B300A24234 /* WRImageHelper */ = {
+			isa = PBXGroup;
+			children = (
+				1A5845FD1F27835100A24234 /* WRImageHelper.h */,
+				1A5845FE1F27835100A24234 /* WRImageHelper.m */,
+			);
+			path = WRImageHelper;
 			sourceTree = "<group>";
 		};
 		62EC5690FBC98871C2DC2957 /* Frameworks */ = {
@@ -409,6 +427,7 @@
 			files = (
 				1A7A6BE61F1B4A9B00A602D6 /* SecondViewController.m in Sources */,
 				1A7A6BDD1F1B4A5800A602D6 /* BaseViewController.m in Sources */,
+				1A5845E61F270D4500A24234 /* LaGouController.m in Sources */,
 				1A7A6BF21F1B4AC600A602D6 /* QQZoneController.m in Sources */,
 				1AAA1D4E1EEE480400681CB9 /* QQMineController.m in Sources */,
 				1A7A6BF61F1B4AD900A602D6 /* BaseNavigationController.m in Sources */,
@@ -424,6 +443,7 @@
 				1A854E481F0BECB10077CAF4 /* ImageNavController.m in Sources */,
 				1AAA1D511EEE65D000681CB9 /* AntForestController.m in Sources */,
 				1A7A6BE71F1B4A9B00A602D6 /* SixthViewController.m in Sources */,
+				1A5845FF1F27835100A24234 /* WRImageHelper.m in Sources */,
 				1A7A6BF01F1B4AC600A602D6 /* NormalListController.m in Sources */,
 				1AADC3921F22F73A00BB73D9 /* AllTransparent.m in Sources */,
 				1A2061D41E9CB496007BFB91 /* main.m in Sources */,
