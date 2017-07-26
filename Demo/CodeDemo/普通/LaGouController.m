@@ -160,6 +160,7 @@
         NSArray *localImages = @[@"lagou0", @"lagou1", @"lagou2", @"lagou3"];
         _advView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, -IMAGE_HEIGHT, kScreenWidth, IMAGE_HEIGHT) imageNamesGroup:localImages];
         _advView.pageDotColor = [UIColor grayColor];
+        _advView.autoScrollTimeInterval = 2;
         _advView.currentPageDotColor = [UIColor whiteColor];
         _advView.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
     }

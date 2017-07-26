@@ -22,6 +22,8 @@
 
 
 ## Demo 
+![拉钩App首页](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/拉钩App首页.gif)
+
 ![导航栏显示渐变色](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/导航栏显示渐变色.gif)
 
 ![导航栏显示图片](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/导航栏显示图片.gif)
@@ -88,8 +90,11 @@
 
 
 ## Update
+- **2017.07.26**
+添加新Demo：拉钩App首页带搜索框的透明导航栏
+
 - **2017.07.22**
-添加新DEMO：连续多个界面导航栏透明
+添加新Demo：连续多个界面导航栏透明
 
 - **2017.07.09**
 解决问题：当一个控制器中包含多个控制器时，导航栏颜色或透明度不正常的问题
