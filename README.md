@@ -47,7 +47,7 @@
 
 ## Installation 
 > **CocoaPods**
-> pod 'WRNavigationBar'
+> pod 'WRNavigationBar','~>1.0.2'
 
 
 > **手动拖入**
