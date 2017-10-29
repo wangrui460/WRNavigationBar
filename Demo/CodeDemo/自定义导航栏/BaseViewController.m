@@ -28,47 +28,25 @@
 
 - (void)setupNavBar
 {
-    // 自定义导航栏必须设置这个属性!!!!!!!
-    [self wr_setCustomNavBar:self.navBar];
-    
-    [self.view addSubview:self.navBar];
-    self.navBar.items = @[self.navItem];
-    
+    [self.view addSubview:self.customNavBar];
+
     // 设置自定义导航栏背景图片
-    [self wr_setNavBarBackgroundImage:[UIImage imageNamed:@"millcolorGrad"]];
-    
-    // 设置自定义导航栏默认背景颜色
-    // [self wr_setNavBarBarTintColor:MainNavBarColor];
-    
+    self.customNavBar.barBackgroundImage = [UIImage imageNamed:@"millcolorGrad"];
+
     // 设置自定义导航栏标题颜色
-    [self wr_setNavBarTitleColor:[UIColor whiteColor]];
-    
-    // 设置自定义导航栏左右按钮字体颜色
-    [self wr_setNavBarTintColor:[UIColor whiteColor]];
-    
+    self.customNavBar.titleLabelColor = [UIColor whiteColor];
+
     if (self.navigationController.childViewControllers.count != 1) {
-        self.navItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"<<" style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+        [self.customNavBar wr_setLeftButtonWithTitle:@"<<" titleColor:[UIColor whiteColor]];
     }
 }
 
-- (void)back {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (UINavigationBar *)navBar
+- (WRCustomNavigationBar *)customNavBar
 {
-    if (_navBar == nil) {
-        _navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 64)];
+    if (_customNavBar == nil) {
+        _customNavBar = [WRCustomNavigationBar CustomNavigationBar];
     }
-    return _navBar;
-}
-
-- (UINavigationItem *)navItem
-{
-    if (_navItem == nil) {
-        _navItem = [UINavigationItem new];
-    }
-    return _navItem;
+    return _customNavBar;
 }
 
 @end

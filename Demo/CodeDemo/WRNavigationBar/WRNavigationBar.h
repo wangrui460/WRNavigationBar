@@ -8,16 +8,22 @@
 //  Github地址：https://github.com/wangrui460/WRNavigationBar
 
 #import <UIKit/UIKit.h>
+@class WRCustomNavigationBar;
+
+@interface WRNavigationBar : UIView
++ (BOOL)isIphoneX;
+@end
 
 
-#pragma mark - UIColor
-@interface UIColor (WRAddition)
+#pragma mark - Default
+@interface WRNavigationBar (WRDefault)
 
 /** set default barTintColor of UINavigationBar */
 + (void)wr_setDefaultNavBarBarTintColor:(UIColor *)color;
 
 /** set default barBackgroundImage of UINavigationBar */
-+ (void)wr_setDefaultNavBarBackgroundImage:(UIImage *)image;
+/** warning: wr_setDefaultNavBarBackgroundImage is deprecated! place use WRCustomNavigationBar */
+//+ (void)wr_setDefaultNavBarBackgroundImage:(UIImage *)image;
 
 /** set default tintColor of UINavigationBar */
 + (void)wr_setDefaultNavBarTintColor:(UIColor *)color;
@@ -32,7 +38,6 @@
 + (void)wr_setDefaultNavBarShadowImageHidden:(BOOL)hidden;
 
 @end
-
 
 
 
@@ -56,8 +61,9 @@
 #pragma mark - UIViewController
 @interface UIViewController (WRAddition)
 
-/** record current ViewController navigationBar backgroundImage **/
-- (void)wr_setNavBarBackgroundImage:(UIImage *)image;
+/** record current ViewController navigationBar backgroundImage */
+/** warning: wr_setDefaultNavBarBackgroundImage is deprecated! place use WRCustomNavigationBar */
+//- (void)wr_setNavBarBackgroundImage:(UIImage *)image;
 - (UIImage *)wr_navBarBackgroundImage;
 
 /** record current ViewController navigationBar barTintColor */
@@ -85,7 +91,8 @@
 - (BOOL)wr_navBarShadowImageHidden;
 
 /** record current ViewController custom navigationBar */
-- (void)wr_setCustomNavBar:(UINavigationBar *)navBar;
+/** warning: wr_setDefaultNavBarBackgroundImage is deprecated! place use WRCustomNavigationBar */
+//- (void)wr_setCustomNavBar:(WRCustomNavigationBar *)navBar;
 
 @end
 

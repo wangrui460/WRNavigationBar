@@ -34,7 +34,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blueColor];
     [self setupNavItems];
-    self.tableView.contentInset = UIEdgeInsetsMake(IMAGE_HEIGHT-64, 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(IMAGE_HEIGHT - [self navBarBottom], 0, 0, 0);
     [self.tableView addSubview:self.advView];
     [self.view addSubview:self.tableView];
     
@@ -175,5 +175,14 @@
 {}
 - (void)onClickSearchBtn
 {}
+
+- (int)navBarBottom
+{
+    if ([WRNavigationBar isIphoneX]) {
+        return 88;
+    } else {
+        return 64;
+    }
+}
 
 @end

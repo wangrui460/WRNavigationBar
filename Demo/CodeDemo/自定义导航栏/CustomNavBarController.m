@@ -12,7 +12,7 @@
 #import "AppDelegate.h"
 
 #define NAVBAR_COLORCHANGE_POINT (IMAGE_HEIGHT - NAV_HEIGHT*2)
-#define IMAGE_HEIGHT 260
+#define IMAGE_HEIGHT 280
 #define NAV_HEIGHT 64
 
 @interface CustomNavBarController () <UITableViewDelegate, UITableViewDataSource>
@@ -31,23 +31,16 @@
     [self.topView addSubview:self.imgView];
     self.imgView.center = self.topView.center;
     self.tableView.tableHeaderView = self.topView;
-    [self.view insertSubview:self.navBar aboveSubview:self.tableView];
+    [self.view insertSubview:self.customNavBar aboveSubview:self.tableView];
 
-    self.navItem.title = @"个人中心";
-    
-    /// 注意查看 BaseViewController.m文件
-    
-    // 设置导航栏颜色
-    [self wr_setNavBarBarTintColor:[UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1.0]];
-    
-    // 设置导航栏透明度
-    [self wr_setNavBarBackgroundAlpha:0];
-    
-    // 设置导航栏按钮颜色
-    [self wr_setNavBarTintColor:[UIColor whiteColor]];
-    
-    // 设置标题文字颜色
-    [self wr_setNavBarTitleColor:[UIColor whiteColor]];
+    self.customNavBar.title = @"个人中心";
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+
+    self.customNavBar.barBackgroundColor = [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1.0];
+    [self.customNavBar wr_setBackgroundAlpha:0];
+    self.customNavBar.titleLabelColor = [UIColor whiteColor];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -56,16 +49,14 @@
     if (offsetY > NAVBAR_COLORCHANGE_POINT)
     {
         CGFloat alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / NAV_HEIGHT;
-        [self wr_setNavBarBackgroundAlpha:alpha];
-        [self wr_setNavBarTintColor:[[UIColor blackColor] colorWithAlphaComponent:alpha]];
-        [self wr_setNavBarTitleColor:[[UIColor blackColor] colorWithAlphaComponent:alpha]];
+        [self.customNavBar wr_setBackgroundAlpha:alpha];
+        [self.customNavBar wr_setTintColor:[[UIColor blackColor] colorWithAlphaComponent:alpha]];
         [self wr_setStatusBarStyle:UIStatusBarStyleDefault];
     }
     else
     {
-        [self wr_setNavBarBackgroundAlpha:0];
-        [self wr_setNavBarTintColor:[UIColor whiteColor]];
-        [self wr_setNavBarTitleColor:[UIColor whiteColor]];
+        [self.customNavBar wr_setBackgroundAlpha:0];
+        [self.customNavBar wr_setTintColor:[UIColor whiteColor]];
         [self wr_setStatusBarStyle:UIStatusBarStyleLightContent];
     }
 }
@@ -97,7 +88,7 @@
     BaseViewController *vc = [BaseViewController new];
     vc.view.backgroundColor = [UIColor redColor];
     NSString *str = [NSString stringWithFormat:@"右划返回查看效果 %zd",indexPath.row];
-    vc.navItem.title = str;
+    vc.customNavBar.title = str;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

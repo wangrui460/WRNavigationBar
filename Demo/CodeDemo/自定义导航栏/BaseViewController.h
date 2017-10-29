@@ -8,8 +8,8 @@
 //  Github地址：https://github.com/wangrui460/WRNavigationBar
 
 #import <UIKit/UIKit.h>
+#import "WRCustomNavigationBar.h"
 
 @interface BaseViewController : UIViewController
-@property (nonatomic, strong) UINavigationBar *navBar;
-@property (nonatomic, strong) UINavigationItem *navItem;
+@property (nonatomic, strong) WRCustomNavigationBar *customNavBar;
 @end

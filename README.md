@@ -51,7 +51,7 @@
 
 
 > **手动拖入**
-> 将 WRNavigationBar 文件夹拽入项目中，导入头文件：#import "WRNavigationBar.h"
+> 将 WRNavigationBar 文件夹拽入项目中，导入头文件：#import "WRNavigationBar.h"，自定义导航栏需要导入 "WRCustomNavigationBar.h"
 
 ## Use
 <pre><code>
@@ -90,6 +90,9 @@
 
 
 ## Update
+- **2017.10.29**
+解决问题：简单适配 iOS11、iPhone X（自定义导航栏 new UINavigationBar 的方式已经不能使用了，所以简单写了一个WRCustomNavigationBar，功能简单，后续会增加更多功能。如果有更好的方式来自定义导航栏，希望大神们教教我）
+
 - **2017.07.26**
 添加新Demo：拉钩App首页带搜索框的透明导航栏
 

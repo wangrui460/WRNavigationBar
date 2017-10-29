@@ -12,7 +12,7 @@
 #import "AppDelegate.h"
 
 #define NAVBAR_COLORCHANGE_POINT (IMAGE_HEIGHT - NAV_HEIGHT*2)
-#define IMAGE_HEIGHT 220
+#define IMAGE_HEIGHT 250
 #define NAV_HEIGHT 64
 
 @interface ImageNavController () <UITableViewDelegate, UITableViewDataSource>
@@ -26,19 +26,18 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor greenColor];
-    self.navItem.title = @"玛丽莲·梦露";
+    self.customNavBar.title = @"玛丽莲·梦露";
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.topView;
-    [self.view insertSubview:self.navBar aboveSubview:self.tableView];
-    
+    [self.view insertSubview:self.customNavBar aboveSubview:self.tableView];
+    [self.customNavBar wr_setBottomLineHidden:YES];
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
     // 设置导航栏显示图片
-    [self wr_setNavBarBackgroundImage:[UIImage imageNamed:@"imageNav"]];
-    
+    self.customNavBar.barBackgroundImage = [UIImage imageNamed:@"imageNav"];
     // 设置初始导航栏透明度
-    [self wr_setNavBarBackgroundAlpha:0];
-    
-    // 设置导航栏按钮和标题颜色
-    [self wr_setNavBarTintColor:[UIColor whiteColor]];
+    [self.customNavBar wr_setBackgroundAlpha:0];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -47,11 +46,11 @@
     if (offsetY > NAVBAR_COLORCHANGE_POINT)
     {
         CGFloat alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / NAV_HEIGHT;
-        [self wr_setNavBarBackgroundAlpha:alpha];
+        [self.customNavBar wr_setBackgroundAlpha:alpha];
     }
     else
     {
-        [self wr_setNavBarBackgroundAlpha:0];
+        [self.customNavBar wr_setBackgroundAlpha:0];
     }
 }
 
@@ -82,7 +81,7 @@
     BaseViewController *vc = [BaseViewController new];
     vc.view.backgroundColor = [UIColor redColor];
     NSString *str = [NSString stringWithFormat:@"右划返回查看效果 %zd",indexPath.row];
-    vc.navItem.title = str;
+    vc.customNavBar.title = str;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

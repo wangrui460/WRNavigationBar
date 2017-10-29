@@ -11,6 +11,7 @@
 #import "CustomNavBarController.h"
 #import "ImageNavController.h"
 #import "MillcolorGradController.h"
+#import "WRNavigationBar.h"
 
 @interface CustomListController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -21,11 +22,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.tableView];
-    [self.view insertSubview:self.navBar aboveSubview:self.tableView];
-    self.navItem.title = @"自定义导航栏";
+    [self.view insertSubview:self.customNavBar aboveSubview:self.tableView];
+    self.customNavBar.title =  @"自定义导航栏";
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat offsetY = scrollView.contentOffset.y;
+    CGFloat colorOffset = offsetY / 64.0;
+    colorOffset = colorOffset > 1 ? 1 : colorOffset;
 }
 
 #pragma mark - tableview delegate / dataSource
@@ -94,7 +103,8 @@
 - (UITableView *)tableView
 {
     if (_tableView == nil) {
-        CGRect frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-64-49);
+        CGFloat top = ([WRNavigationBar isIphoneX]) ? 88 : 64;
+        CGRect frame = CGRectMake(0, top, self.view.frame.size.width, self.view.frame.size.height-top-49);
         _tableView = [[UITableView alloc] initWithFrame:frame
                                                   style:UITableViewStylePlain];
         _tableView.delegate = self;

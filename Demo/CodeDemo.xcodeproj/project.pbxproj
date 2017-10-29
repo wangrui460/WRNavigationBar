@@ -34,6 +34,7 @@
 		1AAE08E91EE7F3350085C3A2 /* MoveListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE08E81EE7F3350085C3A2 /* MoveListController.m */; };
 		1AAE08EC1EE7F38E0085C3A2 /* CustomListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE08EB1EE7F38E0085C3A2 /* CustomListController.m */; };
 		29F1DC19441470C345522432 /* Pods_CodeDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5025CF19A1273775CA7A2A /* Pods_CodeDemo.framework */; };
+		34E384B71F9C358700257F91 /* WRCustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E384B61F9C358700257F91 /* WRCustomNavigationBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,8 @@
 		1AAE08E81EE7F3350085C3A2 /* MoveListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveListController.m; sourceTree = "<group>"; };
 		1AAE08EA1EE7F38E0085C3A2 /* CustomListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomListController.h; sourceTree = "<group>"; };
 		1AAE08EB1EE7F38E0085C3A2 /* CustomListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomListController.m; sourceTree = "<group>"; };
+		34E384B51F9C358700257F91 /* WRCustomNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WRCustomNavigationBar.h; sourceTree = "<group>"; };
+		34E384B61F9C358700257F91 /* WRCustomNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WRCustomNavigationBar.m; sourceTree = "<group>"; };
 		37581D1AF27611119D8AA286 /* Pods-CodeDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CodeDemo/Pods-CodeDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		BA5025CF19A1273775CA7A2A /* Pods_CodeDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD02850717C2C54F9C2585E9 /* Pods-CodeDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CodeDemo/Pods-CodeDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 			children = (
 				1A2061F81E9CB4E4007BFB91 /* WRNavigationBar.h */,
 				1A2061F91E9CB4E4007BFB91 /* WRNavigationBar.m */,
+				34E384B51F9C358700257F91 /* WRCustomNavigationBar.h */,
+				34E384B61F9C358700257F91 /* WRCustomNavigationBar.m */,
 			);
 			path = WRNavigationBar;
 			sourceTree = "<group>";
@@ -426,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A7A6BE61F1B4A9B00A602D6 /* SecondViewController.m in Sources */,
+				34E384B71F9C358700257F91 /* WRCustomNavigationBar.m in Sources */,
 				1A7A6BDD1F1B4A5800A602D6 /* BaseViewController.m in Sources */,
 				1A5845E61F270D4500A24234 /* LaGouController.m in Sources */,
 				1A7A6BF21F1B4AC600A602D6 /* QQZoneController.m in Sources */,
@@ -583,15 +589,18 @@
 			baseConfigurationReference = 37581D1AF27611119D8AA286 /* Pods-CodeDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 652U6LDTX4;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CodeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = video.wangrui.com;
+				PRODUCT_BUNDLE_IDENTIFIER = video.com.wangrui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -600,15 +609,18 @@
 			baseConfigurationReference = CD02850717C2C54F9C2585E9 /* Pods-CodeDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 652U6LDTX4;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CodeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = video.wangrui.com;
+				PRODUCT_BUNDLE_IDENTIFIER = video.com.wangrui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

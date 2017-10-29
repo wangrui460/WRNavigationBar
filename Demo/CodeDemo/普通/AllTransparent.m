@@ -96,7 +96,7 @@
         CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         _tableView = [[UITableView alloc] initWithFrame:frame
                                                   style:UITableViewStylePlain];
-        _tableView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
+        _tableView.contentInset = UIEdgeInsetsMake(-[self navBarBottom], 0, 0, 0);
         _tableView.delegate = self;
         _tableView.dataSource = self;
     }
@@ -110,6 +110,15 @@
         _topView.frame = CGRectMake(0, 0, self.view.frame.size.width, IMAGE_HEIGHT);
     }
     return _topView;
+}
+
+- (int)navBarBottom
+{
+    if ([WRNavigationBar isIphoneX]) {
+        return 88;
+    } else {
+        return 64;
+    }
 }
 
 @end

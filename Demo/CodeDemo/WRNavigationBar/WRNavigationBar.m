@@ -10,11 +10,24 @@
 #import "WRNavigationBar.h"
 #import <objc/runtime.h>
 
+@implementation WRNavigationBar
+
++ (BOOL)isIphoneX
+{
+    if (CGRectEqualToRect([UIScreen mainScreen].bounds,CGRectMake(0, 0, 375, 812))) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+@end
+
 
 //===============================================================================================
 #pragma mark - default navigationBar barTintColor、tintColor and statusBarStyle YOU CAN CHANGE!!!
 //===============================================================================================
-@interface UIColor (Addition)
+@interface WRNavigationBar (WRDefault)
 + (UIColor *)defaultNavBarBarTintColor;
 + (UIColor *)defaultNavBarTintColor;
 + (UIColor *)defaultNavBarTitleColor;
@@ -24,7 +37,7 @@
 + (UIColor *)middleColor:(UIColor *)fromColor toColor:(UIColor *)toColor percent:(CGFloat)percent;
 + (CGFloat)middleAlpha:(CGFloat)fromAlpha toAlpha:(CGFloat)toAlpha percent:(CGFloat)percent;
 @end
-@implementation UIColor (WRAddition)
+@implementation WRNavigationBar (WRDefault)
 
 static char kWRDefaultNavBarBarTintColorKey;
 static char kWRDefaultNavBarBackgroundImageKey;
@@ -133,8 +146,16 @@ static char kWRDefaultNavBarShadowImageHiddenKey;
 
 static char kWRBackgroundViewKey;
 static char kWRBackgroundImageViewKey;
-static int kWRNavBarBottom = 64;
+static char kWRBackgroundImageKey;
 
+- (int)navBarBottom
+{
+    if ([WRNavigationBar isIphoneX]) {
+        return 88;
+    } else {
+        return 64;
+    }
+}
 - (UIView *)backgroundView
 {
     return (UIView *)objc_getAssociatedObject(self, &kWRBackgroundViewKey);
@@ -152,6 +173,14 @@ static int kWRNavBarBottom = 64;
 {
     objc_setAssociatedObject(self, &kWRBackgroundImageViewKey, bgImageView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
+- (UIImage *)backgroundImage
+{
+    return (UIImage *)objc_getAssociatedObject(self, &kWRBackgroundImageKey);
+}
+- (void)setBackgroundImage:(UIImage *)image
+{
+    objc_setAssociatedObject(self, &kWRBackgroundImageKey, image, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 
 // set navigationBar backgroundImage
 - (void)wr_setBackgroundImage:(UIImage *)image
@@ -162,11 +191,16 @@ static int kWRNavBarBottom = 64;
     {
         // add a image(nil color) to _UIBarBackground make it clear
         [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-        self.backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), kWRNavBarBottom)];
-        self.backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        // _UIBarBackground is first subView for navigationBar
-        [self.subviews.firstObject insertSubview:self.backgroundImageView atIndex:0];
+        if (self.subviews.count > 0)
+        {
+            self.backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), [self navBarBottom])];
+            self.backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+            
+            // _UIBarBackground is first subView for navigationBar
+            [self.subviews.firstObject insertSubview:self.backgroundImageView atIndex:0];
+        }
     }
+    self.backgroundImage = image;
     self.backgroundImageView.image = image;
 }
 
@@ -175,11 +209,12 @@ static int kWRNavBarBottom = 64;
 {
     [self.backgroundImageView removeFromSuperview];
     self.backgroundImageView = nil;
+    self.backgroundImage = nil;
     if (self.backgroundView == nil)
     {
         // add a image(nil color) to _UIBarBackground make it clear
         [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-        self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), kWRNavBarBottom)];
+        self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), [self navBarBottom])];
         self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         // _UIBarBackground is first subView for navigationBar
         [self.subviews.firstObject insertSubview:self.backgroundView atIndex:0];
@@ -254,6 +289,29 @@ static int kWRNavBarBottom = 64;
 {
     return self.transform.ty;
 }
+
+//- (void)layoutSubviews
+//{
+//    [super layoutSubviews];
+//    UIImage *bgImage = selfbackgroundImage;
+//    if (bgImage)
+//    {
+//        [self wr_setBackgroundImage:bgImage];
+//    }
+//    //注意导航栏及状态栏高度适配
+//    self.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), [self navBarBottom]);
+//    for (UIView *view in self.subviews) {
+//        if([NSStringFromClass([view class]) containsString:@"Background"]) {
+//            view.frame = self.bounds;
+//        }
+//        else if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
+//            CGRect frame = view.frame;
+//            frame.origin.y = [WRNavigationBar isIphoneX] ? 44 : 20;
+//            frame.size.height = self.bounds.size.height - frame.origin.y;
+//            view.frame = frame;
+//        }
+//    }
+//}
 
 #pragma mark - call swizzling methods active 主动调用交换方法
 + (void)load
@@ -368,7 +426,6 @@ static int wrPushDisplayCount = 0;
         self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:titleColor};
         return;
     }
-    
     NSMutableDictionary *newTitleTextAttributes = [titleTextAttributes mutableCopy];
     newTitleTextAttributes[NSForegroundColorAttributeName] = titleColor;
     self.navigationBar.titleTextAttributes = newTitleTextAttributes;
@@ -379,25 +436,25 @@ static int wrPushDisplayCount = 0;
     // change navBarBarTintColor
     UIColor *fromBarTintColor = [fromVC wr_navBarBarTintColor];
     UIColor *toBarTintColor = [toVC wr_navBarBarTintColor];
-    UIColor *newBarTintColor = [UIColor middleColor:fromBarTintColor toColor:toBarTintColor percent:progress];
+    UIColor *newBarTintColor = [WRNavigationBar middleColor:fromBarTintColor toColor:toBarTintColor percent:progress];
     [self setNeedsNavigationBarUpdateForBarTintColor:newBarTintColor];
     
     // change navBarTintColor
     UIColor *fromTintColor = [fromVC wr_navBarTintColor];
     UIColor *toTintColor = [toVC wr_navBarTintColor];
-    UIColor *newTintColor = [UIColor middleColor:fromTintColor toColor:toTintColor percent:progress];
+    UIColor *newTintColor = [WRNavigationBar middleColor:fromTintColor toColor:toTintColor percent:progress];
     [self setNeedsNavigationBarUpdateForTintColor:newTintColor];
     
     // change navBarTitleColor
     UIColor *fromTitleColor = [fromVC wr_navBarTitleColor];
     UIColor *toTitleColor = [toVC wr_navBarTitleColor];
-    UIColor *newTitleColor = [UIColor middleColor:fromTitleColor toColor:toTitleColor percent:progress];
+    UIColor *newTitleColor = [WRNavigationBar middleColor:fromTitleColor toColor:toTitleColor percent:progress];
     [self setNeedsNavigationBarUpdateForTitleColor:newTitleColor];
     
     // change navBar _UIBarBackground alpha
     CGFloat fromBarBackgroundAlpha = [fromVC wr_navBarBackgroundAlpha];
     CGFloat toBarBackgroundAlpha = [toVC wr_navBarBackgroundAlpha];
-    CGFloat newBarBackgroundAlpha = [UIColor middleAlpha:fromBarBackgroundAlpha toAlpha:toBarBackgroundAlpha percent:progress];
+    CGFloat newBarBackgroundAlpha = [WRNavigationBar middleAlpha:fromBarBackgroundAlpha toAlpha:toBarBackgroundAlpha percent:progress];
     [self setNeedsNavigationBarUpdateForBarBackgroundAlpha:newBarBackgroundAlpha];
 }
 
@@ -613,15 +670,15 @@ static char kWRCustomNavBarKey;
 - (UIImage *)wr_navBarBackgroundImage
 {
     UIImage *image = (UIImage *)objc_getAssociatedObject(self, &kWRNavBarBackgroundImageKey);
-    image = (image == nil) ? [UIColor defaultNavBarBackgroundImage] : image;
+    image = (image == nil) ? [WRNavigationBar defaultNavBarBackgroundImage] : image;
     return image;
 }
 - (void)wr_setNavBarBackgroundImage:(UIImage *)image
 {
     if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]])
     {
-        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
-        [navBar wr_setBackgroundImage:image];
+//        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
+//        [navBar wr_setBackgroundImage:image];
     }
     else {
         objc_setAssociatedObject(self, &kWRNavBarBackgroundImageKey, image, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -632,15 +689,15 @@ static char kWRCustomNavBarKey;
 - (UIColor *)wr_navBarBarTintColor
 {
     UIColor *barTintColor = (UIColor *)objc_getAssociatedObject(self, &kWRNavBarBarTintColorKey);
-    return (barTintColor != nil) ? barTintColor : [UIColor defaultNavBarBarTintColor];
+    return (barTintColor != nil) ? barTintColor : [WRNavigationBar defaultNavBarBarTintColor];
 }
 - (void)wr_setNavBarBarTintColor:(UIColor *)color
 {
     objc_setAssociatedObject(self, &kWRNavBarBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]])
     {
-        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
-        [navBar wr_setBackgroundColor:color];
+//        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
+//        [navBar wr_setBackgroundColor:color];
     }
     else
     {
@@ -654,7 +711,7 @@ static char kWRCustomNavBarKey;
 - (CGFloat)wr_navBarBackgroundAlpha
 {
     id barBackgroundAlpha = objc_getAssociatedObject(self, &kWRNavBarBackgroundAlphaKey);
-    return (barBackgroundAlpha != nil) ? [barBackgroundAlpha floatValue] : [UIColor defaultNavBarBackgroundAlpha];
+    return (barBackgroundAlpha != nil) ? [barBackgroundAlpha floatValue] : [WRNavigationBar defaultNavBarBackgroundAlpha];
     
 }
 - (void)wr_setNavBarBackgroundAlpha:(CGFloat)alpha
@@ -662,8 +719,8 @@ static char kWRCustomNavBarKey;
     objc_setAssociatedObject(self, &kWRNavBarBackgroundAlphaKey, @(alpha), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]])
     {
-        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
-        [navBar wr_setBackgroundAlpha:alpha];
+//        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
+//        [navBar wr_setBackgroundAlpha:alpha];
     }
     else
     {
@@ -677,15 +734,15 @@ static char kWRCustomNavBarKey;
 - (UIColor *)wr_navBarTintColor
 {
     UIColor *tintColor = (UIColor *)objc_getAssociatedObject(self, &kWRNavBarTintColorKey);
-    return (tintColor != nil) ? tintColor : [UIColor defaultNavBarTintColor];
+    return (tintColor != nil) ? tintColor : [WRNavigationBar defaultNavBarTintColor];
 }
 - (void)wr_setNavBarTintColor:(UIColor *)color
 {
     objc_setAssociatedObject(self, &kWRNavBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]])
     {
-        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
-        navBar.tintColor = color;
+//        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
+//        navBar.tintColor = color;
     }
     else
     {
@@ -695,19 +752,19 @@ static char kWRCustomNavBarKey;
     }
 }
 
-// navigationBar titleColor
+// navigationBartitleColor
 - (UIColor *)wr_navBarTitleColor
 {
     UIColor *titleColor = (UIColor *)objc_getAssociatedObject(self, &kWRNavBarTitleColorKey);
-    return (titleColor != nil) ? titleColor : [UIColor defaultNavBarTitleColor];
+    return (titleColor != nil) ? titleColor : [WRNavigationBar defaultNavBarTitleColor];
 }
 - (void)wr_setNavBarTitleColor:(UIColor *)color
 {
     objc_setAssociatedObject(self, &kWRNavBarTitleColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]])
     {
-        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
-        navBar.titleTextAttributes = @{NSForegroundColorAttributeName:color};
+//        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
+//        navBar.titleTextAttributes = @{NSForegroundColorAttributeName:color};
     }
     else
     {
@@ -721,7 +778,7 @@ static char kWRCustomNavBarKey;
 - (UIStatusBarStyle)wr_statusBarStyle
 {
     id style = objc_getAssociatedObject(self, &kWRStatusBarStyleKey);
-    return (style != nil) ? [style integerValue] : [UIColor defaultStatusBarStyle];
+    return (style != nil) ? [style integerValue] : [WRNavigationBar defaultStatusBarStyle];
 }
 - (void)wr_setStatusBarStyle:(UIStatusBarStyle)style
 {
@@ -739,7 +796,7 @@ static char kWRCustomNavBarKey;
 - (BOOL)wr_navBarShadowImageHidden
 {
     id hidden = objc_getAssociatedObject(self, &kWRNavBarShadowImageHiddenKey);
-    return (hidden != nil) ? [hidden boolValue] : [UIColor defaultNavBarShadowImageHidden];
+    return (hidden != nil) ? [hidden boolValue] : [WRNavigationBar defaultNavBarShadowImageHidden];
 }
 
 // custom navigationBar
@@ -806,7 +863,8 @@ static char kWRCustomNavBarKey;
         }
         [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundAlpha:[self wr_navBarBackgroundAlpha]];
         [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self wr_navBarTintColor]];
-        [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self wr_navBarTitleColor]];
+        // 临时解决办法（self.navigationBar.titleTextAttributes = newTitleTextAttributes内部有问题）
+//        [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self wr_navBarTitleColor]];
         [self.navigationController setNeedsNavigationBarUpdateForShadowImageHidden:[self wr_navBarShadowImageHidden]];
     }
     [self wr_viewDidAppear:animated];
