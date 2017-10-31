@@ -16,6 +16,7 @@
 #import "AntForestController.h"
 #import "AllTransparent.h"
 #import "LaGouController.h"
+#import "WRNavigationBar.h"
 
 @interface NormalListController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -31,6 +32,9 @@
     self.title = @"常用";
     [self.view addSubview:self.tableView];
     
+    
+    // [self wr_setNavBarBarTintColor:[UIColor redColor]];
+    // [self wr_setNavBarBackgroundAlpha:0];
     // 改变标题文字大小
     // self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:22]};
 }
@@ -146,7 +150,7 @@
 - (UITableView *)tableView
 {
     if (_tableView == nil) {
-        CGRect frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-64-49);
+        CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-0-49);
         _tableView = [[UITableView alloc] initWithFrame:frame
                                                   style:UITableViewStylePlain];
         _tableView.delegate = self;
