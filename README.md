@@ -21,7 +21,7 @@
 - Xcode 8+
 
 
-## Demo 
+## Demo
 ![拉钩App首页](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/拉钩App首页.gif)
 
 ![导航栏显示渐变色](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/导航栏显示渐变色.gif)
@@ -45,18 +45,17 @@
 ![移动导航栏](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/移动导航栏.gif)
 
 
-## Installation 
+## Installation
 > **CocoaPods**
 > pod 'WRNavigationBar','~>1.0.2'
+如果未发现 1.0.2 请更新一下pod
 
 
 > **手动拖入**
 > 将 WRNavigationBar 文件夹拽入项目中，导入头文件：#import "WRNavigationBar.h"，自定义导航栏需要导入 "WRCustomNavigationBar.h"
 
-## Use
+## Use （以下方式不再适用自定义导航栏，自定义导航栏的使用方式请查看Demo）
 <pre><code>
-// 一行代码搞定导航栏显示图片
-[self wr_setNavBarBackgroundImage:[UIImage imageNamed:@"millcolorGrad"]];
 // 一行代码搞定导航栏颜色
 [self wr_setNavBarBarTintColor:[UIColor whiteColor]];
 // 一行代码搞定导航栏透明度
@@ -139,4 +138,5 @@
 
 # License
 WRNavigationBar is available under the MIT license. See the LICENSE file for more info.
+
 

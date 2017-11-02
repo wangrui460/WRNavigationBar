@@ -11,8 +11,8 @@
 
 @interface WRCustomNavigationBar : UIView
 
-@property (nonatomic, copy) void(^onClickLeftButton)();
-@property (nonatomic, copy) void(^onClickRightButton)();
+@property (nonatomic, copy) void(^onClickLeftButton)(void);
+@property (nonatomic, copy) void(^onClickRightButton)(void);
 
 @property (nonatomic, copy)   NSString *title;
 @property (nonatomic, strong) UIColor  *titleLabelColor;
