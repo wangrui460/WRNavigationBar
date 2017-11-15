@@ -869,7 +869,6 @@ static char kWRCustomNavBarKey;
         }
         [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundAlpha:[self wr_navBarBackgroundAlpha]];
         [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self wr_navBarTintColor]];
-        // 临时解决办法（self.navigationBar.titleTextAttributes = newTitleTextAttributes内部有问题）
         [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self wr_navBarTitleColor]];
         [self.navigationController setNeedsNavigationBarUpdateForShadowImageHidden:[self wr_navBarShadowImageHidden]];
     }

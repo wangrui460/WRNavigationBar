@@ -38,6 +38,7 @@
     
     [self wr_setNavBarBarTintColor:[UIColor whiteColor]];
     [self wr_setNavBarBackgroundAlpha:0];
+    [self wr_setNavBarShadowImageHidden:NO];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
