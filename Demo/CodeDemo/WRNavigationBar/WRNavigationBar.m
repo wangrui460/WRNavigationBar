@@ -708,7 +708,8 @@ static char kWRCustomNavBarKey;
     }
     else
     {
-        if ([self pushToCurrentVCFinished] == YES && [self pushToNextVCFinished] == NO) {
+        BOOL isRootViewController = (self.navigationController.viewControllers.firstObject == self);
+        if (([self pushToCurrentVCFinished] == YES || isRootViewController == YES) && [self pushToNextVCFinished] == NO) {
             [self.navigationController setNeedsNavigationBarUpdateForBarTintColor:color];
         }
     }
@@ -731,7 +732,8 @@ static char kWRCustomNavBarKey;
     }
     else
     {
-        if ([self pushToCurrentVCFinished] == YES && [self pushToNextVCFinished] == NO) {
+        BOOL isRootViewController = (self.navigationController.viewControllers.firstObject == self);
+        if (([self pushToCurrentVCFinished] == YES || isRootViewController == YES) && [self pushToNextVCFinished] == NO) {
             [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundAlpha:alpha];
         }
     }
