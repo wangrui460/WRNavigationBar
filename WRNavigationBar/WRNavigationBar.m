@@ -20,6 +20,15 @@
         return NO;
     }
 }
++ (int)navBarBottom {
+    return [self isIphoneX] ? 88 : 64;
+}
++ (int)screenWidth {
+    return [UIScreen mainScreen].bounds.size.width;
+}
++ (int)screenHeight {
+    return [UIScreen mainScreen].bounds.size.height;
+}
 
 @end
 
@@ -51,8 +60,7 @@ static char kWRDefaultNavBarShadowImageHiddenKey;
     UIColor *color = (UIColor *)objc_getAssociatedObject(self, &kWRDefaultNavBarBarTintColorKey);
     return (color != nil) ? color : [UIColor whiteColor];
 }
-+ (void)wr_setDefaultNavBarBarTintColor:(UIColor *)color
-{
++ (void)wr_setDefaultNavBarBarTintColor:(UIColor *)color {
     objc_setAssociatedObject(self, &kWRDefaultNavBarBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -61,18 +69,15 @@ static char kWRDefaultNavBarShadowImageHiddenKey;
     UIImage *image = (UIImage *)objc_getAssociatedObject(self, &kWRDefaultNavBarBackgroundImageKey);
     return image;
 }
-+ (void)wr_setDefaultNavBarBackgroundImage:(UIImage *)image
-{
++ (void)wr_setDefaultNavBarBackgroundImage:(UIImage *)image {
     objc_setAssociatedObject(self, &kWRDefaultNavBarBackgroundImageKey, image, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-+ (UIColor *)defaultNavBarTintColor
-{
++ (UIColor *)defaultNavBarTintColor {
     UIColor *color = (UIColor *)objc_getAssociatedObject(self, &kWRDefaultNavBarTintColorKey);
     return (color != nil) ? color : [UIColor colorWithRed:0 green:0.478431 blue:1 alpha:1.0];
 }
-+ (void)wr_setDefaultNavBarTintColor:(UIColor *)color
-{
++ (void)wr_setDefaultNavBarTintColor:(UIColor *)color {
     objc_setAssociatedObject(self, &kWRDefaultNavBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -81,8 +86,7 @@ static char kWRDefaultNavBarShadowImageHiddenKey;
     UIColor *color = (UIColor *)objc_getAssociatedObject(self, &kWRDefaultNavBarTitleColorKey);
     return (color != nil) ? color : [UIColor blackColor];
 }
-+ (void)wr_setDefaultNavBarTitleColor:(UIColor *)color
-{
++ (void)wr_setDefaultNavBarTitleColor:(UIColor *)color {
     objc_setAssociatedObject(self, &kWRDefaultNavBarTitleColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -91,23 +95,19 @@ static char kWRDefaultNavBarShadowImageHiddenKey;
     id style = objc_getAssociatedObject(self, &kWRDefaultStatusBarStyleKey);
     return (style != nil) ? [style integerValue] : UIStatusBarStyleDefault;
 }
-+ (void)wr_setDefaultStatusBarStyle:(UIStatusBarStyle)style
-{
++ (void)wr_setDefaultStatusBarStyle:(UIStatusBarStyle)style {
     objc_setAssociatedObject(self, &kWRDefaultStatusBarStyleKey, @(style), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-+ (BOOL)defaultNavBarShadowImageHidden
-{
++ (BOOL)defaultNavBarShadowImageHidden {
     id hidden = objc_getAssociatedObject(self, &kWRDefaultNavBarShadowImageHiddenKey);
     return (hidden != nil) ? [hidden boolValue] : NO;
 }
-+ (void)wr_setDefaultNavBarShadowImageHidden:(BOOL)hidden
-{
++ (void)wr_setDefaultNavBarShadowImageHidden:(BOOL)hidden {
     objc_setAssociatedObject(self, &kWRDefaultNavBarShadowImageHiddenKey, @(hidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-+ (CGFloat)defaultNavBarBackgroundAlpha
-{
++ (CGFloat)defaultNavBarBackgroundAlpha {
     return 1.0;
 }
 
@@ -148,37 +148,23 @@ static char kWRBackgroundViewKey;
 static char kWRBackgroundImageViewKey;
 static char kWRBackgroundImageKey;
 
-- (int)navBarBottom
-{
-    if ([WRNavigationBar isIphoneX]) {
-        return 88;
-    } else {
-        return 64;
-    }
-}
-- (UIView *)backgroundView
-{
+- (UIView *)backgroundView {
     return (UIView *)objc_getAssociatedObject(self, &kWRBackgroundViewKey);
 }
-- (void)setBackgroundView:(UIView *)backgroundView
-{
+- (void)setBackgroundView:(UIView *)backgroundView {
     objc_setAssociatedObject(self, &kWRBackgroundViewKey, backgroundView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (UIImageView *)backgroundImageView
-{
+- (UIImageView *)backgroundImageView {
     return (UIImageView *)objc_getAssociatedObject(self, &kWRBackgroundImageViewKey);
 }
-- (void)setBackgroundImageView:(UIImageView *)bgImageView
-{
+- (void)setBackgroundImageView:(UIImageView *)bgImageView {
     objc_setAssociatedObject(self, &kWRBackgroundImageViewKey, bgImageView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-- (UIImage *)backgroundImage
-{
+- (UIImage *)backgroundImage {
     return (UIImage *)objc_getAssociatedObject(self, &kWRBackgroundImageKey);
 }
-- (void)setBackgroundImage:(UIImage *)image
-{
+- (void)setBackgroundImage:(UIImage *)image {
     objc_setAssociatedObject(self, &kWRBackgroundImageKey, image, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -193,7 +179,7 @@ static char kWRBackgroundImageKey;
         [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
         if (self.subviews.count > 0)
         {
-            self.backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), [self navBarBottom])];
+            self.backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), [WRNavigationBar navBarBottom])];
             self.backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
             
             // _UIBarBackground is first subView for navigationBar
@@ -214,7 +200,7 @@ static char kWRBackgroundImageKey;
     {
         // add a image(nil color) to _UIBarBackground make it clear
         [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-        self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), [self navBarBottom])];
+        self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), [WRNavigationBar navBarBottom])];
         self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         // _UIBarBackground is first subView for navigationBar
         [self.subviews.firstObject insertSubview:self.backgroundView atIndex:0];
@@ -285,40 +271,15 @@ static char kWRBackgroundImageKey;
 }
 
 // 设置导航栏在垂直方向上平移多少距离
-- (void)wr_setTranslationY:(CGFloat)translationY
-{
+- (void)wr_setTranslationY:(CGFloat)translationY {
     // CGAffineTransformMakeTranslation  平移
     self.transform = CGAffineTransformMakeTranslation(0, translationY);
 }
 
 /** 获取当前导航栏在垂直方向上偏移了多少 */
-- (CGFloat)wr_getTranslationY
-{
+- (CGFloat)wr_getTranslationY {
     return self.transform.ty;
 }
-
-//- (void)layoutSubviews
-//{
-//    [super layoutSubviews];
-//    UIImage *bgImage = selfbackgroundImage;
-//    if (bgImage)
-//    {
-//        [self wr_setBackgroundImage:bgImage];
-//    }
-//    //注意导航栏及状态栏高度适配
-//    self.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), [self navBarBottom]);
-//    for (UIView *view in self.subviews) {
-//        if([NSStringFromClass([view class]) containsString:@"Background"]) {
-//            view.frame = self.bounds;
-//        }
-//        else if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
-//            CGRect frame = view.frame;
-//            frame.origin.y = [WRNavigationBar isIphoneX] ? 44 : 20;
-//            frame.size.height = self.bounds.size.height - frame.origin.y;
-//            view.frame = frame;
-//        }
-//    }
-//}
 
 #pragma mark - call swizzling methods active 主动调用交换方法
 + (void)load
@@ -401,29 +362,23 @@ static int wrPushDisplayCount = 0;
     return current / all;
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
+- (UIStatusBarStyle)preferredStatusBarStyle {
     return [self.topViewController wr_statusBarStyle];
 }
 
-- (void)setNeedsNavigationBarUpdateForBarBackgroundImage:(UIImage *)backgroundImage
-{
+- (void)setNeedsNavigationBarUpdateForBarBackgroundImage:(UIImage *)backgroundImage {
     [self.navigationBar wr_setBackgroundImage:backgroundImage];
 }
-- (void)setNeedsNavigationBarUpdateForBarTintColor:(UIColor *)barTintColor
-{
+- (void)setNeedsNavigationBarUpdateForBarTintColor:(UIColor *)barTintColor {
     [self.navigationBar wr_setBackgroundColor:barTintColor];
 }
-- (void)setNeedsNavigationBarUpdateForBarBackgroundAlpha:(CGFloat)barBackgroundAlpha
-{
+- (void)setNeedsNavigationBarUpdateForBarBackgroundAlpha:(CGFloat)barBackgroundAlpha {
     [self.navigationBar wr_setBackgroundAlpha:barBackgroundAlpha];
 }
-- (void)setNeedsNavigationBarUpdateForTintColor:(UIColor *)tintColor
-{
+- (void)setNeedsNavigationBarUpdateForTintColor:(UIColor *)tintColor {
     self.navigationBar.tintColor = tintColor;
 }
-- (void)setNeedsNavigationBarUpdateForShadowImageHidden:(BOOL)hidden
-{
+- (void)setNeedsNavigationBarUpdateForShadowImageHidden:(BOOL)hidden {
     self.navigationBar.shadowImage = (hidden == YES) ? [UIImage new] : nil;
 }
 - (void)setNeedsNavigationBarUpdateForTitleColor:(UIColor *)titleColor
@@ -587,7 +542,6 @@ static int wrPushDisplayCount = 0;
         return YES;
     }
     
-    
     NSUInteger itemCount = self.navigationBar.items.count;
     NSUInteger n = self.viewControllers.count >= itemCount ? 2 : 1;
     UIViewController *popToVC = self.viewControllers[self.viewControllers.count - n];
@@ -657,8 +611,7 @@ static char kWRCustomNavBarKey;
     id isFinished = objc_getAssociatedObject(self, &kWRPushToCurrentVCFinishedKey);
     return (isFinished != nil) ? [isFinished boolValue] : NO;
 }
-- (void)setPushToCurrentVCFinished:(BOOL)isFinished
-{
+- (void)setPushToCurrentVCFinished:(BOOL)isFinished {
     objc_setAssociatedObject(self, &kWRPushToCurrentVCFinishedKey, @(isFinished), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -684,8 +637,8 @@ static char kWRCustomNavBarKey;
 {
     if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]])
     {
-//        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
-//        [navBar wr_setBackgroundImage:image];
+        //        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
+        //        [navBar wr_setBackgroundImage:image];
     }
     else {
         objc_setAssociatedObject(self, &kWRNavBarBackgroundImageKey, image, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -703,12 +656,13 @@ static char kWRCustomNavBarKey;
     objc_setAssociatedObject(self, &kWRNavBarBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]])
     {
-//        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
-//        [navBar wr_setBackgroundColor:color];
+        //        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
+        //        [navBar wr_setBackgroundColor:color];
     }
     else
     {
-        if ([self pushToCurrentVCFinished] == YES && [self pushToNextVCFinished] == NO) {
+        BOOL isRootViewController = (self.navigationController.viewControllers.firstObject == self);
+        if (([self pushToCurrentVCFinished] == YES || isRootViewController == YES) && [self pushToNextVCFinished] == NO) {
             [self.navigationController setNeedsNavigationBarUpdateForBarTintColor:color];
         }
     }
@@ -726,12 +680,13 @@ static char kWRCustomNavBarKey;
     objc_setAssociatedObject(self, &kWRNavBarBackgroundAlphaKey, @(alpha), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]])
     {
-//        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
-//        [navBar wr_setBackgroundAlpha:alpha];
+        //        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
+        //        [navBar wr_setBackgroundAlpha:alpha];
     }
     else
     {
-        if ([self pushToCurrentVCFinished] == YES && [self pushToNextVCFinished] == NO) {
+        BOOL isRootViewController = (self.navigationController.viewControllers.firstObject == self);
+        if (([self pushToCurrentVCFinished] == YES || isRootViewController == YES) && [self pushToNextVCFinished] == NO) {
             [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundAlpha:alpha];
         }
     }
@@ -748,8 +703,8 @@ static char kWRCustomNavBarKey;
     objc_setAssociatedObject(self, &kWRNavBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]])
     {
-//        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
-//        navBar.tintColor = color;
+        //        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
+        //        navBar.tintColor = color;
     }
     else
     {
@@ -770,8 +725,8 @@ static char kWRCustomNavBarKey;
     objc_setAssociatedObject(self, &kWRNavBarTitleColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]])
     {
-//        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
-//        navBar.titleTextAttributes = @{NSForegroundColorAttributeName:color};
+        //        UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
+        //        navBar.titleTextAttributes = @{NSForegroundColorAttributeName:color};
     }
     else
     {
@@ -822,19 +777,19 @@ static char kWRCustomNavBarKey;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
     {
-        SEL needSwizzleSelectors[3] = {
-            @selector(viewWillAppear:),
-            @selector(viewWillDisappear:),
-            @selector(viewDidAppear:)
-        };
+       SEL needSwizzleSelectors[3] = {
+           @selector(viewWillAppear:),
+           @selector(viewWillDisappear:),
+           @selector(viewDidAppear:)
+       };
         
-        for (int i = 0; i < 3;  i++) {
-            SEL selector = needSwizzleSelectors[i];
-            NSString *newSelectorStr = [NSString stringWithFormat:@"wr_%@", NSStringFromSelector(selector)];
-            Method originMethod = class_getInstanceMethod(self, selector);
-            Method swizzledMethod = class_getInstanceMethod(self, NSSelectorFromString(newSelectorStr));
-            method_exchangeImplementations(originMethod, swizzledMethod);
-        }
+       for (int i = 0; i < 3;  i++) {
+           SEL selector = needSwizzleSelectors[i];
+           NSString *newSelectorStr = [NSString stringWithFormat:@"wr_%@", NSStringFromSelector(selector)];
+           Method originMethod = class_getInstanceMethod(self, selector);
+           Method swizzledMethod = class_getInstanceMethod(self, NSSelectorFromString(newSelectorStr));
+           method_exchangeImplementations(originMethod, swizzledMethod);
+       }
     });
 }
 
@@ -869,7 +824,6 @@ static char kWRCustomNavBarKey;
         }
         [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundAlpha:[self wr_navBarBackgroundAlpha]];
         [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self wr_navBarTintColor]];
-        // 临时解决办法（self.navigationBar.titleTextAttributes = newTitleTextAttributes内部有问题）
         [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self wr_navBarTitleColor]];
         [self.navigationController setNeedsNavigationBarUpdateForShadowImageHidden:[self wr_navBarShadowImageHidden]];
     }
@@ -878,7 +832,12 @@ static char kWRCustomNavBarKey;
 
 - (BOOL)canUpdateNavigationBar
 {
-    if (self.navigationController && CGRectEqualToRect(self.view.frame, [UIScreen mainScreen].bounds)) {
+    CGRect viewFrame = self.view.frame;
+    CGRect maxFrame = [UIScreen mainScreen].bounds;
+    CGRect minFrame = CGRectMake(0, WRNavigationBar.navBarBottom, WRNavigationBar.screenWidth, WRNavigationBar.screenHeight-WRNavigationBar.navBarBottom);
+    // 蝙蝠🦇
+    BOOL isBat = CGRectEqualToRect(viewFrame, maxFrame) || CGRectEqualToRect(viewFrame, minFrame);
+    if (self.navigationController && isBat) {
         return YES;
     } else {
         return NO;

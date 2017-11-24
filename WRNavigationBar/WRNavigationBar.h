@@ -12,6 +12,9 @@
 
 @interface WRNavigationBar : UIView
 + (BOOL)isIphoneX;
++ (int)navBarBottom;
++ (int)screenWidth;
++ (int)screenHeight;
 @end
 
 
