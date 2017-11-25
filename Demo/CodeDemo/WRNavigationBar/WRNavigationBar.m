@@ -121,8 +121,7 @@ static char kWRDefaultNavBarShadowImageHiddenKey;
     CGFloat newAlpha = fromAlpha + (toAlpha - fromAlpha) * percent;
     return [UIColor colorWithRed:newRed green:newGreen blue:newBlue alpha:newAlpha];
 }
-+ (CGFloat)middleAlpha:(CGFloat)fromAlpha toAlpha:(CGFloat)toAlpha percent:(CGFloat)percent
-{
++ (CGFloat)middleAlpha:(CGFloat)fromAlpha toAlpha:(CGFloat)toAlpha percent:(CGFloat)percent {
     return fromAlpha + (toAlpha - fromAlpha) * percent;
 }
 
