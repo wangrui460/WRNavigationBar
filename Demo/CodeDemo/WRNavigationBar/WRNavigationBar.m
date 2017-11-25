@@ -36,16 +36,6 @@
 //===============================================================================================
 #pragma mark - default navigationBar barTintColor、tintColor and statusBarStyle YOU CAN CHANGE!!!
 //===============================================================================================
-@interface WRNavigationBar (WRDefault)
-+ (UIColor *)defaultNavBarBarTintColor;
-+ (UIColor *)defaultNavBarTintColor;
-+ (UIColor *)defaultNavBarTitleColor;
-+ (UIStatusBarStyle)defaultStatusBarStyle;
-+ (BOOL)defaultNavBarShadowImageHidden;
-+ (CGFloat)defaultNavBarBackgroundAlpha;
-+ (UIColor *)middleColor:(UIColor *)fromColor toColor:(UIColor *)toColor percent:(CGFloat)percent;
-+ (CGFloat)middleAlpha:(CGFloat)fromAlpha toAlpha:(CGFloat)toAlpha percent:(CGFloat)percent;
-@end
 @implementation WRNavigationBar (WRDefault)
 
 static char kWRDefaultNavBarBarTintColorKey;
