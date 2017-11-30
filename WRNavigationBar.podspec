@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "WRNavigationBar"
-  s.version      = "1.0.5"
+  s.version      = "1.0.6"
   s.summary      = "navigationBar statusBar alpha color"
   s.homepage     = "https://github.com/wangrui460/WRNavigationBar"
   s.license      = { :type => "MIT", :file => "LICENSE" }
