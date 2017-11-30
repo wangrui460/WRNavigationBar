@@ -1,13 +1,3 @@
-# Uncomment this line to define a global platform for your project
-
-#官方Cocoapods的源
-#source 'https://github.com/CocoaPods/Specs.git'
-
-#本地私有源
-#source 'https://git.oschina.net/scx/JLSpecs.git'
-
-# 修改过得第三方库
-# 1.WMPageController：（WMScrollView.m）解决 PlayerCell 中调节视频进度被WMScrollView拦截的问题
 
 platform :ios, '8.0'
 use_frameworks!
