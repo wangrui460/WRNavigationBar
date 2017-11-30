@@ -36,16 +36,6 @@
 //===============================================================================================
 #pragma mark - default navigationBar barTintColor、tintColor and statusBarStyle YOU CAN CHANGE!!!
 //===============================================================================================
-@interface WRNavigationBar (WRDefault)
-+ (UIColor *)defaultNavBarBarTintColor;
-+ (UIColor *)defaultNavBarTintColor;
-+ (UIColor *)defaultNavBarTitleColor;
-+ (UIStatusBarStyle)defaultStatusBarStyle;
-+ (BOOL)defaultNavBarShadowImageHidden;
-+ (CGFloat)defaultNavBarBackgroundAlpha;
-+ (UIColor *)middleColor:(UIColor *)fromColor toColor:(UIColor *)toColor percent:(CGFloat)percent;
-+ (CGFloat)middleAlpha:(CGFloat)fromAlpha toAlpha:(CGFloat)toAlpha percent:(CGFloat)percent;
-@end
 @implementation WRNavigationBar (WRDefault)
 
 static char kWRDefaultNavBarBarTintColorKey;
@@ -131,8 +121,7 @@ static char kWRDefaultNavBarShadowImageHiddenKey;
     CGFloat newAlpha = fromAlpha + (toAlpha - fromAlpha) * percent;
     return [UIColor colorWithRed:newRed green:newGreen blue:newBlue alpha:newAlpha];
 }
-+ (CGFloat)middleAlpha:(CGFloat)fromAlpha toAlpha:(CGFloat)toAlpha percent:(CGFloat)percent
-{
++ (CGFloat)middleAlpha:(CGFloat)fromAlpha toAlpha:(CGFloat)toAlpha percent:(CGFloat)percent {
     return fromAlpha + (toAlpha - fromAlpha) * percent;
 }
 
@@ -491,7 +480,7 @@ static int wrPushDisplayCount = 0;
 - (void)wr_pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     __block CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(pushNeedDisplay)];
-    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
     [CATransaction setCompletionBlock:^{
         [displayLink invalidate];
         displayLink = nil;

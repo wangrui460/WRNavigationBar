@@ -480,7 +480,7 @@ static int wrPushDisplayCount = 0;
 - (void)wr_pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     __block CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(pushNeedDisplay)];
-    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
     [CATransaction setCompletionBlock:^{
         [displayLink invalidate];
         displayLink = nil;
