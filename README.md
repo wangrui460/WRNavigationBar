@@ -1,3 +1,5 @@
+### 注意：练习方式变更（因QQ常年不用，所以联系方式换成微信，请在页面底部查看）
+
 ![image](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/WRNavigationBar.png)
 
 <p align="center">
@@ -152,7 +154,6 @@
 <div class="wrap">
 <img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/group.png" alt="">
 <img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/appreciate.png" alt="">
-<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/get.png" alt="">
 </div>
 
 
