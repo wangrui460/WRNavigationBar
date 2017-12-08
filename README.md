@@ -24,27 +24,20 @@
 
 
 ## Demo
-![拉钩App首页](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/拉钩App首页.gif)
 
-![导航栏显示渐变色](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/导航栏显示渐变色.gif)
-
-![导航栏显示图片](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/导航栏显示图片.gif)
-
-![新浪微博个人中心](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/新浪微博个人中心.gif)
-
-![qq空间](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/qq空间.gif)
-
-![知乎日报](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/知乎日报.gif)
-
-![QQ我的资料页](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/QQ我的资料页.gif)
-
-![蚂蚁森林](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/蚂蚁森林.gif)
-
-![连续多个界面导航栏透明](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/连续多个界面导航栏透明.gif)
-
-![自定义导航栏](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/自定义导航栏.gif)
-
-![移动导航栏](https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/移动导航栏.gif)
+<div class="wrap">
+<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/拉钩App首页.gif" alt="">
+<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/导航栏显示渐变色.gif" alt="">
+<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/导航栏显示图片.gif" alt="">
+<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/新浪微博个人中心.gif" alt="">
+<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/qq空间.gif" alt="">
+<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/知乎日报.gif" alt="">
+<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/QQ我的资料页.gif" alt="">
+<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/蚂蚁森林.gif" alt="">
+<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/连续多个界面导航栏透明.gif" alt="">
+<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/自定义导航栏.gif" alt="">
+<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/移动导航栏.gif" alt="">
+</div>
 
 
 ## Installation
