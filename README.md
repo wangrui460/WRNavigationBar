@@ -146,9 +146,18 @@
 # Contact me
 - Weibo: [@wangrui460](http://weibo.com/wangrui460)
 - Email:  wangruidev@gmail.com
-- QQ：1204607318
+- QQ：1204607318 （基本不用）
+- 微信群：下图所示
+
+<div class="wrap">
+<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/group.png" alt="">
+<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/appreciate.png" alt="">
+<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/get.png" alt="">
+</div>
+
 
 # License
 WRNavigationBar is available under the MIT license. See the LICENSE file for more info.
+
 
 
