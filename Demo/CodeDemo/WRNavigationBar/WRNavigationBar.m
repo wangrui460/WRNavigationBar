@@ -842,6 +842,15 @@ static char kWRCustomNavBarKey;
 
 
 
+/*
+     方案一：默认所有导入库没有任何反应，实现代理 或者 在list里面才会有效果
+     方案二：默认导入库所有页面改变，添加 list，对非list中的页面改变
+ 
+ 
+ */
+
+
+
 
 
 
