@@ -396,11 +396,11 @@ static int wrPushDisplayCount = 0;
     UIColor *newTintColor = [WRNavigationBar middleColor:fromTintColor toColor:toTintColor percent:progress];
     [self setNeedsNavigationBarUpdateForTintColor:newTintColor];
     
-    // change navBarTitleColor
-    UIColor *fromTitleColor = [fromVC wr_navBarTitleColor];
-    UIColor *toTitleColor = [toVC wr_navBarTitleColor];
-    UIColor *newTitleColor = [WRNavigationBar middleColor:fromTitleColor toColor:toTitleColor percent:progress];
-    [self setNeedsNavigationBarUpdateForTitleColor:newTitleColor];
+    // change navBarTitleColor（在wr_popToViewController:animated:方法中直接改变标题颜色）
+//    UIColor *fromTitleColor = [fromVC wr_navBarTitleColor];
+//    UIColor *toTitleColor = [toVC wr_navBarTitleColor];
+//    UIColor *newTitleColor = [WRNavigationBar middleColor:fromTitleColor toColor:toTitleColor percent:progress];
+//    [self setNeedsNavigationBarUpdateForTitleColor:newTitleColor];
     
     // change navBar _UIBarBackground alpha
     CGFloat fromBarBackgroundAlpha = [fromVC wr_navBarBackgroundAlpha];
@@ -433,7 +433,8 @@ static int wrPushDisplayCount = 0;
 }
 
 - (NSArray<UIViewController *> *)wr_popToViewController:(UIViewController *)viewController animated:(BOOL)animated
-{
+{   // pop 的时候导航栏标题颜色直接改变
+    [self setNeedsNavigationBarUpdateForTitleColor:[viewController wr_navBarTitleColor]];
     __block CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(popNeedDisplay)];
     [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
     [CATransaction setCompletionBlock:^{

@@ -34,21 +34,21 @@
 + (UIViewController*)wr_currentViewController
 {
     UIViewController* rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
-    return [[self class] wr_currentViewControllerFrom:rootViewController];
+    return [self wr_currentViewControllerFrom:rootViewController];
 }
 
 + (UIViewController*)wr_currentViewControllerFrom:(UIViewController*)viewController
 {
     if ([viewController isKindOfClass:[UINavigationController class]]) {
         UINavigationController* navigationController = (UINavigationController *)viewController;
-        return [[self class] wr_currentViewControllerFrom:navigationController.viewControllers.lastObject];
+        return [self wr_currentViewControllerFrom:navigationController.viewControllers.lastObject];
     }
     else if([viewController isKindOfClass:[UITabBarController class]]) {
         UITabBarController* tabBarController = (UITabBarController *)viewController;
-        return [[self class] wr_currentViewControllerFrom:tabBarController.selectedViewController];
+        return [self wr_currentViewControllerFrom:tabBarController.selectedViewController];
     }
     else if (viewController.presentedViewController != nil) {
-        return [[self class] wr_currentViewControllerFrom:viewController.presentedViewController];
+        return [self wr_currentViewControllerFrom:viewController.presentedViewController];
     }
     else {
         return viewController;
