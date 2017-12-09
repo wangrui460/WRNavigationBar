@@ -23,6 +23,9 @@
 + (int)navBarBottom {
     return [self isIphoneX] ? 88 : 64;
 }
++ (int)tabBarHeight {
+    return [self isIphoneX] ? 83 : 49;
+}
 + (int)screenWidth {
     return [UIScreen mainScreen].bounds.size.width;
 }
@@ -824,9 +827,10 @@ static char kWRCustomNavBarKey;
 {
     CGRect viewFrame = self.view.frame;
     CGRect maxFrame = [UIScreen mainScreen].bounds;
-    CGRect minFrame = CGRectMake(0, WRNavigationBar.navBarBottom, WRNavigationBar.screenWidth, WRNavigationBar.screenHeight-WRNavigationBar.navBarBottom);
+    CGRect middleFrame = CGRectMake(0, WRNavigationBar.navBarBottom, WRNavigationBar.screenWidth, WRNavigationBar.screenHeight-WRNavigationBar.navBarBottom);
+    CGRect minFrame = CGRectMake(0, WRNavigationBar.navBarBottom, WRNavigationBar.screenWidth, WRNavigationBar.screenHeight-WRNavigationBar.navBarBottom-WRNavigationBar.tabBarHeight);
     // 蝙蝠🦇
-    BOOL isBat = CGRectEqualToRect(viewFrame, maxFrame) || CGRectEqualToRect(viewFrame, minFrame);
+    BOOL isBat = CGRectEqualToRect(viewFrame, maxFrame) || CGRectEqualToRect(viewFrame, middleFrame) || CGRectEqualToRect(viewFrame, minFrame);
     if (self.navigationController && isBat) {
         return YES;
     } else {
