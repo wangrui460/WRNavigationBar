@@ -80,6 +80,15 @@ static char kWRDefaultNavBarShadowImageHiddenKey;
     objc_setAssociatedObject(self, &kWRBlacklistKey, list, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
++ (BOOL)needUpdateNavigationBarWithViewController:(UIViewController *)vc {
+    NSString *vcStr = NSStringFromClass(vc.class);
+    if ([self isLocalUsed]) {
+        return [[self whitelist] containsObject:vcStr]; // 当白名单里 有 表示需要更新
+    } else {
+        return ![[self blacklist] containsObject:vcStr];// 当黑名单里 没有 表示需要更新
+    }
+}
+
 + (UIColor *)defaultNavBarBarTintColor {
     UIColor *color = (UIColor *)objc_getAssociatedObject(self, &kWRDefaultNavBarBarTintColorKey);
     return (color != nil) ? color : [UIColor whiteColor];
