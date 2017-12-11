@@ -16,6 +16,7 @@
 #import "AntForestController.h"
 #import "AllTransparent.h"
 #import "LaGouController.h"
+#import "SpecialController.h"
 #import "WRNavigationBar.h"
 
 @interface NormalListController () <UITableViewDelegate, UITableViewDataSource>
@@ -42,7 +43,7 @@
 #pragma mark - tableview delegate / dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return 9;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -74,6 +75,9 @@
             break;
         case 7:
             str = @"拉钩App首页";
+            break;
+        case 8:
+            str = @"WRNavigationBar 对其不产生任何印象";
             break;
         
         default:
@@ -139,6 +143,11 @@
         {
             LaGouController *laGouVC = [LaGouController new];
             [self.navigationController pushViewController:laGouVC animated:YES];
+        }
+        case 8:
+        {
+            SpecialController *specialVC = [SpecialController new];
+            [self.navigationController pushViewController:specialVC animated:YES];
         }
             break;
         default:

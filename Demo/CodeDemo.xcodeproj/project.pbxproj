@@ -34,6 +34,7 @@
 		1AAE08E91EE7F3350085C3A2 /* MoveListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE08E81EE7F3350085C3A2 /* MoveListController.m */; };
 		1AAE08EC1EE7F38E0085C3A2 /* CustomListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE08EB1EE7F38E0085C3A2 /* CustomListController.m */; };
 		29F1DC19441470C345522432 /* Pods_CodeDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5025CF19A1273775CA7A2A /* Pods_CodeDemo.framework */; };
+		34321EB01FDCE3AD00833E79 /* SpecialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34321EAF1FDCE3AD00833E79 /* SpecialController.m */; };
 		34E384B71F9C358700257F91 /* WRCustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E384B61F9C358700257F91 /* WRCustomNavigationBar.m */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,8 @@
 		1AAE08E81EE7F3350085C3A2 /* MoveListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveListController.m; sourceTree = "<group>"; };
 		1AAE08EA1EE7F38E0085C3A2 /* CustomListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomListController.h; sourceTree = "<group>"; };
 		1AAE08EB1EE7F38E0085C3A2 /* CustomListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomListController.m; sourceTree = "<group>"; };
+		34321EAE1FDCE3AD00833E79 /* SpecialController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpecialController.h; sourceTree = "<group>"; };
+		34321EAF1FDCE3AD00833E79 /* SpecialController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpecialController.m; sourceTree = "<group>"; };
 		34E384B51F9C358700257F91 /* WRCustomNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WRCustomNavigationBar.h; sourceTree = "<group>"; };
 		34E384B61F9C358700257F91 /* WRCustomNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WRCustomNavigationBar.m; sourceTree = "<group>"; };
 		37581D1AF27611119D8AA286 /* Pods-CodeDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CodeDemo/Pods-CodeDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -215,6 +218,8 @@
 				1AADC3911F22F73A00BB73D9 /* AllTransparent.m */,
 				1A5845E41F270D4500A24234 /* LaGouController.h */,
 				1A5845E51F270D4500A24234 /* LaGouController.m */,
+				34321EAE1FDCE3AD00833E79 /* SpecialController.h */,
+				34321EAF1FDCE3AD00833E79 /* SpecialController.m */,
 			);
 			path = "普通";
 			sourceTree = "<group>";
@@ -441,6 +446,7 @@
 				1A7A6BF31F1B4AC600A602D6 /* WeiBoMineController.m in Sources */,
 				1AAA1D4B1EEE380400681CB9 /* ZhiHuController.m in Sources */,
 				1A2061FA1E9CB4E4007BFB91 /* WRNavigationBar.m in Sources */,
+				34321EB01FDCE3AD00833E79 /* SpecialController.m in Sources */,
 				1A7A6BE11F1B4A8600A602D6 /* CustomNavBarController.m in Sources */,
 				1AAE08E91EE7F3350085C3A2 /* MoveListController.m in Sources */,
 				1AAE08EC1EE7F38E0085C3A2 /* CustomListController.m in Sources */,

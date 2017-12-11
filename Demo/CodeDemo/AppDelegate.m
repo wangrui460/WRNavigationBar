@@ -64,6 +64,7 @@ UIColor *MainViewColor = nil;
     
     // 设置是 广泛使用WRNavigationBar，还是局部使用WRNavigationBar，默认是局部使用
     [WRNavigationBar wr_widely];
+    [WRNavigationBar wr_setBlacklist:@[@"SpecialController"]];
     
     // 设置导航栏默认的背景颜色
     [WRNavigationBar wr_setDefaultNavBarBarTintColor:MainNavBarColor];
