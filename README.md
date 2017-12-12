@@ -1,4 +1,4 @@
-### 注意：练习方式变更（因QQ常年不用，所以联系方式换成微信，请在页面底部查看）
+### 注意：联系方式变更（因QQ常年不用，所以联系方式换成微信，请在页面底部查看）
 
 ![image](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/WRNavigationBar.png)
 
