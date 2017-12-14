@@ -836,9 +836,8 @@ static char kWRCustomNavBarKey;
     }
 }
 
-#pragma mark └ Help Method
-- (BOOL)isRootViewController {
-    
+- (BOOL)isRootViewController
+{
     UIViewController *rootViewController = self.navigationController.viewControllers.firstObject;
     if ([rootViewController isKindOfClass:[UITabBarController class]] == NO) {
         return rootViewController == self;

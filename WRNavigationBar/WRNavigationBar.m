@@ -654,8 +654,7 @@ static char kWRCustomNavBarKey;
     }
     else
     {
-        BOOL isRootViewController = (self.navigationController.viewControllers.firstObject == self);
-        if (([self pushToCurrentVCFinished] == YES || isRootViewController == YES) && [self pushToNextVCFinished] == NO) {
+        if (([self pushToCurrentVCFinished] == YES || [self isRootViewController] == YES) && [self pushToNextVCFinished] == NO) {
             [self.navigationController setNeedsNavigationBarUpdateForBarTintColor:color];
         }
     }
@@ -678,8 +677,7 @@ static char kWRCustomNavBarKey;
     }
     else
     {
-        BOOL isRootViewController = (self.navigationController.viewControllers.firstObject == self);
-        if (([self pushToCurrentVCFinished] == YES || isRootViewController == YES) && [self pushToNextVCFinished] == NO) {
+        if (([self pushToCurrentVCFinished] == YES || [self isRootViewController] == YES) && [self pushToNextVCFinished] == NO) {
             [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundAlpha:alpha];
         }
     }
@@ -829,7 +827,7 @@ static char kWRCustomNavBarKey;
     CGRect maxFrame = [UIScreen mainScreen].bounds;
     CGRect middleFrame = CGRectMake(0, WRNavigationBar.navBarBottom, WRNavigationBar.screenWidth, WRNavigationBar.screenHeight-WRNavigationBar.navBarBottom);
     CGRect minFrame = CGRectMake(0, WRNavigationBar.navBarBottom, WRNavigationBar.screenWidth, WRNavigationBar.screenHeight-WRNavigationBar.navBarBottom-WRNavigationBar.tabBarHeight);
-    // 蝙蝠🦇
+    // 蝙蝠🦇 （灵机一动：视频通话问题？）
     BOOL isBat = CGRectEqualToRect(viewFrame, maxFrame) || CGRectEqualToRect(viewFrame, middleFrame) || CGRectEqualToRect(viewFrame, minFrame);
     if (self.navigationController && isBat) {
         return YES;
@@ -838,15 +836,20 @@ static char kWRCustomNavBarKey;
     }
 }
 
+- (BOOL)isRootViewController
+{
+    UIViewController *rootViewController = self.navigationController.viewControllers.firstObject;
+    if ([rootViewController isKindOfClass:[UITabBarController class]] == NO) {
+        return rootViewController == self;
+    } else {
+        UITabBarController *tabBarController = (UITabBarController *)rootViewController;
+        for (UIViewController *vc in tabBarController.viewControllers) {
+            if (vc == self) {
+                return YES;
+            }
+        }
+        return NO;
+    }
+}
+
 @end
-
-
-
-
-
-
-
-
-
-
-

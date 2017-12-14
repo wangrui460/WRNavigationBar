@@ -42,8 +42,8 @@
 
 ## Installation
 > **CocoaPods**
-> pod 'WRNavigationBar','~>1.0.8’
-如果未发现 1.0.8 请更新一下pod
+> pod 'WRNavigationBar','~>1.0.9’
+如果未发现 1.0.9 请更新一下pod
 
 
 > **手动拖入**
@@ -84,6 +84,9 @@
 
 
 ## Update
+- **2017.12.14**
+解决问题：支持 Nav-TabBar-ViewControllers 结构的项目
+
 - **2017.12.09**
 解决问题：解决导航栏颜色和标题颜色改变失败的bug
 
