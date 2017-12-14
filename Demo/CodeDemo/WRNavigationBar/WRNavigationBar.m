@@ -654,8 +654,7 @@ static char kWRCustomNavBarKey;
     }
     else
     {
-        BOOL isRootViewController = (self.navigationController.viewControllers.firstObject == self);
-        if (([self pushToCurrentVCFinished] == YES || isRootViewController == YES) && [self pushToNextVCFinished] == NO) {
+        if (([self pushToCurrentVCFinished] == YES || [self isRootViewController] == YES) && [self pushToNextVCFinished] == NO) {
             [self.navigationController setNeedsNavigationBarUpdateForBarTintColor:color];
         }
     }
@@ -678,8 +677,7 @@ static char kWRCustomNavBarKey;
     }
     else
     {
-        BOOL isRootViewController = (self.navigationController.viewControllers.firstObject == self);
-        if (([self pushToCurrentVCFinished] == YES || isRootViewController == YES) && [self pushToNextVCFinished] == NO) {
+        if (([self pushToCurrentVCFinished] == YES || [self isRootViewController] == YES) && [self pushToNextVCFinished] == NO) {
             [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundAlpha:alpha];
         }
     }
@@ -838,15 +836,21 @@ static char kWRCustomNavBarKey;
     }
 }
 
+#pragma mark └ Help Method
+- (BOOL)isRootViewController {
+    
+    UIViewController *rootViewController = self.navigationController.viewControllers.firstObject;
+    if ([rootViewController isKindOfClass:[UITabBarController class]] == NO) {
+        return rootViewController == self;
+    } else {
+        UITabBarController *tabBarController = (UITabBarController *)rootViewController;
+        for (UIViewController *vc in tabBarController.viewControllers) {
+            if (vc == self) {
+                return YES;
+            }
+        }
+        return NO;
+    }
+}
+
 @end
-
-
-
-
-
-
-
-
-
-
-
