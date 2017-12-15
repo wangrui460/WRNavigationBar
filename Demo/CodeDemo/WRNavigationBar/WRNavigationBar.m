@@ -805,6 +805,9 @@ static char kWRCustomNavBarKey;
 
 - (void)wr_viewDidAppear:(BOOL)animated
 {
+    if ([self isRootViewController] == NO) {
+        self.pushToCurrentVCFinished = YES;
+    }
     if ([self canUpdateNavigationBar] == YES)
     {
         UIImage *barBgImage = [self wr_navBarBackgroundImage];
