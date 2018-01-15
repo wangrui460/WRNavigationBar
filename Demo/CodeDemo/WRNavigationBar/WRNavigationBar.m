@@ -831,6 +831,7 @@ static char kWRCustomNavBarKey;
     CGRect middleFrame = CGRectMake(0, WRNavigationBar.navBarBottom, WRNavigationBar.screenWidth, WRNavigationBar.screenHeight-WRNavigationBar.navBarBottom);
     CGRect minFrame = CGRectMake(0, WRNavigationBar.navBarBottom, WRNavigationBar.screenWidth, WRNavigationBar.screenHeight-WRNavigationBar.navBarBottom-WRNavigationBar.tabBarHeight);
     // 蝙蝠🦇 （灵机一动：视频通话问题？）
+    // 艹，判断一下有没有导航控制器不就可以了吗，傻逼
     BOOL isBat = CGRectEqualToRect(viewFrame, maxFrame) || CGRectEqualToRect(viewFrame, middleFrame) || CGRectEqualToRect(viewFrame, minFrame);
     if (self.navigationController && isBat) {
         return YES;
