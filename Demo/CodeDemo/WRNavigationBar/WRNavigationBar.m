@@ -788,6 +788,13 @@ static char kWRSystemNavBarTitleColorKey;
     if (![WRNavigationBar needUpdateNavigationBar:self]) {
         if ([self wr_systemNavBarTitleColor] == nil) {
             titleColor = self.navigationController.navigationBar.titleTextAttributes[@"NSColor"];
+            NSString *str = [titleColor description];
+            NSLog(@"str = %@", str);
+            if (![str containsString:@"UIExtendedSRGBColorSpace"]) {
+                titleColor = [UINavigationBar appearance].titleTextAttributes[@"NSColor"];
+                str = [titleColor description];
+                NSLog(@"str = %@", str);
+            }
         } else {
             titleColor = [self wr_systemNavBarTitleColor];
         }
@@ -873,10 +880,10 @@ static char kWRSystemNavBarTitleColorKey;
     if ([self canUpdateNavigationBar]) {
         if (![WRNavigationBar needUpdateNavigationBar:self]) {
             if ([self wr_systemNavBarTintColor] == nil) {
-                [self wr_setSystemNavBarTintColor:self.navigationController.navigationBar.tintColor];
+                [self wr_setSystemNavBarTintColor:[self wr_navBarTintColor]];
             }
             if ([self wr_systemNavBarTitleColor] == nil) {
-                [self wr_setSystemNavBarTitleColor:self.navigationController.navigationBar.titleTextAttributes[@"NSColor"]];
+                [self wr_setSystemNavBarTitleColor:[self wr_navBarTitleColor]];
             }
         }
         [self setPushToNextVCFinished:NO];
