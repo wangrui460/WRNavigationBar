@@ -60,6 +60,8 @@ UIColor *MainViewColor = nil;
 - (void)setNavBarAppearence
 {
 //    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor purpleColor]}];
+//    [UINavigationBar appearance].tintColor = [UIColor yellowColor];
+    [UINavigationBar appearance].barTintColor = [UIColor redColor];
     
     MainNavBarColor = [UIColor colorWithRed:0/255.0 green:175/255.0 blue:240/255.0 alpha:1];
     MainViewColor   = [UIColor colorWithRed:126/255.0 green:126/255.0 blue:126/255.0 alpha:1];

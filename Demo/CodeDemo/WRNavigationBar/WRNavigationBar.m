@@ -367,6 +367,8 @@ static char kWRBackgroundImageKey;
 
 @interface UIViewController (Addition)
 - (void)setPushToCurrentVCFinished:(BOOL)isFinished;
+- (UIColor *)wr_systemNavBarTintColor;
+- (void)wr_setSystemNavBarTintColor:(UIColor *)color;
 @end
 
 //==========================================================================
@@ -426,26 +428,25 @@ static int wrPushDisplayCount = 0;
 - (void)updateNavigationBarWithFromVC:(UIViewController *)fromVC toVC:(UIViewController *)toVC progress:(CGFloat)progress
 {
     // change navBarBarTintColor
-    UIColor *selfBarTintColor = self.navigationBar.barTintColor;
-    UIColor *fromBarTintColor = [fromVC wr_navBarBarTintColorWithSystemColor:selfBarTintColor];
-    UIColor *toBarTintColor = [toVC wr_navBarBarTintColorWithSystemColor:selfBarTintColor];
+    UIColor *fromBarTintColor = [fromVC wr_navBarBarTintColor];
+    UIColor *toBarTintColor = [toVC wr_navBarBarTintColor];
     UIColor *newBarTintColor = [WRNavigationBar middleColor:fromBarTintColor toColor:toBarTintColor percent:progress];
     [self setNeedsNavigationBarUpdateForBarTintColor:newBarTintColor];
     
     // change navBarTintColor
-//    UIColor *selfTintColor = self.navigationBar.tintColor;
-//    UIColor *fromTintColor = [fromVC wr_navBarTintColor];
-//    UIColor *toTintColor = [toVC wr_navBarTintColor];
-//    UIColor *newTintColor = [WRNavigationBar middleColor:fromTintColor toColor:toTintColor percent:progress];
+    UIColor *selfTintColor = self.navigationBar.tintColor;
+    UIColor *fromTintColor = [fromVC wr_navBarTintColor];
+    UIColor *toTintColor = [toVC wr_navBarTintColor];
+    UIColor *newTintColor = [WRNavigationBar middleColor:fromTintColor toColor:toTintColor percent:progress];
 //    if ([WRNavigationBar needUpdateNavigationBar:toVC]) {
-//        [self setNeedsNavigationBarUpdateForTintColor:newTintColor];
+        [self setNeedsNavigationBarUpdateForTintColor:newTintColor];
 //    }
     
     // change navBarTitleColor（在wr_popToViewController:animated:方法中直接改变标题颜色）
-//    UIColor *fromTitleColor = [fromVC wr_navBarTitleColor];
-//    UIColor *toTitleColor = [toVC wr_navBarTitleColor];
-//    UIColor *newTitleColor = [WRNavigationBar middleColor:fromTitleColor toColor:toTitleColor percent:progress];
-//    [self setNeedsNavigationBarUpdateForTitleColor:newTitleColor];
+    UIColor *fromTitleColor = [fromVC wr_navBarTitleColor];
+    UIColor *toTitleColor = [toVC wr_navBarTitleColor];
+    UIColor *newTitleColor = [WRNavigationBar middleColor:fromTitleColor toColor:toTitleColor percent:progress];
+    [self setNeedsNavigationBarUpdateForTitleColor:newTitleColor];
     
     // change navBar _UIBarBackground alpha
     CGFloat fromBarBackgroundAlpha = [fromVC wr_navBarBackgroundAlpha];
@@ -480,6 +481,7 @@ static int wrPushDisplayCount = 0;
 - (NSArray<UIViewController *> *)wr_popToViewController:(UIViewController *)viewController animated:(BOOL)animated
 {   // pop 的时候导航栏标题颜色直接改变
     [self setNeedsNavigationBarUpdateForTitleColor:[viewController wr_navBarTitleColor]];
+    [self setNeedsNavigationBarUpdateForTintColor:[viewController wr_navBarTintColor]];
     __block CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(popNeedDisplay)];
     [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
     [CATransaction setCompletionBlock:^{
@@ -588,8 +590,7 @@ static int wrPushDisplayCount = 0;
 {
     void (^animations) (UITransitionContextViewControllerKey) = ^(UITransitionContextViewControllerKey key){
         UIViewController *vc = [context viewControllerForKey:key];
-        UIColor *selfBarTintColor = self.navigationBar.barTintColor;
-        UIColor *curColor = [vc wr_navBarBarTintColorWithSystemColor:selfBarTintColor];
+        UIColor *curColor = [vc wr_navBarBarTintColor];
         CGFloat curAlpha = [vc wr_navBarBackgroundAlpha];
         [self setNeedsNavigationBarUpdateForBarTintColor:curColor];
         [self setNeedsNavigationBarUpdateForBarBackgroundAlpha:curAlpha];
@@ -640,6 +641,7 @@ static char kWRNavBarTitleColorKey;
 static char kWRStatusBarStyleKey;
 static char kWRNavBarShadowImageHiddenKey;
 static char kWRCustomNavBarKey;
+static char kWRSystemNavBarBarTintColorKey;
 static char kWRSystemNavBarTintColorKey;
 static char kWRSystemNavBarTitleColorKey;
 
@@ -683,14 +685,30 @@ static char kWRSystemNavBarTitleColorKey;
     }
 }
 
-// navigationBar barTintColor
-- (UIColor *)wr_navBarBarTintColorWithSystemColor:(UIColor *)color
+// navigationBar systemBarTintColor
+- (UIColor *)wr_systemNavBarBarTintColor {
+    return (UIColor *)objc_getAssociatedObject(self, &kWRSystemNavBarBarTintColorKey);
+}
+- (void)wr_setSystemNavBarBarTintColor:(UIColor *)color {
+    objc_setAssociatedObject(self, &kWRSystemNavBarBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIColor *)wr_navBarBarTintColor
 {
     UIColor *barTintColor = (UIColor *)objc_getAssociatedObject(self, &kWRNavBarBarTintColorKey);
     if (![WRNavigationBar needUpdateNavigationBar:self]) {
-        barTintColor = self.navigationController.navigationBar.barTintColor;
-        if (barTintColor == nil && color != nil) {
-            barTintColor = color;
+        if ([self wr_systemNavBarBarTintColor] == nil) {
+            barTintColor = self.navigationController.navigationBar.barTintColor;
+            NSString *str = [barTintColor description];
+            if (![str containsString:@"UIExtendedSRGBColorSpace"]) {
+                barTintColor = [UINavigationBar appearance].barTintColor;
+                str = [barTintColor description];
+                if (![str containsString:@"UIExtendedSRGBColorSpace"] || barTintColor == nil) {
+                    barTintColor = [UIColor colorWithRed:247/255.0 green:248/255.0 blue:247/255.0 alpha:1.0];
+                }
+            }
+        } else {
+            barTintColor = [self wr_systemNavBarBarTintColor];
         }
     }
     return (barTintColor != nil) ? barTintColor : [WRNavigationBar defaultNavBarBarTintColor];
@@ -736,6 +754,14 @@ static char kWRSystemNavBarTitleColorKey;
     }
 }
 
+// navigationBar systemTintColor
+- (UIColor *)wr_systemNavBarTintColor {
+    return (UIColor *)objc_getAssociatedObject(self, &kWRSystemNavBarTintColorKey);
+}
+- (void)wr_setSystemNavBarTintColor:(UIColor *)color {
+    objc_setAssociatedObject(self, &kWRSystemNavBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 // navigationBar tintColor
 - (UIColor *)wr_navBarTintColor
 {
@@ -743,6 +769,14 @@ static char kWRSystemNavBarTitleColorKey;
     if (![WRNavigationBar needUpdateNavigationBar:self]) {
         if ([self wr_systemNavBarTintColor] == nil) {
             tintColor = self.navigationController.navigationBar.tintColor;
+            NSString *str = [tintColor description];
+            if (![str containsString:@"UIExtendedSRGBColorSpace"]) {
+                tintColor = [UINavigationBar appearance].tintColor;
+                str = [tintColor description];
+                if (![str containsString:@"UIExtendedSRGBColorSpace"] || tintColor == nil) {
+                    tintColor = [UIColor colorWithRed:13/255.0 green:95/255.0 blue:255/255.0 alpha:1.0];
+                }
+            }
         } else {
             tintColor = [self wr_systemNavBarTintColor];
         }
@@ -765,14 +799,6 @@ static char kWRSystemNavBarTitleColorKey;
     }
 }
 
-// navigationBar systemTintColor
-- (UIColor *)wr_systemNavBarTintColor {
-    return (UIColor *)objc_getAssociatedObject(self, &kWRSystemNavBarTintColorKey);
-}
-- (void)wr_setSystemNavBarTintColor:(UIColor *)color {
-    objc_setAssociatedObject(self, &kWRSystemNavBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
 // navigationBar systemTitleColor
 - (UIColor *)wr_systemNavBarTitleColor {
     return (UIColor *)objc_getAssociatedObject(self, &kWRSystemNavBarTitleColorKey);
@@ -789,11 +815,12 @@ static char kWRSystemNavBarTitleColorKey;
         if ([self wr_systemNavBarTitleColor] == nil) {
             titleColor = self.navigationController.navigationBar.titleTextAttributes[@"NSColor"];
             NSString *str = [titleColor description];
-            NSLog(@"str = %@", str);
             if (![str containsString:@"UIExtendedSRGBColorSpace"]) {
                 titleColor = [UINavigationBar appearance].titleTextAttributes[@"NSColor"];
                 str = [titleColor description];
-                NSLog(@"str = %@", str);
+                if (![str containsString:@"UIExtendedSRGBColorSpace"] || titleColor == nil) {
+                    titleColor = [UIColor blackColor];
+                }
             }
         } else {
             titleColor = [self wr_systemNavBarTitleColor];
@@ -879,16 +906,21 @@ static char kWRSystemNavBarTitleColorKey;
 {
     if ([self canUpdateNavigationBar]) {
         if (![WRNavigationBar needUpdateNavigationBar:self]) {
+            if ([self wr_systemNavBarBarTintColor] == nil) {
+                [self wr_setSystemNavBarBarTintColor:[self wr_navBarBarTintColor]];
+            }
             if ([self wr_systemNavBarTintColor] == nil) {
                 [self wr_setSystemNavBarTintColor:[self wr_navBarTintColor]];
             }
             if ([self wr_systemNavBarTitleColor] == nil) {
                 [self wr_setSystemNavBarTitleColor:[self wr_navBarTitleColor]];
             }
+            [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self wr_navBarTintColor]];
+            [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self wr_navBarTitleColor]];
         }
         [self setPushToNextVCFinished:NO];
-        [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self wr_navBarTintColor]];
-        [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self wr_navBarTitleColor]];
+//        [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self wr_navBarTintColor]];
+//        [self.navigationController setNeedsNavigationBarUpdateForTitleColor:[self wr_navBarTitleColor]];
     }
     [self wr_viewWillAppear:animated];
 }
@@ -908,7 +940,7 @@ static char kWRSystemNavBarTitleColorKey;
         if (barBgImage != nil) {
             [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundImage:barBgImage];
         } else {
-            [self.navigationController setNeedsNavigationBarUpdateForBarTintColor:[self wr_navBarBarTintColorWithSystemColor:nil]];
+            [self.navigationController setNeedsNavigationBarUpdateForBarTintColor:[self wr_navBarBarTintColor]];
         }
         [self.navigationController setNeedsNavigationBarUpdateForBarBackgroundAlpha:[self wr_navBarBackgroundAlpha]];
         [self.navigationController setNeedsNavigationBarUpdateForTintColor:[self wr_navBarTintColor]];
@@ -920,6 +952,7 @@ static char kWRSystemNavBarTitleColorKey;
 
 - (void)wr_viewDidDisappear:(BOOL)animated {
     if (![WRNavigationBar needUpdateNavigationBar:self] && !self.navigationController) {
+        [self wr_setSystemNavBarBarTintColor:nil];
         [self wr_setSystemNavBarTintColor:nil];
         [self wr_setSystemNavBarTitleColor:nil];
     }

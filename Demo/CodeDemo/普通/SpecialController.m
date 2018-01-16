@@ -20,9 +20,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.title = @"不影响系统或者第三方";
-    self.navigationController.navigationBar.barTintColor = [UIColor orangeColor];
+//    self.navigationController.navigationBar.barTintColor = [UIColor orangeColor];
 //    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor greenColor]};
-    self.navigationController.navigationBar.tintColor = [UIColor blueColor];
+//    self.navigationController.navigationBar.tintColor = [UIColor blueColor];
     
     UIButton *button = [UIButton new];
     button.backgroundColor = [UIColor orangeColor];

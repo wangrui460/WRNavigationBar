@@ -82,7 +82,7 @@
 
 /** record current ViewController navigationBar barTintColor */
 - (void)wr_setNavBarBarTintColor:(UIColor *)color;
-- (UIColor *)wr_navBarBarTintColorWithSystemColor:(UIColor *)color;
+- (UIColor *)wr_navBarBarTintColor;
 
 /** record current ViewController navigationBar backgroundAlpha */
 - (void)wr_setNavBarBackgroundAlpha:(CGFloat)alpha;

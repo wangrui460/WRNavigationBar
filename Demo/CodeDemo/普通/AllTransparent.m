@@ -38,7 +38,8 @@
     [self wr_setNavBarBackgroundAlpha:0];
     
     // 设置导航栏按钮和标题颜色
-    [self wr_setNavBarTintColor:[UIColor whiteColor]];
+    [self wr_setNavBarTintColor:[UIColor greenColor]];
+    [self wr_setNavBarTitleColor:[UIColor yellowColor]];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -55,8 +56,8 @@
     else
     {
         [self wr_setNavBarBackgroundAlpha:0];
-        [self wr_setNavBarTintColor:[UIColor whiteColor]];
-        [self wr_setNavBarTitleColor:[UIColor whiteColor]];
+        [self wr_setNavBarTintColor:[UIColor greenColor]];
+        [self wr_setNavBarTitleColor:[UIColor yellowColor]];
         [self wr_setStatusBarStyle:UIStatusBarStyleLightContent];
     }
 }
