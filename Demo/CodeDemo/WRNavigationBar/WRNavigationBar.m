@@ -557,7 +557,6 @@ static int wrPushDisplayCount = 0;
     
     // after that, cancel the gesture of return
     if ([context isCancelled] == YES) {
-//        double cancelDuration = [context transitionDuration] * [context percentComplete];
         double cancelDuration = 0;
         [UIView animateWithDuration:cancelDuration animations:^{
             animations(UITransitionContextFromViewControllerKey);
