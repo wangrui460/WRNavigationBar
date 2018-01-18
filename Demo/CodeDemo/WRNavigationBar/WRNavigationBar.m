@@ -404,7 +404,9 @@ static int wrPushDisplayCount = 0;
     UIColor *fromBarTintColor = [fromVC wr_navBarBarTintColor];
     UIColor *toBarTintColor = [toVC wr_navBarBarTintColor];
     UIColor *newBarTintColor = [WRNavigationBar middleColor:fromBarTintColor toColor:toBarTintColor percent:progress];
-    [self setNeedsNavigationBarUpdateForBarTintColor:newBarTintColor];
+    if ([WRNavigationBar needUpdateNavigationBar:fromVC]) {
+        [self setNeedsNavigationBarUpdateForBarTintColor:newBarTintColor];
+    }
     
     // change navBarTintColor
     UIColor *fromTintColor = [fromVC wr_navBarTintColor];
