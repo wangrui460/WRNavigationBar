@@ -186,6 +186,11 @@ static char kWRBackgroundImageKey;
     return (UIView *)objc_getAssociatedObject(self, &kWRBackgroundViewKey);
 }
 - (void)setBackgroundView:(UIView *)backgroundView {
+    if (backgroundView) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wr_keyboardDidShow) name:UIKeyboardDidShowNotification object:nil];
+    } else {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+    }
     objc_setAssociatedObject(self, &kWRBackgroundViewKey, backgroundView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -237,6 +242,17 @@ static char kWRBackgroundImageKey;
     self.backgroundView.backgroundColor = color;
 }
 
+// IQKeyboardManager change _UIBarBackground frame sometimes, so I need restore it
+- (void)wr_keyboardDidShow {
+    for (UIView *view in self.subviews) {
+        Class _UIBarBackgroundClass = NSClassFromString(@"_UIBarBackground");
+        if (_UIBarBackgroundClass != nil) {
+            if ([view isKindOfClass:_UIBarBackgroundClass]) {
+                view.frame = CGRectMake(0, self.frame.size.height-[WRNavigationBar navBarBottom], [WRNavigationBar screenWidth], [WRNavigationBar navBarBottom]);
+            }
+        }
+    }
+}
 
 // set _UIBarBackground alpha (_UIBarBackground subviews alpha <= _UIBarBackground alpha)
 - (void)wr_setBackgroundAlpha:(CGFloat)alpha {

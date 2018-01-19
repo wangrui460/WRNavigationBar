@@ -15,6 +15,7 @@
 #import "BaseNavigationController.h"
 #import "CustomNavBarController.h"
 #import "WRNavigationBar.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 UIColor *MainNavBarColor = nil;
 UIColor *MainViewColor = nil;
@@ -28,6 +29,8 @@ UIColor *MainViewColor = nil;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [IQKeyboardManager sharedManager].enable = YES;
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     
