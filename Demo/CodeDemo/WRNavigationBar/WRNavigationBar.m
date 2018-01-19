@@ -26,7 +26,7 @@
     return isIPhoneX;
 }
 + (CGFloat)navBarBottom {
-    return 44 + CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
+    return [self isIphoneX] ? 88 : 64;
 }
 + (CGFloat)tabBarHeight {
     return [self isIphoneX] ? 83 : 49;
