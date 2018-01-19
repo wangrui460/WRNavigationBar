@@ -9,6 +9,7 @@
 #import "SpecialController.h"
 #import "AntForestController.h"
 #import <TZImagePickerController/TZImagePickerController.h>
+#import "WRNavigationBar.h"
 
 @interface SpecialController ()
 @end
@@ -29,17 +30,23 @@
     button.backgroundColor = [UIColor orangeColor];
     [button setTitle:@"别点我" forState:UIControlStateNormal];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    button.frame = CGRectMake(100, 200, 150, 50);
+    button.frame = CGRectMake(100, 150, 150, 50);
     [button addTarget:self action:@selector(onClickButton) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
     
     UIButton *chooseButton = [UIButton new];
     chooseButton.backgroundColor = [UIColor orangeColor];
-    [chooseButton setTitle:@"选择照片" forState:UIControlStateNormal];
+    [chooseButton setTitle:@"选择照片（TZImagePickerController）" forState:UIControlStateNormal];
     [chooseButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    chooseButton.frame = CGRectMake(100, 280, 150, 50);
+    chooseButton.frame = CGRectMake(10, 220, 350, 50);
     [chooseButton addTarget:self action:@selector(onClickChoosePhotoButton) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:chooseButton];
+    
+    
+    InnerController *innerVC = [InnerController new];
+    innerVC.view.frame = CGRectMake(0, 300, [WRNavigationBar screenWidth], 300);
+    [self addChildViewController:innerVC];
+    [self.view addSubview:innerVC.view];
 }
 
 - (void)onClickButton {
@@ -56,6 +63,29 @@
         
     }];
     [self presentViewController:imagePickerVc animated:YES completion:nil];
+}
+
+@end
+
+
+
+
+
+@implementation InnerController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor colorWithRed:134/255.0 green:188/255.0 blue:143/255.0 alpha:1.0];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, [WRNavigationBar screenWidth], 100)];
+    titleLabel.font = [UIFont boldSystemFontOfSize:20];
+    titleLabel.text = @"这是一个内部控制器";
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:titleLabel];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 @end

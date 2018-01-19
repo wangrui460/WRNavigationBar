@@ -11,3 +11,10 @@
 @interface SpecialController : UIViewController
 
 @end
+
+
+
+
+
+@interface InnerController : UIViewController
+@end

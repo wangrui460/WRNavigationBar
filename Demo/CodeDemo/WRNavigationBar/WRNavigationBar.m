@@ -654,12 +654,6 @@ static char kWRSystemNavBarTitleColorKey;
     if (![WRNavigationBar needUpdateNavigationBar:self]) {
         if ([self wr_systemNavBarBarTintColor] == nil) {
             barTintColor = self.navigationController.navigationBar.barTintColor;
-//            if (barTintColor == nil) {
-//                barTintColor = self.navigationController.navigationBar.barTintColor;
-//                if (barTintColor == nil) {
-//                    barTintColor = [UIColor colorWithRed:247/255.0 green:248/255.0 blue:247/255.0 alpha:1.0];
-//                }
-//            }
         } else {
             barTintColor = [self wr_systemNavBarBarTintColor];
         }
@@ -711,12 +705,6 @@ static char kWRSystemNavBarTitleColorKey;
     if (![WRNavigationBar needUpdateNavigationBar:self]) {
         if ([self wr_systemNavBarTintColor] == nil) {
             tintColor = self.navigationController.navigationBar.tintColor;
-//            if (tintColor == nil) {
-//                tintColor = [UINavigationBar appearance].tintColor;
-//                if (tintColor == nil) {
-//                    tintColor = [UIColor colorWithRed:13/255.0 green:95/255.0 blue:255/255.0 alpha:1.0];
-//                }
-//            }
         } else {
             tintColor = [self wr_systemNavBarTintColor];
         }
@@ -749,12 +737,6 @@ static char kWRSystemNavBarTitleColorKey;
     if (![WRNavigationBar needUpdateNavigationBar:self]) {
         if ([self wr_systemNavBarTitleColor] == nil) {
             titleColor = self.navigationController.navigationBar.titleTextAttributes[@"NSColor"];
-//            if (titleColor == nil) {
-//                titleColor = self.navigationController.navigationBar.titleTextAttributes[@"NSColor"];
-//                if (titleColor == nil) {
-//                    titleColor = [UIColor blackColor];
-//                }
-//            }
         } else {
             titleColor = [self wr_systemNavBarTitleColor];
         }
@@ -877,32 +859,10 @@ static char kWRSystemNavBarTitleColorKey;
 }
 
 - (BOOL)canUpdateNavigationBar {
-    CGRect viewFrame = self.view.frame;
-    CGRect maxFrame = [UIScreen mainScreen].bounds;
-    CGRect middleFrame = CGRectMake(0, WRNavigationBar.navBarBottom, WRNavigationBar.screenWidth, WRNavigationBar.screenHeight-WRNavigationBar.navBarBottom);
-    // 会不会还缺少一个只少了 tabBar 的？
-    CGRect minFrame = CGRectMake(0, WRNavigationBar.navBarBottom, WRNavigationBar.screenWidth, WRNavigationBar.screenHeight-WRNavigationBar.navBarBottom-WRNavigationBar.tabBarHeight);
-    // 蝙蝠🦇 （灵机一动：视频通话问题？）
-    BOOL isBat = CGRectEqualToRect(viewFrame, maxFrame) || CGRectEqualToRect(viewFrame, middleFrame) || CGRectEqualToRect(viewFrame, minFrame);
-    if (self.navigationController && isBat) {
-        return YES;
-    } else {
-        return NO;
-    }
+    return [self.navigationController.viewControllers containsObject:self];
 }
 
 @end
-
-
-
-/*
- LocalUsed:  方案一(local)：默认所有导入库没有任何反应，实现代理 或者 在list里面才会有效果
- WidelyUsed: 方案二(widely)：默认导入库所有页面改变，添加 list，对非list中的页面改变
- 
- 问题：wr_set 相关需不需要 判空呢？待测试
- 
- 
- */
 
 
 
