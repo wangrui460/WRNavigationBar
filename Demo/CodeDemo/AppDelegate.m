@@ -69,7 +69,7 @@ UIColor *MainViewColor = nil;
     MainNavBarColor = [UIColor colorWithRed:0/255.0 green:175/255.0 blue:240/255.0 alpha:1];
     MainViewColor   = [UIColor colorWithRed:126/255.0 green:126/255.0 blue:126/255.0 alpha:1];
     
-    // 设置是 广泛使用WRNavigationBar，还是局部使用WRNavigationBar，默认是局部使用
+    // 设置是 广泛使用WRNavigationBar，还是局部使用WRNavigationBar，目前默认是广泛使用
     [WRNavigationBar wr_widely];
     [WRNavigationBar wr_setBlacklist:@[@"SpecialController",
                                        @"TZPhotoPickerController",
