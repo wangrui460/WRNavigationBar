@@ -1,4 +1,4 @@
-### 注意：联系方式变更（因QQ常年不用，所以联系方式换成微信，请在页面底部查看）
+ ### 注意：联系方式变更（因QQ常年不用，所以联系方式换成微信，请在页面底部查看）
 
 ![image](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/WRNavigationBar.png)
 
@@ -42,14 +42,28 @@
 
 ## Installation
 > **CocoaPods**
-> pod 'WRNavigationBar','~>1.0.9’
-如果未发现 1.0.9 请更新一下pod
+> pod 'WRNavigationBar','~>1.2.0’
+如果未发现 1.2.0 请更新一下pod
 
 
 > **手动拖入**
 > 将 WRNavigationBar 文件夹拽入项目中，导入头文件：#import "WRNavigationBar.h"，自定义导航栏需要导入 "WRCustomNavigationBar.h"
 
-## Use （以下方式不再适用自定义导航栏，自定义导航栏的使用方式请查看Demo）
+### Use （以下方式不再适用自定义导航栏，自定义导航栏的使用方式请查看Demo）
+✨✨ 一定要看 Demo 中的 AppDelegate 文件 ✨✨
+
+<pre><code>
+// 设置是 全局使用WRNavigationBar，还是局部使用WRNavigationBar，目前默认是全局使用 （局部使用待开发）
+[WRNavigationBar wr_widely];
+// WRNavigationBar 不会对 blackList 中的控制器有影响
+[WRNavigationBar wr_setBlacklist:@[@"SpecialController",
+                                                           @"TZPhotoPickerController",
+                                                           @"TZGifPhotoPreviewController",
+                                                           @"TZAlbumPickerController",
+                                                           @"TZPhotoPreviewController",
+                                                           @"TZVideoPlayerController"]];
+</code></pre>
+
 <pre><code>
 // 一行代码搞定导航栏颜色
 [self wr_setNavBarBarTintColor:[UIColor whiteColor]];
@@ -84,6 +98,9 @@
 
 
 ## Update
+- **2018.01.19**
+重大更新：1. 增加 "黑名单" 功能   2. 解决微信视频通话进入后台，打开App导航栏位置偏移的bug   3. 解决 IQKeyboardManager 导致的导航栏位置偏移的bug
+
 - **2017.12.15**
 解决问题：解决在 iOS11.1.2上无法生效的问题
 
