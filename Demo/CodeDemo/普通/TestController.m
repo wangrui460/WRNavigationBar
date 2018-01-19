@@ -19,7 +19,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UITextField *tf = [[UITextField alloc] initWithFrame:CGRectMake(20, 500, 268, 30)];
+    UITextField *tf = [[UITextField alloc] initWithFrame:CGRectMake(20, 500, 290, 30)];
     tf.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.5];
     tf.placeholder = @"测试 IQKeyboardManager 导致的问题";
     [self.view addSubview:tf];

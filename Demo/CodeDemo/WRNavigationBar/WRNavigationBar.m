@@ -898,12 +898,7 @@ static char kWRSystemNavBarTitleColorKey;
         return rootViewController == self;
     } else {
         UITabBarController *tabBarController = (UITabBarController *)rootViewController;
-        for (UIViewController *vc in tabBarController.viewControllers) {
-            if (vc == self) {
-                return YES;
-            }
-        }
-        return NO;
+        return [tabBarController.viewControllers containsObject:self];
     }
 }
 
