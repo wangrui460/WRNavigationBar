@@ -9,26 +9,32 @@
 
 #import "WRNavigationBar.h"
 #import <objc/runtime.h>
+#import "sys/utsname.h"
 
 @implementation WRNavigationBar
 
 + (BOOL)isIphoneX {
-    if (CGRectEqualToRect([UIScreen mainScreen].bounds,CGRectMake(0, 0, 375, 812))) {
-        return YES;
-    } else {
-        return NO;
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString *platform = [NSString stringWithCString:systemInfo.machine encoding:NSASCIIStringEncoding];
+    if ([platform isEqualToString:@"i386"] || [platform isEqualToString:@"x86_64"]) {
+        // judgment by height when in simulators
+        return (CGSizeEqualToSize([UIScreen mainScreen].bounds.size, CGSizeMake(375, 812)) ||
+                CGSizeEqualToSize([UIScreen mainScreen].bounds.size, CGSizeMake(812, 375)));
     }
+    BOOL isIPhoneX = [platform isEqualToString:@"iPhone10,3"] || [platform isEqualToString:@"iPhone10,6"];
+    return isIPhoneX;
 }
-+ (int)navBarBottom {
-    return [self isIphoneX] ? 88 : 64;
++ (CGFloat)navBarBottom {
+    return 44 + CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
 }
-+ (int)tabBarHeight {
++ (CGFloat)tabBarHeight {
     return [self isIphoneX] ? 83 : 49;
 }
-+ (int)screenWidth {
++ (CGFloat)screenWidth {
     return [UIScreen mainScreen].bounds.size.width;
 }
-+ (int)screenHeight {
++ (CGFloat)screenHeight {
     return [UIScreen mainScreen].bounds.size.height;
 }
 
@@ -53,7 +59,7 @@ static char kWRDefaultNavBarShadowImageHiddenKey;
 
 + (BOOL)isLocalUsed {
     id isLocal = objc_getAssociatedObject(self, &kWRIsLocalUsedKey);
-    return (isLocal != nil) ? [isLocal boolValue] : YES;
+    return (isLocal != nil) ? [isLocal boolValue] : NO;
 }
 + (void)wr_local {
     objc_setAssociatedObject(self, &kWRIsLocalUsedKey, @(YES), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -75,6 +81,7 @@ static char kWRDefaultNavBarShadowImageHiddenKey;
     return (list != nil) ? list : nil;
 }
 + (void)wr_setBlacklist:(NSArray<NSString *> *)list {
+    NSAssert(list, @"list 不能设置为nil");
     NSAssert(![self isLocalUsed], @"黑名单是在设置 广泛使用 该库的情况下使用的");
     objc_setAssociatedObject(self, &kWRBlacklistKey, list, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }

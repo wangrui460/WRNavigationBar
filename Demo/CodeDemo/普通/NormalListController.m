@@ -144,6 +144,7 @@
             LaGouController *laGouVC = [LaGouController new];
             [self.navigationController pushViewController:laGouVC animated:YES];
         }
+            break;
         case 8:
         {
             SpecialController *specialVC = [SpecialController new];
