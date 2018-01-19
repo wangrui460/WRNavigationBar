@@ -12,15 +12,25 @@
 
 @interface WRNavigationBar : UIView
 + (BOOL)isIphoneX;
-+ (int)navBarBottom;
-+ (int)tabBarHeight;
-+ (int)screenWidth;
-+ (int)screenHeight;
++ (CGFloat)navBarBottom;
++ (CGFloat)tabBarHeight;
++ (CGFloat)screenWidth;
++ (CGFloat)screenHeight;
 @end
 
 
 #pragma mark - Default
 @interface WRNavigationBar (WRDefault)
+
+/// 局部使用该库       待开发
+//+ (void)wr_local;
+/// 广泛使用该库       default 暂时是默认， wr_local 完成后，wr_local就会变成默认
++ (void)wr_widely;
+
+/// 局部使用该库时，设置需要用到的控制器      待开发
+//+ (void)wr_setWhitelist:(NSArray<NSString *> *)list;
+/// 广泛使用该库时，设置需要屏蔽的控制器
++ (void)wr_setBlacklist:(NSArray<NSString *> *)list;
 
 /** set default barTintColor of UINavigationBar */
 + (void)wr_setDefaultNavBarBarTintColor:(UIColor *)color;

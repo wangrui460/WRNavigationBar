@@ -34,6 +34,8 @@
 		1AAE08E91EE7F3350085C3A2 /* MoveListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE08E81EE7F3350085C3A2 /* MoveListController.m */; };
 		1AAE08EC1EE7F38E0085C3A2 /* CustomListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE08EB1EE7F38E0085C3A2 /* CustomListController.m */; };
 		29F1DC19441470C345522432 /* Pods_CodeDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5025CF19A1273775CA7A2A /* Pods_CodeDemo.framework */; };
+		3428F8192011AB1D00724F83 /* TestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3428F8182011AB1D00724F83 /* TestController.m */; };
+		34321EB01FDCE3AD00833E79 /* SpecialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34321EAF1FDCE3AD00833E79 /* SpecialController.m */; };
 		34E384B71F9C358700257F91 /* WRCustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E384B61F9C358700257F91 /* WRCustomNavigationBar.m */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +101,10 @@
 		1AAE08E81EE7F3350085C3A2 /* MoveListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveListController.m; sourceTree = "<group>"; };
 		1AAE08EA1EE7F38E0085C3A2 /* CustomListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomListController.h; sourceTree = "<group>"; };
 		1AAE08EB1EE7F38E0085C3A2 /* CustomListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomListController.m; sourceTree = "<group>"; };
+		3428F8172011AB1D00724F83 /* TestController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestController.h; sourceTree = "<group>"; };
+		3428F8182011AB1D00724F83 /* TestController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestController.m; sourceTree = "<group>"; };
+		34321EAE1FDCE3AD00833E79 /* SpecialController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpecialController.h; sourceTree = "<group>"; };
+		34321EAF1FDCE3AD00833E79 /* SpecialController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpecialController.m; sourceTree = "<group>"; };
 		34E384B51F9C358700257F91 /* WRCustomNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WRCustomNavigationBar.h; sourceTree = "<group>"; };
 		34E384B61F9C358700257F91 /* WRCustomNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WRCustomNavigationBar.m; sourceTree = "<group>"; };
 		37581D1AF27611119D8AA286 /* Pods-CodeDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CodeDemo/Pods-CodeDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -215,6 +221,10 @@
 				1AADC3911F22F73A00BB73D9 /* AllTransparent.m */,
 				1A5845E41F270D4500A24234 /* LaGouController.h */,
 				1A5845E51F270D4500A24234 /* LaGouController.m */,
+				34321EAE1FDCE3AD00833E79 /* SpecialController.h */,
+				34321EAF1FDCE3AD00833E79 /* SpecialController.m */,
+				3428F8172011AB1D00724F83 /* TestController.h */,
+				3428F8182011AB1D00724F83 /* TestController.m */,
 			);
 			path = "普通";
 			sourceTree = "<group>";
@@ -384,9 +394,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CodeDemo/Pods-CodeDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
+				"${BUILT_PRODUCTS_DIR}/SDCycleScrollView/SDCycleScrollView.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDCycleScrollView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -414,13 +433,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CodeDemo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -441,8 +463,10 @@
 				1A7A6BF31F1B4AC600A602D6 /* WeiBoMineController.m in Sources */,
 				1AAA1D4B1EEE380400681CB9 /* ZhiHuController.m in Sources */,
 				1A2061FA1E9CB4E4007BFB91 /* WRNavigationBar.m in Sources */,
+				34321EB01FDCE3AD00833E79 /* SpecialController.m in Sources */,
 				1A7A6BE11F1B4A8600A602D6 /* CustomNavBarController.m in Sources */,
 				1AAE08E91EE7F3350085C3A2 /* MoveListController.m in Sources */,
+				3428F8192011AB1D00724F83 /* TestController.m in Sources */,
 				1AAE08EC1EE7F38E0085C3A2 /* CustomListController.m in Sources */,
 				1A7A6BF11F1B4AC600A602D6 /* QQAppController.m in Sources */,
 				1A854E491F0BECB10077CAF4 /* MillcolorGradController.m in Sources */,
@@ -597,7 +621,7 @@
 				INFOPLIST_FILE = CodeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = video.com.wangrui;
+				PRODUCT_BUNDLE_IDENTIFIER = video.com.wangrui460;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -617,7 +641,7 @@
 				INFOPLIST_FILE = CodeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = video.com.wangrui;
+				PRODUCT_BUNDLE_IDENTIFIER = video.com.wangrui460;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;

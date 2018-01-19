@@ -50,7 +50,8 @@
     UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"navRight"] style:UIBarButtonItemStylePlain target:self action:@selector(onClickRight)];
     self.navigationItem.rightBarButtonItem = rightButtonItem;
     
-    self.searchButton = [[UIButton alloc]initWithFrame:CGRectMake(0, -3, 230, 30)];
+    // 这里我就不适配了 (适配后 push/pop 时右边的黑影就会自动消失)
+    self.searchButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 230, 30)];
     [self.searchButton setTitle:@"搜索职位/公司/商区" forState:UIControlStateNormal];
     self.searchButton.titleLabel.font = [UIFont systemFontOfSize:13];
     [self.searchButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];

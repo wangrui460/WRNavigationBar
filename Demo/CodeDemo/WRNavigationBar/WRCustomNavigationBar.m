@@ -8,6 +8,7 @@
 //  Github地址：https://github.com/wangrui460/WRNavigationBar
 
 #import "WRCustomNavigationBar.h"
+#import "sys/utsname.h"
 
 #define kWRDefaultTitleSize 18
 #define kWRDefaultTitleColor [UIColor blackColor]
@@ -31,8 +32,7 @@
     }
 }
 
-+ (UIViewController*)wr_currentViewController
-{
++ (UIViewController*)wr_currentViewController {
     UIViewController* rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
     return [self wr_currentViewControllerFrom:rootViewController];
 }
@@ -85,8 +85,7 @@
     return self;
 }
 
--(void)setupView
-{
+-(void)setupView {
     [self addSubview:self.backgroundView];
     [self addSubview:self.backgroundImageView];
     [self addSubview:self.leftButton];
@@ -99,8 +98,7 @@
 }
 
 // TODO:这边结合 WRCellView 会不会更好呢？
--(void)updateFrame
-{
+-(void)updateFrame {
     NSInteger top = ([WRCustomNavigationBar isIphoneX]) ? 44 : 20;
     NSInteger margin = 0;
     NSInteger buttonHeight = 44;
@@ -148,8 +146,7 @@
 }
 
 #pragma mark - 左右按钮
-- (void)wr_setLeftButtonWithNormal:(UIImage *)normal highlighted:(UIImage *)highlighted title:(NSString *)title titleColor:(UIColor *)titleColor
-{
+- (void)wr_setLeftButtonWithNormal:(UIImage *)normal highlighted:(UIImage *)highlighted title:(NSString *)title titleColor:(UIColor *)titleColor {
     self.leftButton.hidden = NO;
     [self.leftButton setImage:normal forState:UIControlStateNormal];
     [self.leftButton setImage:highlighted forState:UIControlStateHighlighted];
@@ -169,8 +166,7 @@
     [self wr_setLeftButtonWithNormal:nil highlighted:nil title:title titleColor:titleColor];
 }
 
-- (void)wr_setRightButtonWithNormal:(UIImage *)normal highlighted:(UIImage *)highlighted title:(NSString *)title titleColor:(UIColor *)titleColor
-{
+- (void)wr_setRightButtonWithNormal:(UIImage *)normal highlighted:(UIImage *)highlighted title:(NSString *)title titleColor:(UIColor *)titleColor {
     self.rightButton.hidden = NO;
     [self.rightButton setImage:normal forState:UIControlStateNormal];
     [self.rightButton setImage:highlighted forState:UIControlStateHighlighted];
@@ -268,21 +264,20 @@
     return _backgroundImageView;
 }
 
-+ (int)navBarBottom
-{
-    if ([WRCustomNavigationBar isIphoneX]) {
-        return 88;
-    } else {
-        return 64;
-    }
++ (int)navBarBottom {
+    return 44 + CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
 }
-+ (BOOL)isIphoneX
-{
-    if (CGRectEqualToRect([UIScreen mainScreen].bounds,CGRectMake(0, 0, 375, 812))) {
-        return YES;
-    } else {
-        return NO;
++ (BOOL)isIphoneX {
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString *platform = [NSString stringWithCString:systemInfo.machine encoding:NSASCIIStringEncoding];
+    if ([platform isEqualToString:@"i386"] || [platform isEqualToString:@"x86_64"]) {
+        // judgment by height when in simulators
+        return (CGSizeEqualToSize([UIScreen mainScreen].bounds.size, CGSizeMake(375, 812)) ||
+                CGSizeEqualToSize([UIScreen mainScreen].bounds.size, CGSizeMake(812, 375)));
     }
+    BOOL isIPhoneX = [platform isEqualToString:@"iPhone10,3"] || [platform isEqualToString:@"iPhone10,6"];
+    return isIPhoneX;
 }
 
 @end

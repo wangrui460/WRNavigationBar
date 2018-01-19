@@ -16,7 +16,9 @@
 #import "AntForestController.h"
 #import "AllTransparent.h"
 #import "LaGouController.h"
+#import "SpecialController.h"
 #import "WRNavigationBar.h"
+#import "TestController.h"
 
 @interface NormalListController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -42,7 +44,7 @@
 #pragma mark - tableview delegate / dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -75,7 +77,13 @@
         case 7:
             str = @"拉钩App首页";
             break;
-        
+        case 8:
+            str = @"WRNavigationBar 对其不产生任何印象";
+            break;
+        case 9:
+            str = @"测试 IQKeyBoardManager 对其影响";
+            break;
+            
         default:
             break;
     }
@@ -86,7 +94,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+    return 50;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -139,6 +147,18 @@
         {
             LaGouController *laGouVC = [LaGouController new];
             [self.navigationController pushViewController:laGouVC animated:YES];
+        }
+            break;
+        case 8:
+        {
+            SpecialController *specialVC = [SpecialController new];
+            [self.navigationController pushViewController:specialVC animated:YES];
+        }
+            break;
+        case 9:
+        {
+            TestController *testVC = [TestController new];
+            [self.navigationController pushViewController:testVC animated:YES];
         }
             break;
         default:

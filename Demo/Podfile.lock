@@ -1,18 +1,24 @@
 PODS:
+  - IQKeyboardManager (5.0.7)
   - SDCycleScrollView (1.65):
     - SDWebImage (~> 3.7)
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
+  - TZImagePickerController (1.9.8)
 
 DEPENDENCIES:
+  - IQKeyboardManager
   - SDCycleScrollView (~> 1.64)
   - SDWebImage (~> 3.7.6)
+  - TZImagePickerController
 
 SPEC CHECKSUMS:
+  IQKeyboardManager: 0bfa4607d39924116b5c0c8b55b5d789288b5cba
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  TZImagePickerController: 3b9413ae5d049b1fdc5b0c720ad283f35b679a50
 
-PODFILE CHECKSUM: 6d12ec4d91337adebb7c87ce35b672356c649ba0
+PODFILE CHECKSUM: 75c54dcf5a94f610b2c6edfe2113622676ac619c
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1
