@@ -1,5 +1,3 @@
- ### 注意：联系方式变更（因QQ常年不用，所以联系方式换成微信，请在页面底部查看）
-
 ![image](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/WRNavigationBar.png)
 
 <p align="center">
@@ -170,13 +168,6 @@
 # Contact me
 - Weibo: [@wangrui460](http://weibo.com/wangrui460)
 - Email:  wangruidev@gmail.com
-- QQ：1204607318 （基本不用）
-- 微信群：下图所示
-
-<div class="wrap">
-<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/group.png" alt="">
-<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/appreciate.png" alt="">
-</div>
 
 
 # License
