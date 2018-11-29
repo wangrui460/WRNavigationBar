@@ -20,7 +20,9 @@
     if ([platform isEqualToString:@"i386"] || [platform isEqualToString:@"x86_64"]) {
         // judgment by height when in simulators
         return (CGSizeEqualToSize([UIScreen mainScreen].bounds.size, CGSizeMake(375, 812)) ||
-                CGSizeEqualToSize([UIScreen mainScreen].bounds.size, CGSizeMake(812, 375)));
+                CGSizeEqualToSize([UIScreen mainScreen].bounds.size, CGSizeMake(812, 375)) ||
+                CGSizeEqualToSize([UIScreen mainScreen].bounds.size, CGSizeMake(414, 896)) ||
+                CGSizeEqualToSize([UIScreen mainScreen].bounds.size, CGSizeMake(896, 414)));
     }
     BOOL isIPhoneX = [platform isEqualToString:@"iPhone10,3"] || [platform isEqualToString:@"iPhone10,6"];
     return isIPhoneX;
