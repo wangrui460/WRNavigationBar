@@ -14,13 +14,11 @@
 @implementation WRNavigationBar
 
 + (BOOL)isIphoneX {
-    + (BOOL)isIphoneX {
-        BOOL isIPhoneX = NO;
-        if (@available(iOS 11.0, *)) {
-            isIPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;
-        }
-        return isIPhoneX;
+    BOOL isIPhoneX = NO;
+    if (@available(iOS 11.0, *)) {
+        isIPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;
     }
+    return isIPhoneX;
 }
 + (CGFloat)navBarBottom {
     return [self isIphoneX] ? 88 : 64;
