@@ -337,7 +337,7 @@
 				TargetAttributes = {
 					1A2061CE1E9CB496007BFB91 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 652U6LDTX4;
+						DevelopmentTeam = SR52437D77;
 						ProvisioningStyle = Automatic;
 					};
 					1A2061E71E9CB496007BFB91 = {
@@ -353,6 +353,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -616,7 +617,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 652U6LDTX4;
+				DEVELOPMENT_TEAM = SR52437D77;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CodeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -636,7 +637,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 652U6LDTX4;
+				DEVELOPMENT_TEAM = SR52437D77;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CodeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
