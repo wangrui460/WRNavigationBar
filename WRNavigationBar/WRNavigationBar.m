@@ -195,7 +195,7 @@ static char kWRBackgroundImageKey;
 - (void)insertSubview:(UIView *)view atIndex:(NSInteger)index {
     [super insertSubview:view atIndex:index];
     if ([view isKindOfClass:NSClassFromString(@"_UIBarBackground")]) {
-        view.clipsToBounds = YES;
+//        view.clipsToBounds = YES;
         if (![view.subviews containsObject:self.backgroundView]) {
             [view insertSubview:self.backgroundView atIndex:0];
         }
