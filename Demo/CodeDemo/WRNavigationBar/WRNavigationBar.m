@@ -64,7 +64,12 @@
 }
 
 + (UIEdgeInsets) mainWindowSafeAreaInsets {
-    return [UIApplication sharedApplication].windows.firstObject.safeAreaInsets;
+    if (@available(iOS 11.0, *)) {
+        return [UIApplication sharedApplication].windows.firstObject.safeAreaInsets;
+    } else {
+        // Fallback on earlier versions
+        return UIEdgeInsetsZero;
+    }
 }
 
 ///设备的状态栏高度, 不管状态栏是否显示
@@ -98,6 +103,7 @@
 
 + (CGFloat) defaultNavBarBottom{
     CGFloat height = [WRNavigationBar defaultStatusBarHeight] + [WRNavigationBar defaultNavBarHeight];
+    NSLog(@"defaultNavBarBottom height === %@",@(height));
     return height;
 }
 
@@ -686,6 +692,9 @@ static int wrPushDisplayCount = 0;
     NSUInteger n = self.viewControllers.count >= itemCount ? 2 : 1;
     UIViewController *popToVC = self.viewControllers[self.viewControllers.count - n];
     [self popToViewController:popToVC animated:YES];
+    if (@available(iOS 13.0, *)) {
+        return NO;
+    }
     return YES;
 }
 
