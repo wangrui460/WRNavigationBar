@@ -108,10 +108,6 @@
 		34E384B51F9C358700257F91 /* WRCustomNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WRCustomNavigationBar.h; sourceTree = "<group>"; };
 		34E384B61F9C358700257F91 /* WRCustomNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WRCustomNavigationBar.m; sourceTree = "<group>"; };
 		37581D1AF27611119D8AA286 /* Pods-CodeDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CodeDemo/Pods-CodeDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		86F5186723A37E9D0072FD2A /* WRNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRNavigationBar.m; sourceTree = "<group>"; };
-		86F5186823A37E9D0072FD2A /* WRCustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRCustomNavigationBar.h; sourceTree = "<group>"; };
-		86F5186923A37E9D0072FD2A /* WRNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRNavigationBar.h; sourceTree = "<group>"; };
-		86F5186A23A37E9D0072FD2A /* WRCustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRCustomNavigationBar.m; sourceTree = "<group>"; };
 		BA5025CF19A1273775CA7A2A /* Pods_CodeDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD02850717C2C54F9C2585E9 /* Pods-CodeDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CodeDemo/Pods-CodeDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,7 +154,6 @@
 		1A2061D11E9CB496007BFB91 /* CodeDemo */ = {
 			isa = PBXGroup;
 			children = (
-				86F5186623A37E9D0072FD2A /* WRNavigationBar */,
 				1A2061D51E9CB496007BFB91 /* AppDelegate.h */,
 				1A2061D61E9CB496007BFB91 /* AppDelegate.m */,
 				1A7A6BF41F1B4AD900A602D6 /* BaseNavigationController.h */,
@@ -279,18 +274,6 @@
 				BA5025CF19A1273775CA7A2A /* Pods_CodeDemo.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		86F5186623A37E9D0072FD2A /* WRNavigationBar */ = {
-			isa = PBXGroup;
-			children = (
-				86F5186923A37E9D0072FD2A /* WRNavigationBar.h */,
-				86F5186723A37E9D0072FD2A /* WRNavigationBar.m */,
-				86F5186823A37E9D0072FD2A /* WRCustomNavigationBar.h */,
-				86F5186A23A37E9D0072FD2A /* WRCustomNavigationBar.m */,
-			);
-			name = WRNavigationBar;
-			path = ../../WRNavigationBar;
 			sourceTree = "<group>";
 		};
 		927F9EB9E385179D289EBE2B /* Pods */ = {
