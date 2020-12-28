@@ -297,7 +297,6 @@
 				1A2061CC1E9CB496007BFB91 /* Frameworks */,
 				1A2061CD1E9CB496007BFB91 /* Resources */,
 				0277B9715B8BF91905DF502F /* [CP] Embed Pods Frameworks */,
-				51852EF6DFAA4E59EDA5B7F2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -394,7 +393,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CodeDemo/Pods-CodeDemo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-CodeDemo/Pods-CodeDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/SDCycleScrollView/SDCycleScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -409,22 +408,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CodeDemo/Pods-CodeDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		51852EF6DFAA4E59EDA5B7F2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CodeDemo/Pods-CodeDemo-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CodeDemo/Pods-CodeDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C1144A7FC86B85BEC474CD53 /* [CP] Check Pods Manifest.lock */ = {

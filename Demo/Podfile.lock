@@ -13,6 +13,13 @@ DEPENDENCIES:
   - SDWebImage (~> 3.7.6)
   - TZImagePickerController
 
+SPEC REPOS:
+  trunk:
+    - IQKeyboardManager
+    - SDCycleScrollView
+    - SDWebImage
+    - TZImagePickerController
+
 SPEC CHECKSUMS:
   IQKeyboardManager: 0bfa4607d39924116b5c0c8b55b5d789288b5cba
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
@@ -21,4 +28,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 75c54dcf5a94f610b2c6edfe2113622676ac619c
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.10.0
