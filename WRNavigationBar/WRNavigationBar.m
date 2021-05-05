@@ -14,17 +14,13 @@
 @implementation WRNavigationBar
 
 + (BOOL)isIphoneX {
-    struct utsname systemInfo;
-    uname(&systemInfo);
-    NSString *platform = [NSString stringWithCString:systemInfo.machine encoding:NSASCIIStringEncoding];
-    if ([platform isEqualToString:@"i386"] || [platform isEqualToString:@"x86_64"]) {
-        // judgment by height when in simulators
-        return (CGSizeEqualToSize([UIScreen mainScreen].bounds.size, CGSizeMake(375, 812)) ||
-                CGSizeEqualToSize([UIScreen mainScreen].bounds.size, CGSizeMake(812, 375)));
+    BOOL isIPhoneX = NO;
+    if (@available(iOS 11.0, *)) {
+        isIPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;
     }
-    BOOL isIPhoneX = [platform isEqualToString:@"iPhone10,3"] || [platform isEqualToString:@"iPhone10,6"];
     return isIPhoneX;
 }
+
 + (CGFloat)navBarBottom {
     return [self isIphoneX] ? 88 : 64;
 }
@@ -38,12 +34,81 @@
     return [UIScreen mainScreen].bounds.size.height;
 }
 
++ (CGFloat)statusBarHeight {
+    return [UIApplication sharedApplication].statusBarFrame.size.height;
+}
+
++ (CGFloat)defaultNavBarHeight {
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        if (@available(iOS 12.0, *)) {
+            return 50;
+        }
+    }
+    return 44;
+}
+
+
++ (BOOL)isRoundCornerScreen {
+    BOOL round = NO;
+    
+    // 判断安全区域, 只支持 iOS11 以上
+    if (@available(iOS 11.0, *)) {
+        UIEdgeInsets inset = [WRNavigationBar mainWindowSafeAreaInsets];
+        round = round || inset.top > 0;
+        round = round || inset.right > 0;
+        round = round || inset.bottom > 0;
+        round = round || inset.left > 0;
+    }
+    
+    return round;
+}
+
++ (UIEdgeInsets) mainWindowSafeAreaInsets {
+    return [UIApplication sharedApplication].windows.firstObject.safeAreaInsets;
+}
+
+///设备的状态栏高度, 不管状态栏是否显示
++ (CGFloat)defaultStatusBarHeight {
+    if (![WRNavigationBar isRoundCornerScreen]) {
+        //非全面屏, 默认就是20
+        return 20;
+    }else {
+        UIEdgeInsets inset = [WRNavigationBar mainWindowSafeAreaInsets];
+        UIInterfaceOrientation statusBarOrientation = UIApplication.sharedApplication.statusBarOrientation;
+        switch (statusBarOrientation) {
+            case UIInterfaceOrientationPortrait:
+                return inset.top;
+                break;
+            case UIInterfaceOrientationPortraitUpsideDown:
+                return inset.bottom;
+                break;
+            case UIInterfaceOrientationLandscapeLeft:
+                return inset.left;
+                break;
+            case UIInterfaceOrientationLandscapeRight:
+                return inset.right;
+                break;
+            default:
+                return inset.top;
+                break;
+        }
+    }
+    
+}
+
++ (CGFloat) defaultNavBarBottom{
+    CGFloat height = [WRNavigationBar defaultStatusBarHeight] + [WRNavigationBar defaultNavBarHeight];
+    return height;
+}
+
+
 @end
 
 
 //=============================================================================
 #pragma mark - default navigationBar barTintColor、tintColor and statusBarStyle YOU CAN CHANGE!!!
 //=============================================================================
+
 @implementation WRNavigationBar (WRDefault)
 
 static char kWRIsLocalUsedKey;
@@ -185,15 +250,36 @@ static char kWRBackgroundImageKey;
 - (UIView *)backgroundView {
     return (UIView *)objc_getAssociatedObject(self, &kWRBackgroundViewKey);
 }
+
+- (CGRect) backgroundViewFrame {
+    //根据真实的状态栏高度来计算
+    CGRect barFrame = self.frame;
+    CGFloat height = barFrame.origin.y + barFrame.size.height;
+    return CGRectMake(0, 0, self.bounds.size.width, height);
+}
+
 - (void)setBackgroundView:(UIView *)backgroundView {
     if (backgroundView) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wr_keyboardDidShow) name:UIKeyboardDidShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wr_keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wr_statusBarFrameDidChange) name:UIApplicationDidChangeStatusBarFrameNotification object:nil];
     } else {
         [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidChangeStatusBarFrameNotification object:nil];
     }
     objc_setAssociatedObject(self, &kWRBackgroundViewKey, backgroundView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+// 解决 presentViewController后 导航栏消失问题
+- (void)insertSubview:(UIView *)view atIndex:(NSInteger)index {
+    [super insertSubview:view atIndex:index];
+    if ([view isKindOfClass:NSClassFromString(@"_UIBarBackground")]) {
+        //        view.clipsToBounds = YES;
+        if (![view.subviews containsObject:self.backgroundView]) {
+            [view insertSubview:self.backgroundView atIndex:0];
+        }
+    }
 }
 
 - (UIImageView *)backgroundImageView {
@@ -217,12 +303,15 @@ static char kWRBackgroundImageKey;
         // add a image(nil color) to _UIBarBackground make it clear
         [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
         if (self.subviews.count > 0) {
-            self.backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), [WRNavigationBar navBarBottom])];
+            self.backgroundImageView = [[UIImageView alloc] initWithFrame:[self backgroundViewFrame]];
             self.backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
             
             // _UIBarBackground is first subView for navigationBar
             [self.subviews.firstObject insertSubview:self.backgroundImageView atIndex:0];
         }
+    }else {
+        //当已经存在该View的时候, 更新frame, 防止frame不同步
+        self.backgroundImageView.frame = [self backgroundViewFrame];
     }
     self.backgroundImage = image;
     self.backgroundImageView.image = image;
@@ -236,10 +325,13 @@ static char kWRBackgroundImageKey;
     if (self.backgroundView == nil) {
         // add a image(nil color) to _UIBarBackground make it clear
         [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-        self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), [WRNavigationBar navBarBottom])];
+        self.backgroundView = [[UIView alloc] initWithFrame:[self backgroundViewFrame]];
         self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         // _UIBarBackground is first subView for navigationBar
         [self.subviews.firstObject insertSubview:self.backgroundView atIndex:0];
+    }else {
+        //当已经存在该View的时候, 更新frame, 防止frame不同步
+        self.backgroundView.frame = [self backgroundViewFrame];
     }
     self.backgroundView.backgroundColor = color;
 }
@@ -256,7 +348,7 @@ static char kWRBackgroundImageKey;
         Class _UIBarBackgroundClass = NSClassFromString(@"_UIBarBackground");
         if (_UIBarBackgroundClass != nil) {
             if ([view isKindOfClass:_UIBarBackgroundClass]) {
-                view.frame = CGRectMake(0, self.frame.size.height-[WRNavigationBar navBarBottom], [WRNavigationBar screenWidth], [WRNavigationBar navBarBottom]);
+                view.frame = CGRectMake(0, self.frame.size.height-[WRNavigationBar defaultNavBarBottom], [WRNavigationBar screenWidth], [WRNavigationBar defaultNavBarBottom]);
             }
         }
     }
@@ -331,7 +423,7 @@ static char kWRBackgroundImageKey;
         SEL needSwizzleSelectors[1] = {
             @selector(setTitleTextAttributes:)
         };
-      
+        
         for (int i = 0; i < 1;  i++) {
             SEL selector = needSwizzleSelectors[i];
             NSString *newSelectorStr = [NSString stringWithFormat:@"wr_%@", NSStringFromSelector(selector)];
@@ -371,6 +463,21 @@ static char kWRBackgroundImageKey;
         newTitleTextAttributes[NSForegroundColorAttributeName] = titleColor;
     }
     [self wr_setTitleTextAttributes:newTitleTextAttributes];
+}
+
+/**
+ 当状态栏frame变化的时候, 更新backgroundView的frame
+ */
+- (void)wr_statusBarFrameDidChange {
+    CGRect frame = [self backgroundViewFrame];
+    UIView *back = [self backgroundView];
+    if (back) {
+        back.frame = frame;
+    }
+    UIView *image = [self backgroundImageView];
+    if (image) {
+        image.frame = frame;
+    }
 }
 
 @end
@@ -431,6 +538,10 @@ static int wrPushDisplayCount = 0;
 }
 
 - (void)updateNavigationBarWithFromVC:(UIViewController *)fromVC toVC:(UIViewController *)toVC progress:(CGFloat)progress {
+    //下面的判断修复了部分黑名单失效的问题, 是由TZImagePickerController的作者提出来的
+    if (![WRNavigationBar needUpdateNavigationBar:toVC]) {
+        return;
+    }
     // change navBarBarTintColor
     UIColor *fromBarTintColor = [fromVC wr_navBarBarTintColor];
     UIColor *toBarTintColor = [toVC wr_navBarBarTintColor];
@@ -446,7 +557,7 @@ static int wrPushDisplayCount = 0;
     if ([WRNavigationBar needUpdateNavigationBar:fromVC]) {
         [self setNeedsNavigationBarUpdateForTintColor:newTintColor];
     }
-
+    
     // change navBarTitleColor（在wr_popToViewController:animated:方法中直接改变标题颜色）
     UIColor *fromTitleColor = [fromVC wr_navBarTitleColor];
     UIColor *toTitleColor = [toVC wr_navBarTitleColor];
@@ -470,7 +581,7 @@ static int wrPushDisplayCount = 0;
             @selector(popToRootViewControllerAnimated:),
             @selector(pushViewController:animated:)
         };
-      
+        
         for (int i = 0; i < 4;  i++) {
             SEL selector = needSwizzleSelectors[i];
             NSString *newSelectorStr = [[NSString stringWithFormat:@"wr_%@", NSStringFromSelector(selector)] stringByReplacingOccurrencesOfString:@"__" withString:@"_"];
@@ -575,6 +686,9 @@ static int wrPushDisplayCount = 0;
     NSUInteger n = self.viewControllers.count >= itemCount ? 2 : 1;
     UIViewController *popToVC = self.viewControllers[self.viewControllers.count - n];
     [self popToViewController:popToVC animated:YES];
+    if (@available(iOS 13.0, *)) {
+        return NO;
+    }
     return YES;
 }
 
@@ -658,8 +772,8 @@ static char kWRSystemNavBarTitleColorKey;
 }
 - (void)wr_setNavBarBackgroundImage:(UIImage *)image {
     if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]]) {
-    //  UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
-    //  [navBar wr_setBackgroundImage:image];
+        //  UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
+        //  [navBar wr_setBackgroundImage:image];
     } else {
         objc_setAssociatedObject(self, &kWRNavBarBackgroundImageKey, image, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
@@ -687,8 +801,8 @@ static char kWRSystemNavBarTitleColorKey;
 - (void)wr_setNavBarBarTintColor:(UIColor *)color {
     objc_setAssociatedObject(self, &kWRNavBarBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]]) {
-    //  UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
-    //  [navBar wr_setBackgroundColor:color];
+        //  UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
+        //  [navBar wr_setBackgroundColor:color];
     } else {
         BOOL isRootViewController = (self.navigationController.viewControllers.firstObject == self);
         if (([self pushToCurrentVCFinished] == YES || isRootViewController == YES) && [self pushToNextVCFinished] == NO) {
@@ -705,8 +819,8 @@ static char kWRSystemNavBarTitleColorKey;
 - (void)wr_setNavBarBackgroundAlpha:(CGFloat)alpha {
     objc_setAssociatedObject(self, &kWRNavBarBackgroundAlphaKey, @(alpha), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]]) {
-    //  UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
-    //  [navBar wr_setBackgroundAlpha:alpha];
+        //  UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
+        //  [navBar wr_setBackgroundAlpha:alpha];
     } else {
         BOOL isRootViewController = (self.navigationController.viewControllers.firstObject == self);
         if (([self pushToCurrentVCFinished] == YES || isRootViewController == YES) && [self pushToNextVCFinished] == NO) {
@@ -738,8 +852,8 @@ static char kWRSystemNavBarTitleColorKey;
 - (void)wr_setNavBarTintColor:(UIColor *)color {
     objc_setAssociatedObject(self, &kWRNavBarTintColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]]) {
-    //  UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
-    //  navBar.tintColor = color;
+        //  UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
+        //  navBar.tintColor = color;
     } else {
         if ([self pushToNextVCFinished] == NO) {
             [self.navigationController setNeedsNavigationBarUpdateForTintColor:color];
@@ -770,8 +884,8 @@ static char kWRSystemNavBarTitleColorKey;
 - (void)wr_setNavBarTitleColor:(UIColor *)color {
     objc_setAssociatedObject(self, &kWRNavBarTitleColorKey, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     if ([[self wr_customNavBar] isKindOfClass:[UINavigationBar class]]) {
-    //  UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
-    //  navBar.titleTextAttributes = @{NSForegroundColorAttributeName:color};
+        //  UINavigationBar *navBar = (UINavigationBar *)[self wr_customNavBar];
+        //  navBar.titleTextAttributes = @{NSForegroundColorAttributeName:color};
     } else {
         if ([self pushToNextVCFinished] == NO) {
             [self.navigationController setNeedsNavigationBarUpdateForTitleColor:color];
@@ -811,20 +925,20 @@ static char kWRSystemNavBarTitleColorKey;
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-       SEL needSwizzleSelectors[4] = {
-           @selector(viewWillAppear:),
-           @selector(viewWillDisappear:),
-           @selector(viewDidAppear:),
-           @selector(viewDidDisappear:)
-       };
+        SEL needSwizzleSelectors[4] = {
+            @selector(viewWillAppear:),
+            @selector(viewWillDisappear:),
+            @selector(viewDidAppear:),
+            @selector(viewDidDisappear:)
+        };
         
-       for (int i = 0; i < 4;  i++) {
-           SEL selector = needSwizzleSelectors[i];
-           NSString *newSelectorStr = [NSString stringWithFormat:@"wr_%@", NSStringFromSelector(selector)];
-           Method originMethod = class_getInstanceMethod(self, selector);
-           Method swizzledMethod = class_getInstanceMethod(self, NSSelectorFromString(newSelectorStr));
-           method_exchangeImplementations(originMethod, swizzledMethod);
-       }
+        for (int i = 0; i < 4;  i++) {
+            SEL selector = needSwizzleSelectors[i];
+            NSString *newSelectorStr = [NSString stringWithFormat:@"wr_%@", NSStringFromSelector(selector)];
+            Method originMethod = class_getInstanceMethod(self, selector);
+            Method swizzledMethod = class_getInstanceMethod(self, NSSelectorFromString(newSelectorStr));
+            method_exchangeImplementations(originMethod, swizzledMethod);
+        }
     });
 }
 
@@ -901,5 +1015,6 @@ static char kWRSystemNavBarTitleColorKey;
         return [tabBarController.viewControllers containsObject:self];
     }
 }
+
 
 @end
