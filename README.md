@@ -40,8 +40,8 @@
 
 ## Installation
 > **CocoaPods**
-> pod 'WRNavigationBar','~>1.2.0’
-如果未发现 1.2.0 请更新一下pod
+> pod 'WRNavigationBar','~>1.3.0’
+如果未发现 1.3.0 请更新一下pod
 
 
 > **手动拖入**
