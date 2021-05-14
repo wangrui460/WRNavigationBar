@@ -16,17 +16,17 @@
 ## Demo
 
 <div class="wrap">
-<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/拉钩App首页.gif" alt="">
+<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/拉钩App首页.gif" alt="">
 <!-- <img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/导航栏显示渐变色.gif" alt=""> -->
 <!-- <img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/导航栏显示图片.gif" alt=""> -->
-<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/新浪微博个人中心.gif" alt="">
-<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/qq空间.gif" alt="">
-<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/知乎日报.gif" alt="">
-<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/QQ我的资料页.gif" alt="">
-<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/蚂蚁森林.gif" alt="">
-<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/连续多个界面导航栏透明.gif" alt="">
-<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/自定义导航栏.gif" alt="">
-<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/移动导航栏.gif" alt="">
+<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/新浪微博个人中心.gif" alt="">
+<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/qq空间.gif" alt="">
+<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/知乎日报.gif" alt="">
+<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/QQ我的资料页.gif" alt="">
+<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/蚂蚁森林.gif" alt="">
+<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/连续多个界面导航栏透明.gif" alt="">
+<!-- <img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/自定义导航栏.gif" alt=""> -->
+<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/移动导航栏.gif" alt="">
 </div>
 
 
@@ -47,11 +47,11 @@
 [WRNavigationBar wr_widely];
 // WRNavigationBar 不会对 blackList 中的控制器有影响
 [WRNavigationBar wr_setBlacklist:@[@"SpecialController",
-								 @"TZPhotoPickerController",
-								 @"TZGifPhotoPreviewController",
-								 @"TZAlbumPickerController",
-								 @"TZPhotoPreviewController",
-								 @"TZVideoPlayerController"]];
+				 @"TZPhotoPickerController",
+				 @"TZGifPhotoPreviewController",
+				 @"TZAlbumPickerController",
+				 @"TZPhotoPreviewController",
+				 @"TZVideoPlayerController"]];
 </code></pre>
 
 <pre><code>
@@ -82,10 +82,8 @@
 [WRNavigationBar wr_setDefaultNavBarShadowImageHidden:YES];
 </code></pre>
 
-
 ## More
 我的简书: [韦德460](http://www.jianshu.com/p/7e92451ab0b2)
-
 
 <!-- ## Update
 - **2018.01.19**
@@ -157,9 +155,9 @@
 
 <!-- ## Features -->
 
-# Contact me
-<!-- - Weibo: [@wangrui460](http://weibo.com/wangrui460) -->
-- Email:  wangruidev@gmail.com
+<!-- # Contact me
+ - Weibo: [@wangrui460](http://weibo.com/wangrui460) 
+- Email:  wangruidev@gmail.com -->
 
 # License
 WRNavigationBar is available under the MIT license. See the LICENSE file for more info.
