@@ -5,28 +5,20 @@
 <a href="https://github.com/wangrui460/WRNavigationBar"><img src="https://img.shields.io/cocoapods/v/WRNavigationBar.svg?style=flat"></a>
 <a href="https://github.com/wangrui460/WRNavigationBar_swift"><img src="https://img.shields.io/badge/Swift-compatible-orange.svg"></a>
 <a href="https://github.com/wangrui460/WRNavigationBar/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat"></a>
-</p>
-<p align="center">
-<a href="https://twitter.com/wangrui460"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social&maxAge=2592000"></a>
-<a href="http://weibo.com/wangrui460"><img src="http://i67.tinypic.com/wbulbr.jpg"></a>
-</p>
-
-[For Swift：https://github.com/wangrui460/WRNavigationBar_swift](https://github.com/wangrui460/WRNavigationBar_swift)
-
 
 ------------------------------------------------------------
 
 ## Requirements
 - iOS 7.0+
-- Xcode 8+
 
+- Xcode 8+
 
 ## Demo
 
 <div class="wrap">
 <img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/拉钩App首页.gif" alt="">
-<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/导航栏显示渐变色.gif" alt="">
-<img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/导航栏显示图片.gif" alt="">
+<!-- <img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/导航栏显示渐变色.gif" alt=""> -->
+<!-- <img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/导航栏显示图片.gif" alt=""> -->
 <img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/新浪微博个人中心.gif" alt="">
 <img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/qq空间.gif" alt="">
 <img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/知乎日报.gif" alt="">
@@ -45,9 +37,9 @@
 
 
 > **手动拖入**
-> 将 WRNavigationBar 文件夹拽入项目中，导入头文件：#import "WRNavigationBar.h"，自定义导航栏需要导入 "WRCustomNavigationBar.h"
+> 将 WRNavigationBar 文件夹拽入项目中，导入头文件：#import "WRNavigationBar.h"
 
-### Use （以下方式不再适用自定义导航栏，自定义导航栏的使用方式请查看Demo）
+### Use
 ✨✨ 一定要看 Demo 中的 AppDelegate 文件 ✨✨
 
 <pre><code>
@@ -55,11 +47,11 @@
 [WRNavigationBar wr_widely];
 // WRNavigationBar 不会对 blackList 中的控制器有影响
 [WRNavigationBar wr_setBlacklist:@[@"SpecialController",
-                                                            @"TZPhotoPickerController",
-                                                            @"TZGifPhotoPreviewController",
-                                                            @"TZAlbumPickerController",
-                                                            @"TZPhotoPreviewController",
-                                                            @"TZVideoPlayerController"]];
+								 @"TZPhotoPickerController",
+								 @"TZGifPhotoPreviewController",
+								 @"TZAlbumPickerController",
+								 @"TZPhotoPreviewController",
+								 @"TZVideoPlayerController"]];
 </code></pre>
 
 <pre><code>
@@ -95,7 +87,7 @@
 我的简书: [韦德460](http://www.jianshu.com/p/7e92451ab0b2)
 
 
-## Update
+<!-- ## Update
 - **2018.01.19**
 重大更新：1. 增加 "黑名单" 功能   2. 解决微信视频通话进入后台，打开App导航栏位置偏移的bug   3. 解决 IQKeyboardManager 导致的导航栏位置偏移的bug
 
@@ -160,15 +152,14 @@
 新增Demo：完成自定义导航栏实现透明渐变等效果
 
 - **2017.05.12**
-解决问题：侧滑一点松开透明的导航栏会变不透明
+解决问题：侧滑一点松开透明的导航栏会变不透明 -->
 
 
-## Features
+<!-- ## Features -->
 
 # Contact me
-- Weibo: [@wangrui460](http://weibo.com/wangrui460)
+<!-- - Weibo: [@wangrui460](http://weibo.com/wangrui460) -->
 - Email:  wangruidev@gmail.com
-
 
 # License
 WRNavigationBar is available under the MIT license. See the LICENSE file for more info.
