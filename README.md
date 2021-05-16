@@ -10,31 +10,21 @@
 
 ## Requirements
 - iOS 7.0+
-
 - Xcode 8+
 
 ## Demo
+|拉钩App首页|新浪微博个人中心|qq空间|知乎日报|
+|:-:|:-:|:-:|:-:|
+|![](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/拉钩App首页.gif)|![](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/新浪微博个人中心.gif)|![](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/qq空间.gif)|![](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/知乎日报.gif)|
 
-<div class="wrap">
-<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/拉钩App首页.gif" alt="">
-<!-- <img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/导航栏显示渐变色.gif" alt=""> -->
-<!-- <img src="https://github.com/wangrui460/WRNavigationBar_swift/raw/master/screenshots/导航栏显示图片.gif" alt=""> -->
-<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/新浪微博个人中心.gif" alt="">
-<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/qq空间.gif" alt="">
-<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/知乎日报.gif" alt="">
-<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/QQ我的资料页.gif" alt="">
-<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/蚂蚁森林.gif" alt="">
-<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/连续多个界面导航栏透明.gif" alt="">
-<!-- <img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/自定义导航栏.gif" alt=""> -->
-<img src="https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/移动导航栏.gif" alt="">
-</div>
-
+|QQ我的资料页|蚂蚁森林|连续多个界面导航栏透明|移动导航栏|
+|:-:|:-:|:-:|:-:|
+|![](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/QQ我的资料页.gif)|![](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/蚂蚁森林.gif)|![](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/连续多个界面导航栏透明.gif)|![](https://github.com/wangrui460/WRNavigationBar/raw/master/screenshots/移动导航栏.gif)|
 
 ## Installation
 > **CocoaPods**
 > pod 'WRNavigationBar','~>1.3.0’
 如果未发现 1.3.0 请更新一下pod
-
 
 > **手动拖入**
 > 将 WRNavigationBar 文件夹拽入项目中，导入头文件：#import "WRNavigationBar.h"
@@ -85,82 +75,5 @@
 ## More
 我的简书: [韦德460](http://www.jianshu.com/p/7e92451ab0b2)
 
-<!-- ## Update
-- **2018.01.19**
-重大更新：1. 增加 "黑名单" 功能   2. 解决微信视频通话进入后台，打开App导航栏位置偏移的bug   3. 解决 IQKeyboardManager 导致的导航栏位置偏移的bug
-
-- **2017.12.15**
-解决问题：解决在 iOS11.1.2上无法生效的问题
-
-- **2017.12.14**
-解决问题：支持 Nav-TabBar-ViewControllers 结构的项目
-
-- **2017.12.09**
-解决问题：解决导航栏颜色和标题颜色改变失败的bug
-
-- **2017.12.09**
-解决问题：解决点击返回按钮导航栏标题颜色闪烁的问题
-
-- **2017.11.30**
-解决问题： 解决 因为页面还在滑动，然后push下一个页面 API 无效的bug
-
-- **2017.11.24**
-解决问题：解决部分老铁出现的第一次进入页面Api设置无效的问题~
-
-- **2017.11.15**
-解决问题：傻逼的自己，不知道什么时候把 Demo 里面设置默认隐藏导航栏底部黑线的方法给注释了，实际库没有问题，重要的是我竟然没发现~
-
-- **2017.11.08**
-解决问题：解决取消返回手势导航栏变不透明度的问题、解决滑动改变标题颜色导航栏闪一下的问题
-
-- **2017.10.29**
-解决问题：简单适配 iOS11、iPhone X（自定义导航栏 new UINavigationBar 的方式已经不能使用了，所以简单写了一个WRCustomNavigationBar，功能简单，后续会增加更多功能。如果有更好的方式来自定义导航栏，希望大神们教教我）
-
-- **2017.07.26**
-添加新Demo：拉钩App首页带搜索框的透明导航栏
-
-- **2017.07.22**
-添加新Demo：连续多个界面导航栏透明
-
-- **2017.07.09**
-解决问题：当一个控制器中包含多个控制器时，导航栏颜色或透明度不正常的问题
-
-- **2017.07.05**
-添加新功能：全局设置导航栏显示图片(不建议在非自定义导航栏中使用)
-
-- **2017.07.02**
-添加新功能：导航栏可显示图片
-
-- **2017.06.29**
-添加新功能：可单独设置每个控制器对应导航栏底部分割线是否隐藏
-
-- **2017.06.29**
-解决问题：解决引入WRNavigationBar后，无法设置导航栏标题大小的问题
-
-- **2017.06.19**
-解决问题：解决移动导航栏后右滑返回中途取消导致的导航栏错位的问题
-
-- **2017.06.15**
-解决问题：解决scrollView正在滑动的时候，点击返回按钮，导航栏颜色变化突兀的问题
-
-- **2017.06.04**
-新增Demo：大半夜的开了一个新的分支extern，为了翻译一下swift版本，因为当前swift版本功能已经很全面了，只是一直没时间写oc，最近又有新的需求！
-
-- **2017.05.16**
-新增Demo：完成自定义导航栏实现透明渐变等效果
-
-- **2017.05.12**
-解决问题：侧滑一点松开透明的导航栏会变不透明 -->
-
-
-<!-- ## Features -->
-
-<!-- # Contact me
- - Weibo: [@wangrui460](http://weibo.com/wangrui460) 
-- Email:  wangruidev@gmail.com -->
-
 # License
 WRNavigationBar is available under the MIT license. See the LICENSE file for more info.
-
-
-
