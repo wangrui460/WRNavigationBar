@@ -28,12 +28,14 @@
 #import <UIKit/UILabel.h>
 #import <UIKit/UIButton.h>
 
+@interface IQTitleBarButtonItem ()
+
+@property(nullable, nonatomic, strong) UIView *titleView;
+@property(nullable, nonatomic, strong) UIButton *titleButton;
+
+@end
+
 @implementation IQTitleBarButtonItem
-{
-    UIView *_titleView;
-    UIButton *_titleButton;
-}
-@synthesize titleFont = _titleFont;
 
 -(nonnull instancetype)initWithTitle:(nullable NSString *)title
 {
@@ -46,7 +48,16 @@
         _titleButton = [UIButton buttonWithType:UIButtonTypeSystem];
         _titleButton.enabled = NO;
         _titleButton.titleLabel.numberOfLines = 3;
-        [_titleButton setTitleColor:[UIColor colorWithRed:0.0 green:0.5 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
+        #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
+        if (@available(iOS 13.0, *)) {
+            [_titleButton setTitleColor:[UIColor systemBlueColor] forState:UIControlStateNormal];
+        } else
+        #endif
+        {
+        #if __IPHONE_OS_VERSION_MIN_REQUIRED < 130000
+            [_titleButton setTitleColor:[UIColor colorWithRed:0.0 green:0.5 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
+        #endif
+        }
         [_titleButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
         [_titleButton setBackgroundColor:[UIColor clearColor]];
         [_titleButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
@@ -54,7 +65,6 @@
         [self setTitleFont:[UIFont systemFontOfSize:13.0]];
         [_titleView addSubview:_titleButton];
         
-#ifdef __IPHONE_11_0
         if (@available(iOS 11.0, *))
         {
             CGFloat layoutDefaultLowPriority = UILayoutPriorityDefaultLow-1;
@@ -79,7 +89,6 @@
             [_titleView addConstraints:@[top,bottom,leading,trailing]];
         }
         else
-#endif
         {
             _titleView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
             _titleButton.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
@@ -110,10 +119,25 @@
     [_titleButton setTitle:title forState:UIControlStateNormal];
 }
 
--(void)setSelectableTextColor:(UIColor*)selectableTextColor
+-(void)setTitleColor:(UIColor*)titleColor
 {
-    _selectableTextColor = selectableTextColor;
-    [_titleButton setTitleColor:_selectableTextColor forState:UIControlStateNormal];
+    _titleColor = titleColor;
+    [_titleButton setTitleColor:_titleColor?:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+}
+
+-(void)setSelectableTitleColor:(UIColor*)selectableTitleColor
+{
+    _selectableTitleColor = selectableTitleColor;
+    #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
+    if (@available(iOS 13.0, *)) {
+        [_titleButton setTitleColor:_selectableTitleColor?:[UIColor systemBlueColor] forState:UIControlStateNormal];
+    } else
+    #endif
+    {
+    #if __IPHONE_OS_VERSION_MIN_REQUIRED < 130000
+        [_titleButton setTitleColor:_selectableTitleColor?:[UIColor colorWithRed:0.0 green:0.5 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
+    #endif
+    }
 }
 
 -(void)setInvocation:(NSInvocation *)invocation
@@ -132,6 +156,14 @@
         _titleButton.enabled = YES;
         [_titleButton addTarget:invocation.target action:invocation.selector forControlEvents:UIControlEventTouchUpInside];
     }
+}
+
+-(void)dealloc
+{
+    self.customView = nil;
+    [_titleButton removeTarget:nil action:NULL forControlEvents:UIControlEventTouchUpInside];
+    _titleView = nil;
+    _titleButton = nil;
 }
 
 @end

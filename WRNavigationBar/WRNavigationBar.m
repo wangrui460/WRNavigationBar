@@ -16,7 +16,7 @@
 + (BOOL)isIphoneX {
     BOOL isIPhoneX = NO;
     if (@available(iOS 11.0, *)) {
-        isIPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;
+       isIPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;
     }
     return isIPhoneX;
 }
@@ -64,7 +64,12 @@
 }
 
 + (UIEdgeInsets) mainWindowSafeAreaInsets {
-    return [UIApplication sharedApplication].windows.firstObject.safeAreaInsets;
+    if (@available(iOS 11.0, *)) {
+        return [UIApplication sharedApplication].windows.firstObject.safeAreaInsets;
+    } else {
+        // Fallback on earlier versions
+        return UIEdgeInsetsZero;
+    }
 }
 
 ///设备的状态栏高度, 不管状态栏是否显示
@@ -96,8 +101,10 @@
     
 }
 
+//整个顶部导航的高度（状态栏加导航栏）
 + (CGFloat) defaultNavBarBottom{
     CGFloat height = [WRNavigationBar defaultStatusBarHeight] + [WRNavigationBar defaultNavBarHeight];
+    NSLog(@"defaultNavBarBottom height === %@",@(height));
     return height;
 }
 
@@ -212,6 +219,7 @@ static char kWRDefaultNavBarShadowImageHiddenKey;
     return 1.0;
 }
 
+//颜色渐变过程产生的颜色
 + (UIColor *)middleColor:(UIColor *)fromColor toColor:(UIColor *)toColor percent:(CGFloat)percent {
     CGFloat fromRed = 0;
     CGFloat fromGreen = 0;
@@ -231,6 +239,8 @@ static char kWRDefaultNavBarShadowImageHiddenKey;
     CGFloat newAlpha = fromAlpha + (toAlpha - fromAlpha) * percent;
     return [UIColor colorWithRed:newRed green:newGreen blue:newBlue alpha:newAlpha];
 }
+
+//透明度渐变过程
 + (CGFloat)middleAlpha:(CGFloat)fromAlpha toAlpha:(CGFloat)toAlpha percent:(CGFloat)percent {
     return fromAlpha + (toAlpha - fromAlpha) * percent;
 }
@@ -260,12 +270,12 @@ static char kWRBackgroundImageKey;
 
 - (void)setBackgroundView:(UIView *)backgroundView {
     if (backgroundView) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wr_keyboardDidShow) name:UIKeyboardDidShowNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wr_keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wr_keyboardDidShow) name:UIKeyboardDidShowNotification object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wr_keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wr_statusBarFrameDidChange) name:UIApplicationDidChangeStatusBarFrameNotification object:nil];
     } else {
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+//        [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+//        [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
         [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidChangeStatusBarFrameNotification object:nil];
     }
     objc_setAssociatedObject(self, &kWRBackgroundViewKey, backgroundView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -337,10 +347,10 @@ static char kWRBackgroundImageKey;
 }
 
 - (void)wr_keyboardDidShow {
-    [self wr_restoreUIBarBackgroundFrame];
+//    [self wr_restoreUIBarBackgroundFrame];
 }
 - (void)wr_keyboardWillHide {
-    [self wr_restoreUIBarBackgroundFrame];
+//    [self wr_restoreUIBarBackgroundFrame];
 }
 - (void)wr_restoreUIBarBackgroundFrame {
     // IQKeyboardManager change _UIBarBackground frame sometimes, so I need restore it
@@ -423,7 +433,7 @@ static char kWRBackgroundImageKey;
         SEL needSwizzleSelectors[1] = {
             @selector(setTitleTextAttributes:)
         };
-        
+        //交换设置标题属性的方法
         for (int i = 0; i < 1;  i++) {
             SEL selector = needSwizzleSelectors[i];
             NSString *newSelectorStr = [NSString stringWithFormat:@"wr_%@", NSStringFromSelector(selector)];
@@ -459,6 +469,7 @@ static char kWRBackgroundImageKey;
         return;
     }
     
+    //当新主题没有设置title颜色时使用原有title颜色
     if (newTitleTextAttributes[NSForegroundColorAttributeName] == nil) {
         newTitleTextAttributes[NSForegroundColorAttributeName] = titleColor;
     }
@@ -575,14 +586,15 @@ static int wrPushDisplayCount = 0;
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        SEL needSwizzleSelectors[4] = {
+        SEL needSwizzleSelectors[5] = {
             NSSelectorFromString(@"_updateInteractiveTransition:"),
             @selector(popToViewController:animated:),
             @selector(popToRootViewControllerAnimated:),
-            @selector(pushViewController:animated:)
+            @selector(pushViewController:animated:),
+            @selector(popViewControllerAnimated:)
         };
         
-        for (int i = 0; i < 4;  i++) {
+        for (int i = 0; i < 5;  i++) {
             SEL selector = needSwizzleSelectors[i];
             NSString *newSelectorStr = [[NSString stringWithFormat:@"wr_%@", NSStringFromSelector(selector)] stringByReplacingOccurrencesOfString:@"__" withString:@"_"];
             Method originMethod = class_getInstanceMethod(self, selector);
@@ -623,6 +635,21 @@ static int wrPushDisplayCount = 0;
     NSArray<UIViewController *> *vcs = [self wr_popToRootViewControllerAnimated:animated];
     [CATransaction commit];
     return vcs;
+}
+
+- (UIViewController *)wr_popViewControllerAnimated:(BOOL)animated{
+    __block CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(popNeedDisplay)];
+    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    [CATransaction setCompletionBlock:^{
+        [displayLink invalidate];
+        displayLink = nil;
+        wrPopDisplayCount = 0;
+    }];
+    [CATransaction setAnimationDuration:wrPopDuration];
+    [CATransaction begin];
+    UIViewController *vc = [self wr_popViewControllerAnimated:animated];
+    [CATransaction commit];
+    return vc;
 }
 
 // change navigationBar barTintColor smooth before pop to current VC finished

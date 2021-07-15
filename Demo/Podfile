@@ -5,7 +5,7 @@ use_frameworks!
 target ‘CodeDemo’ do
     pod 'SDWebImage', '~> 3.7.6'
     pod 'TZImagePickerController'
-    pod 'IQKeyboardManager'
+    pod 'IQKeyboardManager', '~> 6.5.6'
 
     #UI
     pod 'SDCycleScrollView','~> 1.64'

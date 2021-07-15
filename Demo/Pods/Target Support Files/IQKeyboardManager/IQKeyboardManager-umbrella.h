@@ -16,7 +16,6 @@
 #import "IQUITextFieldView+Additions.h"
 #import "IQUIView+Hierarchy.h"
 #import "IQUIViewController+Additions.h"
-#import "IQUIWindow+Hierarchy.h"
 #import "IQKeyboardManagerConstants.h"
 #import "IQTextView.h"
 #import "IQBarButtonItem.h"
