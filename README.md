@@ -28,8 +28,8 @@
 
 ## Installation
 > **CocoaPods**
-> pod 'WRNavigationBar','~>1.3.0’
-如果未发现 1.3.0 请更新一下pod
+> pod 'WRNavigationBar','~>1.4.0’
+如果未发现 1.4.0 请更新一下pod
 
 > **手动拖入**
 > 将 WRNavigationBar 文件夹拽入项目中，导入头文件：#import "WRNavigationBar.h"
